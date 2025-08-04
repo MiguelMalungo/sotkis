@@ -758,7 +758,7 @@ const Utilizadores = () => {
                     <TableCell>
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-sotkis-green/20 rounded-full flex items-center justify-center">
-                          <User className="w-5 h-5 text-sotkis-green" />
+                          <User className="w-5 h-5 text-sotkis-green" style={{ aspectRatio: '1', flexShrink: 0 }} />
                         </div>
                         <div>
                           <p className="font-medium text-white">{user.name}</p>
