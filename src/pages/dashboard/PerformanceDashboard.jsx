@@ -327,10 +327,10 @@ const PerformanceDashboard = () => {
       {/* Second Row - Gauge Charts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Utilizadores Ativos */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[160px]">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
-              <div className="text-center">
+              <div className="text-center mb-4">
                 <p className="text-lg text-white font-bold">Utilizadores Ativos</p>
                 <p className="text-xs text-gray-400">de 10,600 total</p>
               </div>
@@ -338,8 +338,8 @@ const PerformanceDashboard = () => {
               {/* Large Radial Gauge Chart */}
               <div className="w-full flex justify-center">
                 <RadialBarChart
-                  width={500}
-                  height={250}
+                  width={600}
+                  height={300}
                   data={[
                     { value: 2600, max: 10600, fill: "#9EC043" },
                     { value: 8000, max: 10600, fill: "rgba(255,255,255,0.2)" }
@@ -390,10 +390,10 @@ const PerformanceDashboard = () => {
         </Card>
 
         {/* Nº Km */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[160px]">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
-              <div className="text-center">
+              <div className="text-center mb-4">
                 <p className="text-lg text-white font-bold">Nº Km</p>
                 <p className="text-xs text-gray-400">de 424,000 total</p>
               </div>
@@ -401,8 +401,8 @@ const PerformanceDashboard = () => {
               {/* Large Radial Gauge Chart */}
               <div className="w-full flex justify-center">
                 <RadialBarChart
-                  width={500}
-                  height={250}
+                  width={600}
+                  height={300}
                   data={[
                     { value: 349600, max: 424000, fill: "#9EC043" },
                     { value: 74400, max: 424000, fill: "rgba(255,255,255,0.2)" }
@@ -453,10 +453,10 @@ const PerformanceDashboard = () => {
         </Card>
 
         {/* Manutenção Não Programada */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[160px]">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
-              <div className="text-center">
+              <div className="text-center mb-4">
                 <p className="text-lg text-white font-bold">Manutenção Não Programada</p>
                 <p className="text-xs text-gray-400">de 33 total</p>
               </div>
@@ -464,8 +464,8 @@ const PerformanceDashboard = () => {
               {/* Large Radial Gauge Chart */}
               <div className="w-full flex justify-center">
                 <RadialBarChart
-                  width={500}
-                  height={250}
+                  width={600}
+                  height={300}
                   data={[
                     { value: 29, max: 33, fill: "#9EC043" },
                     { value: 4, max: 33, fill: "rgba(255,255,255,0.2)" }
@@ -516,10 +516,10 @@ const PerformanceDashboard = () => {
         </Card>
 
         {/* Nº Contentores Capacidade > 99% */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[160px]">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
-              <div className="text-center">
+              <div className="text-center mb-4">
                 <p className="text-lg text-white font-bold">Contentores Capacidade &gt; 99%</p>
                 <p className="text-xs text-gray-400">de 42 total</p>
               </div>
@@ -527,8 +527,8 @@ const PerformanceDashboard = () => {
               {/* Large Radial Gauge Chart */}
               <div className="w-full flex justify-center">
                 <RadialBarChart
-                  width={500}
-                  height={250}
+                  width={600}
+                  height={300}
                   data={[
                     { value: 20, max: 42, fill: "#9EC043" },
                     { value: 22, max: 42, fill: "rgba(255,255,255,0.2)" }
