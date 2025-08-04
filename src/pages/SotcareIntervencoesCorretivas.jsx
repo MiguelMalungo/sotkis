@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, AlertTriangle, Image } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, AlertTriangle, Image, ArrowUpDown } from 'lucide-react';
 
 const SotcareIntervencoesCorretivas = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -220,35 +220,35 @@ const SotcareIntervencoesCorretivas = () => {
               <TableRow>
                 <TableHead className="cursor-pointer text-white">
                   Número
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Departamento
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Tipo
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Ilha
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Contentor
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Controlo de acesso
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Data e hora
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Problemas
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="text-white">Ações</TableHead>
               </TableRow>

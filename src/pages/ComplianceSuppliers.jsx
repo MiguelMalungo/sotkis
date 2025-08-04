@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Edit, Trash2, FileText, Download, Printer, X } from 'lucide-react';
+import { Plus, Edit, Trash2, FileText, Download, Printer, X, ArrowUpDown } from 'lucide-react';
 
 const ComplianceSuppliers = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -158,31 +158,31 @@ const ComplianceSuppliers = () => {
               <TableRow>
                 <TableHead className="cursor-pointer text-white text-center w-20">
                   Número
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Cliente
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white text-center w-16">
                   SIGLA
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Assunto
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Descrição
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white text-center w-36">
                   Tipo
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white text-center w-36">
                   Estado
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="text-white">Ações</TableHead>
               </TableRow>

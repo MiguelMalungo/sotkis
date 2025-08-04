@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { ChevronRight, Search } from 'lucide-react';
+import { ChevronRight, Search, ArrowUpDown } from 'lucide-react';
 
 const SotkisLevelCustomers = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -115,15 +115,15 @@ const SotkisLevelCustomers = () => {
                 <TableRow>
                   <TableHead className="cursor-pointer text-white">
                     Id de cliente
-                    <span className="ml-1">↕</span>
+                    <ArrowUpDown className="ml-1 inline h-4 w-4" />
                   </TableHead>
                   <TableHead className="cursor-pointer text-white">
                     Nome
-                    <span className="ml-1">↕</span>
+                    <ArrowUpDown className="ml-1 inline h-4 w-4" />
                   </TableHead>
                   <TableHead className="cursor-pointer text-white">
                     País
-                    <span className="ml-1">↕</span>
+                    <ArrowUpDown className="ml-1 inline h-4 w-4" />
                   </TableHead>
                   <TableHead className="text-white">Ações</TableHead>
                 </TableRow>

@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ChevronDown } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ChevronDown, ArrowUpDown } from 'lucide-react';
 
 const SotcareIntervencoesPreventivas = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -182,23 +182,23 @@ const SotcareIntervencoesPreventivas = () => {
               <TableRow>
                 <TableHead className="cursor-pointer text-white">
                   Número
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Departamento
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Ilha
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Contentores
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Data
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="text-white">Ações</TableHead>
               </TableRow>

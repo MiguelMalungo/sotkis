@@ -43,7 +43,7 @@ const Paises = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 administracao-page">
       {/* Page Header */}
       <div className="page-header text-left">
         <h1 className="text-xl font-bold text-white">Países</h1>

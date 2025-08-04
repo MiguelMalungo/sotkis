@@ -42,7 +42,7 @@ const Contentores = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
+    <div className="p-4 md:p-6 space-y-4 md:space-y-6 administracao-page">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
         <div className="text-left">
