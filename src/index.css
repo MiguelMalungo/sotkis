@@ -276,6 +276,27 @@ svg {
   height: auto !important;
 }
 
+/* Exception for charts - allow them to use their explicit dimensions */
+.recharts-wrapper,
+.recharts-wrapper svg,
+.recharts-radial-bar-chart,
+.recharts-radial-bar-chart svg {
+  width: auto !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  flex-shrink: 1 !important;
+}
+
+/* Force charts to respect their explicit width and height props */
+.recharts-wrapper svg {
+  width: inherit !important;
+  height: inherit !important;
+  min-width: inherit !important;
+  min-height: inherit !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
 /* Specific fix for User icons in utilizadores page */
 .w-10.h-10 .w-5.h-5,
 .w-10.h-10 .w-6.h-6 {

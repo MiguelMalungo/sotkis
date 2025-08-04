@@ -336,7 +336,7 @@ const PerformanceDashboard = () => {
               </div>
               
               {/* Large Radial Gauge Chart */}
-              <div className="w-full flex justify-center">
+              <div className="flex justify-center" style={{ width: '100%', minWidth: '600px', maxWidth: '800px' }}>
                 <RadialBarChart
                   width={600}
                   height={300}
@@ -399,7 +399,7 @@ const PerformanceDashboard = () => {
               </div>
               
               {/* Large Radial Gauge Chart */}
-              <div className="w-full flex justify-center">
+              <div className="flex justify-center" style={{ width: '100%', minWidth: '600px', maxWidth: '800px' }}>
                 <RadialBarChart
                   width={600}
                   height={300}
@@ -462,7 +462,7 @@ const PerformanceDashboard = () => {
               </div>
               
               {/* Large Radial Gauge Chart */}
-              <div className="w-full flex justify-center">
+              <div className="flex justify-center" style={{ width: '100%', minWidth: '600px', maxWidth: '800px' }}>
                 <RadialBarChart
                   width={600}
                   height={300}
@@ -525,7 +525,7 @@ const PerformanceDashboard = () => {
               </div>
               
               {/* Large Radial Gauge Chart */}
-              <div className="w-full flex justify-center">
+              <div className="flex justify-center" style={{ width: '100%', minWidth: '600px', maxWidth: '800px' }}>
                 <RadialBarChart
                   width={600}
                   height={300}
