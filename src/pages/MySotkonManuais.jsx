@@ -55,11 +55,11 @@ const MySotkonManuais = () => {
       </div>
 
       {/* Table Controls */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select defaultValue="10">
-                            <SelectTrigger className="w-20 bg-white/5 border-white text-white">
+            <SelectTrigger className="w-20 bg-white/5 border-white text-white">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -71,13 +71,13 @@ const MySotkonManuais = () => {
           <span className="text-sm text-white">registos</span>
         </div>
         
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 w-full sm:w-auto">
           <span className="text-sm text-white">Procurar:</span>
           <Input
             placeholder="Pesquisar..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-64 bg-white/5 border-white/10 text-white placeholder-gray-400"
+            className="w-full sm:w-64 bg-white/5 border-white/10 text-white placeholder-gray-400"
           />
         </div>
       </div>
@@ -85,7 +85,8 @@ const MySotkonManuais = () => {
       {/* Table */}
       <Card className="card-glass">
         <CardContent className="p-0">
-          <Table>
+          <div className="overflow-x-auto">
+            <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="cursor-pointer text-white">
@@ -128,11 +129,12 @@ const MySotkonManuais = () => {
               ))}
             </TableBody>
           </Table>
+          </div>
         </CardContent>
       </Card>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
         <div className="text-sm text-gray-300">
           A exibir 1-1 de 1 registos
         </div>

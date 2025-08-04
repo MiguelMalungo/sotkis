@@ -87,7 +87,7 @@ const MySotkonRgpdList = () => {
       </div>
 
       {/* Table Controls */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select value={recordsPerPage} onValueChange={(value) => setRecordsPerPage(value)}>
@@ -104,13 +104,13 @@ const MySotkonRgpdList = () => {
           <span className="text-sm text-white">registos</span>
         </div>
         
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 w-full sm:w-auto">
           <span className="text-sm text-white">Procurar:</span>
           <Input
             placeholder="Pesquisar utilizadores..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-64 bg-white text-black placeholder-gray-600"
+            className="w-full sm:w-64 bg-white text-black placeholder-gray-600"
           />
         </div>
       </div>
@@ -118,7 +118,8 @@ const MySotkonRgpdList = () => {
       {/* Table */}
       <Card className="bg-black/50 backdrop-blur-lg border-0 shadow-2xl rounded-xl">
         <CardContent className="p-0">
-          <Table>
+          <div className="overflow-x-auto">
+            <Table>
             <TableHeader>
               <TableRow className="border-white/10">
                 <TableHead 
@@ -160,11 +161,12 @@ const MySotkonRgpdList = () => {
               ))}
             </TableBody>
           </Table>
+          </div>
         </CardContent>
       </Card>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
         <div className="text-sm text-white">
           A exibir {startRecord}-{endRecord} de {totalRecords} registos
         </div>
