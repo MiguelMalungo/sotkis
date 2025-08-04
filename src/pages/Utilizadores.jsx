@@ -588,7 +588,7 @@ const Utilizadores = () => {
                 <p className="text-xl font-bold text-white">{mockUsers.length}</p>
               </div>
               <div className="p-3 bg-white/10 rounded-lg">
-                <User className="h-6 w-6 text-sotkis-green" />
+                <User className="h-6 w-6 text-sotkis-green" style={{ aspectRatio: '1', flexShrink: 0, width: '24px', height: '24px' }} />
               </div>
             </div>
           </CardContent>
@@ -758,7 +758,7 @@ const Utilizadores = () => {
                     <TableCell>
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-sotkis-green/20 rounded-full flex items-center justify-center">
-                          <User className="w-5 h-5 text-sotkis-green" style={{ aspectRatio: '1', flexShrink: 0 }} />
+                          <User className="w-5 h-5 text-sotkis-green" style={{ aspectRatio: '1', flexShrink: 0, width: '20px', height: '20px' }} />
                         </div>
                         <div>
                           <p className="font-medium text-white">{user.name}</p>
