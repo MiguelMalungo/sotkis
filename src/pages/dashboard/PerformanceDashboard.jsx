@@ -331,7 +331,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center">
-                <p className="text-sm text-white font-bold">Utilizadores Ativos</p>
+                <p className="text-lg text-white font-bold">Utilizadores Ativos</p>
                 <p className="text-xs text-gray-400">de 10,600 total</p>
               </div>
               
@@ -394,7 +394,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center">
-                <p className="text-sm text-white font-bold">Nº Km</p>
+                <p className="text-lg text-white font-bold">Nº Km</p>
                 <p className="text-xs text-gray-400">de 424,000 total</p>
               </div>
               
@@ -457,7 +457,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center">
-                <p className="text-sm text-white font-bold">Manutenção Não Programada</p>
+                <p className="text-lg text-white font-bold">Manutenção Não Programada</p>
                 <p className="text-xs text-gray-400">de 33 total</p>
               </div>
               
@@ -520,7 +520,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center">
-                <p className="text-sm text-white font-bold">Contentores Capacidade &gt; 99%</p>
+                <p className="text-lg text-white font-bold">Contentores Capacidade &gt; 99%</p>
                 <p className="text-xs text-gray-400">de 42 total</p>
               </div>
               
