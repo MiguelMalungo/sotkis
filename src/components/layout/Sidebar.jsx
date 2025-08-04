@@ -79,8 +79,7 @@ const menuItems = [
       { id: 'ilhas', label: 'Ilhas', path: '/my-sotkon/ilhas' },
       { id: 'contentores', label: 'Contentores', path: '/my-sotkon/contentores' },
       { id: 'departamentos', label: 'Departamentos', path: '/my-sotkon/departamentos' },
-      { id: 'manuais', label: 'Manuais', path: '/my-sotkon/manuais' },
-      { id: 'rgpd-list', label: 'Lista RGPD', path: '/my-sotkon/rgpd-list' }
+      { id: 'manuais', label: 'Manuais', path: '/my-sotkon/manuais' }
     ]
   },
   {

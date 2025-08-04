@@ -46,17 +46,19 @@ const Login = () => {
       {/* 70% black overlay */}
       <div className="absolute inset-0 bg-black/70" />
       
-      {/* Logo above card */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4">
-        <img 
-          src={logoImage} 
-          alt="Sotkis Logo" 
-          className="w-full max-w-xs sm:max-w-sm md:max-w-md h-48 sm:h-64 md:h-80 object-contain"
-        />
-      </div>
+      {/* Logo and Login Card Container */}
+      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 space-y-8">
+        {/* Logo */}
+        <div className="flex flex-col items-center justify-center w-full">
+          <img 
+            src={logoImage} 
+            alt="Sotkis Logo" 
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md h-48 sm:h-64 md:h-80 object-contain"
+          />
+        </div>
 
-      {/* Login Card */}
-      <div className="relative z-10 w-full max-w-md px-4">
+        {/* Login Card */}
+        <div className="w-full max-w-md">
         <Card 
           className="bg-black/50 backdrop-blur-lg border-0 shadow-2xl rounded-xl cursor-pointer hover:bg-black/60 transition-colors duration-200"
           onClick={() => {
@@ -184,6 +186,7 @@ const Login = () => {
           <p className="text-sm">
             {t('copyright')}
           </p>
+        </div>
         </div>
       </div>
     </div>
