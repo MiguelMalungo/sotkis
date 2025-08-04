@@ -1,0 +1,280 @@
+import React, { useState } from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Select, SelectOption } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Search, Map as MapIcon, List, Download, Upload, Plus } from 'lucide-react';
+
+const SotkisRoutes = () => {
+  const [viewMode, setViewMode] = useState('list'); // 'list' or 'map'
+  const [filters, setFilters] = useState({
+    rota: '',
+    estado: '',
+    dataInicio: '',
+    dataFim: ''
+  });
+
+  const handleSearch = () => {
+    console.log('Searching with filters:', filters);
+  };
+
+  const mockRoutes = [
+    {
+      id: 1,
+      nome: 'Rota A1',
+      estado: 'Ativa',
+      dataInicio: '2024-01-15',
+      dataFim: '2024-12-31',
+      contentores: 25,
+      distancia: '45.2 km',
+      coordinates: [
+        [38.7223, -9.1393],
+        [38.7323, -9.1493],
+        [38.7423, -9.1593]
+      ]
+    },
+    {
+      id: 2,
+      nome: 'Rota B2',
+      estado: 'Inativa',
+      dataInicio: '2024-02-01',
+      dataFim: '2024-11-30',
+      contentores: 18,
+      distancia: '32.8 km',
+      coordinates: [
+        [38.7123, -9.1293],
+        [38.7023, -9.1193],
+        [38.6923, -9.1093]
+      ]
+    },
+    {
+      id: 3,
+      nome: 'Rota C3',
+      estado: 'Ativa',
+      dataInicio: '2024-01-20',
+      dataFim: '2024-12-31',
+      contentores: 30,
+      distancia: '52.1 km',
+      coordinates: [
+        [38.7323, -9.1593],
+        [38.7423, -9.1693],
+        [38.7523, -9.1793]
+      ]
+    }
+  ];
+
+  return (
+    <div className="p-6 space-y-6">
+      {/* Header */}
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-white">Gestão de Rotas</h1>
+          <p className="text-gray-300 mt-1">Gestão e monitorização de rotas do sistema</p>
+        </div>
+        <div className="flex items-center justify-end space-x-2">
+          <Button
+            variant={viewMode === 'list' ? 'default' : 'outline'}
+            size="sm"
+            onClick={() => setViewMode('list')}
+            className={viewMode === 'list' ? 'bg-black text-white' : 'text-white border-white'}
+          >
+            <List className="h-4 w-4 mr-2" />
+            Lista
+          </Button>
+          <Button
+            variant={viewMode === 'map' ? 'default' : 'outline'}
+            size="sm"
+            onClick={() => setViewMode('map')}
+            className={viewMode === 'map' ? 'bg-black text-white' : 'text-white border-white'}
+          >
+            <MapIcon className="h-4 w-4 mr-2" />
+            Mapa
+          </Button>
+          <Button variant="outline" size="sm" className="text-white border-white">
+            <Download className="h-4 w-4 mr-2" />
+            Exportar
+          </Button>
+          <Button variant="outline" size="sm" className="text-white border-white">
+            <Upload className="h-4 w-4 mr-2" />
+            Importar
+          </Button>
+        </div>
+      </div>
+
+      {/* Filters */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Card className="p-4 bg-white/5 border-white/10">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-white">Rota</label>
+            <Input
+              placeholder="Nome da rota"
+              value={filters.rota}
+              onChange={(e) => setFilters({ ...filters, rota: e.target.value })}
+              className="bg-white/5 border-white/10 text-white placeholder:text-gray-400"
+            />
+          </div>
+        </Card>
+
+        <Card className="p-4 bg-white/5 border-white/10">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-white">Estado</label>
+            <Select 
+              value={filters.estado} 
+              onChange={(e) => setFilters({ ...filters, estado: e.target.value })}
+              className="bg-white/5 border-white/10 text-white"
+            >
+              <SelectOption value="">Selecionar estado</SelectOption>
+              <SelectOption value="ativa">Ativa</SelectOption>
+              <SelectOption value="inativa">Inativa</SelectOption>
+              <SelectOption value="pendente">Pendente</SelectOption>
+            </Select>
+          </div>
+        </Card>
+
+        <Card className="p-4 bg-white/5 border-white/10">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-white">Data Início</label>
+            <Input
+              type="date"
+              value={filters.dataInicio}
+              onChange={(e) => setFilters({ ...filters, dataInicio: e.target.value })}
+              className="bg-white/5 border-white/10 text-white"
+            />
+          </div>
+        </Card>
+
+        <Card className="p-4 bg-white/5 border-white/10">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-white">Data Fim</label>
+            <Input
+              type="date"
+              value={filters.dataFim}
+              onChange={(e) => setFilters({ ...filters, dataFim: e.target.value })}
+              className="bg-white/5 border-white/10 text-white"
+            />
+          </div>
+        </Card>
+      </div>
+
+      {/* Search Button */}
+      <div className="flex justify-end">
+        <Button onClick={handleSearch} className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
+          <Search className="h-4 w-4 mr-2" />
+          Pesquisar
+        </Button>
+      </div>
+
+      {/* Results */}
+      {viewMode === 'list' ? (
+        <Card className="bg-white/5 border-white/10">
+          <Table>
+            <TableHeader>
+              <TableRow className="border-white/10">
+                <TableHead className="text-white">ID</TableHead>
+                <TableHead className="text-white">Nome da Rota</TableHead>
+                <TableHead className="text-white">Estado</TableHead>
+                <TableHead className="text-white">Data Início</TableHead>
+                <TableHead className="text-white">Data Fim</TableHead>
+                <TableHead className="text-white">Contentores</TableHead>
+                <TableHead className="text-white">Distância</TableHead>
+                <TableHead className="text-white">Ações</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {mockRoutes.map((route) => (
+                <TableRow key={route.id} className="border-white/10">
+                  <TableCell className="text-white">{route.id}</TableCell>
+                  <TableCell className="text-white">{route.nome}</TableCell>
+                  <TableCell className="text-white">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      route.estado === 'Ativa' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+                    }`}>
+                      {route.estado}
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-white">{route.dataInicio}</TableCell>
+                  <TableCell className="text-white">{route.dataFim}</TableCell>
+                  <TableCell className="text-white">{route.contentores}</TableCell>
+                  <TableCell className="text-white">{route.distancia}</TableCell>
+                  <TableCell className="text-white">
+                    <div className="flex space-x-2">
+                      <Button size="sm" variant="outline" className="text-white border-white hover:bg-white hover:text-black">
+                        Editar
+                      </Button>
+                      <Button size="sm" variant="outline" className="text-white border-white hover:bg-white hover:text-black">
+                        Ver
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Card>
+      ) : (
+        <Card className="bg-white/5 border-white/10 p-4">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-semibold text-white">Visualização de Mapa</h3>
+              <div className="flex space-x-2">
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className="text-white border-white hover:bg-white hover:text-black"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Exportar Mapa
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className="text-white border-white hover:bg-white hover:text-black"
+                >
+                  <Plus className="h-4 w-4 mr-2" />
+                  Adicionar Rota
+                </Button>
+              </div>
+            </div>
+            <div className="w-full h-[600px] rounded-lg border border-white/10 bg-white/5 flex items-center justify-center">
+              <div className="text-center text-gray-400">
+                <MapIcon className="w-16 h-16 mx-auto mb-4 text-sotkis-green" />
+                <h3 className="text-xl font-semibold text-white mb-2">Mapa de Rotas</h3>
+                <p className="mb-4">Visualização do mapa de rotas do sistema</p>
+                <div className="w-full max-w-2xl h-80 bg-gray-800 rounded-lg border border-white/10 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-sotkis-green/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <MapIcon className="w-6 h-6 text-sotkis-green" />
+                    </div>
+                    <p className="text-sm text-gray-400">Mapa interativo em desenvolvimento</p>
+                    <p className="text-xs text-gray-500 mt-1">3 rotas ativas • 2 rotas inativas</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center space-x-4 text-sm text-gray-300">
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-1 bg-green-500 rounded"></div>
+                <span>Rotas Ativas</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-1 bg-red-500 rounded"></div>
+                <span>Rotas Inativas</span>
+              </div>
+            </div>
+          </div>
+        </Card>
+      )}
+
+      {/* Add New Route Button */}
+      <div className="flex justify-end">
+        <Button className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
+          <Plus className="h-4 w-4 mr-2" />
+          Nova Rota
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default SotkisRoutes; 

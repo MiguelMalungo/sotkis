@@ -1,0 +1,310 @@
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { 
+  LayoutDashboard, 
+  Users, 
+  Settings, 
+  Trash2, 
+  Globe, 
+  Cross, 
+  CreditCard, 
+  Map, 
+  TrendingUp, 
+  FileText, 
+  Calendar,
+  ChevronDown,
+  ChevronRight,
+  Menu,
+  X
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import logoImage from '/assets/Logo.png';
+import logoThinImage from '/assets/Logo_thin.png';
+
+const menuItems = [
+  {
+    id: 'dashboard',
+    label: 'Dashboard',
+    icon: LayoutDashboard,
+    path: '/dashboard',
+    children: [
+      { id: 'operacao', label: 'Operação', path: '/dashboard/operacao' },
+      { id: 'performance', label: 'Performance', path: '/dashboard/performance' }
+    ]
+  },
+  {
+    id: 'utilizadores',
+    label: 'Utilizadores',
+    icon: Users,
+    path: '/utilizadores'
+  },
+  {
+    id: 'administracao',
+    label: 'Administração',
+    icon: Settings,
+    children: [
+      { id: 'importacoes', label: 'Importações', path: '/administracao/importacoes' },
+      { id: 'lotes', label: 'Lotes', path: '/administracao/lotes' },
+      { id: 'importar-ficheiro', label: 'Importar ficheiro', path: '/administracao/importar-ficheiro' },
+      { id: 'contentores', label: 'Contentores', path: '/administracao/contentores' },
+      { id: 'ilhas', label: 'Ilhas', path: '/administracao/ilhas' },
+      { id: 'utilizadores-admin', label: 'Utilizadores', path: '/administracao/utilizadores' },
+      { id: 'rfids', label: 'Rfids', path: '/administracao/rfids' },
+      { id: 'estados-faturacao', label: 'Estados da Faturação', path: '/administracao/estados-faturacao' },
+      { id: 'paises', label: 'Países', path: '/administracao/paises' },
+      { id: 'tipos', label: 'Tipos', path: '/administracao/tipos' },
+      { id: 'rgpds', label: 'Rgpd\'s', path: '/administracao/rgpds' }
+    ]
+  },
+  {
+    id: 'my-sotkon',
+    label: 'My Sotkon',
+    icon: Trash2,
+    path: '/my-sotkon'
+  },
+  {
+    id: 'sotkis-access',
+    label: 'Sotkis Access',
+    icon: Globe,
+    children: [
+      { id: 'rfids-access', label: 'RFID\'s', path: '/sotkis-access/rfids' },
+      { id: 'reports', label: 'Reports', path: '/sotkis-access/reports' },
+      { id: 'deposits', label: 'Deposits', path: '/sotkis-access/deposits' },
+      { id: 'batteries', label: 'Batteries', path: '/sotkis-access/batteries' }
+    ]
+  },
+  {
+    id: 'sotcare',
+    label: 'Sotcare',
+    icon: Cross,
+    children: [
+      { id: 'interventions', label: 'Preventive/Corrective Interventions', path: '/sotcare/interventions' },
+      { id: 'problem-management', label: 'Problem Management', path: '/sotcare/problem-management' }
+    ]
+  },
+  {
+    id: 'sotkis-paylt',
+    label: 'Sotkis PAYLT',
+    icon: CreditCard,
+    children: [
+      { id: 'contracts', label: 'Contracts', path: '/sotkis-paylt/contracts' },
+      { id: 'invoices', label: 'Invoices', path: '/sotkis-paylt/invoices' },
+      { id: 'pricing', label: 'Pricing', path: '/sotkis-paylt/pricing' },
+      { id: 'points', label: 'Points', path: '/sotkis-paylt/points' }
+    ]
+  },
+  {
+    id: 'sotkis-routes',
+    label: 'Sotkis Routes',
+    icon: Map,
+    path: '/sotkis-routes'
+  },
+  {
+    id: 'sotkis-level',
+    label: 'Sotkis Level',
+    icon: TrendingUp,
+    children: [
+      { id: 'alerts', label: 'Alerts', path: '/sotkis-level/alerts' },
+      { id: 'pickups', label: 'Pickups', path: '/sotkis-level/pickups' },
+      { id: 'containers', label: 'Containers', path: '/sotkis-level/containers' }
+    ]
+  },
+  {
+    id: 'compliance',
+    label: 'Compliance',
+    icon: FileText,
+    children: [
+      { id: 'clients', label: 'Clients', path: '/compliance/clients' },
+      { id: 'suppliers', label: 'Suppliers', path: '/compliance/suppliers' },
+      { id: 'compliance-dashboard', label: 'Dashboard', path: '/compliance/dashboard' }
+    ]
+  },
+];
+
+const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMobileMenuClose }) => {
+  const location = useLocation();
+  const [expandedItems, setExpandedItems] = useState(new Set());
+
+  const toggleExpanded = (itemId) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(itemId)) {
+      newExpanded.delete(itemId);
+    } else {
+      newExpanded.add(itemId);
+    }
+    setExpandedItems(newExpanded);
+  };
+
+  const isActive = (item) => {
+    if (item.path) {
+      return location.pathname === item.path;
+    }
+    if (item.children) {
+      return item.children.some(child => location.pathname === child.path);
+    }
+    return false;
+  };
+
+  const isChildActive = (item) => {
+    return item.children?.some(child => location.pathname === child.path);
+  };
+
+  const handleItemClick = (item) => {
+    if (isMobile) {
+      onMobileMenuClose();
+    }
+  };
+
+  return (
+    <div className={cn(
+      "h-full backdrop-blur-lg bg-white/10 border-0 text-white transition-all duration-300 ease-in-out rounded-xl shadow-2xl",
+      isMobile 
+        ? "w-full" 
+        : isCollapsed 
+          ? "w-20" 
+          : "w-72"
+    )}>
+      <div className="flex h-full flex-col">
+        {/* Header */}
+        <div className={cn(
+          "flex items-center justify-between",
+          isMobile ? "h-20 px-4 pt-3" : "h-48 px-4 pt-2 border-b border-white/10"
+        )}>
+          {(!isCollapsed || isMobile) && (
+            <Link 
+              to="/" 
+              className="flex flex-col items-start hover:opacity-80 transition-opacity cursor-pointer"
+              onClick={handleItemClick}
+            >
+              <img 
+                src={logoImage} 
+                alt="Sotkis Logo" 
+                className={cn(
+                  "w-auto object-contain filter brightness-0 invert",
+                  isMobile ? "h-24 mt-6" : "h-40"
+                )}
+              />
+              {/* Removed 'intelligent systems' text */}
+            </Link>
+          )}
+          
+          {isCollapsed && !isMobile && (
+            <div className="flex flex-col items-center justify-center h-full">
+              <img 
+                src={logoThinImage} 
+                alt="Sotkis Logo" 
+                className="h-8 w-auto object-contain filter brightness-0 invert mb-4"
+              />
+            </div>
+          )}
+
+          {!isMobile && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+              className="ml-auto"
+            >
+              <Menu size={20} />
+            </Button>
+          )}
+          {isMobile && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onMobileMenuClose}
+              className="ml-auto"
+            >
+              <X size={20} />
+            </Button>
+          )}
+        </div>
+
+        {/* Navigation */}
+        <nav className={cn(
+          "flex-1 overflow-y-auto py-4",
+          isMobile && "mt-4"
+        )}>
+          <ul className="space-y-1 px-3">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              const hasChildren = item.children && item.children.length > 0;
+              const active = isActive(item);
+              const childActive = isChildActive(item);
+              const expanded = expandedItems.has(item.id);
+
+              return (
+                <li key={item.id}>
+                  {hasChildren ? (
+                    <div>
+                      <button
+                        onClick={() => toggleExpanded(item.id)}
+                        className={cn(
+                          "sidebar-item w-full justify-between",
+                          (active || childActive) && "active"
+                        )}
+                      >
+                        <div className="flex items-center">
+                          <Icon size={24} className={cn("mr-3", isCollapsed && !isMobile && "mr-0")} />
+                          {(!isCollapsed || isMobile) && <span className="text-base">{item.label}</span>}
+                        </div>
+                        {(!isCollapsed || isMobile) && (
+                          expanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />
+                        )}
+                      </button>
+                      {expanded && (!isCollapsed || isMobile) && (
+                        <ul className="sidebar-submenu mt-1 space-y-1">
+                          {item.children.map((child) => (
+                            <li key={child.id}>
+                              <Link
+                                to={child.path}
+                                className={cn(
+                                  "sidebar-item block py-2 pl-8",
+                                  location.pathname === child.path && "active"
+                                )}
+                                onClick={() => handleItemClick(child)}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={cn(
+                        "sidebar-item block",
+                        active && "active"
+                      )}
+                      onClick={() => handleItemClick(item)}
+                    >
+                      <Icon size={24} className={cn("mr-3", isCollapsed && !isMobile && "mr-0")} />
+                      {(!isCollapsed || isMobile) && <span className="text-base">{item.label}</span>}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Footer */}
+        <div className="border-t border-white/10 p-4 pb-6">
+          {(!isCollapsed || isMobile) && (
+            <div className="flex items-center justify-between text-xs text-white/70">
+              <div className="flex items-center space-x-2">
+                <Settings size={18} />
+                <span>sotkis.com</span>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar; 
