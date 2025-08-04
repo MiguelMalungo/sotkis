@@ -338,8 +338,8 @@ const PerformanceDashboard = () => {
               {/* Large Radial Gauge Chart */}
               <div className="w-full flex justify-center">
                 <RadialBarChart
-                  width={500}
-                  height={250}
+                  width={window.innerWidth >= 1024 ? 600 : 500}
+                  height={window.innerWidth >= 1024 ? 300 : 250}
                   data={[
                     { value: 2600, max: 10600, fill: "#9EC043" },
                     { value: 8000, max: 10600, fill: "rgba(255,255,255,0.2)" }
@@ -401,8 +401,8 @@ const PerformanceDashboard = () => {
               {/* Large Radial Gauge Chart */}
               <div className="w-full flex justify-center">
                 <RadialBarChart
-                  width={500}
-                  height={250}
+                  width={window.innerWidth >= 1024 ? 600 : 500}
+                  height={window.innerWidth >= 1024 ? 300 : 250}
                   data={[
                     { value: 349600, max: 424000, fill: "#9EC043" },
                     { value: 74400, max: 424000, fill: "rgba(255,255,255,0.2)" }
@@ -464,8 +464,8 @@ const PerformanceDashboard = () => {
               {/* Large Radial Gauge Chart */}
               <div className="w-full flex justify-center">
                 <RadialBarChart
-                  width={500}
-                  height={250}
+                  width={window.innerWidth >= 1024 ? 600 : 500}
+                  height={window.innerWidth >= 1024 ? 300 : 250}
                   data={[
                     { value: 29, max: 33, fill: "#9EC043" },
                     { value: 4, max: 33, fill: "rgba(255,255,255,0.2)" }
@@ -527,8 +527,8 @@ const PerformanceDashboard = () => {
               {/* Large Radial Gauge Chart */}
               <div className="w-full flex justify-center">
                 <RadialBarChart
-                  width={500}
-                  height={250}
+                  width={window.innerWidth >= 1024 ? 600 : 500}
+                  height={window.innerWidth >= 1024 ? 300 : 250}
                   data={[
                     { value: 20, max: 42, fill: "#9EC043" },
                     { value: 22, max: 42, fill: "rgba(255,255,255,0.2)" }
@@ -556,7 +556,7 @@ const PerformanceDashboard = () => {
                                 y={(viewBox.cy || 0) + 40}
                                 className="fill-gray-400 text-xl"
                               >
-                                Contentores
+                                
                               </tspan>
                             </text>
                           )
