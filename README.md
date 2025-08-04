@@ -174,4 +174,4 @@ For support and questions, please contact the development team at Sotkis Intelli
 
 ---
 
-**Sotkis Intelligent Systems** - Transforming waste management through smart technology. 
+**Sotkis Intelligent Systems** - Transforming waste management through smart technology. # Trigger deployment
