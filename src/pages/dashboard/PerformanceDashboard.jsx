@@ -3,9 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectOption } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { TrendingUp, TrendingDown, Calendar, Filter, Download, RefreshCw, Users, BarChart3, AlertTriangle, MapPin, Leaf } from 'lucide-react';
+import { TrendingUp, TrendingDown, Calendar, Filter, Download, RefreshCw, Users, BarChart3, AlertTriangle, MapPin, Leaf, Wrench, Package } from 'lucide-react';
 import { 
-  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area
+  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area,
+  RadialBarChart, RadialBar, PolarRadiusAxis, Label
 } from 'recharts';
 import { 
   performanceData, 
@@ -326,117 +327,253 @@ const PerformanceDashboard = () => {
       {/* Second Row - Gauge Charts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Utilizadores Ativos */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-300">Utilizadores Ativos</p>
-                <p className="text-2xl font-bold text-white">2,600</p>
-                <div className="flex items-center mt-1">
-                  <span className="text-sm text-gray-400">de 10,600 total</span>
-                </div>
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[160px]">
+          <CardContent className="p-6">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="text-center">
+                <p className="text-sm text-white font-bold">Utilizadores Ativos</p>
+                <p className="text-xs text-gray-400">de 10,600 total</p>
               </div>
-              <div className="flex items-center gap-3">
-                {/* Gauge Chart */}
-                <div className="relative w-20 h-12">
-                  {/* Gauge Background */}
-                  <div className="absolute inset-0 bg-gray-200 rounded-t-full"></div>
-                  {/* Gauge Fill */}
-                  <div className="absolute inset-0 bg-sotkis-green rounded-t-full" style={{ clipPath: 'polygon(0 100%, 25% 100%, 25% 0, 100% 0, 100% 100%)' }}></div>
-                  {/* Numbers */}
-                  <div className="absolute bottom-0 left-0 text-xs text-gray-600">2000</div>
-                  <div className="absolute bottom-0 right-0 text-xs text-gray-600">10600</div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold text-gray-700">2600</div>
-                </div>
-                <Users className="h-5 w-5 text-sotkis-green" />
+              
+              {/* Large Radial Gauge Chart */}
+              <div className="w-full flex justify-center">
+                <RadialBarChart
+                  width={500}
+                  height={250}
+                  data={[
+                    { value: 2600, max: 10600, fill: "#9EC043" },
+                    { value: 8000, max: 10600, fill: "rgba(255,255,255,0.2)" }
+                  ]}
+                  startAngle={180}
+                  endAngle={0}
+                  innerRadius={80}
+                  outerRadius={120}
+                >
+                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          return (
+                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 10}
+                                className="fill-white text-3xl font-bold"
+                              >
+                                2600
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 40}
+                                className="fill-gray-400 text-xl"
+                              >
+                                Utilizadores
+                              </tspan>
+                            </text>
+                          )
+                        }
+                      }}
+                    />
+                  </PolarRadiusAxis>
+                  <RadialBar
+                    dataKey="value"
+                    cornerRadius={20}
+                    fill="#9EC043"
+                    strokeWidth={25}
+                  />
+                </RadialBarChart>
               </div>
+              
+              <Users className="h-8 w-8 text-sotkis-green" />
             </div>
           </CardContent>
         </Card>
 
         {/* Nº Km */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-300">Nº Km</p>
-                <p className="text-2xl font-bold text-white">349,600</p>
-                <div className="flex items-center mt-1">
-                  <span className="text-sm text-gray-400">de 424,000 total</span>
-                </div>
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[160px]">
+          <CardContent className="p-6">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="text-center">
+                <p className="text-sm text-white font-bold">Nº Km</p>
+                <p className="text-xs text-gray-400">de 424,000 total</p>
               </div>
-              <div className="flex items-center gap-3">
-                {/* Gauge Chart */}
-                <div className="relative w-20 h-12">
-                  {/* Gauge Background */}
-                  <div className="absolute inset-0 bg-gray-200 rounded-t-full"></div>
-                  {/* Gauge Fill */}
-                  <div className="absolute inset-0 bg-sotkis-green rounded-t-full" style={{ clipPath: 'polygon(0 100%, 82% 100%, 82% 0, 100% 0, 100% 100%)' }}></div>
-                  {/* Numbers */}
-                  <div className="absolute bottom-0 left-0 text-xs text-gray-600">0</div>
-                  <div className="absolute bottom-0 right-0 text-xs text-gray-600">424000</div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold text-gray-700">349600</div>
-                </div>
-                <MapPin className="h-5 w-5 text-sotkis-green" />
+              
+              {/* Large Radial Gauge Chart */}
+              <div className="w-full flex justify-center">
+                <RadialBarChart
+                  width={500}
+                  height={250}
+                  data={[
+                    { value: 349600, max: 424000, fill: "#9EC043" },
+                    { value: 74400, max: 424000, fill: "rgba(255,255,255,0.2)" }
+                  ]}
+                  startAngle={180}
+                  endAngle={0}
+                  innerRadius={80}
+                  outerRadius={120}
+                >
+                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          return (
+                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 10}
+                                className="fill-white text-3xl font-bold"
+                              >
+                                349600
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 40}
+                                className="fill-gray-400 text-xl"
+                              >
+                                Km
+                              </tspan>
+                            </text>
+                          )
+                        }
+                      }}
+                    />
+                  </PolarRadiusAxis>
+                  <RadialBar
+                    dataKey="value"
+                    cornerRadius={20}
+                    fill="#9EC043"
+                    strokeWidth={25}
+                  />
+                </RadialBarChart>
               </div>
+              
+              <MapPin className="h-8 w-8 text-sotkis-green" />
             </div>
           </CardContent>
         </Card>
 
         {/* Manutenção Não Programada */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-300">Manutenção Não Programada</p>
-                <p className="text-2xl font-bold text-white">29</p>
-                <div className="flex items-center mt-1">
-                  <span className="text-sm text-gray-400">de 33 total</span>
-                </div>
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[160px]">
+          <CardContent className="p-6">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="text-center">
+                <p className="text-sm text-white font-bold">Manutenção Não Programada</p>
+                <p className="text-xs text-gray-400">de 33 total</p>
               </div>
-              <div className="flex items-center gap-3">
-                {/* Gauge Chart */}
-                <div className="relative w-20 h-12">
-                  {/* Gauge Background */}
-                  <div className="absolute inset-0 bg-gray-200 rounded-t-full"></div>
-                  {/* Gauge Fill */}
-                  <div className="absolute inset-0 bg-sotkis-green rounded-t-full" style={{ clipPath: 'polygon(0 100%, 88% 100%, 88% 0, 100% 0, 100% 100%)' }}></div>
-                  {/* Numbers */}
-                  <div className="absolute bottom-0 left-0 text-xs text-gray-600">0</div>
-                  <div className="absolute bottom-0 right-0 text-xs text-gray-600">33</div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold text-gray-700">29</div>
-                </div>
-                <AlertTriangle className="h-5 w-5 text-yellow-500" />
+              
+              {/* Large Radial Gauge Chart */}
+              <div className="w-full flex justify-center">
+                <RadialBarChart
+                  width={500}
+                  height={250}
+                  data={[
+                    { value: 29, max: 33, fill: "#9EC043" },
+                    { value: 4, max: 33, fill: "rgba(255,255,255,0.2)" }
+                  ]}
+                  startAngle={180}
+                  endAngle={0}
+                  innerRadius={80}
+                  outerRadius={120}
+                >
+                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          return (
+                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 10}
+                                className="fill-white text-3xl font-bold"
+                              >
+                                29
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 40}
+                                className="fill-gray-400 text-xl"
+                              >
+                                Manutenções
+                              </tspan>
+                            </text>
+                          )
+                        }
+                      }}
+                    />
+                  </PolarRadiusAxis>
+                  <RadialBar
+                    dataKey="value"
+                    cornerRadius={20}
+                    fill="#9EC043"
+                    strokeWidth={25}
+                  />
+                </RadialBarChart>
               </div>
+              
+              <Wrench className="h-8 w-8 text-yellow-500" />
             </div>
           </CardContent>
         </Card>
 
         {/* Nº Contentores Capacidade > 99% */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-300">Contentores Capacidade &gt; 99%</p>
-                <p className="text-2xl font-bold text-white">20</p>
-                <div className="flex items-center mt-1">
-                  <span className="text-sm text-gray-400">de 42 total</span>
-                </div>
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[160px]">
+          <CardContent className="p-6">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="text-center">
+                <p className="text-sm text-white font-bold">Contentores Capacidade &gt; 99%</p>
+                <p className="text-xs text-gray-400">de 42 total</p>
               </div>
-              <div className="flex items-center gap-3">
-                {/* Gauge Chart */}
-                <div className="relative w-20 h-12">
-                  {/* Gauge Background */}
-                  <div className="absolute inset-0 bg-gray-200 rounded-t-full"></div>
-                  {/* Gauge Fill */}
-                  <div className="absolute inset-0 bg-sotkis-green rounded-t-full" style={{ clipPath: 'polygon(0 100%, 48% 100%, 48% 0, 100% 0, 100% 100%)' }}></div>
-                  {/* Numbers */}
-                  <div className="absolute bottom-0 left-0 text-xs text-gray-600">0</div>
-                  <div className="absolute bottom-0 right-0 text-xs text-gray-600">42</div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold text-gray-700">20</div>
-                </div>
-                <AlertTriangle className="h-5 w-5 text-red-500" />
+              
+              {/* Large Radial Gauge Chart */}
+              <div className="w-full flex justify-center">
+                <RadialBarChart
+                  width={500}
+                  height={250}
+                  data={[
+                    { value: 20, max: 42, fill: "#9EC043" },
+                    { value: 22, max: 42, fill: "rgba(255,255,255,0.2)" }
+                  ]}
+                  startAngle={180}
+                  endAngle={0}
+                  innerRadius={80}
+                  outerRadius={120}
+                >
+                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          return (
+                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 10}
+                                className="fill-white text-3xl font-bold"
+                              >
+                                20
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 40}
+                                className="fill-gray-400 text-xl"
+                              >
+                                Contentores
+                              </tspan>
+                            </text>
+                          )
+                        }
+                      }}
+                    />
+                  </PolarRadiusAxis>
+                  <RadialBar
+                    dataKey="value"
+                    cornerRadius={20}
+                    fill="#9EC043"
+                    strokeWidth={25}
+                  />
+                </RadialBarChart>
               </div>
+              
+              <Package className="h-8 w-8 text-red-500" />
             </div>
           </CardContent>
         </Card>

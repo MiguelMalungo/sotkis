@@ -904,34 +904,34 @@ const OperacaoDashboard = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Maintenance Table - Narrower */}
             <Card className="bg-white/10 backdrop-blur-lg border-0 lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="text-white">Manutenções Recentes</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow className="border-white/10">
-                      <TableHead className="text-white">Contentor</TableHead>
-                      <TableHead className="text-white">Tipo</TableHead>
-                      <TableHead className="text-white">Prioridade</TableHead>
-                      <TableHead className="text-white">Status</TableHead>
+            <CardHeader>
+              <CardTitle className="text-white">Manutenções Recentes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-white/10">
+                    <TableHead className="text-white">Contentor</TableHead>
+                    <TableHead className="text-white">Tipo</TableHead>
+                    <TableHead className="text-white">Prioridade</TableHead>
+                    <TableHead className="text-white">Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {maintenanceData.map((alert) => (
+                    <TableRow key={alert.id} className="border-white/10">
+                      <TableCell className="text-white">{alert.container}</TableCell>
+                      <TableCell className="text-white">{alert.type}</TableCell>
+                      <TableCell className={getPriorityColor(alert.priority)}>
+                        {alert.priority}
+                      </TableCell>
+                      <TableCell className="text-white">{alert.status}</TableCell>
                     </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {maintenanceData.map((alert) => (
-                      <TableRow key={alert.id} className="border-white/10">
-                        <TableCell className="text-white">{alert.container}</TableCell>
-                        <TableCell className="text-white">{alert.type}</TableCell>
-                        <TableCell className={getPriorityColor(alert.priority)}>
-                          {alert.priority}
-                        </TableCell>
-                        <TableCell className="text-white">{alert.status}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
 
             {/* SOTCARE Chart */}
             <Card className="bg-white/10 backdrop-blur-lg border-0">
@@ -1156,7 +1156,7 @@ const OperacaoDashboard = () => {
                 <p className="text-3xl font-bold text-white">110</p>
               </CardContent>
             </Card>
-          </div>
+                    </div>
 
           {/* Line Charts Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -1378,16 +1378,16 @@ const OperacaoDashboard = () => {
               {/* Time Preset Buttons */}
               <div className="flex flex-wrap gap-2 mt-4">
                 {routeTimePresets.map((preset) => (
-                  <Button
+                <Button
                     key={preset}
                     variant="outline"
-                    size="sm"
+                  size="sm"
                     className="bg-white text-black border-white hover:bg-gray-100"
-                  >
+                >
                     {preset}
-                  </Button>
-                ))}
-              </div>
+                </Button>
+              ))}
+            </div>
             </CardContent>
           </Card>
 
@@ -1413,19 +1413,19 @@ const OperacaoDashboard = () => {
 
             <Card className="bg-white/10 backdrop-blur-lg border-0">
               <CardContent className="p-4">
-                <div className="flex items-center justify-between">
-                  <div>
+                                   <div className="flex items-center justify-between">
+                     <div>
                     <p className="text-sm text-gray-300">Tomorrow</p>
                     <p className="text-2xl font-bold text-white">40</p>
-                    <div className="flex items-center mt-1">
+                       <div className="flex items-center mt-1">
                       <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">+5.1%</span>
-                    </div>
-                  </div>
-                  <div className="p-3 bg-white/10 rounded-lg">
-                    <BarChart3 className="h-6 w-6 text-sotkis-green" />
-                  </div>
-                </div>
+                       </div>
+                     </div>
+                     <div className="p-3 bg-white/10 rounded-lg">
+                       <BarChart3 className="h-6 w-6 text-sotkis-green" />
+                     </div>
+                   </div>
               </CardContent>
             </Card>
 
@@ -1449,19 +1449,19 @@ const OperacaoDashboard = () => {
 
             <Card className="bg-white/10 backdrop-blur-lg border-0">
               <CardContent className="p-4">
-                <div className="flex items-center justify-between">
-                  <div>
+                                   <div className="flex items-center justify-between">
+                     <div>
                     <p className="text-sm text-gray-300">ALERTAS</p>
                     <p className="text-2xl font-bold text-white">alertas ativos</p>
-                    <div className="flex items-center mt-1">
+                       <div className="flex items-center mt-1">
                       <AlertTriangle className="w-4 h-4 text-red-500 mr-1" />
                       <span className="text-sm text-red-500">3 ativos</span>
-                    </div>
-                  </div>
-                  <div className="p-3 bg-white/10 rounded-lg">
+                       </div>
+                     </div>
+                     <div className="p-3 bg-white/10 rounded-lg">
                     <AlertTriangle className="h-6 w-6 text-red-500" />
-                  </div>
-                </div>
+                     </div>
+                   </div>
               </CardContent>
             </Card>
           </div>
