@@ -36,7 +36,7 @@ import MySotkonIlhas from './pages/MySotkonIlhas';
 import MySotkonContentores from './pages/MySotkonContentores';
 import MySotkonDepartamentos from './pages/MySotkonDepartamentos';
 import MySotkonManuais from './pages/MySotkonManuais';
-import MySotkonRgpdList from './pages/MySotkonRgpdList';
+
 import SotkisAccessDepositions from './pages/SotkisAccessDepositions';
 import SotkisAccessRfids from './pages/SotkisAccessRfids';
 import SotkisAccessReports from './pages/SotkisAccessReports';
@@ -138,7 +138,6 @@ const App = () => {
         <Route path="/my-sotkon/contentores" element={<MySotkonContentores />} />
         <Route path="/my-sotkon/departamentos" element={<MySotkonDepartamentos />} />
         <Route path="/my-sotkon/manuais" element={<MySotkonManuais />} />
-        <Route path="/my-sotkon/rgpd-list" element={<MySotkonRgpdList />} />
 
         {/* Sotkis Access Routes */}
         <Route path="/sotkis-access" element={<Navigate to="/sotkis-access/rfids" replace />} />

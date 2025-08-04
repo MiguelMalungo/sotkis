@@ -38,7 +38,7 @@ const Login = () => {
 
   return (
     <div 
-      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat relative"
+      className="min-h-screen flex flex-col items-center justify-start pt-16 bg-cover bg-center bg-no-repeat relative"
       style={{
         backgroundImage: `url(${backgroundLoginImage})`,
       }}
@@ -47,13 +47,13 @@ const Login = () => {
       <div className="absolute inset-0 bg-black/70" />
       
       {/* Logo and Login Card Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 space-y-8">
+      <div className="relative z-10 flex flex-col items-center w-full px-4 space-y-8">
         {/* Logo */}
         <div className="flex flex-col items-center justify-center w-full">
           <img 
             src={logoImage} 
             alt="Sotkis Logo" 
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md h-48 sm:h-64 md:h-80 object-contain"
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md h-32 sm:h-48 md:h-64 object-contain"
           />
         </div>
 
