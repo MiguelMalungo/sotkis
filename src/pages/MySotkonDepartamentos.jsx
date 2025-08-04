@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ArrowUpDown } from 'lucide-react';
 
 const MySotkonDepartamentos = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -170,31 +170,31 @@ const MySotkonDepartamentos = () => {
               <TableRow>
                 <TableHead className="cursor-pointer text-white">
                   Nome
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   NIF
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Email
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Código de região
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Estado
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Customer Id (Enevo Api)
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Customer Id (Digi eGate Api)
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="w-20 text-white">Ações</TableHead>
               </TableRow>

@@ -248,20 +248,20 @@
     flex-shrink: 0 !important;
   }
 
-  /* Ensure all icons maintain aspect ratio and don't get squeezed */
-  svg {
-    aspect-ratio: 1 !important;
-    flex-shrink: 0 !important;
-    min-width: auto !important;
-    min-height: auto !important;
-  }
+/* Ensure all icons maintain aspect ratio and don't get squeezed - applies to all devices */
+svg {
+  aspect-ratio: 1 !important;
+  flex-shrink: 0 !important;
+  min-width: auto !important;
+  min-height: auto !important;
+}
 
-  /* Specific fix for User icons in utilizadores */
-  .w-5.h-5,
-  .w-6.h-6 {
-    aspect-ratio: 1 !important;
-    flex-shrink: 0 !important;
-  }
+/* Specific fix for User icons in utilizadores - applies to all devices */
+.w-5.h-5,
+.w-6.h-6 {
+  aspect-ratio: 1 !important;
+  flex-shrink: 0 !important;
+}
 }
 
 /* Animation classes */

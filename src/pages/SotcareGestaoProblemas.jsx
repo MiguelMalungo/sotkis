@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, AlertTriangle } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, AlertTriangle, ArrowUpDown } from 'lucide-react';
 
 const SotcareGestaoProblemas = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -224,35 +224,35 @@ const SotcareGestaoProblemas = () => {
               <TableRow>
                 <TableHead className="cursor-pointer text-white">
                   Número
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Assunto
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Localização
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Departamento
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Criado por
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Atualizado por
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Responsável
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Estado
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="text-white">Ações</TableHead>
               </TableRow>

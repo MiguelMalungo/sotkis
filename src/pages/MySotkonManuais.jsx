@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ArrowUpDown } from 'lucide-react';
 
 const MySotkonManuais = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -90,19 +90,19 @@ const MySotkonManuais = () => {
               <TableRow>
                 <TableHead className="cursor-pointer text-white">
                   Módulo
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Nome
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Versão
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
                   Nível
-                  <span className="ml-1">↕</span>
+                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="w-20 text-white">Ações</TableHead>
               </TableRow>
