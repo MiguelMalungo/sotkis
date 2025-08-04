@@ -66,7 +66,7 @@ const MySotkonRgpdList = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-start space-y-4 md:space-y-0">
         <div className="space-y-2">
-          <h1 className="text-xl font-bold text-white">Utilizadores que já aceitaram o documento RGPD</h1>
+          <h1 className="text-lg sm:text-xl font-bold text-white">Utilizadores que já aceitaram o documento RGPD</h1>
         </div>
         
         {/* Export Icons */}
@@ -119,7 +119,7 @@ const MySotkonRgpdList = () => {
       <Card className="bg-black/50 backdrop-blur-lg border-0 shadow-2xl rounded-xl">
         <CardContent className="p-0">
           <div className="overflow-x-auto">
-            <Table>
+            <Table className="min-w-full">
             <TableHeader>
               <TableRow className="border-white/10">
                 <TableHead 
@@ -145,7 +145,8 @@ const MySotkonRgpdList = () => {
                   onClick={() => handleSort('dataAceitacao')}
                 >
                   <div className="flex items-center space-x-1">
-                    <span>Data da Aceitação</span>
+                    <span className="hidden sm:inline">Data da Aceitação</span>
+                    <span className="sm:hidden">Data</span>
                     {getSortIcon('dataAceitacao')}
                   </div>
                 </TableHead>
@@ -154,9 +155,9 @@ const MySotkonRgpdList = () => {
             <TableBody>
               {filteredUsers.map((user) => (
                 <TableRow key={user.id} className="border-white/10 hover:bg-white/5">
-                  <TableCell className="text-white">{user.nome}</TableCell>
-                  <TableCell className="text-white">{user.email}</TableCell>
-                  <TableCell className="text-white">{user.dataAceitacao}</TableCell>
+                  <TableCell className="text-white break-words">{user.nome}</TableCell>
+                  <TableCell className="text-white break-words">{user.email}</TableCell>
+                  <TableCell className="text-white break-words">{user.dataAceitacao}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -185,6 +186,7 @@ const MySotkonRgpdList = () => {
           
           {/* Page Numbers */}
           <div className="flex items-center space-x-1">
+            {/* Show fewer page numbers on mobile */}
             {[1, 2, 3, 4, 5].map((page) => (
               <Button
                 key={page}
@@ -201,12 +203,12 @@ const MySotkonRgpdList = () => {
               </Button>
             ))}
             
-            <span className="text-white mx-1">...</span>
+            <span className="text-white mx-1 hidden sm:inline">...</span>
             
             <Button
               variant="outline"
               size="sm"
-              className="w-8 h-8 bg-white/10 border-white/20 text-white hover:bg-white/20"
+              className="w-8 h-8 bg-white/10 border-white/20 text-white hover:bg-white/20 hidden sm:block"
               onClick={() => setCurrentPage(totalPages)}
             >
               {totalPages}
