@@ -62,7 +62,7 @@ const Importacoes = () => {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-white">Importações</h1>
+        <h1 className="text-xl font-bold text-white">Importações</h1>
         <p className="text-gray-300 mt-1">Gestão de importações de ficheiros do sistema</p>
       </div>
 

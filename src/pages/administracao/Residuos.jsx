@@ -98,7 +98,7 @@ const Residuos = () => {
     <div className="p-6 space-y-6">
       {/* Page Header */}
       <div className="page-header text-left">
-        <h1 className="text-3xl font-bold text-white">Tipos de Resíduo</h1>
+        <h1 className="text-xl font-bold text-white">Tipos de Resíduo</h1>
         <p className="text-gray-300 mt-1">Gestão de tipos de resíduo</p>
       </div>
 

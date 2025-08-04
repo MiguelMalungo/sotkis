@@ -101,8 +101,8 @@ const ComplianceSuppliers = () => {
       {/* Header */}
       <div className="space-y-4">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold text-white">Lista de não-conformidades</h1>
-          <p className="text-gray-300 mt-1">Gestão de não-conformidades com fornecedores</p>
+          <h1 className="text-xl font-bold text-white">Lista de não-conformidades</h1>
+          <p className="text-gray-300 mt-1">Gestão de não-conformidades</p>
         </div>
         
         {/* Export Icons */}

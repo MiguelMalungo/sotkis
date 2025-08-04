@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, FileText, Download, Printer, ChevronDown } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, FileText, Download } from 'lucide-react';
 
 const SotkisAccessRfids = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -57,24 +57,11 @@ const SotkisAccessRfids = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-start">
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2">
-            <h2 className="text-xl font-semibold text-white">Criar novo RFID</h2>
-            <ChevronDown className="h-4 w-4 text-white" />
-          </div>
-          <h1 className="text-3xl font-bold text-white">Lista de RFIDs</h1>
+      <div className="flex justify-end items-start">
+        <div className="space-y-2 text-right">
+          <h1 className="text-xl font-bold text-white">Lista de RFIDs</h1>
           <p className="text-gray-300 mt-1">Gestão de RFIDs do sistema</p>
         </div>
-        
-        {/* Export/Print Icon */}
-        <Button 
-          variant="sotkis"
-          size="icon" 
-          className="hover:bg-white hover:text-sotkis-green hover:border-sotkis-green group"
-        >
-          <Printer className="h-4 w-4 group-hover:text-sotkis-green" />
-        </Button>
       </div>
 
       {/* Filters */}

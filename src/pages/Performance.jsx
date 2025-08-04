@@ -275,7 +275,7 @@ const Performance = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-white">Performance</h1>
+          <h1 className="text-xl font-bold text-white">Performance</h1>
           <p className="text-gray-300 mt-1">Monitorização e análise de performance do sistema</p>
         </div>
         <div className="flex space-x-2">
@@ -297,7 +297,7 @@ const Performance = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Performance Geral</p>
-                <p className="text-2xl font-bold text-white">{overallPerformance.toFixed(1)}%</p>
+                <p className="text-xl font-bold text-white">{overallPerformance.toFixed(1)}%</p>
                 <p className="text-xs text-green-400 flex items-center mt-1">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   +1.8% vs ontem
@@ -315,7 +315,7 @@ const Performance = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Métricas Excelentes</p>
-                <p className="text-2xl font-bold text-white">{excellentMetrics}</p>
+                <p className="text-xl font-bold text-white">{excellentMetrics}</p>
                 <p className="text-xs text-green-400 flex items-center mt-1">
                   <CheckCircle className="w-3 h-3 mr-1" />
                   {((excellentMetrics / mockPerformanceData.length) * 100).toFixed(1)}% do total
@@ -333,7 +333,7 @@ const Performance = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Alertas Críticos</p>
-                <p className="text-2xl font-bold text-white">{criticalMetrics}</p>
+                <p className="text-xl font-bold text-white">{criticalMetrics}</p>
                 <p className="text-xs text-red-400 flex items-center mt-1">
                   <AlertTriangle className="w-3 h-3 mr-1" />
                   Requer atenção imediata
@@ -351,7 +351,7 @@ const Performance = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Uptime Sistema</p>
-                <p className="text-2xl font-bold text-white">99.8%</p>
+                <p className="text-xl font-bold text-white">99.8%</p>
                 <p className="text-xs text-green-400 flex items-center mt-1">
                   <Server className="w-3 h-3 mr-1" />
                   Últimos 30 dias
@@ -552,7 +552,7 @@ const Performance = () => {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <span className="text-2xl font-bold text-white">
+                      <span className="text-xl font-bold text-white">
                         {item.value}{item.unit}
                       </span>
                     </TableCell>

@@ -71,15 +71,15 @@ const SotkisLevelCustomers = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-start">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-white">Customers List</h1>
+      <div className="flex justify-end sm:justify-start">
+        <div className="space-y-2 text-right sm:text-left">
+          <h1 className="text-xl font-bold text-white">Customers List</h1>
           <p className="text-gray-300 mt-1">Gestão de clientes do sistema</p>
         </div>
       </div>
 
       {/* Table Controls */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select value={recordsPerPage} onValueChange={setRecordsPerPage}>
@@ -95,13 +95,13 @@ const SotkisLevelCustomers = () => {
           <span className="text-sm text-white">registos</span>
         </div>
         
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 w-full sm:w-auto">
           <span className="text-sm text-white">Procurar:</span>
           <Input
             placeholder="Pesquisar clientes..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-64 bg-white text-black placeholder-gray-600"
+            className="flex-1 sm:w-64 bg-white text-black placeholder-gray-600"
           />
         </div>
       </div>
@@ -109,52 +109,54 @@ const SotkisLevelCustomers = () => {
       {/* Table */}
       <Card className="card-glass">
         <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="cursor-pointer text-white">
-                  Id de cliente
-                  <span className="ml-1">↕</span>
-                </TableHead>
-                <TableHead className="cursor-pointer text-white">
-                  Nome
-                  <span className="ml-1">↕</span>
-                </TableHead>
-                <TableHead className="cursor-pointer text-white">
-                  País
-                  <span className="ml-1">↕</span>
-                </TableHead>
-                <TableHead className="text-white">Ações</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {mockCustomers.map((customer) => (
-                <TableRow key={customer.id}>
-                  <TableCell className="text-white">{customer.id}</TableCell>
-                  <TableCell className="text-white">{customer.name}</TableCell>
-                  <TableCell className="text-white">{customer.country}</TableCell>
-                  <TableCell>
-                    <Button variant="ghost" size="sm" className="text-sotkis-green hover:text-sotkis-green/80">
-                      <ChevronRight className="h-4 w-4 text-white" />
-                    </Button>
-                  </TableCell>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="cursor-pointer text-white">
+                    Id de cliente
+                    <span className="ml-1">↕</span>
+                  </TableHead>
+                  <TableHead className="cursor-pointer text-white">
+                    Nome
+                    <span className="ml-1">↕</span>
+                  </TableHead>
+                  <TableHead className="cursor-pointer text-white">
+                    País
+                    <span className="ml-1">↕</span>
+                  </TableHead>
+                  <TableHead className="text-white">Ações</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {mockCustomers.map((customer) => (
+                  <TableRow key={customer.id}>
+                    <TableCell className="text-white">{customer.id}</TableCell>
+                    <TableCell className="text-white">{customer.name}</TableCell>
+                    <TableCell className="text-white">{customer.country}</TableCell>
+                    <TableCell>
+                      <Button variant="ghost" size="sm" className="text-sotkis-green hover:text-sotkis-green/80">
+                        <ChevronRight className="h-4 w-4 text-white" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </CardContent>
       </Card>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center">
-        <div className="text-sm text-white">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="text-sm text-white text-center sm:text-left">
           A exibir 1-10 de 18 registos
         </div>
         <div className="flex items-center space-x-2">
           <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
             Anterior
           </Button>
-          <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
+          <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-8">
             1
           </Button>
           <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">

@@ -57,7 +57,7 @@ const PerformanceDashboard = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
         <div className="text-left">
-          <h1 className="text-2xl md:text-3xl font-bold text-white">PERFORMANCE</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-white uppercase-title">PERFORMANCE</h1>
           <p className="text-gray-300 mt-1">Análise de performance e métricas do sistema</p>
         </div>
         <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
@@ -109,7 +109,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-sm text-gray-300">Depósitos</p>
-              <p className="text-2xl font-bold text-white">{performanceData.currentYear.deposits}</p>
+              <p className="text-xl font-bold text-white">{performanceData.currentYear.deposits}</p>
               <div className="flex items-center justify-center mt-1">
                 {performanceData.currentYear.deposits > performanceData.previousYear.deposits ? (
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
@@ -133,7 +133,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-sm text-gray-300">Nível de Enchimento</p>
-              <p className="text-2xl font-bold text-white">{performanceData.currentYear.fillLevel}%</p>
+              <p className="text-xl font-bold text-white">{performanceData.currentYear.fillLevel}%</p>
               <div className="flex items-center justify-center mt-1">
                 {performanceData.currentYear.fillLevel > performanceData.previousYear.fillLevel ? (
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
@@ -157,7 +157,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-sm text-gray-300">Manutenção</p>
-              <p className="text-2xl font-bold text-white">{performanceData.currentYear.maintenance}</p>
+              <p className="text-xl font-bold text-white">{performanceData.currentYear.maintenance}</p>
               <div className="flex items-center justify-center mt-1">
                 {performanceData.currentYear.maintenance < performanceData.previousYear.maintenance ? (
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
@@ -181,7 +181,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-sm text-gray-300">Recompensas</p>
-              <p className="text-2xl font-bold text-white">{performanceData.currentYear.rewards}</p>
+              <p className="text-xl font-bold text-white">{performanceData.currentYear.rewards}</p>
               <div className="flex items-center justify-center mt-1">
                 {performanceData.currentYear.rewards > performanceData.previousYear.rewards ? (
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
@@ -205,7 +205,7 @@ const PerformanceDashboard = () => {
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-sm text-gray-300">Rotas</p>
-              <p className="text-2xl font-bold text-white">{performanceData.currentYear.routes}</p>
+              <p className="text-xl font-bold text-white">{performanceData.currentYear.routes}</p>
               <div className="flex items-center justify-center mt-1">
                 {performanceData.currentYear.routes > performanceData.previousYear.routes ? (
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
@@ -234,7 +234,7 @@ const PerformanceDashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">SERVIÇO</p>
-                <p className="text-2xl font-bold text-white">+15%</p>
+                <p className="text-xl font-bold text-white">+15%</p>
                 <div className="flex items-center mt-1">
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                   <span className="text-sm text-green-500">vs ano anterior</span>
@@ -253,7 +253,7 @@ const PerformanceDashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">ENGAGEMENT COMUNITÁRIO</p>
-                <p className="text-2xl font-bold text-white">+23%</p>
+                <p className="text-xl font-bold text-white">+23%</p>
                 <div className="flex items-center mt-1">
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                   <span className="text-sm text-green-500">vs ano anterior</span>
@@ -272,7 +272,7 @@ const PerformanceDashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">TX RECICLAGEM</p>
-                <p className="text-2xl font-bold text-white">43.2%</p>
+                <p className="text-xl font-bold text-white">43.2%</p>
                 <div className="flex items-center mt-1">
                   <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                   <span className="text-sm text-green-500">+7 pp vs ano</span>
@@ -291,7 +291,7 @@ const PerformanceDashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Carbon Footprint</p>
-                <p className="text-2xl font-bold text-white">100.2</p>
+                <p className="text-xl font-bold text-white">100.2</p>
                 <div className="flex items-center mt-1">
                   <TrendingDown className="w-4 h-4 text-green-500 mr-1" />
                   <span className="text-sm text-green-500">-29.4 toneladas</span>
@@ -310,7 +310,7 @@ const PerformanceDashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">CUSTOS</p>
-                <p className="text-2xl font-bold text-white">-102k€</p>
+                <p className="text-xl font-bold text-white">-102k€</p>
                 <div className="flex items-center mt-1">
                   <TrendingDown className="w-4 h-4 text-green-500 mr-1" />
                   <span className="text-sm text-green-500">vs ano anterior</span>

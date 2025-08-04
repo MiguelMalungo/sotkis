@@ -20,6 +20,7 @@ const translations = {
     rememberMe: 'Lembrar-me',
     forgotPassword: 'Esqueceu a palavra-passe?',
     loginButton: 'Entrar',
+    selectLanguage: 'Selecionar idioma',
     testLogin: 'Test Login (Bypass)',
     copyright: '© 2025 Sotkis Intelligent Systems. Todos os direitos reservados.',
     
@@ -58,6 +59,7 @@ const translations = {
     rememberMe: 'Remember me',
     forgotPassword: 'Forgot password?',
     loginButton: 'Sign In',
+    selectLanguage: 'Select language',
     testLogin: 'Test Login (Bypass)',
     copyright: '© 2025 Sotkis Intelligent Systems. All rights reserved.',
     
@@ -96,6 +98,7 @@ const translations = {
     rememberMe: 'Recordarme',
     forgotPassword: '¿Olvidaste tu contraseña?',
     loginButton: 'Iniciar Sesión',
+    selectLanguage: 'Seleccionar idioma',
     testLogin: 'Test Login (Bypass)',
     copyright: '© 2025 Sotkis Intelligent Systems. Todos los derechos reservados.',
     

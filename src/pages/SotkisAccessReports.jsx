@@ -26,7 +26,7 @@ const SotkisAccessReports = () => {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-white">Relatórios</h1>
+        <h1 className="text-xl font-bold text-white">Relatórios</h1>
         <p className="text-gray-300 mt-1">Geração de relatórios do sistema</p>
       </div>
 

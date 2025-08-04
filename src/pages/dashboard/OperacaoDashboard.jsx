@@ -153,7 +153,7 @@ const OperacaoDashboard = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
         <div className="text-left">
-          <h1 className="text-2xl md:text-3xl font-bold text-white">Dashboard - Operação</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Operação</h1>
           <p className="text-gray-300 mt-1">Visão geral das operações do sistema</p>
         </div>
         <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
@@ -409,7 +409,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">TOTAL DE DEPÓSITOS DO PERÍODO</p>
-                    <p className="text-2xl font-bold text-white">3279</p>
+                    <p className="text-xl font-bold text-white">3279</p>
                   </div>
                   <div className="p-3 bg-white/10 rounded-lg">
                     <div className="w-6 h-6 bg-sotkis-green rounded-full flex items-center justify-center">
@@ -426,7 +426,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">UTILIZADORES ATIVOS</p>
-                    <p className="text-2xl font-bold text-white">8000</p>
+                    <p className="text-xl font-bold text-white">8000</p>
                   </div>
                   <div className="p-3 bg-white/10 rounded-lg">
                     <Users className="h-6 w-6 text-sotkis-green" />
@@ -441,7 +441,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">UTILIZADORES</p>
-                    <p className="text-2xl font-bold text-white">91000</p>
+                    <p className="text-xl font-bold text-white">91000</p>
                   </div>
                   <div className="p-3 bg-white/10 rounded-lg">
                                          <Users className="h-6 w-6 text-sotkis-green" />
@@ -662,7 +662,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">Nível Médio</p>
-                    <p className="text-2xl font-bold text-white">78%</p>
+                    <p className="text-xl font-bold text-white">78%</p>
                     <div className="flex items-center mt-1">
                       <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">+5.2%</span>
@@ -680,7 +680,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">Contentores Cheios</p>
-                    <p className="text-2xl font-bold text-white">23</p>
+                    <p className="text-xl font-bold text-white">23</p>
                     <div className="flex items-center mt-1">
                       <TrendingDown className="w-4 h-4 text-red-500 mr-1" />
                       <span className="text-sm text-red-500">-2.1%</span>
@@ -698,7 +698,7 @@ const OperacaoDashboard = () => {
                                    <div className="flex items-center justify-between">
                      <div>
                        <p className="text-sm text-gray-300">Eficiência</p>
-                       <p className="text-2xl font-bold text-white">92%</p>
+                       <p className="text-xl font-bold text-white">92%</p>
                        <div className="flex items-center mt-1">
                          <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                          <span className="text-sm text-green-500">+8.7%</span>
@@ -716,7 +716,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">Alertas</p>
-                    <p className="text-2xl font-bold text-white">7</p>
+                    <p className="text-xl font-bold text-white">7</p>
                     <div className="flex items-center mt-1">
                       <TrendingDown className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">-12.5%</span>
@@ -832,7 +832,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">Manutenções Pendentes</p>
-                    <p className="text-2xl font-bold text-white">15</p>
+                    <p className="text-xl font-bold text-white">15</p>
                     <div className="flex items-center mt-1">
                       <TrendingUp className="w-4 h-4 text-red-500 mr-1" />
                       <span className="text-sm text-red-500">+3.2%</span>
@@ -850,7 +850,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">Manutenções Concluídas</p>
-                    <p className="text-2xl font-bold text-white">42</p>
+                    <p className="text-xl font-bold text-white">42</p>
                     <div className="flex items-center mt-1">
                       <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">+18.5%</span>
@@ -868,7 +868,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">Tempo Médio</p>
-                    <p className="text-2xl font-bold text-white">2.3h</p>
+                    <p className="text-xl font-bold text-white">2.3h</p>
                     <div className="flex items-center mt-1">
                       <TrendingDown className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">-12.1%</span>
@@ -886,7 +886,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">Custo Total</p>
-                    <p className="text-2xl font-bold text-white">€12.5K</p>
+                    <p className="text-xl font-bold text-white">€12.5K</p>
                     <div className="flex items-center mt-1">
                       <TrendingDown className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">-8.7%</span>
@@ -936,7 +936,7 @@ const OperacaoDashboard = () => {
             {/* SOTCARE Chart */}
             <Card className="bg-white/10 backdrop-blur-lg border-0">
               <CardHeader>
-                <CardTitle className="text-white">SOTCARE - GESTÃO DE INTERVENÇÕES</CardTitle>
+                <CardTitle className="text-white uppercase-title">SOTCARE - GESTÃO DE INTERVENÇÕES</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col items-center space-y-4">
@@ -983,13 +983,13 @@ const OperacaoDashboard = () => {
 
           {/* ÚLTIMAS INTERVENÇÕES Section */}
           <div className="space-y-4">
-            <h2 className="text-xl font-bold text-white text-center">ÚLTIMAS INTERVENÇÕES</h2>
+            <h2 className="text-xl font-bold text-white text-center uppercase-title">ÚLTIMAS INTERVENÇÕES</h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* CORRETIVAS Table */}
               <Card className="bg-white/10 backdrop-blur-lg border-0">
                 <CardHeader>
-                  <CardTitle className="text-red-500 font-bold">CORRETIVAS</CardTitle>
+                  <CardTitle className="text-red-500 font-bold uppercase-title">CORRETIVAS</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <Table>
@@ -1040,7 +1040,7 @@ const OperacaoDashboard = () => {
               {/* PREVENTIVAS Table */}
               <Card className="bg-white/10 backdrop-blur-lg border-0">
                 <CardHeader>
-                  <CardTitle className="text-yellow-400 font-bold">PREVENTIVAS</CardTitle>
+                  <CardTitle className="text-yellow-400 font-bold uppercase-title">PREVENTIVAS</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <Table>
@@ -1139,21 +1139,21 @@ const OperacaoDashboard = () => {
             <Card className="bg-white/10 backdrop-blur-lg border-0">
               <CardContent className="p-4 text-center">
                 <p className="text-sm text-gray-300 mb-2">Total</p>
-                <p className="text-3xl font-bold text-white">326</p>
+                <p className="text-xl font-bold text-white">326</p>
               </CardContent>
             </Card>
 
             <Card className="bg-white/10 backdrop-blur-lg border-0">
               <CardContent className="p-4 text-center">
                 <p className="text-sm text-gray-300 mb-2">Converted</p>
-                <p className="text-3xl font-bold text-white">215</p>
+                <p className="text-xl font-bold text-white">215</p>
               </CardContent>
             </Card>
 
             <Card className="bg-white/10 backdrop-blur-lg border-0">
               <CardContent className="p-4 text-center">
                 <p className="text-sm text-gray-300 mb-2">Wrong</p>
-                <p className="text-3xl font-bold text-white">110</p>
+                <p className="text-xl font-bold text-white">110</p>
               </CardContent>
             </Card>
                     </div>
@@ -1312,7 +1312,7 @@ const OperacaoDashboard = () => {
                   <CardContent className="p-4 text-center">
                     <Gift className="h-8 w-8 text-white mx-auto mb-2" />
                     <p className="font-bold text-white">Netflix</p>
-                    <p className="text-2xl font-bold text-white">2500</p>
+                    <p className="text-xl font-bold text-white">2500</p>
                   </CardContent>
                 </Card>
 
@@ -1320,7 +1320,7 @@ const OperacaoDashboard = () => {
                   <CardContent className="p-4 text-center">
                     <Gift className="h-8 w-8 text-white mx-auto mb-2" />
                     <p className="font-bold text-white">Riot</p>
-                    <p className="text-2xl font-bold text-white">1000</p>
+                    <p className="text-xl font-bold text-white">1000</p>
                   </CardContent>
                 </Card>
 
@@ -1328,7 +1328,7 @@ const OperacaoDashboard = () => {
                   <CardContent className="p-4 text-center">
                     <Gift className="h-8 w-8 text-white mx-auto mb-2" />
                     <p className="font-bold text-white">Spotify</p>
-                    <p className="text-2xl font-bold text-white">700</p>
+                    <p className="text-xl font-bold text-white">700</p>
                   </CardContent>
                 </Card>
 
@@ -1336,7 +1336,7 @@ const OperacaoDashboard = () => {
                   <CardContent className="p-4 text-center">
                     <Gift className="h-8 w-8 text-white mx-auto mb-2" />
                     <p className="font-bold text-white">Bolt</p>
-                    <p className="text-2xl font-bold text-white">300</p>
+                    <p className="text-xl font-bold text-white">300</p>
                   </CardContent>
                 </Card>
               </div>
@@ -1351,26 +1351,27 @@ const OperacaoDashboard = () => {
           <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardContent className="p-6">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2">
-                    <label className="text-white font-medium">Início:</label>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                    <label className="text-white font-medium text-sm">Início:</label>
                     <Input
                       type="date"
                       value="2025-07-28"
-                      className="bg-white/10 border-white/20 text-white w-40"
+                      className="bg-white/10 border-white/20 text-white w-full sm:w-40"
                     />
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <label className="text-white font-medium">Fim:</label>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                    <label className="text-white font-medium text-sm">Fim:</label>
                     <Input
                       type="date"
                       value="2025-08-04"
-                      className="bg-white/10 border-white/20 text-white w-40"
+                      className="bg-white/10 border-white/20 text-white w-full sm:w-40"
                     />
                   </div>
-                  <Button className="bg-sotkis-green hover:bg-sotkis-green/90 text-black">
+                  <Button className="bg-sotkis-green hover:bg-sotkis-green/90 text-black w-full sm:w-auto">
                     <RefreshCw className="h-4 w-4 mr-2" />
-                    ATUALIZAR
+                    <span className="hidden sm:inline">ATUALIZAR</span>
+                    <span className="sm:hidden">ATUALIZAR</span>
                   </Button>
                 </div>
               </div>
@@ -1382,7 +1383,7 @@ const OperacaoDashboard = () => {
                     key={preset}
                     variant="outline"
                   size="sm"
-                    className="bg-white text-black border-white hover:bg-gray-100"
+                    className="bg-white text-black border-white hover:bg-gray-100 text-xs sm:text-sm"
                 >
                     {preset}
                 </Button>
@@ -1398,7 +1399,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">Today</p>
-                    <p className="text-2xl font-bold text-white">40</p>
+                    <p className="text-xl font-bold text-white">40</p>
                     <div className="flex items-center mt-1">
                       <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">+8.2%</span>
@@ -1416,7 +1417,7 @@ const OperacaoDashboard = () => {
                                    <div className="flex items-center justify-between">
                      <div>
                     <p className="text-sm text-gray-300">Tomorrow</p>
-                    <p className="text-2xl font-bold text-white">40</p>
+                    <p className="text-xl font-bold text-white">40</p>
                        <div className="flex items-center mt-1">
                       <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">+5.1%</span>
@@ -1434,7 +1435,7 @@ const OperacaoDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-300">In 2 Days</p>
-                    <p className="text-2xl font-bold text-white">40</p>
+                    <p className="text-xl font-bold text-white">40</p>
                     <div className="flex items-center mt-1">
                       <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
                       <span className="text-sm text-green-500">+3.8%</span>
@@ -1452,7 +1453,7 @@ const OperacaoDashboard = () => {
                                    <div className="flex items-center justify-between">
                      <div>
                     <p className="text-sm text-gray-300">ALERTAS</p>
-                    <p className="text-2xl font-bold text-white">alertas ativos</p>
+                    <p className="text-xl font-bold text-white">alertas ativos</p>
                        <div className="flex items-center mt-1">
                       <AlertTriangle className="w-4 h-4 text-red-500 mr-1" />
                       <span className="text-sm text-red-500">3 ativos</span>
@@ -1469,14 +1470,14 @@ const OperacaoDashboard = () => {
           {/* QUILÓMETROS PERCORRIDOS Chart */}
           <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardHeader>
-              <CardTitle className="text-white">QUILÓMETROS PERCORRIDOS</CardTitle>
+              <CardTitle className="text-white text-sm sm:text-base">QUILÓMETROS PERCORRIDOS</CardTitle>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer width="100%" height={360} className="sm:h-[400px]">
                 <BarChart data={kilometersData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                  <XAxis dataKey="route" stroke="white" />
-                  <YAxis stroke="white" domain={[0, 140]} />
+                  <XAxis dataKey="route" stroke="white" fontSize={12} />
+                  <YAxis stroke="white" domain={[0, 140]} fontSize={12} />
                   <Tooltip content={<CustomTooltip />} />
                   <Bar dataKey="km" fill="#9EC043" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
                 </BarChart>
@@ -1487,14 +1488,14 @@ const OperacaoDashboard = () => {
           {/* CONTENTORES RECOLHIDOS Chart */}
           <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardHeader>
-              <CardTitle className="text-white">CONTENTORES RECOLHIDOS</CardTitle>
+              <CardTitle className="text-white text-sm sm:text-base">CONTENTORES RECOLHIDOS</CardTitle>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer width="100%" height={360} className="sm:h-[400px]">
                 <BarChart data={containersCollectedData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                  <XAxis dataKey="month" stroke="white" />
-                  <YAxis stroke="white" domain={[0, 100]} />
+                  <XAxis dataKey="month" stroke="white" fontSize={12} />
+                  <YAxis stroke="white" domain={[0, 100]} fontSize={12} />
                   <Tooltip content={<CustomTooltip />} />
                   <Bar dataKey="containers" fill="#038703" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
                 </BarChart>
@@ -1505,14 +1506,14 @@ const OperacaoDashboard = () => {
           {/* PLANO EXECUTADO Chart */}
           <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardHeader>
-              <CardTitle className="text-white">PLANO EXECUTADO</CardTitle>
+              <CardTitle className="text-white text-sm sm:text-base">PLANO EXECUTADO</CardTitle>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer width="100%" height={360} className="sm:h-[400px]">
                 <BarChart data={planExecutedData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                  <XAxis dataKey="month" stroke="white" />
-                  <YAxis stroke="white" domain={[0, 450]} />
+                  <XAxis dataKey="month" stroke="white" fontSize={12} />
+                  <YAxis stroke="white" domain={[0, 450]} fontSize={12} />
                   <Tooltip content={<CustomTooltip />} />
                   <Bar dataKey="value" fill="#4CB151" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
                 </BarChart>

@@ -205,7 +205,7 @@ const Deposicoes = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-white">Deposições</h1>
+          <h1 className="text-xl font-bold text-white">Deposições</h1>
           <p className="text-gray-300 mt-1">Gestão e monitorização de depósitos de resíduos</p>
         </div>
         <div className="flex space-x-2">
@@ -227,7 +227,7 @@ const Deposicoes = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Total Peso (kg)</p>
-                <p className="text-2xl font-bold text-white">{totalWeight.toFixed(1)}</p>
+                <p className="text-xl font-bold text-white">{totalWeight.toFixed(1)}</p>
                 <p className="text-xs text-green-400 flex items-center mt-1">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   +12.5% vs ontem
@@ -245,7 +245,7 @@ const Deposicoes = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Volume Total (m³)</p>
-                <p className="text-2xl font-bold text-white">{totalVolume.toFixed(1)}</p>
+                <p className="text-xl font-bold text-white">{totalVolume.toFixed(1)}</p>
                 <p className="text-xs text-sotkis-green flex items-center mt-1">
                   <BarChart3 className="w-3 h-3 mr-1" />
                   Última atualização: há 2 horas
@@ -261,7 +261,7 @@ const Deposicoes = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Depósitos Concluídos</p>
-                <p className="text-2xl font-bold text-white">{completedDeposits}/{mockDeposits.length}</p>
+                <p className="text-xl font-bold text-white">{completedDeposits}/{mockDeposits.length}</p>
                 <p className="text-xs text-green-400 flex items-center mt-1">
                   <CheckCircle className="w-3 h-3 mr-1" />
                   {((completedDeposits / mockDeposits.length) * 100).toFixed(1)}% taxa de sucesso
@@ -279,7 +279,7 @@ const Deposicoes = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Temperatura Média</p>
-                <p className="text-2xl font-bold text-white">{averageTemperature.toFixed(1)}°C</p>
+                <p className="text-xl font-bold text-white">{averageTemperature.toFixed(1)}°C</p>
                 <p className="text-xs text-orange-400 flex items-center mt-1">
                   <Thermometer className="w-3 h-3 mr-1" />
                   Dentro do normal

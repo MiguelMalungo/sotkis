@@ -285,7 +285,7 @@ const Utilizadores = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
         <div className="text-left">
-          <h1 className="text-2xl md:text-3xl font-bold text-white">Utilizadores</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-white">Utilizadores</h1>
           <p className="text-gray-300 mt-1">Gestão de utilizadores do sistema</p>
         </div>
         <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
@@ -585,7 +585,7 @@ const Utilizadores = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Total Utilizadores</p>
-                <p className="text-2xl font-bold text-white">{mockUsers.length}</p>
+                <p className="text-xl font-bold text-white">{mockUsers.length}</p>
               </div>
               <div className="p-3 bg-white/10 rounded-lg">
                 <User className="h-6 w-6 text-sotkis-green" />
@@ -599,7 +599,7 @@ const Utilizadores = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Utilizadores Ativos</p>
-                <p className="text-2xl font-bold text-white">
+                <p className="text-xl font-bold text-white">
                   {mockUsers.filter(u => u.status === 'active').length}
                 </p>
               </div>
@@ -615,7 +615,7 @@ const Utilizadores = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Administradores</p>
-                <p className="text-2xl font-bold text-white">
+                <p className="text-xl font-bold text-white">
                   {mockUsers.filter(u => u.role === 'Administrador').length}
                 </p>
               </div>
@@ -631,7 +631,7 @@ const Utilizadores = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Novos Este Mês</p>
-                <p className="text-2xl font-bold text-white">
+                <p className="text-xl font-bold text-white">
                   {mockUsers.filter(u => {
                     const createdDate = new Date(u.createdAt);
                     const now = new Date();

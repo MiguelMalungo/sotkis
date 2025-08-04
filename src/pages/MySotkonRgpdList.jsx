@@ -64,9 +64,9 @@ const MySotkonRgpdList = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-start space-y-4 md:space-y-0">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold text-white">Utilizadores que já aceitaram o documento RGPD</h1>
+          <h1 className="text-xl font-bold text-white">Utilizadores que já aceitaram o documento RGPD</h1>
         </div>
         
         {/* Export Icons */}

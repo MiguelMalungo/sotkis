@@ -253,7 +253,7 @@ const GestaoRotas = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-white">Gestão de Rotas</h1>
+          <h1 className="text-xl font-bold text-white">Gestão de Rotas</h1>
           <p className="text-gray-300 mt-1">Planeamento e monitorização de rotas de recolha</p>
         </div>
         <div className="flex space-x-2">
@@ -275,7 +275,7 @@ const GestaoRotas = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Rotas Ativas</p>
-                <p className="text-2xl font-bold text-white">{activeRoutes}</p>
+                <p className="text-xl font-bold text-white">{activeRoutes}</p>
                 <p className="text-xs text-sotkis-green flex items-center mt-1">
                   <BarChart3 className="w-3 h-3 mr-1" />
                   +12.5% vs semana anterior
@@ -293,7 +293,7 @@ const GestaoRotas = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Distância Total (km)</p>
-                <p className="text-2xl font-bold text-white">{totalDistance.toFixed(1)}</p>
+                <p className="text-xl font-bold text-white">{totalDistance.toFixed(1)}</p>
                 <p className="text-xs text-sotkis-green flex items-center mt-1">
                   <Navigation className="w-3 h-3 mr-1" />
                   +15.2% vs ontem
@@ -311,7 +311,7 @@ const GestaoRotas = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Consumo Combustível (L)</p>
-                <p className="text-2xl font-bold text-white">{totalFuelConsumption.toFixed(1)}</p>
+                <p className="text-xl font-bold text-white">{totalFuelConsumption.toFixed(1)}</p>
                 <p className="text-xs text-orange-400 flex items-center mt-1">
                   <Fuel className="w-3 h-3 mr-1" />
                   -8.5% vs ontem
@@ -329,7 +329,7 @@ const GestaoRotas = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Eficiência Média</p>
-                <p className="text-2xl font-bold text-white">{averageEfficiency.toFixed(1)}%</p>
+                <p className="text-xl font-bold text-white">{averageEfficiency.toFixed(1)}%</p>
                 <p className="text-xs text-green-400 flex items-center mt-1">
                   <Target className="w-3 h-3 mr-1" />
                   +2.1% vs ontem

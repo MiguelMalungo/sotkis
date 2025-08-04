@@ -18,7 +18,7 @@ const SotkisAccessBatteries = () => {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div className="page-header text-left">
-        <h1 className="text-3xl font-bold text-white">Nível das Baterias por departamento/contentor</h1>
+        <h1 className="text-xl font-bold text-white">Nível das Baterias por departamento/contentor</h1>
         <p className="text-gray-300 mt-1">Monitorização do estado das baterias</p>
       </div>
 

@@ -54,8 +54,8 @@ import SotcareGestaoProblemas from './pages/SotcareGestaoProblemas';
 // Landing page when no menu is selected
 const LandingPage = () => (
   <div className="flex items-center justify-center min-h-screen">
-    <div className="text-center text-white">
-      <h1 className="text-4xl font-bold mb-4">Bem-vindo ao Sotkis</h1>
+    <div className="text-right sm:text-center text-white">
+      <h1 className="welcome-title-mobile font-bold mb-4">Bem-vindo ao Sotkis</h1>
       <p className="text-xl text-gray-300">
         Selecione uma opção no menu lateral para começar
       </p>
@@ -66,8 +66,8 @@ const LandingPage = () => (
 // Placeholder components for other pages
 const PlaceholderPage = ({ title, description }) => (
   <div className="p-6 space-y-6">
-    <div>
-      <h1 className="text-3xl font-bold text-white">{title}</h1>
+    <div className="text-right sm:text-left">
+      <h1 className="text-xl sm:text-lg font-bold text-white">{title}</h1>
       <p className="text-gray-300 mt-1">{description}</p>
     </div>
     <div className="flex-1 flex items-center justify-center">

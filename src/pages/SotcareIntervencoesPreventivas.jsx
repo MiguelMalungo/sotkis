@@ -56,7 +56,7 @@ const SotcareIntervencoesPreventivas = () => {
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start space-y-4 lg:space-y-0">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-white">Intervenções preventivas</h1>
+          <h1 className="text-xl font-bold text-white">Intervenções preventivas</h1>
           <p className="text-gray-300 mt-1">Gestão de intervenções preventivas do sistema</p>
           <div className="flex items-center space-x-3">
             <h2 className="text-xl font-semibold text-white">Nova intervenção preventiva</h2>

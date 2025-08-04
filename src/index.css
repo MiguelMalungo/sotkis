@@ -158,6 +158,11 @@
   @apply bg-sotkis-green text-white;
 }
 
+/* Submenu items should keep hover effect but not turn green when active */
+.sidebar-submenu .sidebar-item.active {
+  @apply bg-white/10 text-white;
+}
+
 .sidebar-submenu {
   @apply ml-4 border-l border-white/10;
 }
@@ -169,7 +174,12 @@
   }
   
   .sidebar-item.active {
-    @apply bg-sotkis-green text-white text-center justify-center;
+    @apply bg-sotkis-green text-white;
+  }
+  
+  /* Submenu items on mobile should also keep hover effect but not turn green */
+  .sidebar-submenu .sidebar-item.active {
+    @apply bg-white/10 text-white;
   }
   
   .sidebar-submenu {
@@ -194,11 +204,17 @@
   }
 
   /* Force right alignment for all page titles on mobile */
+  h1.text-xl,
   h1.text-2xl,
   h1.text-3xl,
   h1.text-4xl {
     @apply text-right !important;
     margin-top: -20px !important;
+  }
+
+  /* Reduce font size for uppercase titles by 3px on mobile */
+  h1, h2, h3, .card-title {
+    font-size: calc(1rem - 3px) !important;
   }
 
   /* Force right alignment for all page subtitles on mobile */
@@ -278,12 +294,53 @@ button:hover [class*="lucide-"] {
   color: white !important;
 }
 
+/* Reduce font size for uppercase titles by 3px */
+.uppercase-title {
+  font-size: calc(1.125rem - 3px) !important;
+}
+
+/* Make main page titles larger */
+h1.text-xl {
+  font-size: 1.4rem !important;
+}
+
+h1.text-2xl {
+  font-size: 1.75rem !important;
+}
+
+h1.text-3xl {
+  font-size: 2.1rem !important;
+}
+
 /* Specific override for outline buttons with white text */
 .border-white.text-white:hover svg,
 .border-white.text-white:hover .lucide,
 .border-white.text-white:hover [class*="lucide-"] {
   color: white !important;
 }
+
+/* Welcome title mobile styling */
+.welcome-title-mobile {
+  font-size: 4.5rem !important;
+  line-height: 1.1 !important;
+}
+
+@media (min-width: 640px) {
+  .welcome-title-mobile {
+    font-size: 2.25rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Login page text centering override */
+@media (max-width: 768px) {
+  .bg-black\/50 .text-center h1,
+  .bg-black\/50 .text-center p {
+    text-align: center !important;
+  }
+}
+
+
 
 /* Green hover effect for SotkisRoutes buttons */
 .border-white.text-white:hover {

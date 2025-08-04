@@ -4,7 +4,6 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Select, SelectOption } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import backgroundLoginImage from '../../assets/background.png';
 import logoImage from '../../assets/Logo.png';
@@ -32,6 +31,11 @@ const Login = () => {
     }
   };
 
+  const handleLanguageChange = (newLanguage, e) => {
+    e.stopPropagation();
+    changeLanguage(newLanguage);
+  };
+
   return (
     <div 
       className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat relative"
@@ -42,7 +46,7 @@ const Login = () => {
       {/* 70% black overlay */}
       <div className="absolute inset-0 bg-black/70" />
       
-            {/* Logo above card */}
+      {/* Logo above card */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full px-4">
         <img 
           src={logoImage} 
@@ -51,37 +55,8 @@ const Login = () => {
         />
       </div>
 
-      {/* Language Selector below logo */}
-      <div className="relative z-10 w-full max-w-md mb-4 -mt-2">
-        <div className="flex items-center justify-center space-x-4">
-          <Select 
-            value={language} 
-            onChange={(e) => changeLanguage(e.target.value)}
-            className="w-48 bg-white text-black border-gray-300 focus:border-sotkis-green focus:ring-sotkis-green text-lg font-bold"
-          >
-            <SelectOption value="pt">Português</SelectOption>
-            <SelectOption value="en">English</SelectOption>
-            <SelectOption value="es">Español</SelectOption>
-          </Select>
-          {/* Flag next to selector */}
-          <div className="w-14 h-14 rounded-full shadow-lg overflow-hidden">
-            <img 
-              src={language === 'pt' ? ptFlag : language === 'en' ? enFlag : spFlag}
-              alt={`${language === 'pt' ? 'Portuguese' : language === 'en' ? 'English' : 'Spanish'} flag`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Welcome text outside card */}
-      <div className="relative z-10 text-center mb-6">
-        <h1 className="text-3xl font-bold text-white mb-2">{t('welcome')}</h1>
-        <p className="text-xl text-gray-300">{t('loginSubtitle')}</p>
-      </div>
-
       {/* Login Card */}
-      <div className="relative z-10 w-full max-w-md">
+      <div className="relative z-10 w-full max-w-md px-4">
         <Card 
           className="bg-black/50 backdrop-blur-lg border-0 shadow-2xl rounded-xl cursor-pointer hover:bg-black/60 transition-colors duration-200"
           onClick={() => {
@@ -89,8 +64,14 @@ const Login = () => {
             login();
           }}
         >
-          <CardContent className="px-4 py-4">
-            <form onSubmit={handleLogin} className="space-y-3">
+          <CardContent className="px-6 py-8">
+            {/* Welcome text inside card */}
+            <div className="text-center sm:text-center mb-6">
+              <h1 className="text-xl sm:text-2xl font-bold text-white mb-2">{t('welcome')}</h1>
+              <p className="text-lg sm:text-xl text-gray-300">{t('loginSubtitle')}</p>
+            </div>
+
+            <form onSubmit={handleLogin} className="space-y-4">
               {/* Username/Email */}
               <div className="space-y-2">
                 <label htmlFor="email" className="text-base font-medium text-gray-200">
@@ -153,6 +134,49 @@ const Login = () => {
                 {t('loginButton')}
               </Button>
             </form>
+
+            {/* Language Flags below login button */}
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-300 mb-3">{t('selectLanguage')}</p>
+              <div className="flex justify-center space-x-4">
+                <button
+                  onClick={(e) => handleLanguageChange('pt', e)}
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                    language === 'pt' ? 'ring-2 ring-sotkis-green' : ''
+                  }`}
+                >
+                  <img 
+                    src={ptFlag}
+                    alt="Portuguese"
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+                <button
+                  onClick={(e) => handleLanguageChange('en', e)}
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                    language === 'en' ? 'ring-2 ring-sotkis-green' : ''
+                  }`}
+                >
+                  <img 
+                    src={enFlag}
+                    alt="English"
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+                <button
+                  onClick={(e) => handleLanguageChange('es', e)}
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                    language === 'es' ? 'ring-2 ring-sotkis-green' : ''
+                  }`}
+                >
+                  <img 
+                    src={spFlag}
+                    alt="Spanish"
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              </div>
+            </div>
           </CardContent>
         </Card>
         {/* Footer */}
