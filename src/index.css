@@ -239,10 +239,15 @@
   }
 
   /* Standardize all icons in administração pages to larger size on mobile */
-  .administracao-page svg,
-  .administracao-page [class*="w-4 h-4"],
-  .administracao-page [class*="w-5 h-5"],
-  .administracao-page [class*="w-6 h-6"] {
+  .administracao-page .w-4.h-4,
+  .administracao-page .w-5.h-5,
+  .administracao-page .w-6.h-6,
+  .administracao-page svg.w-4,
+  .administracao-page svg.h-4,
+  .administracao-page svg.w-5,
+  .administracao-page svg.h-5,
+  .administracao-page svg.w-6,
+  .administracao-page svg.h-6 {
     width: 24px !important;
     height: 24px !important;
   }
