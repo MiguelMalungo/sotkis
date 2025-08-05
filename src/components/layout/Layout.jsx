@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Sidebar from './Sidebar';
 import ConcentricCircles from '@/components/ui/ConcentricCircles';
-import backgroundImage from '/assets/background.png';
+import backgroundImage from '/assets/summer.png';
 import logoThinImage from '/assets/Logo_thin.png';
 
 const contentRoutes = [

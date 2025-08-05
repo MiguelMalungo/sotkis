@@ -5,7 +5,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import backgroundLoginImage from '../../assets/background.png';
+import backgroundLoginImage from '../../assets/summer.png';
 import logoImage from '../../assets/Logo.png';
 import ptFlag from '../../assets/pt.png';
 import enFlag from '../../assets/en.png';
