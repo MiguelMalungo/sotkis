@@ -11,7 +11,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Set to false to show login
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // Set to true for direct URL access
 
   const login = () => {
     console.log('AuthContext login function called');
