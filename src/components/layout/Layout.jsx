@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Sidebar from './Sidebar';
 import ConcentricCircles from '@/components/ui/ConcentricCircles';
+import summerImage from '/assets/summer.png';
 import backgroundImage from '/assets/background.png';
 import logoThinImage from '/assets/Logo_thin.png';
 
@@ -17,8 +18,6 @@ const Layout = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-
 
   useEffect(() => {
     // Check if current route has content
@@ -48,6 +47,9 @@ const Layout = ({ children }) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Check if we're on the landing page (root path)
+  const isLandingPage = location.pathname === '/';
+
   return (
     <div className="min-h-screen relative">
       {/* Background Image */}
@@ -56,7 +58,7 @@ const Layout = ({ children }) => {
           hasContent ? 'blur-sm' : ''
         }`}
         style={{
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(${isLandingPage ? backgroundImage : summerImage})`,
         }}
       >
         {/* Overlay - 80% black for all pages */}

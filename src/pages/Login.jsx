@@ -207,7 +207,7 @@ const Login = () => {
                 </button>
               </div>
               {/* Select Language text moved under flags */}
-              <p className="text-sm text-gray-300">{t('selectLanguage')}</p>
+              <p className="text-sm text-gray-300 text-center">{t('selectLanguage')}</p>
             </div>
           </CardContent>
         </Card>
