@@ -70,7 +70,7 @@ const Login = () => {
         >
           <CardContent className="px-6 py-8">
             {/* Welcome text inside card */}
-            <div className="text-center sm:text-center mb-6">
+            <div className="text-center mb-6">
               <h1 className="text-xl sm:text-2xl font-bold text-white mb-2">{t('welcome')}</h1>
               <p className="text-lg sm:text-xl text-gray-300">{t('loginSubtitle')}</p>
             </div>
@@ -113,8 +113,8 @@ const Login = () => {
                   </button>
                 </div>
               </div>
-              {/* Remember Me & Forgot Password */}
-              <div className="flex items-center justify-between">
+              {/* Remember Me */}
+              <div className="flex items-center">
                 <label className="flex items-center space-x-2">
                   <input
                     type="checkbox"
@@ -122,12 +122,6 @@ const Login = () => {
                   />
                   <span className="text-base text-gray-300">{t('rememberMe')}</span>
                 </label>
-                <button
-                  type="button"
-                  className="text-base text-sotkis-green hover:underline"
-                >
-                  {t('forgotPassword')}
-                </button>
               </div>
               {/* Login Button */}
               <Button
@@ -137,15 +131,23 @@ const Login = () => {
               >
                 {t('loginButton')}
               </Button>
+              {/* Forgot Password - moved under button and centered */}
+              <div className="text-center">
+                <button
+                  type="button"
+                  className="text-base text-sotkis-green hover:underline"
+                >
+                  {t('forgotPassword')}
+                </button>
+              </div>
             </form>
 
-            {/* Language Flags below login button */}
+            {/* Language Flags */}
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-300 mb-3">{t('selectLanguage')}</p>
-              <div className="flex justify-center space-x-4">
+              <div className="flex justify-center space-x-4 mb-3">
                 <button
                   onClick={(e) => handleLanguageChange('pt', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
                     language === 'pt' ? 'ring-2 ring-sotkis-green' : ''
                   }`}
                 >
@@ -157,7 +159,7 @@ const Login = () => {
                 </button>
                 <button
                   onClick={(e) => handleLanguageChange('en', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
                     language === 'en' ? 'ring-2 ring-sotkis-green' : ''
                   }`}
                 >
@@ -169,7 +171,7 @@ const Login = () => {
                 </button>
                 <button
                   onClick={(e) => handleLanguageChange('es', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
                     language === 'es' ? 'ring-2 ring-sotkis-green' : ''
                   }`}
                 >
@@ -181,7 +183,7 @@ const Login = () => {
                 </button>
                 <button
                   onClick={(e) => handleLanguageChange('hr', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
                     language === 'hr' ? 'ring-2 ring-sotkis-green' : ''
                   }`}
                 >
@@ -193,7 +195,7 @@ const Login = () => {
                 </button>
                 <button
                   onClick={(e) => handleLanguageChange('el', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
                     language === 'el' ? 'ring-2 ring-sotkis-green' : ''
                   }`}
                 >
@@ -204,6 +206,8 @@ const Login = () => {
                   />
                 </button>
               </div>
+              {/* Select Language text moved under flags */}
+              <p className="text-sm text-gray-300">{t('selectLanguage')}</p>
             </div>
           </CardContent>
         </Card>
