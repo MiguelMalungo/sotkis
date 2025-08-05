@@ -104,7 +104,7 @@ const SotkisRoutes = () => {
 
       {/* Filters */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="card-glass p-4">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Rota</label>
             <Input
@@ -116,7 +116,7 @@ const SotkisRoutes = () => {
           </div>
         </Card>
 
-        <Card className="card-glass p-4">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Estado</label>
             <Select 
@@ -132,7 +132,7 @@ const SotkisRoutes = () => {
           </div>
         </Card>
 
-        <Card className="card-glass p-4">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Data Início</label>
             <Input
@@ -144,7 +144,7 @@ const SotkisRoutes = () => {
           </div>
         </Card>
 
-        <Card className="card-glass p-4">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Data Fim</label>
             <Input
@@ -167,7 +167,7 @@ const SotkisRoutes = () => {
 
       {/* Results */}
       {viewMode === 'list' ? (
-        <Card className="card-glass">
+        <Card className="bg-white/10 backdrop-blur-lg border-0">
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
@@ -215,7 +215,7 @@ const SotkisRoutes = () => {
           </div>
         </Card>
       ) : (
-        <Card className="card-glass p-4">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <h3 className="text-xl font-semibold text-white">Visualização de Mapa</h3>
