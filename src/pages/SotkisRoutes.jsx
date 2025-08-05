@@ -104,25 +104,25 @@ const SotkisRoutes = () => {
 
       {/* Filters */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="p-4 bg-white/5 border-white/10">
+        <Card className="card-glass p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Rota</label>
             <Input
               placeholder="Nome da rota"
               value={filters.rota}
               onChange={(e) => setFilters({ ...filters, rota: e.target.value })}
-              className="bg-white/5 border-white/10 text-white placeholder:text-gray-400"
+              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
             />
           </div>
         </Card>
 
-        <Card className="p-4 bg-white/5 border-white/10">
+        <Card className="card-glass p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Estado</label>
             <Select 
               value={filters.estado} 
               onChange={(e) => setFilters({ ...filters, estado: e.target.value })}
-              className="bg-white/5 border-white/10 text-white"
+              className="bg-white/10 border-white/20 text-white"
             >
               <SelectOption value="">Selecionar estado</SelectOption>
               <SelectOption value="ativa">Ativa</SelectOption>
@@ -132,26 +132,26 @@ const SotkisRoutes = () => {
           </div>
         </Card>
 
-        <Card className="p-4 bg-white/5 border-white/10">
+        <Card className="card-glass p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Data Início</label>
             <Input
               type="date"
               value={filters.dataInicio}
               onChange={(e) => setFilters({ ...filters, dataInicio: e.target.value })}
-              className="bg-white/5 border-white/10 text-white"
+              className="bg-white/10 border-white/20 text-white"
             />
           </div>
         </Card>
 
-        <Card className="p-4 bg-white/5 border-white/10">
+        <Card className="card-glass p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Data Fim</label>
             <Input
               type="date"
               value={filters.dataFim}
               onChange={(e) => setFilters({ ...filters, dataFim: e.target.value })}
-              className="bg-white/5 border-white/10 text-white"
+              className="bg-white/10 border-white/20 text-white"
             />
           </div>
         </Card>
@@ -167,7 +167,7 @@ const SotkisRoutes = () => {
 
       {/* Results */}
       {viewMode === 'list' ? (
-        <Card className="bg-white/5 border-white/10">
+        <Card className="card-glass">
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
@@ -215,7 +215,7 @@ const SotkisRoutes = () => {
           </div>
         </Card>
       ) : (
-        <Card className="bg-white/5 border-white/10 p-4">
+        <Card className="card-glass p-4">
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <h3 className="text-xl font-semibold text-white">Visualização de Mapa</h3>
@@ -238,7 +238,7 @@ const SotkisRoutes = () => {
                 </Button>
               </div>
             </div>
-            <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] rounded-lg border border-white/10 bg-white/5 flex items-center justify-center">
+            <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] rounded-lg border border-white/10 bg-white/10 flex items-center justify-center">
               <div className="text-center text-gray-400">
                 <MapIcon className="w-16 h-16 mx-auto mb-4 text-sotkis-green" />
                 <h3 className="text-xl font-semibold text-white mb-2">Mapa de Rotas</h3>
