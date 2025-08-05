@@ -440,67 +440,80 @@ h1.text-3xl {
 }
 
 /* Native Date Picker Popup Styling - Make calendar icons green */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8);
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  filter: hue-rotate(120deg) saturate(1.8) brightness(1);
-}
-
-/* For Firefox */
-input[type="date"]::-moz-calendar-picker-indicator {
-  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8);
-}
-
-input[type="date"]::-moz-calendar-picker-indicator:hover {
-  filter: hue-rotate(120deg) saturate(1.8) brightness(1);
-}
-
-/* For Edge/IE */
-input[type="date"]::-ms-clear,
-input[type="date"]::-ms-expand {
-  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8);
-}
-
-/* Alternative approach using CSS custom properties for better browser support */
 input[type="date"] {
   color-scheme: dark;
 }
 
+/* Webkit browsers (Chrome, Safari, Edge) */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  background-color: #9EC043;
-  border-radius: 4px;
-  padding: 2px;
+  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8) !important;
+  background-color: #9EC043 !important;
+  border-radius: 4px !important;
+  padding: 2px !important;
+  cursor: pointer !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  background-color: #8ab03a;
+  filter: hue-rotate(120deg) saturate(1.8) brightness(1) !important;
+  background-color: #8ab03a !important;
+}
+
+/* Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8) !important;
+  background-color: #9EC043 !important;
+  border-radius: 4px !important;
+  padding: 2px !important;
+}
+
+input[type="date"]::-moz-calendar-picker-indicator:hover {
+  filter: hue-rotate(120deg) saturate(1.8) brightness(1) !important;
+  background-color: #8ab03a !important;
+}
+
+/* Edge/IE */
+input[type="date"]::-ms-clear,
+input[type="date"]::-ms-expand {
+  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8) !important;
+  background-color: #9EC043 !important;
 }
 
 /* Make the calendar popup itself have green accents */
 input[type="date"]::-webkit-datetime-edit {
-  color: white;
+  color: white !important;
 }
 
 input[type="date"]::-webkit-datetime-edit-fields-wrapper {
-  color: white;
+  color: white !important;
 }
 
 input[type="date"]::-webkit-datetime-edit-text {
-  color: #9EC043;
+  color: #9EC043 !important;
 }
 
 input[type="date"]::-webkit-datetime-edit-month-field,
 input[type="date"]::-webkit-datetime-edit-day-field,
 input[type="date"]::-webkit-datetime-edit-year-field {
-  color: white;
+  color: white !important;
 }
 
 input[type="date"]::-webkit-inner-spin-button {
-  display: none;
+  display: none !important;
 }
 
 input[type="date"]::-webkit-outer-spin-button {
-  display: none;
+  display: none !important;
+}
+
+/* Additional styling for better green appearance */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+/* Force green color for all date picker elements */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #9EC043 !important;
+  fill: #9EC043 !important;
+  stroke: #9EC043 !important;
 }

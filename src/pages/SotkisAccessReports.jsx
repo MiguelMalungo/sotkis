@@ -40,16 +40,13 @@ const SotkisAccessReports = () => {
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Início do Período</label>
-                                  <div className="relative">
-                    <Input
-                      type="date"
-                      value={filters.inicioPeriodo}
-                      onChange={(e) => setFilters({...filters, inicioPeriodo: e.target.value})}
-                      className="bg-white/5 border-white/10 text-white placeholder-gray-400 pr-10"
-                      placeholder="dd/mm/yyyy"
-                    />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  </div>
+                                                  <Input
+                  type="date"
+                  value={filters.inicioPeriodo}
+                  onChange={(e) => setFilters({...filters, inicioPeriodo: e.target.value})}
+                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  placeholder="dd/mm/yyyy"
+                />
               </div>
             </CardContent>
           </Card>
@@ -58,16 +55,13 @@ const SotkisAccessReports = () => {
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Fim do Período</label>
-                                  <div className="relative">
-                    <Input
-                      type="date"
-                      value={filters.fimPeriodo}
-                      onChange={(e) => setFilters({...filters, fimPeriodo: e.target.value})}
-                      className="bg-white/5 border-white/10 text-white placeholder-gray-400 pr-10"
-                      placeholder="dd/mm/yyyy"
-                    />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  </div>
+                                                  <Input
+                  type="date"
+                  value={filters.fimPeriodo}
+                  onChange={(e) => setFilters({...filters, fimPeriodo: e.target.value})}
+                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  placeholder="dd/mm/yyyy"
+                />
               </div>
             </CardContent>
           </Card>

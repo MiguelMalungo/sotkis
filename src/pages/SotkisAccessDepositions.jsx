@@ -47,28 +47,22 @@ const SotkisAccessDepositions = () => {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Inicio do periodo:</label>
-                  <div className="relative">
-                    <Input
-                      type="date"
-                      value={formData.inicioPeriodo}
-                      onChange={(e) => handleInputChange('inicioPeriodo', e.target.value)}
-                      className="pr-10 bg-white/5 border-white/10 text-white"
-                    />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  </div>
+                                  <Input
+                  type="date"
+                  value={formData.inicioPeriodo}
+                  onChange={(e) => handleInputChange('inicioPeriodo', e.target.value)}
+                  className="bg-white/5 border-white/10 text-white"
+                />
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Fim do periodo:</label>
-                  <div className="relative">
-                    <Input
-                      type="date"
-                      value={formData.fimPeriodo}
-                      onChange={(e) => handleInputChange('fimPeriodo', e.target.value)}
-                      className="pr-10 bg-white/5 border-white/10 text-white"
-                    />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  </div>
+                                  <Input
+                  type="date"
+                  value={formData.fimPeriodo}
+                  onChange={(e) => handleInputChange('fimPeriodo', e.target.value)}
+                  className="bg-white/5 border-white/10 text-white"
+                />
                 </div>
 
                 <div className="space-y-2">
