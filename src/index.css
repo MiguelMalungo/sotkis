@@ -416,6 +416,18 @@ h1.text-3xl {
   }
 }
 
+/* Login card styling to prevent white flash on load */
+.login-card {
+  background-color: rgba(0, 0, 0, 0.15) !important;
+  border: none !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.login-card .card-content,
+.login-card [class*="card-content"] {
+  background-color: transparent !important;
+}
+
 /* Login page text centering override */
 @media (max-width: 768px) {
   .bg-black\/50 .text-center h1,
