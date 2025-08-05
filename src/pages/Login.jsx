@@ -60,7 +60,7 @@ const Login = () => {
         {/* Login Card */}
         <div className="w-full max-w-md">
         <Card 
-          className="bg-black/30 backdrop-blur-lg border-0 shadow-2xl rounded-xl cursor-pointer hover:bg-black/40 transition-colors duration-200"
+          className="bg-black/15 backdrop-blur-lg border-0 shadow-2xl rounded-xl cursor-pointer hover:bg-black/25 transition-colors duration-200"
           onClick={() => {
             console.log('Card background clicked');
             login();
