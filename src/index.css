@@ -422,6 +422,26 @@ h1.text-3xl {
   .bg-black\/50 .text-center p {
     text-align: center !important;
   }
+  
+  /* Force center alignment for login page texts on mobile */
+  .login-card h1,
+  .login-card p,
+  .login-card .text-center h1,
+  .login-card .text-center p {
+    text-align: center !important;
+  }
+  
+  /* Specific centering for welcome and subtitle texts */
+  .login-card .text-xl,
+  .login-card .text-lg,
+  .login-card .text-2xl {
+    text-align: center !important;
+  }
+  
+  /* Center the select language text */
+  .login-card .text-sm.text-gray-300 {
+    text-align: center !important;
+  }
 }
 
 
