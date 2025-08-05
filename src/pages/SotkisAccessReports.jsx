@@ -45,10 +45,10 @@ const SotkisAccessReports = () => {
                     type="date"
                     value={filters.inicioPeriodo}
                     onChange={(e) => setFilters({...filters, inicioPeriodo: e.target.value})}
-                    className="bg-white border-white text-black placeholder-gray-600 pr-10"
+                    className="bg-white/5 border-white/10 text-white placeholder-gray-400 pr-10"
                     placeholder="dd/mm/yyyy"
                   />
-                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sotkis-green" />
                 </div>
               </div>
             </CardContent>
@@ -63,10 +63,10 @@ const SotkisAccessReports = () => {
                     type="date"
                     value={filters.fimPeriodo}
                     onChange={(e) => setFilters({...filters, fimPeriodo: e.target.value})}
-                    className="bg-white border-white text-black placeholder-gray-600 pr-10"
+                    className="bg-white/5 border-white/10 text-white placeholder-gray-400 pr-10"
                     placeholder="dd/mm/yyyy"
                   />
-                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sotkis-green" />
                 </div>
               </div>
             </CardContent>
@@ -77,7 +77,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className="bg-white border-white text-black">
+                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
                     <SelectValue placeholder="Selecione departamento" />
                   </SelectTrigger>
                   <SelectContent>
@@ -97,7 +97,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Ilha</label>
                 <Select value={filters.ilha} onValueChange={(value) => setFilters({...filters, ilha: value})}>
-                  <SelectTrigger className="bg-white border-white text-black">
+                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
                     <SelectValue placeholder="Selecione ilha" />
                   </SelectTrigger>
                   <SelectContent>
@@ -116,7 +116,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Contentor</label>
                 <Select value={filters.contentor} onValueChange={(value) => setFilters({...filters, contentor: value})}>
-                  <SelectTrigger className="bg-white border-white text-black">
+                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
                     <SelectValue placeholder="Selecione contentor" />
                   </SelectTrigger>
                   <SelectContent>
@@ -135,7 +135,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Utilizador</label>
                 <Select value={filters.utilizador} onValueChange={(value) => setFilters({...filters, utilizador: value})}>
-                  <SelectTrigger className="bg-white border-white text-black">
+                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
                     <SelectValue placeholder="Selecione utilizador" />
                   </SelectTrigger>
                   <SelectContent>
@@ -157,7 +157,7 @@ const SotkisAccessReports = () => {
                   placeholder="Digite a referência"
                   value={filters.rfids}
                   onChange={(e) => setFilters({...filters, rfids: e.target.value})}
-                  className="bg-white border-white text-black placeholder-gray-600"
+                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
                 />
               </div>
             </CardContent>
@@ -168,7 +168,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Tipo de Resíduo</label>
                 <Select value={filters.tipoResiduo} onValueChange={(value) => setFilters({...filters, tipoResiduo: value})}>
-                  <SelectTrigger className="bg-white border-white text-black">
+                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
                     <SelectValue placeholder="Selecione tipo" />
                   </SelectTrigger>
                   <SelectContent>
@@ -198,7 +198,7 @@ const SotkisAccessReports = () => {
         <CardContent className="p-6">
           <div className="text-center text-gray-300 py-12">
             <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Calendar className="h-8 w-8 text-gray-400" />
+              <Calendar className="h-8 w-8 text-sotkis-green" />
             </div>
             <p>Nenhum relatório gerado. Aplique os filtros para gerar um relatório.</p>
           </div>

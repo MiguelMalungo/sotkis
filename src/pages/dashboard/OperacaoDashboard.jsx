@@ -239,7 +239,7 @@ const OperacaoDashboard = () => {
                     onChange={(e) => setStartDate(e.target.value)}
                     className="w-32 bg-white/10 border-white/20 text-white/90"
                   />
-                  <Calendar className="w-4 h-4 text-gray-400" />
+                  <Calendar className="w-4 h-4 text-sotkis-green" />
                 </div>
                 <div className="flex items-center space-x-2">
                   <span className="text-white text-sm">Fim</span>
@@ -249,7 +249,7 @@ const OperacaoDashboard = () => {
                     onChange={(e) => setEndDate(e.target.value)}
                     className="w-32 bg-white/10 border-white/20 text-white/90"
                   />
-                  <Calendar className="w-4 h-4 text-gray-400" />
+                  <Calendar className="w-4 h-4 text-sotkis-green" />
                 </div>
                 <Button className="bg-sotkis-green text-white">
                   ATUALIZAR
@@ -1096,7 +1096,7 @@ const OperacaoDashboard = () => {
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex items-center space-x-2">
-                  <Calendar className="w-4 h-4 text-gray-400" />
+                  <Calendar className="w-4 h-4 text-sotkis-green" />
                   <Input 
                     type="date" 
                     value="2025-07-28" 
@@ -1105,7 +1105,7 @@ const OperacaoDashboard = () => {
                   <span className="text-white">Início</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Calendar className="w-4 h-4 text-gray-400" />
+                  <Calendar className="w-4 h-4 text-sotkis-green" />
                   <Input 
                     type="date" 
                     value="2025-08-04" 
