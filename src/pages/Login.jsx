@@ -10,6 +10,8 @@ import logoImage from '../../assets/Logo.png';
 import ptFlag from '../../assets/pt.png';
 import enFlag from '../../assets/en.png';
 import spFlag from '../../assets/sp.png';
+import croatiaFlag from '../../assets/croatia.png';
+import greeceFlag from '../../assets/greece.png';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -174,6 +176,30 @@ const Login = () => {
                   <img 
                     src={spFlag}
                     alt="Spanish"
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+                <button
+                  onClick={(e) => handleLanguageChange('hr', e)}
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                    language === 'hr' ? 'ring-2 ring-sotkis-green' : ''
+                  }`}
+                >
+                  <img 
+                    src={croatiaFlag}
+                    alt="Croatian"
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+                <button
+                  onClick={(e) => handleLanguageChange('el', e)}
+                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 ${
+                    language === 'el' ? 'ring-2 ring-sotkis-green' : ''
+                  }`}
+                >
+                  <img 
+                    src={greeceFlag}
+                    alt="Greek"
                     className="w-full h-full object-cover"
                   />
                 </button>

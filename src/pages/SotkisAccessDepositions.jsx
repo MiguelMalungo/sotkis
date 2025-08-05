@@ -54,7 +54,7 @@ const SotkisAccessDepositions = () => {
                       onChange={(e) => handleInputChange('inicioPeriodo', e.target.value)}
                       className="pr-10 bg-white/5 border-white/10 text-white"
                     />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sotkis-green" />
+                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   </div>
                 </div>
 
@@ -67,7 +67,7 @@ const SotkisAccessDepositions = () => {
                       onChange={(e) => handleInputChange('fimPeriodo', e.target.value)}
                       className="pr-10 bg-white/5 border-white/10 text-white"
                     />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sotkis-green" />
+                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   </div>
                 </div>
 

@@ -40,16 +40,16 @@ const SotkisAccessReports = () => {
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Início do Período</label>
-                <div className="relative">
-                  <Input
-                    type="date"
-                    value={filters.inicioPeriodo}
-                    onChange={(e) => setFilters({...filters, inicioPeriodo: e.target.value})}
-                    className="bg-white/5 border-white/10 text-white placeholder-gray-400 pr-10"
-                    placeholder="dd/mm/yyyy"
-                  />
-                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sotkis-green" />
-                </div>
+                                  <div className="relative">
+                    <Input
+                      type="date"
+                      value={filters.inicioPeriodo}
+                      onChange={(e) => setFilters({...filters, inicioPeriodo: e.target.value})}
+                      className="bg-white/5 border-white/10 text-white placeholder-gray-400 pr-10"
+                      placeholder="dd/mm/yyyy"
+                    />
+                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  </div>
               </div>
             </CardContent>
           </Card>
@@ -58,16 +58,16 @@ const SotkisAccessReports = () => {
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Fim do Período</label>
-                <div className="relative">
-                  <Input
-                    type="date"
-                    value={filters.fimPeriodo}
-                    onChange={(e) => setFilters({...filters, fimPeriodo: e.target.value})}
-                    className="bg-white/5 border-white/10 text-white placeholder-gray-400 pr-10"
-                    placeholder="dd/mm/yyyy"
-                  />
-                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sotkis-green" />
-                </div>
+                                  <div className="relative">
+                    <Input
+                      type="date"
+                      value={filters.fimPeriodo}
+                      onChange={(e) => setFilters({...filters, fimPeriodo: e.target.value})}
+                      className="bg-white/5 border-white/10 text-white placeholder-gray-400 pr-10"
+                      placeholder="dd/mm/yyyy"
+                    />
+                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  </div>
               </div>
             </CardContent>
           </Card>
@@ -198,7 +198,7 @@ const SotkisAccessReports = () => {
         <CardContent className="p-6">
           <div className="text-center text-gray-300 py-12">
             <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Calendar className="h-8 w-8 text-sotkis-green" />
+              <Calendar className="h-8 w-8 text-gray-400" />
             </div>
             <p>Nenhum relatório gerado. Aplique os filtros para gerar um relatório.</p>
           </div>

@@ -439,4 +439,68 @@ h1.text-3xl {
   color: black !important;
 }
 
- 
+/* Native Date Picker Popup Styling - Make calendar icons green */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  filter: hue-rotate(120deg) saturate(1.8) brightness(1);
+}
+
+/* For Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8);
+}
+
+input[type="date"]::-moz-calendar-picker-indicator:hover {
+  filter: hue-rotate(120deg) saturate(1.8) brightness(1);
+}
+
+/* For Edge/IE */
+input[type="date"]::-ms-clear,
+input[type="date"]::-ms-expand {
+  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8);
+}
+
+/* Alternative approach using CSS custom properties for better browser support */
+input[type="date"] {
+  color-scheme: dark;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-color: #9EC043;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  background-color: #8ab03a;
+}
+
+/* Make the calendar popup itself have green accents */
+input[type="date"]::-webkit-datetime-edit {
+  color: white;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  color: white;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+  color: #9EC043;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: white;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type="date"]::-webkit-outer-spin-button {
+  display: none;
+}

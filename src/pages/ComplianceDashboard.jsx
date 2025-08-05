@@ -66,7 +66,7 @@ const ComplianceDashboard = () => {
                     onChange={(e) => setStartDate(e.target.value)}
                     className="bg-white text-black w-40"
                   />
-                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sotkis-green" />
+                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 </div>
               </div>
               
@@ -79,7 +79,7 @@ const ComplianceDashboard = () => {
                     onChange={(e) => setEndDate(e.target.value)}
                     className="bg-white text-black w-40"
                   />
-                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sotkis-green" />
+                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 </div>
               </div>
               
