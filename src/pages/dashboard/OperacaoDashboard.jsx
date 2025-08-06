@@ -466,77 +466,74 @@ const OperacaoDashboard = () => {
             </Card>
           </div>
 
-          {/* Original Charts Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-            {/* Depositos por mês Chart */}
-            <Card className="bg-white/10 backdrop-blur-lg border-0">
-              <CardHeader>
-                <CardTitle className="text-white">Depósitos por mês</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={depositosPorMesData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                    <XAxis 
-                      dataKey="mes" 
-                      stroke="rgba(255,255,255,0.7)"
-                      fontSize={12}
-                    />
-                    <YAxis stroke="rgba(255,255,255,0.7)" fontSize={12} />
-                    <Tooltip content={<CustomTooltip />} />
-                    <Bar dataKey="indiferenciado" fill="#9EC043" name="Indiferenciado" />
-                                    <Bar dataKey="papelCartao" fill="#4FA9F7" name="Papel/Cartão" />
-                <Bar dataKey="plasticoEmbalagens" fill="#FFD700" name="Plástico/Embalagens" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
+          {/* DEPOSIÇÕES Chart - Second Row */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0">
+            <CardHeader>
+              <CardTitle className="text-white">DEPOSIÇÕES</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={depositosPorMesData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis 
+                    dataKey="mes" 
+                    stroke="rgba(255,255,255,0.7)"
+                    fontSize={12}
+                  />
+                  <YAxis stroke="rgba(255,255,255,0.7)" fontSize={12} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Bar dataKey="indiferenciado" fill="#9EC043" name="Indiferenciado" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="papelCartao" fill="#4FA9F7" name="Papel/Cartão" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="plasticoEmbalagens" fill="#FFD700" name="Plástico/Embalagens" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
 
-            {/* Evolution by package type Chart */}
-            <Card className="bg-white/10 backdrop-blur-lg border-0">
-              <CardHeader>
-                <CardTitle className="text-white">Evolution by package type</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <AreaChart data={evolutionByPackageData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                    <XAxis 
-                      dataKey="mes" 
-                      stroke="rgba(255,255,255,0.7)"
-                      fontSize={12}
-                    />
-                    <YAxis stroke="rgba(255,255,255,0.7)" fontSize={12} />
-                    <Tooltip content={<CustomTooltip />} />
-                    <Area 
-                      type="monotone" 
-                      dataKey="indiferenciado" 
-                      stackId="1"
-                      stroke="#9EC043" 
-                      fill="#9EC043" 
-                      name="Indiferenciado"
-                    />
-                    <Area 
-                      type="monotone" 
-                      dataKey="papelCartao" 
-                      stackId="1"
-                      stroke="#4FA9F7" 
-                      fill="#4FA9F7" 
-                      name="Papel/Cartão"
-                    />
-                    <Area 
-                      type="monotone" 
-                      dataKey="plasticoEmbalagens" 
-                      stackId="1"
-                      stroke="#FFD700" 
-                      fill="#FFD700" 
-                      name="Plástico/Embalagens"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
-          </div>
+          {/* NÍVEL DE ENCHIMENTO Chart - Second Row */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0">
+            <CardHeader>
+              <CardTitle className="text-white">NÍVEL DE ENCHIMENTO</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={300}>
+                <AreaChart data={evolutionByPackageData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis 
+                    dataKey="mes" 
+                    stroke="rgba(255,255,255,0.7)"
+                    fontSize={12}
+                  />
+                  <YAxis stroke="rgba(255,255,255,0.7)" fontSize={12} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area 
+                    type="monotone" 
+                    dataKey="indiferenciado" 
+                    stackId="1"
+                    stroke="#9EC043" 
+                    fill="#9EC043" 
+                    name="Indiferenciado"
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="papelCartao" 
+                    stackId="1"
+                    stroke="#4FA9F7" 
+                    fill="#4FA9F7" 
+                    name="Papel/Cartão"
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="plasticoEmbalagens" 
+                    stackId="1"
+                    stroke="#FFD700" 
+                    fill="#FFD700" 
+                    name="Plástico/Embalagens"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
 
           {/* Map Section */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
