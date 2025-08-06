@@ -68,9 +68,8 @@ const NivelEnchimentoDashboard = () => {
       <div className="flex flex-col lg:flex-row lg:flex-wrap gap-4 items-start lg:items-center">
         <div className="flex items-center space-x-4">
           <Button 
-            variant="outline" 
             onClick={() => navigate('/dashboard/operacao')}
-            className="text-white border-white/20 hover:bg-white/10"
+            className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Voltar
