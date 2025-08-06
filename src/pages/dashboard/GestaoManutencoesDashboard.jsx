@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectOption } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { TrendingUp, TrendingDown, Filter, BarChart3 } from 'lucide-react';
+import { TrendingUp, TrendingDown, Filter, BarChart3, ArrowLeft } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
 } from 'recharts';
 import { timePresets, departments, maintenanceData } from '@/data/mockData';
 
 const GestaoManutencoesDashboard = () => {
+  const navigate = useNavigate();
   const [selectedTime, setSelectedTime] = useState('month');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
 
@@ -49,8 +51,18 @@ const GestaoManutencoesDashboard = () => {
         </div>
       </div>
 
-      {/* Filters */}
+      {/* Back Button and Filters */}
       <div className="flex flex-col lg:flex-row lg:flex-wrap gap-4 items-start lg:items-center">
+        <div className="flex items-center space-x-4">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate('/dashboard/operacao')}
+            className="text-white border-white/20 hover:bg-white/10"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
+        </div>
         <div className="flex flex-wrap gap-2">
           {timePresets.map((preset) => (
             <Button

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectOption } from '@/components/ui/select';
-import { TrendingUp, TrendingDown, Filter, BarChart3 } from 'lucide-react';
+import { TrendingUp, TrendingDown, Filter, BarChart3, ArrowLeft } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line
 } from 'recharts';
 import { timePresets, departments } from '@/data/mockData';
 
 const NivelEnchimentoDashboard = () => {
+  const navigate = useNavigate();
   const [selectedTime, setSelectedTime] = useState('month');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
 
@@ -62,8 +64,18 @@ const NivelEnchimentoDashboard = () => {
         </div>
       </div>
 
-      {/* Filters */}
+      {/* Back Button and Filters */}
       <div className="flex flex-col lg:flex-row lg:flex-wrap gap-4 items-start lg:items-center">
+        <div className="flex items-center space-x-4">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate('/dashboard/operacao')}
+            className="text-white border-white/20 hover:bg-white/10"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
+        </div>
         <div className="flex flex-wrap gap-2">
           {timePresets.map((preset) => (
             <Button
@@ -168,65 +180,63 @@ const NivelEnchimentoDashboard = () => {
         </Card>
       </div>
 
-      {/* Charts Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardHeader>
-            <CardTitle className="text-white">Nível de Enchimento por Zona</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={depositosPorMesData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                <XAxis 
-                  dataKey="mes" 
-                  stroke="rgba(255,255,255,0.7)"
-                  fontSize={12}
-                />
-                <YAxis stroke="rgba(255,255,255,0.7)" fontSize={12} />
-                <Tooltip content={<CustomTooltip />} />
-                <Bar dataKey="indiferenciado" fill="#9EC043" name="Zona Norte" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="papelCartao" fill="#4FA9F7" name="Zona Sul" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="plasticoEmbalagens" fill="#FFD700" name="Zona Este" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+      {/* Charts - Second Row - One per row */}
+      <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <CardHeader>
+          <CardTitle className="text-white">Nível de Enchimento por Zona</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={depositosPorMesData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+              <XAxis 
+                dataKey="mes" 
+                stroke="rgba(255,255,255,0.7)"
+                fontSize={12}
+              />
+              <YAxis stroke="rgba(255,255,255,0.7)" fontSize={12} />
+              <Tooltip content={<CustomTooltip />} />
+              <Bar dataKey="indiferenciado" fill="#9EC043" name="Zona Norte" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="papelCartao" fill="#4FA9F7" name="Zona Sul" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="plasticoEmbalagens" fill="#FFD700" name="Zona Este" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardHeader>
-            <CardTitle className="text-white">Evolução do Enchimento</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={evolutionByPackageData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                <XAxis 
-                  dataKey="mes" 
-                  stroke="rgba(255,255,255,0.7)"
-                  fontSize={12}
-                />
-                <YAxis stroke="rgba(255,255,255,0.7)" fontSize={12} />
-                <Tooltip content={<CustomTooltip />} />
-                <Line 
-                  type="monotone" 
-                  dataKey="indiferenciado" 
-                  stroke="#9EC043" 
-                  strokeWidth={3}
-                  name="Nível Médio"
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="papelCartao" 
-                  stroke="#8bb03a" 
-                  strokeWidth={2}
-                  name="Meta"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-      </div>
+      <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <CardHeader>
+          <CardTitle className="text-white">Evolução do Enchimento</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={evolutionByPackageData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+              <XAxis 
+                dataKey="mes" 
+                stroke="rgba(255,255,255,0.7)"
+                fontSize={12}
+              />
+              <YAxis stroke="rgba(255,255,255,0.7)" fontSize={12} />
+              <Tooltip content={<CustomTooltip />} />
+              <Line 
+                type="monotone" 
+                dataKey="indiferenciado" 
+                stroke="#9EC043" 
+                strokeWidth={3}
+                name="Nível Médio"
+              />
+              <Line 
+                type="monotone" 
+                dataKey="papelCartao" 
+                stroke="#8bb03a" 
+                strokeWidth={2}
+                name="Meta"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
     </div>
   );
 };

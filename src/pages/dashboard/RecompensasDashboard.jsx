@@ -1,13 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Calendar, Gift } from 'lucide-react';
+import { Calendar, Gift, ArrowLeft } from 'lucide-react';
 import { 
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area
 } from 'recharts';
 
 const RecompensasDashboard = () => {
+  const navigate = useNavigate();
+
   // Custom tooltip for charts
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -35,9 +38,19 @@ const RecompensasDashboard = () => {
         </div>
       </div>
 
-      {/* Header with Date Range */}
+      {/* Back Button and Header with Date Range */}
       <div className="space-y-4">
-        <h2 className="text-xl font-bold text-white">Filtro geral do dashboard</h2>
+        <div className="flex items-center space-x-4">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate('/dashboard/operacao')}
+            className="text-white border-white/20 hover:bg-white/10"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
+          <h2 className="text-xl font-bold text-white">Filtro geral do dashboard</h2>
+        </div>
         
         {/* Date Range and Update Button */}
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">

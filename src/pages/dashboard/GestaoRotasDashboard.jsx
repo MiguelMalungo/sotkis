@@ -1,14 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { TrendingUp, RefreshCw, AlertTriangle, BarChart3 } from 'lucide-react';
+import { TrendingUp, RefreshCw, AlertTriangle, BarChart3, ArrowLeft } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 import { kilometersData, containersCollectedData, planExecutedData, routeTimePresets } from '@/data/mockData';
 
 const GestaoRotasDashboard = () => {
+  const navigate = useNavigate();
+
   // Custom tooltip for charts
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -36,50 +39,63 @@ const GestaoRotasDashboard = () => {
         </div>
       </div>
 
-      {/* Date Range Filters */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
-        <CardContent className="p-6">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                <label className="text-white font-medium text-sm">Início:</label>
-                <Input
-                  type="date"
-                  value="2025-07-28"
-                  className="bg-white/10 border-white/20 text-white w-full sm:w-40"
-                />
+      {/* Back Button and Date Range Filters */}
+      <div className="space-y-4">
+        <div className="flex items-center space-x-4">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate('/dashboard/operacao')}
+            className="text-white border-white/20 hover:bg-white/10"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
+        </div>
+        
+        <Card className="bg-white/10 backdrop-blur-lg border-0">
+          <CardContent className="p-6">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                  <label className="text-white font-medium text-sm">Início:</label>
+                  <Input
+                    type="date"
+                    value="2025-07-28"
+                    className="bg-white/10 border-white/20 text-white w-full sm:w-40"
+                  />
+                </div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                  <label className="text-white font-medium text-sm">Fim:</label>
+                  <Input
+                    type="date"
+                    value="2025-08-04"
+                    className="bg-white/10 border-white/20 text-white w-full sm:w-40"
+                  />
+                </div>
+                <Button className="bg-sotkis-green hover:bg-sotkis-green/90 text-black w-full sm:w-auto">
+                  <RefreshCw className="h-4 h-4 mr-2" />
+                  <span className="hidden sm:inline">ATUALIZAR</span>
+                  <span className="sm:hidden">ATUALIZAR</span>
+                </Button>
               </div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                <label className="text-white font-medium text-sm">Fim:</label>
-                <Input
-                  type="date"
-                  value="2025-08-04"
-                  className="bg-white/10 border-white/20 text-white w-full sm:w-40"
-                />
-              </div>
-              <Button className="bg-sotkis-green hover:bg-sotkis-green/90 text-black w-full sm:w-auto">
-                <RefreshCw className="h-4 w-4 mr-2" />
-                <span className="hidden sm:inline">ATUALIZAR</span>
-                <span className="sm:hidden">ATUALIZAR</span>
-              </Button>
             </div>
-          </div>
-          
-          {/* Time Preset Buttons */}
-          <div className="flex flex-wrap gap-2 mt-4">
-            {routeTimePresets.map((preset) => (
-              <Button
-                key={preset}
-                variant="outline"
-                size="sm"
-                className="bg-white text-black border-white hover:bg-gray-100 text-xs sm:text-sm"
-              >
-                {preset}
-              </Button>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+            
+            {/* Time Preset Buttons */}
+            <div className="flex flex-wrap gap-2 mt-4">
+              {routeTimePresets.map((preset) => (
+                <Button
+                  key={preset}
+                  variant="outline"
+                  size="sm"
+                  className="bg-white text-black border-white hover:bg-gray-100 text-xs sm:text-sm"
+                >
+                  {preset}
+                </Button>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
 
       {/* First Row - KPI Cards with Alerts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Calendar, Download, RefreshCw, Search, MapPin, Users, AlertTriangle } from 'lucide-react';
+import { Calendar, Download, RefreshCw, Search, MapPin, Users, AlertTriangle, ArrowLeft } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area
 } from 'recharts';
 
 const DeposicoesDashboard = () => {
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState('2025-07-21');
   const [endDate, setEndDate] = useState('2025-07-28');
   const [searchIsland, setSearchIsland] = useState('');
@@ -119,33 +121,41 @@ const DeposicoesDashboard = () => {
 
       {/* Back Button and Date Filter */}
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-4 lg:space-y-0">
-        <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-4">
+        <div className="flex items-center space-x-4">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate('/dashboard/operacao')}
+            className="text-white border-white/20 hover:bg-white/10"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
           <div className="text-white text-sm font-medium">Filtro geral do dashboard</div>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-            <div className="flex items-center space-x-2">
-              <span className="text-white text-sm">Início</span>
-              <Input
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                className="w-32 bg-white/10 border-white/20 text-white/90"
-              />
-              <Calendar className="w-4 h-4 text-gray-400" />
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-white text-sm">Fim</span>
-              <Input
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                className="w-32 bg-white/10 border-white/20 text-white/90"
-              />
-              <Calendar className="w-4 h-4 text-gray-400" />
-            </div>
-            <Button className="bg-sotkis-green text-white">
-              ATUALIZAR
-            </Button>
+        </div>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+          <div className="flex items-center space-x-2">
+            <span className="text-white text-sm">Início</span>
+            <Input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="w-32 bg-white/10 border-white/20 text-white/90"
+            />
+            <Calendar className="w-4 h-4 text-gray-400" />
           </div>
+          <div className="flex items-center space-x-2">
+            <span className="text-white text-sm">Fim</span>
+            <Input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="w-32 bg-white/10 border-white/20 text-white/90"
+            />
+            <Calendar className="w-4 h-4 text-gray-400" />
+          </div>
+          <Button className="bg-sotkis-green text-white">
+            ATUALIZAR
+          </Button>
         </div>
       </div>
 
