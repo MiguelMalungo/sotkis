@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectOption } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { TrendingUp, TrendingDown, Calendar, Filter, Download, RefreshCw, Users, BarChart3, AlertTriangle, MapPin, Leaf, Wrench, Package } from 'lucide-react';
+import { TrendingUp, TrendingDown, Calendar, Filter, Download, RefreshCw, Users, BarChart3, AlertTriangle, MapPin, Leaf, Wrench, Package, ArrowLeft } from 'lucide-react';
 import { 
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area,
   RadialBarChart, RadialBar, PolarRadiusAxis, Label
@@ -19,6 +20,7 @@ import {
 } from '@/data/mockData';
 
 const PerformanceDashboard = () => {
+  const navigate = useNavigate();
   const [selectedTime, setSelectedTime] = useState('year');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
 
@@ -59,6 +61,16 @@ const PerformanceDashboard = () => {
         <div className="text-left">
           <h1 className="text-xl md:text-2xl font-bold text-white uppercase-title">PERFORMANCE</h1>
           <p className="text-gray-300 mt-1">Análise de performance e métricas do sistema</p>
+          {/* Back Button - Mobile: under title, Desktop: in filter section */}
+          <div className="md:hidden mt-4">
+            <Button 
+              onClick={() => navigate('/dashboard/operacao')}
+              className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+          </div>
         </div>
         <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
           <Button variant="outline" className="text-white border-white/20">
@@ -72,8 +84,18 @@ const PerformanceDashboard = () => {
         </div>
       </div>
 
-      {/* Filters */}
+      {/* Back Button and Filters */}
       <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 items-start sm:items-center">
+        {/* Back Button - Desktop only */}
+        <div className="hidden md:block">
+          <Button 
+            onClick={() => navigate('/dashboard/operacao')}
+            className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar
+          </Button>
+        </div>
         <div className="flex flex-wrap gap-2">
           {timePresets.map((preset) => (
             <Button

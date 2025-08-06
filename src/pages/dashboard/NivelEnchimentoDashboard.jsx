@@ -60,7 +60,7 @@ const NivelEnchimentoDashboard = () => {
       <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
         <div className="text-left">
           <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Nível de Enchimento</h1>
-          <p className="text-gray-300 mt-1">Visão geral do nível de enchimento dos contentores</p>
+          <p className="text-gray-300 mt-1">Visão do nível de enchimento dos contentores</p>
         </div>
       </div>
 

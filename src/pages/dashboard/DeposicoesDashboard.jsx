@@ -106,6 +106,16 @@ const DeposicoesDashboard = () => {
         <div className="text-left">
           <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Deposições</h1>
           <p className="text-gray-300 mt-1">Visão geral das deposições do sistema</p>
+          {/* Back Button - Mobile: under title, Desktop: in filter section */}
+          <div className="md:hidden mt-4">
+            <Button 
+              onClick={() => navigate('/dashboard/operacao')}
+              className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+          </div>
         </div>
         <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
           <Button variant="outline" className="text-white border-white/20">
@@ -122,13 +132,16 @@ const DeposicoesDashboard = () => {
       {/* Back Button and Date Filter */}
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-4 lg:space-y-0">
         <div className="flex items-center space-x-4">
-          <Button 
-            onClick={() => navigate('/dashboard/operacao')}
-            className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar
-          </Button>
+          {/* Back Button - Desktop only */}
+          <div className="hidden md:block">
+            <Button 
+              onClick={() => navigate('/dashboard/operacao')}
+              className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+          </div>
           <div className="text-white text-sm font-medium">Filtro geral do dashboard</div>
         </div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
