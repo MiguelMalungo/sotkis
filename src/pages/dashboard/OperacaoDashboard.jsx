@@ -1,8 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BarChart3, TrendingUp, Users, AlertTriangle } from 'lucide-react';
+import {
+  Trash2,
+  Gauge,
+  Wrench,
+  Gift,
+  Route,
+  BarChart3
+} from 'lucide-react';
 
 const OperacaoDashboard = () => {
   const navigate = useNavigate();
@@ -27,7 +34,7 @@ const OperacaoDashboard = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-sotkis-green/20 rounded-lg">
-                <BarChart3 className="h-8 w-8 text-sotkis-green" />
+                <Trash2 className="h-8 w-8 text-sotkis-green" />
               </div>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">DEPOSIÇÕES</h3>
@@ -43,7 +50,7 @@ const OperacaoDashboard = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-blue-500/20 rounded-lg">
-                <TrendingUp className="h-8 w-8 text-blue-400" />
+                <Gauge className="h-8 w-8 text-blue-400" />
               </div>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">NÍVEL DE ENCHIMENTO</h3>
@@ -59,7 +66,7 @@ const OperacaoDashboard = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-yellow-500/20 rounded-lg">
-                <AlertTriangle className="h-8 w-8 text-yellow-400" />
+                <Wrench className="h-8 w-8 text-yellow-400" />
               </div>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">GESTÃO DE MANUTENÇÕES</h3>
@@ -75,7 +82,7 @@ const OperacaoDashboard = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-purple-500/20 rounded-lg">
-                <Users className="h-8 w-8 text-purple-400" />
+                <Gift className="h-8 w-8 text-purple-400" />
               </div>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">RECOMPENSAS</h3>
@@ -91,7 +98,7 @@ const OperacaoDashboard = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-green-500/20 rounded-lg">
-                <BarChart3 className="h-8 w-8 text-green-400" />
+                <Route className="h-8 w-8 text-green-400" />
               </div>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">GESTÃO DE ROTAS</h3>
@@ -107,7 +114,7 @@ const OperacaoDashboard = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-red-500/20 rounded-lg">
-                <TrendingUp className="h-8 w-8 text-red-400" />
+                <BarChart3 className="h-8 w-8 text-red-400" />
               </div>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">PERFORMANCE</h3>
