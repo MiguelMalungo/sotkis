@@ -549,3 +549,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   fill: #9EC043 !important;
   stroke: #9EC043 !important;
 }
+
+@media (max-width: 768px) {
+  .dashboard-main-title {
+    text-align: right !important;
+  }
+}
