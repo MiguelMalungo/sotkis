@@ -37,7 +37,7 @@ const OperacaoDashboard = () => {
                 <Trash2 className="h-8 w-8 text-sotkis-green" />
               </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">DEPOSIÇÕES</h3>
+            <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">DEPOSIÇÕES</h3>
             <p className="text-gray-300 text-sm">Visão geral das deposições do sistema</p>
           </CardContent>
         </Card>
@@ -53,7 +53,7 @@ const OperacaoDashboard = () => {
                 <Gauge className="h-8 w-8 text-blue-400" />
               </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">NÍVEL DE ENCHIMENTO</h3>
+            <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">NÍVEL DE ENCHIMENTO</h3>
             <p className="text-gray-300 text-sm">Monitorização do nível de enchimento</p>
           </CardContent>
         </Card>
@@ -69,7 +69,7 @@ const OperacaoDashboard = () => {
                 <Wrench className="h-8 w-8 text-yellow-400" />
               </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">GESTÃO DE MANUTENÇÕES</h3>
+            <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">GESTÃO DE MANUTENÇÕES</h3>
             <p className="text-gray-300 text-sm">Controlo de manutenções e intervenções</p>
           </CardContent>
         </Card>
@@ -85,7 +85,7 @@ const OperacaoDashboard = () => {
                 <Gift className="h-8 w-8 text-purple-400" />
               </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">RECOMPENSAS</h3>
+            <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">RECOMPENSAS</h3>
             <p className="text-gray-300 text-sm">Sistema de recompensas e gamificação</p>
           </CardContent>
         </Card>
@@ -101,7 +101,7 @@ const OperacaoDashboard = () => {
                 <Map className="h-8 w-8 text-green-400" />
               </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">GESTÃO DE ROTAS</h3>
+            <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">GESTÃO DE ROTAS</h3>
             <p className="text-gray-300 text-sm">Planeamento e execução de rotas</p>
           </CardContent>
         </Card>
@@ -117,7 +117,7 @@ const OperacaoDashboard = () => {
                 <BarChart3 className="h-8 w-8 text-red-400" />
               </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">PERFORMANCE</h3>
+            <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">PERFORMANCE</h3>
             <p className="text-gray-300 text-sm">Métricas de performance e indicadores</p>
           </CardContent>
         </Card>
