@@ -7,7 +7,7 @@ import {
   Gauge,
   Wrench,
   Gift,
-  Route,
+  Map,
   BarChart3
 } from 'lucide-react';
 
@@ -98,7 +98,7 @@ const OperacaoDashboard = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-green-500/20 rounded-lg">
-                <Route className="h-8 w-8 text-green-400" />
+                <Map className="h-8 w-8 text-green-400" />
               </div>
             </div>
             <h3 className="text-xl font-bold text-white mb-2">GESTÃO DE ROTAS</h3>
