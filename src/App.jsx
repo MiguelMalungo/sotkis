@@ -4,6 +4,11 @@ import { useAuth } from './contexts/AuthContext';
 import Layout from './components/layout/Layout';
 import Login from './pages/Login';
 import OperacaoDashboard from './pages/dashboard/OperacaoDashboard';
+import DeposicoesDashboard from './pages/dashboard/DeposicoesDashboard';
+import NivelEnchimentoDashboard from './pages/dashboard/NivelEnchimentoDashboard';
+import GestaoManutencoesDashboard from './pages/dashboard/GestaoManutencoesDashboard';
+import RecompensasDashboard from './pages/dashboard/RecompensasDashboard';
+import GestaoRotasDashboard from './pages/dashboard/GestaoRotasDashboard';
 import PerformanceDashboard from './pages/dashboard/PerformanceDashboard';
 import Utilizadores from './pages/Utilizadores';
 
@@ -103,6 +108,11 @@ const App = () => {
         {/* Dashboard Routes */}
         <Route path="/dashboard" element={<Navigate to="/dashboard/operacao" replace />} />
         <Route path="/dashboard/operacao" element={<OperacaoDashboard />} />
+        <Route path="/dashboard/deposicoes" element={<DeposicoesDashboard />} />
+        <Route path="/dashboard/nivel-enchimento" element={<NivelEnchimentoDashboard />} />
+        <Route path="/dashboard/gestao-manutencoes" element={<GestaoManutencoesDashboard />} />
+        <Route path="/dashboard/recompensas" element={<RecompensasDashboard />} />
+        <Route path="/dashboard/gestao-rotas" element={<GestaoRotasDashboard />} />
         <Route path="/dashboard/performance" element={<PerformanceDashboard />} />
 
         {/* Main Module Routes */}
