@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import {
+import { 
   Trash2,
   Gauge,
   Wrench,
@@ -39,8 +39,8 @@ const OperacaoDashboard = () => {
             </div>
             <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">DEPOSIÇÕES</h3>
             <p className="text-gray-300 text-sm">Visão geral das deposições do sistema</p>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
 
         {/* NÍVEL DE ENCHIMENTO */}
         <Card 
@@ -52,11 +52,11 @@ const OperacaoDashboard = () => {
               <div className="p-3 bg-blue-500/20 rounded-lg">
                 <Gauge className="h-8 w-8 text-blue-400" />
               </div>
-            </div>
+                  </div>
             <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">NÍVEL DE ENCHIMENTO</h3>
             <p className="text-gray-300 text-sm">Monitorização do nível de enchimento</p>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
 
         {/* GESTÃO DE MANUTENÇÕES */}
         <Card 
@@ -71,8 +71,8 @@ const OperacaoDashboard = () => {
             </div>
             <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">GESTÃO DE MANUTENÇÕES</h3>
             <p className="text-gray-300 text-sm">Controlo de manutenções e intervenções</p>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
 
         {/* RECOMPENSAS */}
         <Card 
@@ -83,12 +83,12 @@ const OperacaoDashboard = () => {
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-purple-500/20 rounded-lg">
                 <Gift className="h-8 w-8 text-purple-400" />
-              </div>
+            </div>
             </div>
             <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">RECOMPENSAS</h3>
             <p className="text-gray-300 text-sm">Sistema de recompensas e gamificação</p>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
 
         {/* GESTÃO DE ROTAS */}
         <Card 
@@ -103,15 +103,15 @@ const OperacaoDashboard = () => {
             </div>
             <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">GESTÃO DE ROTAS</h3>
             <p className="text-gray-300 text-sm">Planeamento e execução de rotas</p>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
 
         {/* PERFORMANCE */}
         <Card 
           className="bg-white/10 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/20 transition-all duration-200"
           onClick={() => navigate('/dashboard/performance')}
         >
-          <CardContent className="p-6">
+            <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-red-500/20 rounded-lg">
                 <BarChart3 className="h-8 w-8 text-red-400" />
@@ -119,9 +119,9 @@ const OperacaoDashboard = () => {
             </div>
             <h3 className="dashboard-card-title text-xl font-bold text-white mb-2">PERFORMANCE</h3>
             <p className="text-gray-300 text-sm">Métricas de performance e indicadores</p>
-          </CardContent>
-        </Card>
-      </div>
+              </CardContent>
+            </Card>
+          </div>
     </div>
   );
 };

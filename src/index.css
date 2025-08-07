@@ -561,3 +561,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   stroke: white !important;
   fill: white !important;
 }
+
+/* Make ArrowUpDown icons smaller throughout the app */
+.ArrowUpDown,
+[class*="ArrowUpDown"] {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+/* Specific override for ArrowUpDown icons in table headers */
+.cursor-pointer .ArrowUpDown,
+.cursor-pointer [class*="ArrowUpDown"] {
+  width: 8px !important;
+  height: 8px !important;
+}
