@@ -609,3 +609,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     text-align: right !important;
   }
 }
+
+/* Force right alignment for compliance dashboard title on mobile */
+@media (max-width: 768px) {
+  h1.force-right-mobile {
+    text-align: right !important;
+  }
+  
+  /* Even more specific selectors */
+  .flex.justify-end.sm\\:justify-between .space-y-2.compliance-header-container h1.force-right-mobile {
+    text-align: right !important;
+  }
+  
+  /* Target by class combination */
+  .text-xl.font-bold.text-white.compliance-dashboard-title.force-right-mobile {
+    text-align: right !important;
+  }
+  
+  /* Override flex container behavior */
+  .flex.justify-end.sm\\:justify-between {
+    justify-content: flex-end !important;
+  }
+  
+  .flex.justify-end.sm\\:justify-between .space-y-2.compliance-header-container {
+    text-align: right !important;
+    align-self: flex-end !important;
+  }
+}
