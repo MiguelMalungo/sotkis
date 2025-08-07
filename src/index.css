@@ -576,12 +576,36 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   height: 8px !important;
 }
 
+/* Compliance header container styles */
+.compliance-header-container {
+  text-align: left;
+}
+
 /* Mobile title styling for compliance pages */
 @media (max-width: 768px) {
   .mobile-title,
   .text-xl.font-bold.text-white,
   .flex.justify-end.sm\\:justify-between .text-xl.font-bold.text-white,
   .compliance-dashboard-title {
+    text-align: right !important;
+  }
+  
+  /* Override Tailwind responsive classes for compliance dashboard */
+  .flex.justify-end.sm\\:justify-between .space-y-2.text-right.sm\\:text-left {
+    text-align: right !important;
+  }
+  
+  .flex.justify-end.sm\\:justify-between .space-y-2.text-right.sm\\:text-left h1 {
+    text-align: right !important;
+  }
+  
+  /* New compliance header container */
+  .compliance-header-container {
+    text-align: right !important;
+  }
+  
+  .compliance-header-container h1,
+  .compliance-header-container p {
     text-align: right !important;
   }
 }
