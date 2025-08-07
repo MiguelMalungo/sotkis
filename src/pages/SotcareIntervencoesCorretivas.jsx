@@ -63,14 +63,13 @@ const SotcareIntervencoesCorretivas = () => {
           <h1 className="text-xl font-bold text-white">Intervenções corretivas</h1>
           <p className="text-gray-300 mt-1">Gestão de intervenções corretivas do sistema</p>
           <div className="flex items-center space-x-3">
-            <h2 className="text-xl font-semibold text-white">Nova intervenção corretiva</h2>
-                          <Button
-                onClick={() => setIsModalOpen(true)}
-                size="icon"
-                className="w-8 h-8 bg-sotkis-green hover:bg-sotkis-green/90 rounded-full"
-              >
-                <Plus className="h-4 w-4 text-white font-bold" />
-              </Button>
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold flex items-center px-4 py-2 rounded-lg"
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Nova intervenção corretiva
+            </Button>
           </div>
         </div>
         

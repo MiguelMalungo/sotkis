@@ -72,13 +72,12 @@ const SotcareGestaoProblemas = () => {
           <h1 className="text-xl font-bold text-white">Lista de problemas</h1>
           <p className="text-gray-300 mt-1">Gestão de problemas e incidentes do sistema</p>
           <div className="flex items-center space-x-3">
-            <h2 className="text-xl font-semibold text-white">Reportar Problema</h2>
             <Button
               onClick={() => setIsModalOpen(true)}
-              size="icon"
-              className="w-8 h-8 bg-sotkis-green hover:bg-sotkis-green/90 rounded-full"
+              className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold flex items-center px-4 py-2 rounded-lg"
             >
-              <Plus className="h-4 w-4 text-white font-bold" />
+              <Plus className="h-4 w-4 mr-2" />
+              Reportar Problema
             </Button>
           </div>
         </div>
