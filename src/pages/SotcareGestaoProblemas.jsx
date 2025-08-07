@@ -207,13 +207,6 @@ const SotcareGestaoProblemas = () => {
           <span className="text-sm text-white">registos</span>
         </div>
         
-        <Button
-          onClick={() => console.log('Report new problem')}
-          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Reportar Problema
-        </Button>
       </div>
 
       {/* Table */}
