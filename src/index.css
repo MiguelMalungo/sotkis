@@ -575,3 +575,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 8px !important;
   height: 8px !important;
 }
+
+/* Mobile title styling for compliance pages */
+@media (max-width: 768px) {
+  .mobile-title {
+    text-align: right !important;
+  }
+}

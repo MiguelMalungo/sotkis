@@ -93,8 +93,7 @@ const ComplianceClients = () => {
       {/* Header */}
       <div className="space-y-4">
         <div className="space-y-2">
-          <h1 className="text-xl font-bold text-white">Lista de não-conformidades</h1>
-          <p className="text-gray-300 mt-1">Gestão de não-conformidades</p>
+          <h1 className="text-xl font-bold text-white mobile-title">Lista de não-conformidades</h1>
         </div>
         
         {/* Export Icons */}
@@ -312,17 +311,6 @@ const ComplianceClients = () => {
             Seguinte
           </Button>
         </div>
-      </div>
-
-      {/* Create New Button */}
-      <div className="flex justify-center">
-        <Button 
-          className="bg-sotkis-green text-black hover:bg-sotkis-green/90 px-8 py-3"
-          onClick={() => setIsCreateFormExpanded(!isCreateFormExpanded)}
-        >
-          <Plus className="h-5 w-5 mr-2" />
-          Criar Nova Não-conformidade
-        </Button>
       </div>
     </div>
   );
