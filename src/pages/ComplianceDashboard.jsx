@@ -42,9 +42,9 @@ const ComplianceDashboard = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <h1 className="text-xl font-bold text-white mobile-title">Dashboard Compliance</h1>
+      <div className="flex justify-end sm:justify-between items-start">
+        <div className="space-y-2 text-right sm:text-left">
+          <h1 className="text-xl font-bold text-white">Dashboard Compliance</h1>
           <p className="text-gray-300 mt-1">Visão geral de não-conformidades</p>
         </div>
       </div>

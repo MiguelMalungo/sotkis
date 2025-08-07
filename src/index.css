@@ -576,63 +576,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   height: 8px !important;
 }
 
-/* Compliance header container styles */
-.compliance-header-container {
-  text-align: left;
-}
-
 /* Mobile title styling for compliance pages */
 @media (max-width: 768px) {
-  .mobile-title,
-  .text-xl.font-bold.text-white,
-  .flex.justify-end.sm\\:justify-between .text-xl.font-bold.text-white,
-  .compliance-dashboard-title {
+  .mobile-title {
     text-align: right !important;
-  }
-  
-  /* Override Tailwind responsive classes for compliance dashboard */
-  .flex.justify-end.sm\\:justify-between .space-y-2.text-right.sm\\:text-left {
-    text-align: right !important;
-  }
-  
-  .flex.justify-end.sm\\:justify-between .space-y-2.text-right.sm\\:text-left h1 {
-    text-align: right !important;
-  }
-  
-  /* New compliance header container */
-  .compliance-header-container {
-    text-align: right !important;
-  }
-  
-  .compliance-header-container h1,
-  .compliance-header-container p {
-    text-align: right !important;
-  }
-}
-
-/* Force right alignment for compliance dashboard title on mobile */
-@media (max-width: 768px) {
-  h1.force-right-mobile {
-    text-align: right !important;
-  }
-  
-  /* Even more specific selectors */
-  .flex.justify-end.sm\\:justify-between .space-y-2.compliance-header-container h1.force-right-mobile {
-    text-align: right !important;
-  }
-  
-  /* Target by class combination */
-  .text-xl.font-bold.text-white.compliance-dashboard-title.force-right-mobile {
-    text-align: right !important;
-  }
-  
-  /* Override flex container behavior */
-  .flex.justify-end.sm\\:justify-between {
-    justify-content: flex-end !important;
-  }
-  
-  .flex.justify-end.sm\\:justify-between .space-y-2.compliance-header-container {
-    text-align: right !important;
-    align-self: flex-end !important;
   }
 }
