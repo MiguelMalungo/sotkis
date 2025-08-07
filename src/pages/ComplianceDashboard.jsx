@@ -116,7 +116,7 @@ const ComplianceDashboard = () => {
       
       {/* Client Non-Conformity Management Section */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-orange-500">
+        <h3 className="text-lg font-semibold text-white">
           GESTÃO DE NÃO-CONFORMIDADES DE CLIENTES
         </h3>
         
@@ -181,7 +181,7 @@ const ComplianceDashboard = () => {
 
       {/* Supplier Non-Conformity Management Section */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-orange-500">
+        <h3 className="text-lg font-semibold text-white">
           GESTÃO DE NÃO-CONFORMIDADES DE FORNECEDORES
         </h3>
         
