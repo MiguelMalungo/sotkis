@@ -555,3 +555,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     text-align: right !important;
   }
 }
+
+.bg-sotkis-green:hover svg {
+  color: white !important;
+  stroke: white !important;
+  fill: white !important;
+}
