@@ -25,12 +25,11 @@ import logoThinImage from '../../../assets/Logo_thin.png';
 const menuItems = [
   {
     id: 'dashboard',
-    label: 'Dashboard',
+    label: 'Dashboards',
     icon: LayoutDashboard,
-    path: '/dashboard',
+    path: '/dashboard/operacao',
     children: [
-      { id: 'operacao', label: 'Operação', path: '/dashboard/operacao' },
-      { id: 'performance', label: 'Performance', path: '/dashboard/performance' }
+      { id: 'operacao', label: 'Operação e Performance', path: '/dashboard/operacao' }
     ]
   },
   {

@@ -19,7 +19,7 @@ const OperacaoDashboard = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
         <div className="text-left">
-          <h1 className="dashboard-main-title text-xl md:text-2xl font-bold text-white">Dashboard - Operação</h1>
+          <h1 className="dashboard-main-title text-xl md:text-2xl font-bold text-white">Dashboard - Operação e Performance</h1>
           <p className="text-gray-300 mt-1">Selecione uma área para visualizar</p>
         </div>
       </div>
