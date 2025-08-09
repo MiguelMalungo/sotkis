@@ -55,6 +55,7 @@ import ComplianceDashboard from './pages/ComplianceDashboard';
 import SotcareIntervencoesPreventivas from './pages/SotcareIntervencoesPreventivas';
 import SotcareIntervencoesCorretivas from './pages/SotcareIntervencoesCorretivas';
 import SotcareGestaoProblemas from './pages/SotcareGestaoProblemas';
+import StyleGuide from './pages/StyleGuide';
 
 // Landing page when no menu is selected
 const LandingPage = () => (
@@ -184,7 +185,8 @@ const App = () => {
         <Route path="/sotkis-playt/pricing" element={<PlaytPricing />} />
         <Route path="/sotkis-playt/points" element={<PlaytPoints />} />
 
-
+        {/* Style Guide */}
+        <Route path="/style-guide" element={<StyleGuide />} />
 
         {/* Default redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />
