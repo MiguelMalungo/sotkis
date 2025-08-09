@@ -433,7 +433,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
                   className="hover:text-white transition-colors duration-200"
                   title="Style Guide"
                 >
-                  sotkis.com
+                  Style Guide
                 </Link>
               </div>
             </div>
