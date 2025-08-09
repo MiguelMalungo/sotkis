@@ -428,7 +428,13 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
             <div className="flex items-center justify-between text-xs text-white/70">
               <div className="flex items-center space-x-2">
                 <Settings size={18} />
-                <span>sotkis.com</span>
+                <Link 
+                  to="/style-guide" 
+                  className="hover:text-white transition-colors duration-200"
+                  title="Style Guide"
+                >
+                  sotkis.com
+                </Link>
               </div>
             </div>
           )}
