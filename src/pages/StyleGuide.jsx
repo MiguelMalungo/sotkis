@@ -1367,7 +1367,7 @@ const StyleGuide = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-white">Background Classes</h3>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-2 text-sm text-gray-300">
                 <div><code className="bg-gray-800 px-1 rounded text-white">card-glass</code> - Glass morphism card</div>
                 <div><code className="bg-gray-800 px-1 rounded text-white">card-glass-dark</code> - Darker glass variant</div>
                 <div><code className="bg-gray-800 px-1 rounded text-white">bg-white/10</code> - Semi-transparent white</div>
@@ -1379,7 +1379,7 @@ const StyleGuide = () => {
             </div>
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-white">Text Classes</h3>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-2 text-sm text-gray-300">
                 <div><code className="bg-gray-800 px-1 rounded text-white">text-white</code> - Primary text</div>
                 <div><code className="bg-gray-800 px-1 rounded text-white">text-gray-300</code> - Secondary text</div>
                 <div><code className="bg-gray-800 px-1 rounded text-white">text-sotkis-green</code> - Brand text</div>
