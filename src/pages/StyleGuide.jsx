@@ -25,7 +25,7 @@ import {
   Eye, EyeOff, Image,
   
   // Dashboard Icons
-  Gauge, Gift, Route, Pin, Leaf, RefreshCw,
+  Gauge, Gift, Pin, Leaf, RefreshCw,
   
   // Design System Icons
   Type, Box as BoxIcon, Layout, Smartphone, Monitor
@@ -95,7 +95,7 @@ const StyleGuide = () => {
     dashboard: [
       { icon: Gauge, name: 'Gauge', usage: 'Performance metrics' },
       { icon: Gift, name: 'Gift', usage: 'Rewards' },
-      { icon: Route, name: 'Route', usage: 'Route management' },
+      { icon: MapIcon, name: 'Map', usage: 'Route management' },
       { icon: Pin, name: 'Pin', usage: 'Location tracking' },
       { icon: Leaf, name: 'Leaf', usage: 'Environmental' },
       { icon: RefreshCw, name: 'RefreshCw', usage: 'Refresh, reload' }
