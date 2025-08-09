@@ -226,6 +226,38 @@ const StyleGuide = () => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-8">
+          {/* How to Use Icons */}
+          <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+            <h3 className="text-lg font-semibold text-white mb-3">How to Use Icons</h3>
+            <div className="space-y-3 text-sm text-gray-300">
+              <div>
+                <p className="font-medium text-white mb-1">1. Import from lucide-react:</p>
+                <code className="bg-gray-800 px-2 py-1 rounded text-white text-xs block">
+                  import { '{' } IconName { '}' } from 'lucide-react';
+                </code>
+              </div>
+              <div>
+                <p className="font-medium text-white mb-1">2. Use in your component:</p>
+                <code className="bg-gray-800 px-2 py-1 rounded text-white text-xs block">
+                  &lt;IconName className="h-5 w-5 text-sotkis-green" /&gt;
+                </code>
+              </div>
+              <div>
+                <p className="font-medium text-white mb-1">3. Available icon library:</p>
+                <p className="text-gray-400">All icons are from <a href="https://lucide.dev" target="_blank" rel="noopener noreferrer" className="text-sotkis-green hover:underline">Lucide React</a> - check their website for the complete collection.</p>
+              </div>
+              <div>
+                <p className="font-medium text-white mb-1">4. Common sizing classes:</p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                  <code className="bg-gray-800 px-1 rounded text-white">h-4 w-4</code>
+                  <code className="bg-gray-800 px-1 rounded text-white">h-5 w-5</code>
+                  <code className="bg-gray-800 px-1 rounded text-white">h-6 w-6</code>
+                  <code className="bg-gray-800 px-1 rounded text-white">h-8 w-8</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {Object.entries(allIcons).map(([category, icons]) => (
             <div key={category}>
               <h3 className="text-lg font-semibold text-white mb-4 capitalize">{category} Icons</h3>
