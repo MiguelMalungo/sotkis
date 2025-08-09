@@ -19,7 +19,7 @@ import {
   
   // Business Icons
   User, Users, Shield, Lock, Key, Wifi, Radio, Package, Box, Recycle,
-  Wrench, Palette, Tag, Battery, MapPin, List, Map as MapIcon,
+  Wrench, Tag, Battery, MapPin, List, Map as MapIcon,
   
   // UI Elements
   Eye, EyeOff, Image,
@@ -28,7 +28,7 @@ import {
   Gauge, Gift, Route, Pin, Leaf, RefreshCw,
   
   // Design System Icons
-  Palette, Type, Box as BoxIcon, Layout, Smartphone, Monitor
+  Type, Box as BoxIcon, Layout, Smartphone, Monitor
 } from 'lucide-react';
 
 const StyleGuide = () => {
