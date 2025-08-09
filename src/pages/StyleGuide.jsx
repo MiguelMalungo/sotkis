@@ -1059,11 +1059,10 @@ const StyleGuide = () => {
         <h3 className="text-lg font-semibold text-white mb-4">Language Selector</h3>
         <div className="flex justify-center space-x-4 mb-3">
           {[
-            { code: 'pt', name: 'Portuguese', flag: '/sotkis/assets/pt.png', active: true },
-            { code: 'en', name: 'English', flag: '/sotkis/assets/en.png', active: false },
-            { code: 'es', name: 'Spanish', flag: '/sotkis/assets/sp.png', active: false },
-            { code: 'hr', name: 'Croatian', flag: '/sotkis/assets/croatia.png', active: false },
-            { code: 'el', name: 'Greek', flag: '/sotkis/assets/greece.png', active: false }
+            { code: 'pt', name: 'Portuguese', flag: '/sotkis/assets/pt-a617a285.png', active: true },
+            { code: 'en', name: 'English', flag: '/sotkis/assets/en-157e069c.png', active: false },
+            { code: 'es', name: 'Spanish', flag: '/sotkis/assets/sp-efa79eda.png', active: false },
+            { code: 'hr', name: 'Croatian', flag: '/sotkis/assets/croatia-7a87f092.png', active: false }
           ].map((lang) => (
             <div
               key={lang.code}
@@ -1097,14 +1096,14 @@ const StyleGuide = () => {
         <h3 className="text-lg font-semibold text-white mb-4">Brand Logo</h3>
         <div className="flex justify-center mb-4">
           <img 
-            src="/sotkis/assets/Logo.png" 
+            src="/sotkis/assets/Logo-376d4cfe.png" 
             alt="Sotkis Logo" 
             className="h-32 sm:h-48 md:h-64 object-contain"
           />
         </div>
         <div className="p-4 bg-white/5 rounded-lg">
           <div className="space-y-2 text-sm text-gray-300">
-            <p>• <strong>Logo file:</strong> <code className="bg-gray-800 px-1 rounded">/sotkis/assets/Logo.png</code></p>
+            <p>• <strong>Logo file:</strong> <code className="bg-gray-800 px-1 rounded">/sotkis/assets/Logo-376d4cfe.png</code></p>
             <p>• <strong>Responsive sizes:</strong> <code className="bg-gray-800 px-1 rounded">h-32 sm:h-48 md:h-64</code></p>
             <p>• <strong>Object fit:</strong> <code className="bg-gray-800 px-1 rounded">object-contain</code></p>
             <p>• <strong>Centered:</strong> <code className="bg-gray-800 px-1 rounded">flex justify-center</code></p>
@@ -1145,13 +1144,13 @@ const StyleGuide = () => {
             <h4 className="text-white font-medium mb-3">Full Logo (Expanded)</h4>
             <div className="flex justify-center mb-3">
               <img 
-                src="/sotkis/assets/Logo.png" 
+                src="/sotkis/assets/Logo-376d4cfe.png" 
                 alt="Sotkis Full Logo" 
                 className="h-16 object-contain"
               />
             </div>
             <div className="space-y-2 text-sm text-gray-300">
-              <p>• <strong>File:</strong> <code className="bg-gray-800 px-1 rounded">/sotkis/assets/Logo.png</code></p>
+              <p>• <strong>File:</strong> <code className="bg-gray-800 px-1 rounded">/sotkis/assets/Logo-376d4cfe.png</code></p>
               <p>• <strong>Size:</strong> <code className="bg-gray-800 px-1 rounded">h-16</code></p>
               <p>• <strong>Usage:</strong> When sidebar is expanded</p>
             </div>
@@ -1160,13 +1159,13 @@ const StyleGuide = () => {
             <h4 className="text-white font-medium mb-3">Thin Logo (Collapsed)</h4>
             <div className="flex justify-center mb-3">
               <img 
-                src="/sotkis/assets/Logo_thin.png" 
+                src="/sotkis/assets/Logo_thin-a5b7fc85.png" 
                 alt="Sotkis Thin Logo" 
                 className="h-16 object-contain"
               />
             </div>
             <div className="space-y-2 text-sm text-gray-300">
-              <p>• <strong>File:</strong> <code className="bg-gray-800 px-1 rounded">/sotkis/assets/Logo_thin.png</code></p>
+              <p>• <strong>File:</strong> <code className="bg-gray-800 px-1 rounded">/sotkis/assets/Logo_thin-a5b7fc85.png</code></p>
               <p>• <strong>Size:</strong> <code className="bg-gray-800 px-1 rounded">h-16</code></p>
               <p>• <strong>Usage:</strong> When sidebar is collapsed</p>
             </div>
