@@ -126,10 +126,7 @@ const menuItems = [
     children: [
       { id: 'alerts', label: 'Alertas', path: '/sotkis-level/alerts' },
       { id: 'pickups', label: 'Recolhas', path: '/sotkis-level/pickups' },
-      { id: 'containers', label: 'Contentores', path: '/sotkis-level/containers' },
-      { id: 'customers', label: 'Clientes', path: '/sotkis-level/customers' },
-      { id: 'locations', label: 'Localizações', path: '/sotkis-level/locations' },
-      { id: 'collections', label: 'Coleções', path: '/sotkis-level/collections' }
+      { id: 'locations-containers', label: 'Locais & Contentores', path: '/sotkis-level/locations-containers' }
     ]
   },
   {
