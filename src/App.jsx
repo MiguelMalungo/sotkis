@@ -49,6 +49,9 @@ import SotkisAccessBatteries from './pages/SotkisAccessBatteries';
 import SotkisRoutes from './pages/SotkisRoutes';
 import SotkisLevelCustomers from './pages/SotkisLevelCustomers';
 import SotkisLevelCollections from './pages/SotkisLevelCollections';
+import SotkisLevelAlerts from './pages/SotkisLevelAlerts';
+import SotkisLevelPickups from './pages/SotkisLevelPickups';
+import SotkisLevelLocationsContainers from './pages/SotkisLevelLocationsContainers';
 import ComplianceSuppliers from './pages/ComplianceSuppliers';
 import ComplianceClients from './pages/ComplianceClients';
 import ComplianceDashboard from './pages/ComplianceDashboard';
@@ -160,11 +163,9 @@ const App = () => {
 
         {/* Sotkis Level Routes */}
         <Route path="/sotkis-level" element={<Navigate to="/sotkis-level/alerts" replace />} />
-        <Route path="/sotkis-level/alerts" element={<PlaceholderPage title="Alertas" description="Gestão de alertas" />} />
-        <Route path="/sotkis-level/pickups" element={<PlaceholderPage title="Recolhas" description="Gestão de recolhas" />} />
-        <Route path="/sotkis-level/containers" element={<PlaceholderPage title="Contentores" description="Gestão de contentores" />} />
-        <Route path="/sotkis-level/customers" element={<SotkisLevelCustomers />} />
-        <Route path="/sotkis-level/collections" element={<SotkisLevelCollections />} />
+        <Route path="/sotkis-level/alerts" element={<SotkisLevelAlerts />} />
+        <Route path="/sotkis-level/pickups" element={<SotkisLevelPickups />} />
+        <Route path="/sotkis-level/locations-containers" element={<SotkisLevelLocationsContainers />} />
 
         {/* Compliance Routes */}
         <Route path="/compliance" element={<Navigate to="/compliance/clients" replace />} />
