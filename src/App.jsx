@@ -47,8 +47,7 @@ import SotkisAccessRfids from './pages/SotkisAccessRfids';
 import SotkisAccessReports from './pages/SotkisAccessReports';
 import SotkisAccessBatteries from './pages/SotkisAccessBatteries';
 import SotkisRoutes from './pages/SotkisRoutes';
-import SotkisLevelCustomers from './pages/SotkisLevelCustomers';
-import SotkisLevelCollections from './pages/SotkisLevelCollections';
+// Removed SotkisLevelCustomers and SotkisLevelCollections - replaced with new pages
 import SotkisLevelAlerts from './pages/SotkisLevelAlerts';
 import SotkisLevelPickups from './pages/SotkisLevelPickups';
 import SotkisLevelLocationsContainers from './pages/SotkisLevelLocationsContainers';
