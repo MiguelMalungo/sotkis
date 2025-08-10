@@ -222,8 +222,8 @@ const ComplianceClients = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="cursor-pointer text-white">
-                  Número
+                <TableHead className="cursor-pointer text-white w-20">
+                  ID
                   <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
@@ -242,7 +242,7 @@ const ComplianceClients = () => {
                   Descrição
                   <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
-                <TableHead className="cursor-pointer text-white">
+                <TableHead className="cursor-pointer text-white w-32">
                   Tipo
                   <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
@@ -256,7 +256,7 @@ const ComplianceClients = () => {
             <TableBody>
               {mockNonConformities.map((item) => (
                 <TableRow key={item.id}>
-                  <TableCell className="text-white font-medium">{item.id}</TableCell>
+                  <TableCell className="text-white font-medium w-20">{item.id}</TableCell>
                   <TableCell className="text-white">{item.client}</TableCell>
                   <TableCell className="text-white">{item.sigla}</TableCell>
                   <TableCell className="text-white max-w-xs truncate">{item.subject}</TableCell>
@@ -265,7 +265,7 @@ const ComplianceClients = () => {
                       {item.description}
                     </div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="w-32">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(item.type)}`}>
                       {item.type}
                     </span>

@@ -214,8 +214,8 @@ const SotcareGestaoProblemas = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="cursor-pointer text-white">
-                  Número
+                <TableHead className="cursor-pointer text-white w-20">
+                  ID
                   <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
@@ -230,11 +230,11 @@ const SotcareGestaoProblemas = () => {
                   Departamento
                   <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
-                <TableHead className="cursor-pointer text-white">
+                <TableHead className="cursor-pointer text-white w-32">
                   Criado por
                   <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
-                <TableHead className="cursor-pointer text-white">
+                <TableHead className="cursor-pointer text-white w-32">
                   Atualizado por
                   <ArrowUpDown className="ml-1 inline h-4 w-4" />
                 </TableHead>
@@ -252,12 +252,12 @@ const SotcareGestaoProblemas = () => {
             <TableBody>
               {mockProblemas.map((problema) => (
                 <TableRow key={problema.id}>
-                  <TableCell className="text-white">{problema.id}</TableCell>
+                  <TableCell className="text-white w-20">{problema.id}</TableCell>
                   <TableCell className="text-white">{problema.assunto}</TableCell>
                   <TableCell className="text-white">{problema.localizacao}</TableCell>
                   <TableCell className="text-white">{problema.departamento}</TableCell>
-                  <TableCell className="text-white">{problema.criadoPor}</TableCell>
-                  <TableCell className="text-white">{problema.atualizadoPor}</TableCell>
+                  <TableCell className="text-white w-32">{problema.criadoPor}</TableCell>
+                  <TableCell className="text-white w-32">{problema.atualizadoPor}</TableCell>
                   <TableCell className="text-white">{problema.responsavel}</TableCell>
                   <TableCell>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
