@@ -3,11 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
-import { Calendar, BarChart3, TrendingUp, AlertTriangle, CheckCircle, Clock, XCircle } from 'lucide-react';
+import { DatePicker } from '../components/ui/date-picker';
+import { BarChart3, TrendingUp, AlertTriangle, CheckCircle, Clock, XCircle } from 'lucide-react';
 
 const ComplianceDashboard = () => {
-  const [startDate, setStartDate] = React.useState('2025-01-01');
-  const [endDate, setEndDate] = React.useState('2025-07-30');
+  const [startDate, setStartDate] = React.useState(new Date('2025-01-01'));
+  const [endDate, setEndDate] = React.useState(new Date('2025-07-30'));
 
   // Mock statistics data
   const clientStats = {
@@ -31,12 +32,49 @@ const ComplianceDashboard = () => {
   };
 
   const handleDateUpdate = () => {
-    console.log('Updating dashboard with date range:', startDate, 'to', endDate);
+    console.log('Updating dashboard with date range:', startDate?.toLocaleDateString('pt-BR'), 'to', endDate?.toLocaleDateString('pt-BR'));
   };
 
   const handleQuickDate = (range) => {
     console.log('Quick date selected:', range);
-    // Here you would implement the logic to set the appropriate date range
+    const today = new Date();
+    
+    switch (range) {
+      case 'Ontem':
+        setStartDate(new Date(today.getTime() - 24 * 60 * 60 * 1000));
+        setEndDate(new Date(today.getTime() - 24 * 60 * 60 * 1000));
+        break;
+      case 'Hoje':
+        setStartDate(today);
+        setEndDate(today);
+        break;
+      case '1 semana':
+        setStartDate(new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000));
+        setEndDate(today);
+        break;
+      case '1 mês':
+        setStartDate(new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()));
+        setEndDate(today);
+        break;
+      case '3 meses':
+        setStartDate(new Date(today.getFullYear(), today.getMonth() - 3, today.getDate()));
+        setEndDate(today);
+        break;
+      case '6 meses':
+        setStartDate(new Date(today.getFullYear(), today.getMonth() - 6, today.getDate()));
+        setEndDate(today);
+        break;
+      case '1 ano':
+        setStartDate(new Date(today.getFullYear() - 1, today.getMonth(), today.getDate()));
+        setEndDate(today);
+        break;
+      case 'Inicio do ano até hoje':
+        setStartDate(new Date(today.getFullYear(), 0, 1));
+        setEndDate(today);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -59,12 +97,11 @@ const ComplianceDashboard = () => {
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Início do Período</label>
-                <Input
-                  type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
-                  placeholder="dd/mm/yyyy"
+                <DatePicker
+                  date={startDate}
+                  onDateChange={setStartDate}
+                  placeholder="Selecione data inicial"
+                  className="bg-white/5 border-white/10 text-white hover:bg-white/10"
                 />
               </div>
             </CardContent>
@@ -74,12 +111,11 @@ const ComplianceDashboard = () => {
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Fim do Período</label>
-                <Input
-                  type="date"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
-                  placeholder="dd/mm/yyyy"
+                <DatePicker
+                  date={endDate}
+                  onDateChange={setEndDate}
+                  placeholder="Selecione data final"
+                  className="bg-white/5 border-white/10 text-white hover:bg-white/10"
                 />
               </div>
             </CardContent>
