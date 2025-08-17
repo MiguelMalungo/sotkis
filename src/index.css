@@ -652,6 +652,76 @@ input[type="date"]::-webkit-calendar-picker-indicator::-webkit-calendar-picker-d
   border: 1px solid #9EC043 !important;
 }
 
+/* Calendar popup z-index and background fixes */
+.rdp {
+  background-color: transparent !important;
+  color: white !important;
+  z-index: 10000 !important;
+}
+
+.rdp-months {
+  background-color: transparent !important;
+}
+
+.rdp-month {
+  background-color: transparent !important;
+}
+
+.rdp-caption {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.rdp-nav {
+  background-color: transparent !important;
+}
+
+.rdp-table {
+  background-color: transparent !important;
+}
+
+.rdp-head_row {
+  background-color: transparent !important;
+}
+
+.rdp-head_cell {
+  background-color: transparent !important;
+  color: #9EC043 !important;
+  font-weight: 600 !important;
+}
+
+.rdp-row {
+  background-color: transparent !important;
+}
+
+.rdp-cell {
+  background-color: transparent !important;
+}
+
+.rdp-button {
+  background-color: transparent !important;
+  color: white !important;
+  border: none !important;
+}
+
+.rdp-button:hover:not(.rdp-button_disabled):not(.rdp-day_selected) {
+  background-color: #8ab03a !important;
+  color: white !important;
+  border-radius: 6px !important;
+}
+
+.rdp-button:focus {
+  background-color: #9EC043 !important;
+  color: white !important;
+  border-radius: 6px !important;
+  outline: none !important;
+}
+
+/* Ensure calendar appears above everything */
+[data-radix-popper-content-wrapper] {
+  z-index: 10000 !important;
+}
+
 @media (max-width: 768px) {
   .dashboard-card-title {
     text-align: right !important;
