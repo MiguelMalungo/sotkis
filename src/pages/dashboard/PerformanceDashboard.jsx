@@ -59,7 +59,7 @@ const PerformanceDashboard = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
         <div className="text-left">
-          <h1 className="text-xl md:text-2xl font-bold text-white uppercase-title">PERFORMANCE</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Performance</h1>
           <p className="text-gray-300 mt-1">Análise de performance e métricas do sistema</p>
           {/* Back Button - Mobile: under title, Desktop: in filter section */}
           <div className="md:hidden mt-4">

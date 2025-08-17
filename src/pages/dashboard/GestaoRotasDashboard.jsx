@@ -177,7 +177,7 @@ const GestaoRotasDashboard = () => {
       {/* QUILÓMETROS PERCORRIDOS Chart */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white text-sm sm:text-base">QUILÓMETROS PERCORRIDOS</CardTitle>
+          <CardTitle className="text-white">QUILÓMETROS PERCORRIDOS</CardTitle>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={360} className="sm:h-[400px]">
@@ -195,7 +195,7 @@ const GestaoRotasDashboard = () => {
       {/* CONTENTORES RECOLHIDOS Chart */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white text-sm sm:text-base">CONTENTORES RECOLHIDOS</CardTitle>
+          <CardTitle className="text-white">CONTENTORES RECOLHIDOS</CardTitle>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={360} className="sm:h-[400px]">
@@ -213,7 +213,7 @@ const GestaoRotasDashboard = () => {
       {/* PLANO EXECUTADO Chart */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white text-sm sm:text-base">PLANO EXECUTADO</CardTitle>
+          <CardTitle className="text-white">PLANO EXECUTADO</CardTitle>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={360} className="sm:h-[400px]">
