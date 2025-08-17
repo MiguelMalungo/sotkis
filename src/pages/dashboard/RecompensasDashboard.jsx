@@ -125,7 +125,7 @@ const RecompensasDashboard = () => {
         {/* RECOMPENSAS ATRIBUIDAS Chart */}
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardHeader>
-            <CardTitle className="text-white">RECOMPENSAS ATRIBUIDAS</CardTitle>
+            <CardTitle className="text-white">Recompensas Atribuídas</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -152,7 +152,7 @@ const RecompensasDashboard = () => {
         {/* RECOMPENSAS CONVERTIDAS Chart */}
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardHeader>
-            <CardTitle className="text-white">RECOMPENSAS CONVERTIDAS</CardTitle>
+            <CardTitle className="text-white">Recompensas Convertidas</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -180,7 +180,7 @@ const RecompensasDashboard = () => {
       {/* Bar Chart - RECOMPENSAS ATRIBUIDAS POR TIPO DE RESÍDUO */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white">RECOMPENSAS ATRIBUIDAS POR TIPO DE RESÍDUO</CardTitle>
+          <CardTitle className="text-white">Recompensas Atribuídas por Tipo de Resíduo</CardTitle>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={400}>
@@ -207,7 +207,7 @@ const RecompensasDashboard = () => {
       {/* Area Chart - RECOMPENSAS ATRIBUIDAS POR TIPO DE EMBALAGEM DRS */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white">RECOMPENSAS ATRIBUIDAS POR TIPO DE EMBALAGEM DRS</CardTitle>
+          <CardTitle className="text-white">Recompensas Atribuídas por Tipo de Embalagem DRS</CardTitle>
           <p className="text-gray-300 text-sm">Evolution by package type (weekly)</p>
         </CardHeader>
         <CardContent>
@@ -237,7 +237,7 @@ const RecompensasDashboard = () => {
       {/* Stacked Bar Chart - DEPOSIÇÕES CORRETAS VS INCORRETAS */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white">DEPOSIÇÕES CORRETAS VS INCORRETAS</CardTitle>
+          <CardTitle className="text-white">Deposições Corretas vs Incorretas</CardTitle>
           <p className="text-gray-300 text-sm">Correct vs wrong packaging evolution (weekly)</p>
         </CardHeader>
         <CardContent>
@@ -266,7 +266,7 @@ const RecompensasDashboard = () => {
       {/* TOP DE RECOMPENSAS CONVERTIDAS */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white">TOP DE RECOMPENSAS CONVERTIDAS</CardTitle>
+          <CardTitle className="text-white">Top de Recompensas Convertidas</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
