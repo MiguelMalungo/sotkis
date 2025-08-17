@@ -548,6 +548,52 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   stroke: #9EC043 !important;
 }
 
+/* Calendar popup selected day styling - Change from blue to green */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  /* Override browser default selected day colors */
+  --webkit-calendar-picker-selected-bg: #9EC043 !important;
+  --webkit-calendar-picker-selected-color: white !important;
+}
+
+/* Additional calendar popup styling for selected dates */
+input[type="date"]::-webkit-calendar-picker-indicator::-webkit-calendar-picker {
+  /* This targets the calendar popup itself */
+  background-color: #1a1a1a !important;
+}
+
+/* Try to override the selected day background in the calendar popup */
+input[type="date"]::-webkit-calendar-picker-indicator::-webkit-calendar-picker-day:selected {
+  background-color: #9EC043 !important;
+  color: white !important;
+}
+
+/* Alternative approach using CSS custom properties */
+input[type="date"] {
+  --webkit-calendar-picker-selected-bg: #9EC043 !important;
+  --webkit-calendar-picker-selected-color: white !important;
+}
+
+/* More aggressive calendar popup styling for selected dates */
+input[type="date"]::-webkit-calendar-picker-indicator::-webkit-calendar-picker-day:selected,
+input[type="date"]::-webkit-calendar-picker-indicator::-webkit-calendar-picker-day:checked {
+  background-color: #9EC043 !important;
+  color: white !important;
+  border: 2px solid #8ab03a !important;
+}
+
+/* Hover state for calendar days */
+input[type="date"]::-webkit-calendar-picker-indicator::-webkit-calendar-picker-day:hover {
+  background-color: #8ab03a !important;
+  color: white !important;
+}
+
+/* Today's date styling */
+input[type="date"]::-webkit-calendar-picker-indicator::-webkit-calendar-picker-day:today {
+  background-color: #4a7c59 !important;
+  color: white !important;
+  border: 1px solid #9EC043 !important;
+}
+
 @media (max-width: 768px) {
   .dashboard-card-title {
     text-align: right !important;
