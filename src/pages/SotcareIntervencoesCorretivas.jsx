@@ -95,7 +95,7 @@ const SotcareIntervencoesCorretivas = () => {
         {/* Card 1: Number of interventions */}
         <Card className="card-glass p-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-white">N° de intervenções a visualizar</label>
+            <label className="text-sm font-medium text-white">N° de intervenções</label>
             <Select value={filters.numeroIntervencoes} onValueChange={(value) => setFilters({...filters, numeroIntervencoes: value})}>
               <SelectTrigger className="bg-white text-black">
                 <SelectValue />
