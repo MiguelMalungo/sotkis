@@ -49,68 +49,80 @@ const ComplianceDashboard = () => {
         </div>
       </div>
 
-      {/* General Dashboard Filter */}
-      <Card className="card-glass">
-        <CardContent className="p-6">
-          <div className="space-y-4">
-            <h2 className="text-lg font-semibold text-sotkis-green">Filtro geral do dashboard</h2>
-            
-            {/* Date Range Selection */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <div className="flex items-center space-x-2">
-                <label className="text-sm font-medium text-white">Inicio:</label>
-                <div className="relative">
-                  <Input
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    className="bg-white text-black w-40"
-                  />
-                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                </div>
+      {/* Filters */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-white">Filtros</h3>
+        
+        {/* Date filters in a grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <Card className="card-glass">
+            <CardContent className="p-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white">Início do Período</label>
+                <Input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  placeholder="dd/mm/yyyy"
+                />
               </div>
-              
-              <div className="flex items-center space-x-2">
-                <label className="text-sm font-medium text-white">Fim:</label>
-                <div className="relative">
-                  <Input
-                    type="date"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                    className="bg-white text-black w-40"
-                  />
-                  <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="card-glass">
+            <CardContent className="p-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white">Fim do Período</label>
+                <Input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  placeholder="dd/mm/yyyy"
+                />
               </div>
-              
-              <Button 
-                onClick={handleDateUpdate}
-                className="bg-sotkis-green text-black hover:bg-sotkis-green/90"
-              >
-                Atualizar
-              </Button>
-            </div>
-
-            {/* Quick Date Range Buttons */}
-            <div className="flex flex-wrap gap-2">
-              {[
-                'Ontem', 'Hoje', '1 semana', '1 mês', 
-                '3 meses', '6 meses', '1 ano', 'Inicio do ano até hoje'
-              ].map((range) => (
-                <Button
-                  key={range}
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handleQuickDate(range)}
-                  className="bg-gray-200 text-gray-700 hover:bg-gray-300 border-gray-300 text-xs sm:text-sm"
+            </CardContent>
+          </Card>
+          
+          <Card className="card-glass">
+            <CardContent className="p-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white">Atualizar</label>
+                <Button 
+                  onClick={handleDateUpdate}
+                  className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-full"
                 >
-                  {range}
+                  Atualizar
                 </Button>
-              ))}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="card-glass">
+            <CardContent className="p-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white">Períodos Rápidos</label>
+                <Select onValueChange={(value) => handleQuickDate(value)}>
+                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                    <SelectValue placeholder="Selecione período" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Ontem">Ontem</SelectItem>
+                    <SelectItem value="Hoje">Hoje</SelectItem>
+                    <SelectItem value="1 semana">1 semana</SelectItem>
+                    <SelectItem value="1 mês">1 mês</SelectItem>
+                    <SelectItem value="3 meses">3 meses</SelectItem>
+                    <SelectItem value="6 meses">6 meses</SelectItem>
+                    <SelectItem value="1 ano">1 ano</SelectItem>
+                    <SelectItem value="Inicio do ano até hoje">Inicio do ano até hoje</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
 
       {/* Statistics Cards */}
       
