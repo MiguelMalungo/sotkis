@@ -190,7 +190,7 @@ const DeposicoesDashboard = () => {
         {/* Recycling Pie Chart */}
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardHeader>
-            <CardTitle className="text-white">DEPOSIÇÕES - RECICLAGEM</CardTitle>
+            <CardTitle className="text-white text-sm">DEPOSIÇÕES - RECICLAGEM</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={120}>
@@ -215,7 +215,7 @@ const DeposicoesDashboard = () => {
         {/* Packing Types Donut Chart */}
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardHeader>
-            <CardTitle className="text-white">Packing Types</CardTitle>
+            <CardTitle className="text-white text-sm">Packing Types</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={120}>
@@ -248,7 +248,7 @@ const DeposicoesDashboard = () => {
         {/* Connection Type Pie Chart */}
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardHeader>
-            <CardTitle className="text-white">Connection Type</CardTitle>
+            <CardTitle className="text-white text-sm">Connection Type</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={120}>
@@ -273,7 +273,7 @@ const DeposicoesDashboard = () => {
         {/* Deposit Method Pie Chart */}
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardHeader>
-            <CardTitle className="text-white">DEPOSIÇÕES - MÉTODO</CardTitle>
+            <CardTitle className="text-white text-sm">DEPOSIÇÕES - MÉTODO</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={120}>
@@ -299,7 +299,7 @@ const DeposicoesDashboard = () => {
       {/* Top Containers - Full Width */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white">TOP CONTENTORES COM MAIS DEPÓSITOS</CardTitle>
+          <CardTitle className="text-white text-sm">TOP CONTENTORES COM MAIS DEPÓSITOS</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
@@ -480,7 +480,7 @@ const DeposicoesDashboard = () => {
           {/* Island List */}
           <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardHeader>
-              <CardTitle className="text-white">Ilhas</CardTitle>
+              <CardTitle className="text-white text-sm">Ilhas</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
