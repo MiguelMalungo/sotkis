@@ -16,7 +16,10 @@ const GestaoRotasDashboard = () => {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-black/90 backdrop-blur-lg border border-white/20 rounded-lg p-3 text-white">
+        <div 
+          className="bg-black/90 backdrop-blur-lg border border-white/20 rounded-lg p-3 text-white"
+          style={{ zIndex: 1 }}
+        >
           <p className="font-medium">{label}</p>
           {payload.map((entry, index) => (
             <p key={index} style={{ color: entry.color }}>

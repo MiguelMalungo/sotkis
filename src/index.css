@@ -287,23 +287,21 @@ svg {
   flex-shrink: 1 !important;
 }
 
-/* Force charts to respect their explicit width and height props */
-.recharts-wrapper svg {
-  width: inherit !important;
-  height: inherit !important;
-  min-width: inherit !important;
-  min-height: inherit !important;
-  max-width: none !important;
-  max-height: none !important;
+/* Fix tooltip z-index issue - ensure tooltips appear behind bars */
+.recharts-tooltip-wrapper {
+  z-index: 1 !important;
 }
 
-/* Specific fix for User icons in utilizadores page */
-.w-10.h-10 .w-5.h-5,
-.w-10.h-10 .w-6.h-6 {
-  width: 20px !important;
-  height: 20px !important;
-  aspect-ratio: 1 !important;
-  flex-shrink: 0 !important;
+.recharts-default-tooltip {
+  z-index: 1 !important;
+}
+
+/* Ensure chart bars and elements appear above tooltips */
+.recharts-bar-rectangle,
+.recharts-bar,
+.recharts-line,
+.recharts-area {
+  z-index: 10 !important;
 }
 
 /* Force all SVG elements to maintain square proportions */
@@ -581,4 +579,31 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .mobile-title {
     text-align: right !important;
   }
+}
+
+/* Fix tooltip z-index issue - ensure tooltips appear behind bars */
+.recharts-tooltip-wrapper {
+  z-index: 1 !important;
+}
+
+.recharts-default-tooltip {
+  z-index: 1 !important;
+}
+
+/* Ensure chart bars and elements appear above tooltips */
+.recharts-bar-rectangle,
+.recharts-bar,
+.recharts-line,
+.recharts-area {
+  z-index: 10 !important;
+}
+
+/* Force charts to respect their explicit width and height props */
+.recharts-wrapper svg {
+  width: inherit !important;
+  height: inherit !important;
+  min-width: inherit !important;
+  min-height: inherit !important;
+  max-width: none !important;
+  max-height: none !important;
 }
