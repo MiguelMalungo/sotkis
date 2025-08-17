@@ -193,9 +193,9 @@ const RecompensasDashboard = () => {
               <XAxis dataKey="month" stroke="white" />
               <YAxis stroke="white" domain={[0, 90]} />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="Indiferenciado" fill="#9EC043" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Papel/Cartão" fill="#4FA9F7" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Plástico/Embalagens" fill="#FFD700" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Indiferenciado" fill="#9EC043" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
+              <Bar dataKey="Papel/Cartão" fill="#4FA9F7" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
+              <Bar dataKey="Plástico/Embalagens" fill="#FFD700" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
@@ -253,8 +253,8 @@ const RecompensasDashboard = () => {
               <XAxis dataKey="month" stroke="white" />
               <YAxis stroke="white" domain={[0, 120]} />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="Correct" stackId="1" fill="#22C55E" fillOpacity={0.6} radius={[0, 0, 8, 8]} />
-              <Bar dataKey="Wrong" stackId="1" fill="#DC2626" fillOpacity={0.6} radius={[8, 8, 0, 0]} />
+              <Bar dataKey="Correct" stackId="1" fill="#22C55E" fillOpacity={0.6} radius={[0, 0, 8, 8]} zIndex={10} />
+              <Bar dataKey="Wrong" stackId="1" fill="#DC2626" fillOpacity={0.6} radius={[8, 8, 0, 0]} zIndex={10} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>

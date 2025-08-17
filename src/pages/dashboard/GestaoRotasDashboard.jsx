@@ -183,7 +183,7 @@ const GestaoRotasDashboard = () => {
               <XAxis dataKey="route" stroke="white" fontSize={12} />
               <YAxis stroke="white" domain={[0, 140]} fontSize={12} />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="km" fill="#9EC043" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="km" fill="#9EC043" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
@@ -201,7 +201,7 @@ const GestaoRotasDashboard = () => {
               <XAxis dataKey="month" stroke="white" fontSize={12} />
               <YAxis stroke="white" domain={[0, 100]} fontSize={12} />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="containers" fill="#038703" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="containers" fill="#038703" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
@@ -219,7 +219,7 @@ const GestaoRotasDashboard = () => {
               <XAxis dataKey="month" stroke="white" fontSize={12} />
               <YAxis stroke="white" domain={[0, 450]} fontSize={12} />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="value" fill="#4CB151" fillOpacity={0.5} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="value" fill="#4CB151" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
