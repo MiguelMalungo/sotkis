@@ -8,6 +8,7 @@ import { Calendar, Download, RefreshCw, Search, MapPin, Users, AlertTriangle, Ar
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area
 } from 'recharts';
+import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const DeposicoesDashboard = () => {
   const navigate = useNavigate();
@@ -99,53 +100,45 @@ const DeposicoesDashboard = () => {
     return null;
   };
 
+  const submenuLinks = [
+    { label: 'Deposições', to: '/dashboard/deposicoes' },
+    { label: 'Nível de Enchimento', to: '/dashboard/nivel-enchimento' },
+    { label: 'Gestão de Manutenções', to: '/dashboard/gestao-manutencoes' },
+    { label: 'Recompensas', to: '/dashboard/recompensas' },
+    { label: 'Gestão de Rotas', to: '/dashboard/gestao-rotas' },
+    { label: 'Performance', to: '/dashboard/performance' },
+  ];
+
   return (
-    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-        <div className="text-left">
-          <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Deposições</h1>
-          <p className="text-gray-300 mt-1">Visão geral das deposições do sistema</p>
-          {/* Back Button - Mobile: under title, Desktop: in filter section */}
-          <div className="md:hidden mt-4">
-            <Button 
-              onClick={() => navigate('/dashboard/operacao')}
-              className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar
-            </Button>
-          </div>
-        </div>
-        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-          <Button variant="outline" className="text-white border-white/20">
-            <Download className="w-4 h-4 mr-2" />
-            Exportar
-          </Button>
-          <Button className="bg-sotkis-green hover:bg-sotkis-green/90">
-            <RefreshCw className="w-4 h-4 mr-2" />
-            Atualizar
-          </Button>
-        </div>
+    <div className="p-6 space-y-6">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Dashboard de Deposições</h1>
+        <p className="text-gray-300 mt-1">Monitorização de deposições do sistema</p>
       </div>
 
-      {/* Back Button and Date Filter */}
+      {/* Voltar Button - Mobile Only */}
+      <div className="flex justify-start md:hidden">
+        <Button 
+          onClick={() => window.history.back()}
+          className="bg-sotkis-green hover:bg-sotkis-green/90 text-white font-semibold"
+        >
+          Voltar
+        </Button>
+      </div>
+
+      {/* SubmenuBar - Desktop Only */}
+      <div className="hidden md:block">
+        <SubmenuBar items={submenuLinks} />
+      </div>
+
+      {/* Date Filter */}
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-4 lg:space-y-0">
         <div className="flex items-center space-x-4">
-          {/* Back Button - Desktop only */}
-          <div className="hidden md:block">
-            <Button 
-              onClick={() => navigate('/dashboard/operacao')}
-              className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar
-            </Button>
-          </div>
           <div className="text-white text-sm font-medium">Filtro geral do dashboard</div>
         </div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
             <span className="text-white text-sm">Início</span>
             <Input
               type="date"
@@ -153,9 +146,8 @@ const DeposicoesDashboard = () => {
               onChange={(e) => setStartDate(e.target.value)}
               className="w-32 bg-white/10 border-white/20 text-white/90"
             />
-            <Calendar className="w-4 h-4 text-gray-400" />
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
             <span className="text-white text-sm">Fim</span>
             <Input
               type="date"
@@ -163,7 +155,6 @@ const DeposicoesDashboard = () => {
               onChange={(e) => setEndDate(e.target.value)}
               className="w-32 bg-white/10 border-white/20 text-white/90"
             />
-            <Calendar className="w-4 h-4 text-gray-400" />
           </div>
           <Button className="bg-sotkis-green text-white">
             ATUALIZAR
@@ -325,9 +316,7 @@ const DeposicoesDashboard = () => {
                 <p className="text-xl font-bold text-white">3279</p>
               </div>
               <div className="p-3 bg-white/10 rounded-lg">
-                <div className="w-6 h-6 bg-sotkis-green rounded-full flex items-center justify-center">
-                  <div className="w-3 h-3 bg-white rounded-full"></div>
-                </div>
+                <Download className="h-6 w-6 text-blue-400" />
               </div>
             </div>
           </CardContent>
@@ -357,7 +346,7 @@ const DeposicoesDashboard = () => {
                 <p className="text-xl font-bold text-white">91000</p>
               </div>
               <div className="p-3 bg-white/10 rounded-lg">
-                <Users className="h-6 w-6 text-sotkis-green" />
+                <Users className="h-6 w-6 text-white" />
               </div>
             </div>
           </CardContent>

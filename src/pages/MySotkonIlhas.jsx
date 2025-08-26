@@ -5,6 +5,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Search, Edit, Trash2, Info, FileText, Download, Printer, X } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const MySotkonIlhas = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -13,6 +14,13 @@ const MySotkonIlhas = () => {
     descricaoGeografica: '',
     departamento: 'Faro-PT 999990004'
   });
+
+  const submenuLinks = [
+    { label: 'Manuais', to: '/my-sotkon/manuais' },
+    { label: 'Departamentos', to: '/my-sotkon/departamentos' },
+    { label: 'Ilhas', to: '/my-sotkon/ilhas' },
+    { label: 'Contentores', to: '/my-sotkon/contentores' },
+  ];
 
   // Mock data for islands
   const mockIlhas = [
@@ -58,11 +66,14 @@ const MySotkonIlhas = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Page Header */}
-      <div className="page-header text-left">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
         <h1 className="text-xl font-bold text-white">Ilhas</h1>
         <p className="text-gray-300 mt-1">Gestão de ilhas do My Sotkon</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -72,7 +83,7 @@ const MySotkonIlhas = () => {
             placeholder="Pesquisar ilhas..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-white/5 border-white/10 text-white placeholder-gray-400"
+            className="pl-10 bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
           />
         </div>
         <Button
@@ -85,43 +96,58 @@ const MySotkonIlhas = () => {
       </div>
 
       {/* Filters */}
-      <Card className="card-glass">
-        <CardHeader>
-          <CardTitle className="text-white">Filtros</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-white">Descrição geográfica</label>
-              <Input
-                placeholder="Digite a descrição geográfica"
-                value={filters.descricaoGeografica}
-                onChange={(e) => setFilters({...filters, descricaoGeografica: e.target.value})}
-                className="bg-white/5 border-white/10 text-white placeholder-gray-400"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-white">Departamento</label>
-              <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                <SelectTrigger className="bg-white/5 border-white text-white">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Faro-PT 999990004">Faro-PT 999990004</SelectItem>
-                  <SelectItem value="Lisboa-PT 999990001">Lisboa-PT 999990001</SelectItem>
-                  <SelectItem value="Porto-PT 999990002">Porto-PT 999990002</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Button onClick={handleSearch} className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
-              Pesquisar
+      <div className="space-y-4">
+        <div className="text-left mb-3">
+          <h2 className="text-white text-lg font-semibold">Filtros</h2>
+        </div>
+        
+        <div className="flex flex-col lg:flex-row gap-6 items-start w-full filter-cards-container">
+          {/* Descrição geográfica */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Descrição geográfica</label>
+                <Input
+                  placeholder="Digite a descrição geográfica"
+                  value={filters.descricaoGeografica}
+                  onChange={(e) => setFilters({...filters, descricaoGeografica: e.target.value})}
+                  className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
+                />
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Departamento */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Departamento</label>
+                <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Faro-PT 999990004">Faro-PT 999990004</SelectItem>
+                    <SelectItem value="Lisboa-PT 999990001">Lisboa-PT 999990001</SelectItem>
+                    <SelectItem value="Porto-PT 999990002">Porto-PT 999990002</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Pesquisar Button */}
+          <div className="flex items-start pt-6">
+            <Button onClick={handleSearch} className="bg-sotkis-green text-black hover:bg-sotkis-green/90 h-10 px-4 transition-transform duration-200 hover:scale-105 sm:h-[66px] sm:w-[66px] sm:p-0 sm:hover:scale-110">
+              <Search className="w-4 h-4 sm:w-9 sm:h-9 mr-2 sm:mr-0" />
+              <span className="sm:hidden">Pesquisar</span>
             </Button>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Islands Table */}
-      <Card className="card-glass">
+      <Card className="card-dark-large">
         <CardHeader>
           <CardTitle className="text-white">Lista de Ilhas</CardTitle>
         </CardHeader>
@@ -168,6 +194,155 @@ const MySotkonIlhas = () => {
           </Table>
         </CardContent>
       </Card>
+      
+      {/* Create Island Modal */}
+      {showCreateModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-white">Criar nova ilha</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              {/* Left Column - Basic Information */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Departamento:</label>
+                  <Select>
+                    <SelectTrigger className="bg-white text-black">
+                      <SelectValue placeholder="Selecione departamento" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Faro-PT 999990004">Faro-PT 999990004</SelectItem>
+                      <SelectItem value="Lisboa-PT 999990001">Lisboa-PT 999990001</SelectItem>
+                      <SelectItem value="Porto-PT 999990002">Porto-PT 999990002</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição geográfica:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Descrição geográfica da ilha"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Número:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Número da ilha"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Data de instalação:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    type="date"
+                    placeholder="dd/mm/yyyy"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column - Additional Information */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Data de fim de garantia:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    type="date"
+                    placeholder="dd/mm/yyyy"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Latitude:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Coordenada de latitude"
+                    type="number"
+                    step="any"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Longitude:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Coordenada de longitude"
+                    type="number"
+                    step="any"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Fields Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Proprietário:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Nome do proprietário"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Controlo final:</label>
+                  <Select defaultValue="Sim">
+                    <SelectTrigger className="bg-white text-black">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Sim">Sim</SelectItem>
+                      <SelectItem value="Não">Não</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Local Content Id (Enevo api):</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Local Content ID Enevo"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Observations Field - Full Width */}
+            <div className="mb-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white">Obs.:</label>
+                <textarea
+                  className="w-full h-24 p-3 bg-white text-black placeholder-gray-600 rounded-md border border-gray-300 resize-none"
+                  placeholder="Observações sobre a ilha"
+                />
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8">
+              <Button
+                onClick={() => setShowCreateModal(false)}
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto"
+              >
+                Cancelar
+              </Button>
+              <Button 
+                onClick={() => {
+                  // Handle create island logic here
+                  console.log('Creating new island');
+                  setShowCreateModal(false);
+                }}
+                className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-full sm:w-auto"
+              >
+                Submeter
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

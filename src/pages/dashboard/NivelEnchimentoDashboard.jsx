@@ -8,11 +8,21 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line
 } from 'recharts';
 import { timePresets, departments } from '@/data/mockData';
+import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const NivelEnchimentoDashboard = () => {
   const navigate = useNavigate();
   const [selectedTime, setSelectedTime] = useState('month');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
+
+  const submenuLinks = [
+    { label: 'Deposições', to: '/dashboard/deposicoes' },
+    { label: 'Nível de Enchimento', to: '/dashboard/nivel-enchimento' },
+    { label: 'Gestão de Manutenções', to: '/dashboard/gestao-manutencoes' },
+    { label: 'Recompensas', to: '/dashboard/recompensas' },
+    { label: 'Gestão de Rotas', to: '/dashboard/gestao-rotas' },
+    { label: 'Performance', to: '/dashboard/performance' },
+  ];
 
   // Mock data for charts
   const depositosPorMesData = [
@@ -55,26 +65,30 @@ const NivelEnchimentoDashboard = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-        <div className="text-left">
-          <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Nível de Enchimento</h1>
-          <p className="text-gray-300 mt-1">Visão do nível de enchimento dos contentores</p>
-        </div>
+    <div className="p-6 space-y-6">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Dashboard de Nível de Enchimento</h1>
+        <p className="text-gray-300 mt-1">Monitorização dos níveis de enchimento dos contentores</p>
       </div>
 
-      {/* Back Button and Filters */}
+      {/* Voltar Button - Mobile Only */}
+      <div className="flex justify-start md:hidden">
+        <Button 
+          onClick={() => window.history.back()}
+          className="bg-sotkis-green hover:bg-sotkis-green/90 text-white font-semibold"
+        >
+          Voltar
+        </Button>
+      </div>
+
+      {/* SubmenuBar - Desktop Only */}
+      <div className="hidden md:block">
+        <SubmenuBar items={submenuLinks} />
+      </div>
+
+      {/* Filters */}
       <div className="flex flex-col lg:flex-row lg:flex-wrap gap-4 items-start lg:items-center">
-        <div className="flex items-center space-x-4">
-          <Button 
-            onClick={() => navigate('/dashboard/operacao')}
-            className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar
-          </Button>
-        </div>
         <div className="flex flex-wrap gap-2">
           {timePresets.map((preset) => (
             <Button

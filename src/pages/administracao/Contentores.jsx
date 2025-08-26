@@ -2,205 +2,321 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Upload, FileText, Download, AlertCircle } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
+import { Plus, Search, Edit, Trash2, ChevronUp, ChevronDown, X } from 'lucide-react';
+import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const Contentores = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [isUploading, setIsUploading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [newContainer, setNewContainer] = useState({
+    descPT: '',
+    descEN: '',
+    descES: '',
+    descFR: ''
+  });
 
-  const handleFileSelect = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
+  const submenuLinks = [
+    { label: 'Importações', to: '/administracao/importacoes' },
+    { label: 'Estados da Faturação', to: '/administracao/estados-faturacao' },
+    { label: 'Países', to: '/administracao/paises' },
+    { label: 'Transponders', to: '/administracao/transponders' },
+    { label: 'Contentores', to: '/administracao/contentores' },
+    { label: 'Resíduos', to: '/administracao/residuos' },
+    { label: 'Controlos de Acesso', to: '/administracao/controlos-acesso' },
+    { label: 'Acabamentos', to: '/administracao/acabamentos' },
+    { label: 'Kits', to: '/administracao/kits' },
+    { label: 'Volumes do Kit', to: '/administracao/volumes-kit' },
+    { label: 'Marcos', to: '/administracao/marcos' },
+    { label: 'Intervenções', to: '/administracao/intervencoes' },
+    { label: 'Plat. de Segurança', to: '/administracao/plataformas-seguranca' },
+    { label: 'Sensores de Enchimento', to: '/administracao/sensores-enchimento' },
+    { label: 'Utilizadores Finais', to: '/administracao/utilizadores-finais' },
+    { label: 'Estado chaves RFID', to: '/administracao/estado-chaves-rfid' },
+    { label: 'RGPDs', to: '/administracao/rgpd-list' },
+  ];
+
+  const handleCreateContainer = () => {
+    // Handle container creation logic here
+    console.log('Creating container:', newContainer);
+    setShowCreateModal(false);
+    setNewContainer({ descPT: '', descEN: '', descES: '', descFR: '' });
   };
 
-  const handleSubmit = async () => {
-    if (!selectedFile) {
-      alert('Por favor, selecione um ficheiro primeiro.');
-      return;
+  const handleCancel = () => {
+    setShowCreateModal(false);
+    setNewContainer({ descPT: '', descEN: '', descES: '', descFR: '' });
+  };
+
+  // Mock data for containers
+  const containers = [
+    {
+      id: 1,
+      descPT: '1m3 fundo fechado koncept',
+      descEN: '1m3 closed bottom koncept',
+      descES: '1m3 fondo cerrado koncept',
+      descFR: '1m3 fond fermé koncept'
+    },
+    {
+      id: 2,
+      descPT: '3m3 compacto metálico cogumelo',
+      descEN: '3m3 compact metallic mushroom',
+      descES: '3m3 compacto metálico seta',
+      descFR: '3m3 compact Métallique Champignon'
+    },
+    {
+      id: 3,
+      descPT: '3m3 compacto metálico dupla argola',
+      descEN: '3m3 compact metallic Double hook',
+      descES: '3m3 compacto metálico doble gancho',
+      descFR: '3m3 compact Métallique Doble Crochet'
+    },
+    {
+      id: 4,
+      descPT: '3m3 compacto metálico palpeur',
+      descEN: '3m3 compact metalic palpeur',
+      descES: '3m3 compacto metálico palpeur',
+      descFR: '3m3 compact méttalique palpeur'
+    },
+    {
+      id: 5,
+      descPT: '3m3 compacto plastico Cog Bilateral',
+      descEN: '3m3 compact plastic Mush Bilateral',
+      descES: '3m3 compacto plastico seta Bilateral',
+      descFR: '3m3 compact plastique cham bilateral'
+    },
+    {
+      id: 6,
+      descPT: '3m3 compacto plastico dupla argola',
+      descEN: '3m3 compact plastic double hook',
+      descES: '3m3 compacto plastico doble gancho',
+      descFR: '3m3 compact plastique doble crochet'
     }
-
-    if (!selectedFile.name.toLowerCase().endsWith('.csv')) {
-      alert('Por favor, selecione um ficheiro CSV.');
-      return;
-    }
-
-    setIsUploading(true);
-    
-    // Simulate file upload
-    setTimeout(() => {
-      console.log('Uploading containers file:', selectedFile.name);
-      setIsUploading(false);
-      setSelectedFile(null);
-      alert('Ficheiro enviado com sucesso!');
-    }, 2000);
-  };
-
-  const handleDownloadTemplate = () => {
-    // Simulate template download
-    console.log('Downloading containers template');
-    alert('Download do template iniciado...');
-  };
+  ];
 
   return (
-    <div className="p-4 md:p-6 space-y-4 md:space-y-6 administracao-page">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-        <div className="text-left">
-          <h1 className="text-xl md:text-2xl font-bold text-white">Upload de Ficheiro - Contentores</h1>
-          <p className="text-gray-300 mt-1">Importar ficheiros de contentores para o sistema</p>
-        </div>
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Contentores</h1>
+        <p className="text-gray-300 mt-1">Gestão de contentores do sistema</p>
       </div>
 
-      {/* Main Upload Card */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0 shadow-2xl">
-        <CardContent className="p-8">
-          <div className="max-w-2xl mx-auto space-y-6">
-            {/* File Selection Section */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <Upload className="w-6 h-6 text-sotkis-green" />
-                <h3 className="text-lg font-semibold text-white">Selecionar ficheiro</h3>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <Input
-                  type="text"
-                  value={selectedFile ? selectedFile.name : ''}
-                  placeholder="Nenhum ficheiro selecionado"
-                  readOnly
-                  className="flex-1 bg-white/10 border-white/20 text-white placeholder-gray-400"
-                />
-                <label className="cursor-pointer">
-                  <input
-                    type="file"
-                    accept=".csv"
-                    onChange={handleFileSelect}
-                    className="hidden"
-                  />
-                  <Button
-                    className="text-white bg-black border border-black hover:bg-white/10 hover:border-white/50"
-                    style={{
-                      backgroundColor: 'black',
-                      borderColor: 'black',
-                      color: 'white'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                      e.target.style.borderColor = 'rgba(255, 255, 255, 0.5)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'black';
-                      e.target.style.borderColor = 'black';
-                    }}
-                  >
-                    Browse
-                  </Button>
-                </label>
-              </div>
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
-              {/* File Format Info */}
-              <div className="flex items-center space-x-2 text-sm text-gray-300">
-                <FileText className="w-4 h-4" />
-                <span>Formato do ficheiro: .csv</span>
-              </div>
+      {/* Search and Actions */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+        <div className="relative flex-1 max-w-md">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <Input
+            placeholder="Pesquisar contentores..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10 bg-white/5 border-white/10 text-white placeholder-gray-400"
+          />
+        </div>
+        <Button
+          onClick={() => setShowCreateModal(true)}
+          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold"
+        >
+          <Plus className="w-4 h-4 mr-2" />
+          Criar novo tipo de contentor
+        </Button>
+      </div>
 
-              {/* Download Template Link */}
-              <div className="pt-2">
-                <button
-                  onClick={handleDownloadTemplate}
-                  className="text-sotkis-green hover:text-sotkis-green/80 underline flex items-center space-x-2"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download do Template</span>
-                </button>
-              </div>
-
-              {/* File Requirements */}
-              <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                <div className="flex items-start space-x-3">
-                  <AlertCircle className="w-5 h-5 text-yellow-400 mt-0.5" />
-                  <div className="space-y-2">
-                    <h4 className="font-medium text-white">Requisitos do ficheiro:</h4>
-                    <ul className="text-sm text-gray-300 space-y-1">
-                      <li>• Formato CSV obrigatório</li>
-                      <li>• Codificação UTF-8</li>
-                      <li>• Separador: vírgula (,)</li>
-                      <li>• Tamanho máximo: 10MB</li>
-                      <li>• Colunas obrigatórias: ID, Localização, Tipo, Capacidade, Estado</li>
-                    </ul>
+      {/* Contentores Table */}
+      <Card className="card-dark-large">
+        <CardHeader>
+          <CardTitle className="text-white">Tipos de Contentor</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="overflow-x-auto">
+            <Table>
+            <TableHeader>
+              <TableRow className="border-white/20">
+                <TableHead className="text-white font-semibold text-center">
+                  <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+                    <span className="text-xs sm:text-sm">DescPT</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <div className="pt-6">
-              <Button
-                onClick={handleSubmit}
-                disabled={!selectedFile || isUploading}
-                className="w-full bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold h-12 text-lg"
-              >
-                {isUploading ? 'A enviar...' : 'Submeter'}
-              </Button>
-            </div>
+                </TableHead>
+                <TableHead className="text-white font-semibold text-center">
+                  <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+                    <span className="text-xs sm:text-sm">DescEN</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
+                </TableHead>
+                <TableHead className="text-white font-semibold text-center">
+                  <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+                    <span className="text-xs sm:text-sm">DescES</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
+                </TableHead>
+                <TableHead className="text-white font-semibold text-center">
+                  <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+                    <span className="text-xs sm:text-sm">DescFR</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
+                </TableHead>
+                <TableHead className="text-white font-semibold w-20 text-center"></TableHead>
+                <TableHead className="text-white font-semibold w-20 text-center"></TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {containers.map((container) => (
+                <TableRow key={container.id} className="border-white/20 hover:bg-white/5">
+                  <TableCell className="text-white text-left">{container.descPT}</TableCell>
+                  <TableCell className="text-white text-left">{container.descEN}</TableCell>
+                  <TableCell className="text-white text-left">{container.descES}</TableCell>
+                  <TableCell className="text-white text-left">{container.descFR}</TableCell>
+                  <TableCell className="w-20 text-center">
+                    <Button variant="ghost" size="icon" className="text-sotkis-green hover:bg-sotkis-green/20">
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                  </TableCell>
+                  <TableCell className="w-20 text-center">
+                    <Button variant="ghost" size="icon" className="text-sotkis-green hover:bg-sotkis-green/20">
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
           </div>
         </CardContent>
       </Card>
 
-      {/* Additional Info Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Recent Uploads */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardHeader>
-            <CardTitle className="text-white">Uploads Recentes</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                <div>
-                  <p className="text-white font-medium">contentores_jan_2025.csv</p>
-                  <p className="text-sm text-gray-400">15/01/2025 14:30</p>
-                </div>
-                <span className="text-green-400 text-sm">✓ Processado</span>
-              </div>
-              <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                <div>
-                  <p className="text-white font-medium">contentores_dez_2024.csv</p>
-                  <p className="text-sm text-gray-400">31/12/2024 16:45</p>
-                </div>
-                <span className="text-green-400 text-sm">✓ Processado</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Upload Statistics */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardHeader>
-            <CardTitle className="text-white">Estatísticas</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <span className="text-gray-300">Total de uploads</span>
-                <span className="text-white font-semibold">18</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-300">Último upload</span>
-                <span className="text-white font-semibold">15/01/2025</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-300">Ficheiros processados</span>
-                <span className="text-green-400 font-semibold">16</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-300">Ficheiros com erro</span>
-                <span className="text-red-400 font-semibold">2</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+      {/* Pagination */}
+      <div className="space-y-4">
+        {/* Pagination info text */}
+        <div className="text-center">
+          <div className="text-sm text-white">
+            A exibir 1-6 de 6 registos
+          </div>
+        </div>
+        {/* Pagination buttons */}
+        <div className="flex justify-center">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white text-xs sm:text-sm px-2 sm:px-3">
+              Anterior
+            </Button>
+            <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90 text-xs sm:text-sm px-2 sm:px-3">
+              1
+            </Button>
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white text-xs sm:text-sm px-2 sm:px-3">
+              2
+            </Button>
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white text-xs sm:text-sm px-2 sm:px-3">
+              3
+            </Button>
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white text-xs sm:text-sm px-2 sm:px-3">
+              4
+            </Button>
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white text-xs sm:text-sm px-2 sm:px-3">
+              Seguinte
+            </Button>
+          </div>
+        </div>
       </div>
+
+      {/* Create Container Modal */}
+      {showCreateModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+            <div className="flex justify-end mb-4 sm:mb-6">
+              <Button
+                onClick={() => setShowCreateModal(false)}
+                variant="ghost"
+                size="icon"
+                className="text-white hover:text-gray-300"
+              >
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
+            <div className="text-left mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-sotkis-green">Novo Contentor</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              {/* Left Column - Form Fields */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição PT:</label>
+                  <Input
+                    value={newContainer.descPT}
+                    onChange={(e) => setNewContainer({...newContainer, descPT: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Descrição em Português"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição EN:</label>
+                  <Input
+                    value={newContainer.descEN}
+                    onChange={(e) => setNewContainer({...newContainer, descEN: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Description in English"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column - Additional Fields */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição ES:</label>
+                  <Input
+                    value={newContainer.descES}
+                    onChange={(e) => setNewContainer({...newContainer, descES: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Descripción en Español"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição FR:</label>
+                  <Input
+                    value={newContainer.descFR}
+                    onChange={(e) => setNewContainer({...newContainer, descFR: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Description en Français"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8">
+              <Button
+                onClick={handleCancel}
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto"
+              >
+                Cancelar
+              </Button>
+              <Button 
+                onClick={handleCreateContainer}
+                className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-full sm:w-auto"
+              >
+                Criar
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

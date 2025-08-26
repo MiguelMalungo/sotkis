@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
-import { Calendar } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
+import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessDepositions = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const submenuLinks = [
+    { label: 'RFIDs', to: '/sotkis-access/rfids' },
+    { label: 'Relatórios', to: '/sotkis-access/reports' },
+    { label: 'Depósitos', to: '/sotkis-access/deposits' },
+    { label: 'Baterias', to: '/sotkis-access/batteries' },
+  ];
+
   const [formData, setFormData] = React.useState({
     inicioPeriodo: '2025-07-15',
     fimPeriodo: '2025-07-30',
@@ -32,14 +44,17 @@ const SotkisAccessDepositions = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Page Header */}
-      <div className="page-header text-left">
-        <h1 className="text-xl font-bold text-white">Visualizar Deposições</h1>
-        <p className="text-gray-300 mt-1">Consulta e filtragem de deposições</p>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Deposições</h1>
+        <p className="text-gray-300 mt-1">Gestão de deposições do Sotkis Access</p>
       </div>
 
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
+
       {/* Form */}
-      <Card className="card-glass">
+      <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -47,28 +62,28 @@ const SotkisAccessDepositions = () => {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Inicio do periodo:</label>
-                                  <Input
-                  type="date"
-                  value={formData.inicioPeriodo}
-                  onChange={(e) => handleInputChange('inicioPeriodo', e.target.value)}
-                  className="bg-white/5 border-white/10 text-white"
-                />
+                  <Input
+                    type="date"
+                    value={formData.inicioPeriodo}
+                    onChange={(e) => handleInputChange('inicioPeriodo', e.target.value)}
+                    className="bg-white/10 border-white/20 text-white/90"
+                  />
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Fim do periodo:</label>
-                                  <Input
-                  type="date"
-                  value={formData.fimPeriodo}
-                  onChange={(e) => handleInputChange('fimPeriodo', e.target.value)}
-                  className="bg-white/5 border-white/10 text-white"
-                />
+                  <Input
+                    type="date"
+                    value={formData.fimPeriodo}
+                    onChange={(e) => handleInputChange('fimPeriodo', e.target.value)}
+                    className="bg-white/10 border-white/20 text-white/90"
+                  />
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Departamento:</label>
                   <Select value={formData.departamento} onValueChange={(value) => handleInputChange('departamento', value)}>
-                    <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                       <SelectValue placeholder="Escolha um departamento" />
                     </SelectTrigger>
                     <SelectContent>
@@ -83,7 +98,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Ilha:</label>
                   <Select value={formData.ilha} onValueChange={(value) => handleInputChange('ilha', value)}>
-                    <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                       <SelectValue placeholder="Selecione uma ilha" />
                     </SelectTrigger>
                     <SelectContent>
@@ -100,7 +115,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Contentor:</label>
                   <Select value={formData.contentor} onValueChange={(value) => handleInputChange('contentor', value)}>
-                    <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                       <SelectValue placeholder="Selecione um contentor" />
                     </SelectTrigger>
                     <SelectContent>
@@ -114,7 +129,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Utilizador:</label>
                   <Select value={formData.utilizador} onValueChange={(value) => handleInputChange('utilizador', value)}>
-                    <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                       <SelectValue placeholder="Selecione um utilizador" />
                     </SelectTrigger>
                     <SelectContent>
@@ -128,7 +143,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Rfids:</label>
                   <Select value={formData.rfids} onValueChange={(value) => handleInputChange('rfids', value)}>
-                    <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                       <SelectValue placeholder="Selecione um RFID" />
                     </SelectTrigger>
                     <SelectContent>
@@ -142,7 +157,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de resíduo:</label>
                   <Select value={formData.tipoResiduo} onValueChange={(value) => handleInputChange('tipoResiduo', value)}>
-                    <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -157,19 +172,19 @@ const SotkisAccessDepositions = () => {
                 </div>
               </div>
             </div>
-
-            {/* Submit Button */}
-            <div className="flex justify-end pt-4">
-              <Button 
-                type="submit" 
-                className="bg-sotkis-green text-black hover:bg-sotkis-green/90 px-8 py-2"
-              >
-                Visualizar
-              </Button>
-            </div>
           </form>
         </CardContent>
       </Card>
+
+      {/* Submit Button - Outside Card */}
+      <div className="flex justify-end pt-4">
+        <Button 
+          onClick={handleSubmit}
+          className="bg-sotkis-green text-black hover:bg-sotkis-green/90 px-8 py-2"
+        >
+          Visualizar
+        </Button>
+      </div>
     </div>
   );
 };

@@ -4,10 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectOption } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Search, Map as MapIcon, List, Download, Upload, Plus } from 'lucide-react';
+import { Search, Map as MapIcon, Download, Upload, Plus } from 'lucide-react';
 
 const SotkisRoutes = () => {
-  const [viewMode, setViewMode] = useState('list'); // 'list' or 'map'
   const [filters, setFilters] = useState({
     rota: '',
     estado: '',
@@ -66,40 +65,10 @@ const SotkisRoutes = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
-        <div className="space-y-2">
-          <h1 className="text-xl font-bold text-white">Gestão de Rotas</h1>
-          <p className="text-gray-300 mt-1">Gestão e monitorização de rotas do sistema</p>
-        </div>
-        <div className="flex flex-wrap items-center justify-end gap-2">
-          <Button
-            variant={viewMode === 'list' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setViewMode('list')}
-            className={viewMode === 'list' ? 'bg-black text-white' : 'text-white border-white'}
-          >
-            <List className="h-4 w-4 sm:mr-2" />
-            <span className="hidden sm:inline">Lista</span>
-          </Button>
-          <Button
-            variant={viewMode === 'map' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setViewMode('map')}
-            className={viewMode === 'map' ? 'bg-black text-white' : 'text-white border-white'}
-          >
-            <MapIcon className="h-4 w-4 sm:mr-2" />
-            <span className="hidden sm:inline">Mapa</span>
-          </Button>
-          <Button variant="outline" size="sm" className="text-white border-white">
-            <Download className="h-4 w-4 sm:mr-2" />
-            <span className="hidden sm:inline">Exportar</span>
-          </Button>
-          <Button variant="outline" size="sm" className="text-white border-white">
-            <Upload className="h-4 w-4 sm:mr-2" />
-            <span className="hidden sm:inline">Importar</span>
-          </Button>
-        </div>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Rotas Sotkis</h1>
+        <p className="text-gray-300 mt-1">Gestão de rotas do sistema Sotkis</p>
       </div>
 
       {/* Filters */}
@@ -165,108 +134,107 @@ const SotkisRoutes = () => {
         </Button>
       </div>
 
-      {/* Results */}
-      {viewMode === 'list' ? (
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-white/10">
-                  <TableHead className="text-white">ID</TableHead>
-                  <TableHead className="text-white">Nome da Rota</TableHead>
-                  <TableHead className="text-white">Estado</TableHead>
-                  <TableHead className="text-white hidden md:table-cell">Data Início</TableHead>
-                  <TableHead className="text-white hidden md:table-cell">Data Fim</TableHead>
-                  <TableHead className="text-white hidden sm:table-cell">Contentores</TableHead>
-                  <TableHead className="text-white hidden sm:table-cell">Distância</TableHead>
-                  <TableHead className="text-white">Ações</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {mockRoutes.map((route) => (
-                  <TableRow key={route.id} className="border-white/10">
-                    <TableCell className="text-white">{route.id}</TableCell>
-                    <TableCell className="text-white">{route.nome}</TableCell>
-                    <TableCell className="text-white">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        route.estado === 'Ativa' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
-                      }`}>
-                        {route.estado}
-                      </span>
-                    </TableCell>
-                    <TableCell className="text-white hidden md:table-cell">{route.dataInicio}</TableCell>
-                    <TableCell className="text-white hidden md:table-cell">{route.dataFim}</TableCell>
-                    <TableCell className="text-white hidden sm:table-cell">{route.contentores}</TableCell>
-                    <TableCell className="text-white hidden sm:table-cell">{route.distancia}</TableCell>
-                    <TableCell className="text-white">
-                      <div className="flex flex-col sm:flex-row gap-2">
-                        <Button size="sm" variant="outline" className="text-white border-white hover:bg-white hover:text-black">
-                          Editar
-                        </Button>
-                        <Button size="sm" variant="outline" className="text-white border-white hover:bg-white hover:text-black">
-                          Ver
-                        </Button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </Card>
-      ) : (
-        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
-          <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <h3 className="text-xl font-semibold text-white">Visualização de Mapa</h3>
-              <div className="flex flex-wrap gap-2">
-                <Button 
-                  size="sm" 
-                  variant="outline" 
-                  className="text-white border-white hover:bg-white hover:text-black"
-                >
-                  <Download className="h-4 w-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Exportar Mapa</span>
-                </Button>
-                <Button 
-                  size="sm" 
-                  variant="outline" 
-                  className="text-white border-white hover:bg-white hover:text-black"
-                >
-                  <Plus className="h-4 w-4 sm:mr-2" />
-                  <span className="hidden sm:inline">Adicionar Rota</span>
-                </Button>
-              </div>
-            </div>
-            <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] rounded-lg border border-white/10 bg-white/10 flex items-center justify-center">
-              <div className="text-center text-gray-400">
-                <MapIcon className="w-16 h-16 mx-auto mb-4 text-sotkis-green" />
-                <h3 className="text-xl font-semibold text-white mb-2">Mapa de Rotas</h3>
-                <p className="mb-4">Visualização do mapa de rotas do sistema</p>
-                <div className="w-full max-w-2xl h-60 sm:h-80 bg-gray-800 rounded-lg border border-white/10 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-sotkis-green/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <MapIcon className="w-6 h-6 text-sotkis-green" />
+      {/* Table */}
+      <Card className="card-dark-large">
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow className="border-white/10">
+                <TableHead className="text-white">ID</TableHead>
+                <TableHead className="text-white">Nome da Rota</TableHead>
+                <TableHead className="text-white">Estado</TableHead>
+                <TableHead className="text-white hidden md:table-cell">Data Início</TableHead>
+                <TableHead className="text-white hidden md:table-cell">Data Fim</TableHead>
+                <TableHead className="text-white hidden sm:table-cell">Contentores</TableHead>
+                <TableHead className="text-white hidden sm:table-cell">Distância</TableHead>
+                <TableHead className="text-white">Ações</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {mockRoutes.map((route) => (
+                <TableRow key={route.id} className="border-white/10">
+                  <TableCell className="text-white">{route.id}</TableCell>
+                  <TableCell className="text-white">{route.nome}</TableCell>
+                  <TableCell className="text-white">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      route.estado === 'Ativa' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+                    }`}>
+                      {route.estado}
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-white hidden md:table-cell">{route.dataInicio}</TableCell>
+                  <TableCell className="text-white hidden md:table-cell">{route.dataFim}</TableCell>
+                  <TableCell className="text-white hidden sm:table-cell">{route.contentores}</TableCell>
+                  <TableCell className="text-white hidden sm:table-cell">{route.distancia}</TableCell>
+                  <TableCell className="text-white">
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <Button size="sm" variant="outline" className="text-white border-white hover:bg-white hover:text-black">
+                        Editar
+                      </Button>
+                      <Button size="sm" variant="outline" className="text-white border-white hover:bg-white hover:text-black">
+                        Ver
+                      </Button>
                     </div>
-                    <p className="text-sm text-gray-400">Mapa interativo em desenvolvimento</p>
-                    <p className="text-xs text-gray-500 mt-1">3 rotas ativas • 2 rotas inativas</p>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </Card>
+
+      {/* Map Section */}
+      <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <h3 className="text-xl font-semibold text-white">Visualização de Mapa</h3>
+            <div className="flex flex-wrap gap-2">
+              <Button 
+                size="sm" 
+                variant="outline" 
+                className="text-white border-white hover:bg-white hover:text-black"
+              >
+                <Download className="h-4 w-4 sm:mr-2" />
+                <span className="hidden sm:inline">Exportar Mapa</span>
+              </Button>
+              <Button 
+                size="sm" 
+                variant="outline" 
+                className="text-white border-white hover:bg-white hover:text-black"
+              >
+                <Plus className="h-4 w-4 sm:mr-2" />
+                <span className="hidden sm:inline">Adicionar Rota</span>
+              </Button>
+            </div>
+          </div>
+          <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] rounded-lg border border-white/10 bg-white/10 flex items-center justify-center">
+            <div className="text-center text-gray-400">
+              <MapIcon className="w-16 h-16 mx-auto mb-4 text-sotkis-green" />
+              <h3 className="text-xl font-semibold text-white mb-2">Mapa de Rotas</h3>
+              <p className="mb-4">Visualização do mapa de rotas do sistema</p>
+              <div className="w-full max-w-2xl h-60 sm:h-80 bg-gray-800 rounded-lg border border-white/10 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-sotkis-green/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <MapIcon className="w-6 h-6 text-sotkis-green" />
                   </div>
+                  <p className="text-sm text-gray-400">Mapa interativo em desenvolvimento</p>
+                  <p className="text-xs text-gray-500 mt-1">3 rotas ativas • 2 rotas inativas</p>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm text-gray-300">
-              <div className="flex items-center justify-center space-x-2">
-                <div className="w-4 h-1 bg-green-500 rounded"></div>
-                <span>Rotas Ativas</span>
-              </div>
-              <div className="flex items-center justify-center space-x-2">
-                <div className="w-4 h-1 bg-red-500 rounded"></div>
-                <span>Rotas Inativas</span>
-              </div>
+          </div>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm text-gray-300">
+            <div className="flex items-center justify-center space-x-2">
+              <div className="w-4 h-1 bg-green-500 rounded"></div>
+              <span>Rotas Ativas</span>
+            </div>
+            <div className="flex items-center justify-center space-x-2">
+              <div className="w-4 h-1 bg-red-500 rounded"></div>
+              <span>Rotas Inativas</span>
             </div>
           </div>
-        </Card>
-      )}
+        </div>
+      </Card>
 
       {/* Add New Route Button */}
       <div className="flex justify-end">

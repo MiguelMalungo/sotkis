@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Edit, Trash2, FileText, Download, Printer, X, ArrowUpDown } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ChevronUp, ChevronDown } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const ComplianceSuppliers = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [recordsPerPage, setRecordsPerPage] = React.useState('10');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [filters, setFilters] = useState({
+    status: 'Todos',
+    type: 'Todos',
+    region: 'Todas'
+  });
+  const [isCreateFormExpanded, setIsCreateFormExpanded] = useState(false);
+
+  const submenuLinks = [
+    { label: 'Clientes', to: '/compliance/clients' },
+    { label: 'Fornecedores', to: '/compliance/suppliers' },
+    { label: 'Dashboard', to: '/compliance/dashboard' },
+  ];
 
   // Mock non-conformities data
   const mockNonConformities = [
@@ -98,34 +111,88 @@ const ComplianceSuppliers = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <h1 className="text-xl font-bold text-white mobile-title">Lista de não-conformidades</h1>
-        </div>
-        
-        {/* Export Icons */}
-        <div className="flex items-center justify-end space-x-2">
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <X className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <FileText className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <Download className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <Printer className="h-4 w-4" />
-          </Button>
-        </div>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Fornecedores</h1>
+        <p className="text-gray-300 mt-1">Gestão de conformidade de fornecedores</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
+
+      {/* Create New Non-conformity Filter */}
+      <div className="bg-sotkis-green text-black px-4 py-2 rounded-lg flex items-center justify-between">
+        <h2 className="text-lg font-semibold">Fornecedores | Criar nova não-conformidade</h2>
+        <Button 
+          variant="ghost" 
+          size="sm" 
+          className="text-black hover:text-black/80"
+          onClick={() => setIsCreateFormExpanded(!isCreateFormExpanded)}
+        >
+          <ChevronDown className={`h-4 w-4 transition-transform ${isCreateFormExpanded ? 'rotate-180' : ''}`} />
+        </Button>
+      </div>
+
+      {/* Create New Non-conformity Form (Expandable) */}
+      {isCreateFormExpanded && (
+        <Card className="card-glass">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Criar Nova Não-conformidade</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white">Fornecedor</label>
+                <Select defaultValue="">
+                  <SelectTrigger className="bg-white border-white text-black">
+                    <SelectValue placeholder="Selecione um fornecedor" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="fornecedor-abc">Fornecedor ABC</SelectItem>
+                    <SelectItem value="fornecedor-xyz">Fornecedor XYZ</SelectItem>
+                    <SelectItem value="fornecedor-def">Fornecedor DEF</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white">Tipo</label>
+                <Select defaultValue="">
+                  <SelectTrigger className="bg-white border-white text-black">
+                    <SelectValue placeholder="Selecione o tipo" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="grave">Grave</SelectItem>
+                    <SelectItem value="pouco-grave">Pouco grave</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="mt-4 space-y-2">
+              <label className="text-sm font-medium text-white">Assunto</label>
+              <Input 
+                placeholder="Digite o assunto da não-conformidade"
+                className="bg-white border-white text-black"
+              />
+            </div>
+            <div className="mt-4 space-y-2">
+              <label className="text-sm font-medium text-white">Descrição</label>
+              <textarea 
+                placeholder="Descreva detalhadamente a não-conformidade"
+                className="w-full h-32 p-3 bg-white text-black placeholder-gray-600 rounded-md border border-gray-300 resize-none"
+              />
+            </div>
+            <div className="mt-6 flex justify-end">
+              <Button className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
+                Criar Não-conformidade
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Table Controls */}
       <div className="space-y-4 md:space-y-0 md:flex md:justify-between md:items-center">
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
-          <Select value={recordsPerPage} onValueChange={setRecordsPerPage}>
+          <Select value={filters.recordsPerPage} onValueChange={(value) => setFilters({ ...filters, recordsPerPage: value })}>
             <SelectTrigger className="w-20 bg-white border-white text-black">
               <SelectValue />
             </SelectTrigger>
@@ -150,38 +217,73 @@ const ComplianceSuppliers = () => {
       </div>
 
       {/* Table */}
-      <Card className="card-glass">
+      <Card className="card-dark-large">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="cursor-pointer text-white text-center w-20">
-                  Número
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Número</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Cliente
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Cliente</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white text-center w-16">
-                  SIGLA
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>SIGLA</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Assunto
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Assunto</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Descrição
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Descrição</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white text-center w-36">
-                  Tipo
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Tipo</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white text-center w-36">
-                  Estado
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Estado</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="text-white">Ações</TableHead>
               </TableRow>
@@ -210,13 +312,13 @@ const ComplianceSuppliers = () => {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center space-x-2">
-                      <Button variant="ghost" size="sm" className="text-sotkis-green hover:text-sotkis-green/80">
+                      <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
                         <Plus className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-sotkis-green hover:text-sotkis-green/80">
+                      <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-red-500 hover:text-red-400">
+                      <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
@@ -229,20 +331,26 @@ const ComplianceSuppliers = () => {
       </Card>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center">
-        <div className="text-sm text-white">
-          A exibir 1-6 de 6 registos
+      <div className="space-y-4">
+        {/* Pagination info text */}
+        <div className="text-center">
+          <div className="text-sm text-white">
+            A exibir 1-6 de 6 registos
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
-            Anterior
-          </Button>
-          <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
-            1
-          </Button>
-          <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
-            Seguinte
-          </Button>
+        {/* Pagination buttons */}
+        <div className="flex justify-center">
+          <div className="flex items-center space-x-2">
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
+              Anterior
+            </Button>
+            <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
+              1
+            </Button>
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
+              Seguinte
+            </Button>
+          </div>
         </div>
       </div>
     </div>

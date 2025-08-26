@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Calendar, Gift, ArrowLeft } from 'lucide-react';
+import { Select, SelectOption } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { 
-  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area
+  Gift, Users, TrendingUp, TrendingDown, Search, Filter, ArrowLeft,
+  BarChart3, Star, Award, Target, Calendar
+} from 'lucide-react';
+import { 
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, AreaChart, Area
 } from 'recharts';
+import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const RecompensasDashboard = () => {
   const navigate = useNavigate();
+  const [selectedTime, setSelectedTime] = useState('month');
+  const [selectedDepartment, setSelectedDepartment] = useState('all');
+  const [startDate, setStartDate] = useState('2025-07-28');
+  const [endDate, setEndDate] = useState('2025-08-04');
+
+  const submenuLinks = [
+    { label: 'Deposições', to: '/dashboard/deposicoes' },
+    { label: 'Nível de Enchimento', to: '/dashboard/nivel-enchimento' },
+    { label: 'Gestão de Manutenções', to: '/dashboard/gestao-manutencoes' },
+    { label: 'Recompensas', to: '/dashboard/recompensas' },
+    { label: 'Gestão de Rotas', to: '/dashboard/gestao-rotas' },
+    { label: 'Performance', to: '/dashboard/performance' },
+  ];
 
   // Custom tooltip for charts
   const CustomTooltip = ({ active, payload, label }) => {
@@ -32,51 +51,55 @@ const RecompensasDashboard = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-        <div className="text-left">
-          <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Recompensas</h1>
-          <p className="text-gray-300 mt-1">Visão das recompensas do sistema</p>
-        </div>
+    <div className="p-6 space-y-6">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Dashboard de Recompensas</h1>
+        <p className="text-gray-300 mt-1">Sistema de recompensas e gamificação</p>
       </div>
 
-      {/* Back Button and Header with Date Range */}
-      <div className="space-y-4">
-        <div className="flex items-center space-x-4">
-          <Button 
-            onClick={() => navigate('/dashboard/operacao')}
-            className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
+      {/* Voltar Button - Mobile Only */}
+      <div className="flex justify-start md:hidden">
+                  <Button 
+            onClick={() => window.history.back()}
+            className="bg-sotkis-green hover:bg-sotkis-green/90 text-white font-semibold"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
             Voltar
           </Button>
+      </div>
+
+      {/* SubmenuBar - Desktop Only */}
+      <div className="hidden md:block">
+        <SubmenuBar items={submenuLinks} />
+      </div>
+
+      {/* Filters */}
+      <div className="flex flex-col lg:flex-row lg:flex-wrap gap-4 items-start lg:items-center">
+        <div className="flex items-center space-x-4">
           <h2 className="text-xl font-bold text-white">Filtro geral do dashboard</h2>
         </div>
         
         {/* Date Range and Update Button */}
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex items-center space-x-2">
-              <Calendar className="w-4 h-4 text-gray-400" />
-              <Input 
-                type="date" 
-                value="2025-07-28" 
-                className="w-40 bg-white/10 border-white/20 text-white"
-              />
-              <span className="text-white">Início</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Calendar className="w-4 h-4 text-gray-400" />
-              <Input 
-                type="date" 
-                value="2025-08-04" 
-                className="w-40 bg-white/10 border-white/20 text-white"
-              />
-              <span className="text-white">Fim</span>
-            </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+            <label className="text-white font-medium text-sm">Início:</label>
+            <Input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="bg-white/10 border-white/20 text-white w-full sm:w-40 text-left"
+            />
           </div>
-          <Button className="bg-sotkis-green hover:bg-sotkis-green/90">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+            <label className="text-white font-medium text-sm">Fim:</label>
+            <Input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="bg-white/10 border-white/20 text-white w-full sm:w-40 text-left"
+            />
+          </div>
+          <Button className="bg-sotkis-green hover:bg-sotkis-green/90 text-black">
             ATUALIZAR
           </Button>
         </div>
@@ -196,9 +219,9 @@ const RecompensasDashboard = () => {
               <XAxis dataKey="month" stroke="white" />
               <YAxis stroke="white" domain={[0, 90]} />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="Indiferenciado" fill="#9EC043" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
-              <Bar dataKey="Papel/Cartão" fill="#4FA9F7" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
-              <Bar dataKey="Plástico/Embalagens" fill="#FFD700" fillOpacity={0.5} radius={[4, 4, 0, 0]} zIndex={10} />
+              <Bar dataKey="Indiferenciado" fill="#9EC043" name="Indiferenciado" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Papel/Cartão" fill="#4FA9F7" name="Papel/Cartão" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Plástico/Embalagens" fill="#FFD700" name="Plástico/Embalagens" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>

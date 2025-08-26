@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Calendar, FileText, Download, Printer, Truck, Clock, MapPin } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisLevelPickups = () => {
-  const [selectedDepartment, setSelectedDepartment] = React.useState('');
+  const [selectedDepartment, setSelectedDepartment] = useState('');
 
   // Mock data for departments
   const departments = [
@@ -71,28 +72,22 @@ const SotkisLevelPickups = () => {
     }
   };
 
+  const submenuLinks = [
+    { label: 'Alertas', to: '/sotkis-level/alerts' },
+    { label: 'Recolhas', to: '/sotkis-level/pickups' },
+    { label: 'Localizações e Contentores', to: '/sotkis-level/locations-containers' },
+  ];
+
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-        <div className="space-y-2">
-          <h1 className="text-xl font-bold text-white">Recolhas</h1>
-          <p className="text-gray-300 mt-1">Gestão de recolhas e coleções do sistema</p>
-        </div>
-        
-        {/* Action Buttons */}
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <FileText className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <Download className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <Printer className="h-4 w-4" />
-          </Button>
-        </div>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Recolhas</h1>
+        <p className="text-gray-300 mt-1">Gestão de recolhas do Sotkis Level</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
       {/* Department Filter */}
       <Card className="card-glass">

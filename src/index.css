@@ -125,11 +125,11 @@
 
 /* Background overlay styles */
 .bg-overlay {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
 }
 
 .bg-overlay-light {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.24));
 }
 
 /* Card styles */
@@ -143,6 +143,39 @@
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dark large background card specifically for large tables */
+.card-dark-large {
+  background-color: rgba(8, 8, 8, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: var(--radius);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transition: none;
+}
+
+.card-dark-large:hover,
+.card-dark-large:focus,
+.card-dark-large:active {
+  background-color: rgba(8, 8, 8, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Auto-apply dark large background to any card that contains a table */
+.card-glass:has(table),
+.card-glass-dark:has(table),
+.bg-white\/10.backdrop-blur-lg.border-0:has(table) {
+  background-color: rgba(8, 8, 8, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transition: none;
+}
+
+.card-glass:has(table):hover,
+.card-glass-dark:has(table):hover,
+.bg-white\/10.backdrop-blur-lg.border-0:has(table):hover {
+  background-color: rgba(8, 8, 8, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 /* Sidebar styles */
@@ -190,38 +223,105 @@
     @apply pl-6;
   }
   
-  /* Mobile page titles and subtitles */
+  /* Mobile page titles and subtitles - Force right alignment for ALL structures */
   .page-header h1,
   .page-header h2,
-  .page-header h3 {
+  .page-header h3,
+  .page-header > div > h1,
+  .page-header > div > h2,
+  .page-header > div > h3 {
     @apply text-right !important;
     margin-top: -20px !important;
+  }
+
+  .page-header p,
+  .page-header > div > p {
+    @apply text-right !important;
+    margin-top: 0px !important;
+  }
+
+  /* Force right alignment for all page titles on mobile - regardless of structure */
+  h1.text-xl,
+  h1.text-2xl,
+  h1.text-3xl,
+  h1.text-4xl,
+  .page-header h1.text-xl,
+  .page-header h1.text-2xl,
+  .page-header h1.text-3xl,
+  .page-header h1.text-4xl {
+    @apply text-right !important;
+    margin-top: 0 !important;
+  }
+
+  /* Force right alignment for all page subtitles on mobile - regardless of structure */
+  p.text-gray-300,
+  p.text-gray-400,
+  .page-header p.text-gray-300,
+  .page-header p.text-gray-400 {
+    @apply text-right !important;
+    margin-top: 0.25rem !important;
+  }
+
+  /* Essential Sotcare page fixes - NO OVERLAPPING */
+  /* Ensure page titles are right-aligned but properly spaced */
+  .page-header h1 {
+    @apply text-right !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
   }
 
   .page-header p {
     @apply text-right !important;
-    margin-top: 0px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    display: block !important;
   }
 
-  /* Force right alignment for all page titles on mobile */
-  h1.text-xl,
-  h1.text-2xl,
-  h1.text-3xl,
-  h1.text-4xl {
+  /* Basic mobile responsiveness for Sotcare pages */
+  @media (max-width: 768px) {
+    .p-6.space-y-6 {
+      padding: 1rem !important;
+    }
+    
+    .page-header {
+      @apply text-right !important;
+    }
+
+    /* Ensure proper spacing between title and subtitle on mobile */
+    .page-header h1 {
+      margin-bottom: 0.5rem !important;
+    }
+  }
+
+  /* CRITICAL FIX: Ensure Sotcare page titles are at the VERY TOP */
+  .p-6.space-y-6 .page-header {
     @apply text-right !important;
-    margin-top: -20px !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    order: -1 !important;
   }
 
-  /* Reduce font size for uppercase titles by 3px on mobile */
-  h1, h2, h3, .card-title {
-    font-size: calc(1rem - 3px) !important;
+  /* Force the page-header to be the first element */
+  .p-6.space-y-6 > .page-header {
+    order: -1 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
-  /* Force right alignment for all page subtitles on mobile */
-  p.text-gray-300,
-  p.text-gray-400 {
+  /* Ensure the title is at the very top of the page */
+  .p-6.space-y-6 > .page-header h1 {
     @apply text-right !important;
-    margin-top: 0px !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  .p-6.space-y-6 > .page-header p {
+    @apply text-right !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0 !important;
+    line-height: 1.4 !important;
   }
   
   /* Responsive table */
@@ -246,6 +346,17 @@
     height: 24px !important;
     aspect-ratio: 1 !important;
     flex-shrink: 0 !important;
+  }
+}
+
+/* Desktop alignment: ensure all page titles/subtitles align left on >= md */
+@media (min-width: 768px) {
+  .page-header,
+  .page-header h1,
+  .page-header h2,
+  .page-header h3,
+  .page-header p {
+    text-align: left !important;
   }
 }
 
@@ -362,11 +473,231 @@ button:hover [class*="lucide-"] {
   color: #9EC043 !important;
 }
 
-/* Specific override for sotkis green buttons */
+/* Specific override for outline buttons with white text to keep text white on hover */
+.border-white\/20.text-white:hover,
+.border-white\/20.text-white:hover svg,
+.border-white\/20.text-white:hover .lucide,
+.border-white\/20.text-white:hover [class*="lucide-"] {
+  color: white !important;
+}
+
+/* Force white text for Download Template button in Importacoes page */
+.importacoes-download-btn,
+.importacoes-download-btn:hover,
+.importacoes-download-btn svg,
+.importacoes-download-btn:hover svg,
+.importacoes-download-btn .lucide,
+.importacoes-download-btn:hover .lucide,
+.importacoes-download-btn [class*="lucide-"],
+.importacoes-download-btn:hover [class*="lucide-"] {
+  color: white !important;
+  stroke: white !important;
+  fill: white !important;
+}
+
+/* Force Browse button in Importacoes to have white text in ALL themes */
+.importacoes-browse-btn,
+.importacoes-browse-btn:hover,
+body.light-theme .importacoes-browse-btn,
+body.light-theme .importacoes-browse-btn:hover {
+  color: white !important;
+  background-color: black !important;
+  border-color: #4B5563 !important;
+}
+
+body.light-theme .importacoes-browse-btn:hover {
+  background-color: #1F2937 !important;
+}
+
+/* RGPD table text in light mode - allow natural colors */
+body.light-theme .rgpd-table th,
+body.light-theme .rgpd-table td,
+body.light-theme .rgpd-table .TableHead,
+body.light-theme .rgpd-table .TableCell,
+body.light-theme .rgpd-table span {
+  color: black !important;
+}
+
+/* Force RGPD card title to be white in light mode */
+body.light-theme .rgpd-card .CardTitle,
+body.light-theme .rgpd-card h1,
+body.light-theme .rgpd-card h2,
+body.light-theme .rgpd-card h3 {
+  color: white !important;
+}
+
+/* Force RGPD table icons to stay white in dark mode */
+.rgpd-table svg,
+.rgpd-table .lucide,
+.rgpd-table [class*="lucide-"] {
+  color: white !important;
+  stroke: white !important;
+  fill: white !important;
+}
+
+/* Force RGPD table icons to be green in light mode */
+body.light-theme .rgpd-table svg,
+body.light-theme .rgpd-table .lucide,
+body.light-theme .rgpd-table [class*="lucide-"],
+body.light-theme .rgpd-table .ChevronUp,
+body.light-theme .rgpd-table .ChevronDown,
+body.light-theme .rgpd-table TableHead svg,
+body.light-theme .rgpd-table .TableHead svg {
+  color: #9EC043 !important;
+  stroke: #9EC043 !important;
+  fill: none !important;
+}
+
+/* Avoid changing icon color to green on hover for green buttons; keep icons readable */
 .bg-sotkis-green:hover svg,
 .bg-sotkis-green:hover .lucide,
 .bg-sotkis-green:hover [class*="lucide-"] {
-  color: #9EC043 !important;
+  color: currentColor !important;
+}
+
+/* Specific override for Sotcare buttons to make Plus icon white on hover */
+.bg-red-600:hover .group-hover\:text-white,
+.bg-yellow-500:hover .group-hover\:text-white {
+  color: white !important;
+}
+
+/* Strong override for Plus icons in Sotcare buttons to turn white on hover */
+.bg-red-600:hover .lucide,
+.bg-red-600:hover svg,
+.bg-yellow-500:hover .lucide,
+.bg-yellow-500:hover svg {
+  color: white !important;
+}
+
+/* Force Plus icons and text to be white in Sotcare buttons */
+.bg-red-600 .lucide,
+.bg-red-600 svg,
+.bg-red-600 [class*="lucide-"],
+.bg-yellow-600 .lucide,
+.bg-yellow-600 svg,
+.bg-yellow-600 [class*="lucide-"],
+.bg-sotkis-green\/90 .lucide,
+.bg-sotkis-green\/90 svg,
+.bg-sotkis-green\/90 [class*="lucide-"] {
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Ultra-specific Plus icon overrides for Sotcare buttons - target the exact button structure */
+button.bg-red-600 .lucide,
+button.bg-red-600 svg,
+button.bg-red-600 [class*="lucide-"],
+button.bg-yellow-600 .lucide,
+button.bg-yellow-600 svg,
+button.bg-yellow-600 [class*="lucide-"],
+button.bg-sotkis-green\/90 .lucide,
+button.bg-sotkis-green\/90 svg,
+button.bg-sotkis-green\/90 [class*="lucide-"] {
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Target Plus icons by their specific classes in Sotcare buttons */
+.bg-red-600 .w-4.h-4.mr-2,
+.bg-yellow-600 .w-4.h-4.mr-2,
+.bg-sotkis-green\/90 .w-4.h-4.mr-2 {
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Ultra-aggressive Plus icon overrides - target everything inside Sotcare buttons */
+.bg-red-600 *,
+.bg-yellow-600 *,
+.bg-sotkis-green\/90 * {
+  color: white !important;
+}
+
+/* Force all SVG elements inside Sotcare buttons to be white */
+.bg-red-600 svg,
+.bg-yellow-600 svg,
+.bg-sotkis-green\/90 svg {
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Sotcare buttons: Same appearance in both light and dark modes */
+.bg-red-600,
+.bg-yellow-600,
+.bg-sotkis-green\/90 {
+  color: white !important;
+}
+
+.bg-red-600 *,
+.bg-yellow-600 *,
+.bg-sotkis-green\/90 * {
+  color: white !important;
+}
+
+.bg-red-600 .lucide,
+.bg-red-600 svg,
+.bg-red-600 [class*="lucide-"],
+.bg-yellow-600 .lucide,
+.bg-yellow-600 svg,
+.bg-yellow-600 [class*="lucide-"],
+.bg-sotkis-green\/90 .lucide,
+.bg-sotkis-green\/90 svg,
+.bg-sotkis-green\/90 [class*="lucide-"] {
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+.bg-red-600 .w-4.h-4.mr-2,
+.bg-yellow-600 .w-4.h-4.mr-2,
+.bg-sotkis-green\/90 .w-4.h-4.mr-2 {
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Center export buttons and pagination buttons specifically */
+.pagination-container .flex.justify-end,
+.export-buttons .flex.justify-end {
+  justify-content: center !important;
+}
+
+/* Specific table cell centering for locations-containers page only */
+.locations-containers-table .TableCell,
+.locations-containers-table .TableHead {
+  text-align: center !important;
+}
+
+
+
+/* Center export buttons and other right-aligned elements in Sotcare pages */
+.card-glass .mt-4.flex.justify-end,
+.card-glass .flex.justify-end,
+.card-glass .flex.flex-col.sm\\:flex-row.justify-end {
+  justify-content: center !important;
+}
+
+/* Center specific export button containers */
+.mt-4.flex.justify-end,
+.flex.justify-end.mb-4.sm\\:mb-6,
+.flex.flex-col.sm\\:flex-row.justify-end.space-y-2.sm\\:space-y-0.sm\\:space-x-4.mt-6.sm\\:mt-8 {
+  justify-content: center !important;
+}
+
+/* Align pagination text to the left */
+.text-sm.text-white,
+.text-sm.text-gray-300 {
+  text-align: left !important;
+}
+
+/* Force text to be white in Sotcare buttons */
+.bg-red-600.text-white,
+.bg-yellow-600.text-white,
+.bg-sotkis-green\/90.text-white {
+  color: white !important;
 }
 
 /* Override for white text buttons to keep icons white on hover */
@@ -374,6 +705,23 @@ button:hover [class*="lucide-"] {
 .text-white:hover .lucide,
 .text-white:hover [class*="lucide-"] {
   color: white !important;
+}
+
+/* Form fields hover: lighten translucent backgrounds instead of changing to green */
+.bg-white\/5:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.bg-white\/10:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Prevent sidebar background from changing on hover */
+.sidebar-container.bg-white\/10:hover,
+.sidebar-container.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Reduce font size for uppercase titles by 3px */
@@ -456,11 +804,11 @@ h1.text-3xl {
 
 
 
-/* Green hover effect for SotkisRoutes buttons */
+/* Hover effect for bordered white elements: lightly brighten instead of turning green */
 .border-white.text-white:hover {
-  background-color: #9EC043 !important;
-  color: black !important;
-  border-color: #9EC043 !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .border-white.text-white:hover svg,
@@ -563,8 +911,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /* Make ArrowUpDown icons smaller throughout the app */
 .ArrowUpDown,
 [class*="ArrowUpDown"] {
-  width: 8px !important;
-  height: 8px !important;
+  width: 6px !important;
+  height: 6px !important;
 }
 
 /* Specific override for ArrowUpDown icons in table headers */
@@ -606,4 +954,1073 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   min-height: inherit !important;
   max-width: none !important;
   max-height: none !important;
+}
+
+/* Light Theme Styles */
+body.light-theme {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+}
+
+body.light-theme .min-h-screen {
+  background-color: #f8f9fa !important;
+}
+
+/* Light theme card adjustments */
+body.light-theme .card-dark-large {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #212529 !important;
+}
+
+body.light-theme .card-glass {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #212529 !important;
+}
+
+body.light-theme .card-glass-dark {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #212529 !important;
+}
+
+/* Light theme sidebar adjustments */
+body.light-theme .sidebar-container {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Prevent sidebar background from changing on hover in light mode */
+body.light-theme .sidebar-container.bg-white\/10:hover,
+body.light-theme .sidebar-container.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.light-theme .sidebar-item {
+  color: #212529 !important;
+}
+
+body.light-theme .sidebar-item:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .sidebar-item.active {
+  background-color: #9EC043 !important;
+  color: white !important;
+}
+
+/* Light theme text adjustments */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme p {
+  color: #212529 !important;
+}
+
+/* Light theme button adjustments */
+body.light-theme .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light theme table adjustments */
+body.light-theme table {
+  color: #212529 !important;
+}
+
+body.light-theme th {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: #212529 !important;
+}
+
+body.light-theme td {
+  color: #212529 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light theme: ensure sidebar icons remain black (no hover color changes) */
+body.light-theme .sidebar-container svg,
+body.light-theme .sidebar-container .lucide,
+body.light-theme .sidebar-container [class*="lucide-"] {
+  color: #000 !important;
+  stroke: #000 !important;
+  fill: none !important;
+}
+
+body.light-theme .sidebar-container button:hover svg,
+body.light-theme .sidebar-container button:hover .lucide,
+body.light-theme .sidebar-container button:hover [class*="lucide-"] {
+  color: #000 !important;
+  stroke: #000 !important;
+}
+
+/* Light theme: keep the Sun icon black */
+body.light-theme .sidebar-container [title="Toggle Theme"] svg {
+  color: #000 !important;
+  stroke: #000 !important;
+}
+
+
+
+/* Light theme: force any light text utility classes to black */
+body.light-theme .text-white,
+body.light-theme .text-gray-50,
+body.light-theme .text-gray-100,
+body.light-theme .text-gray-200 {
+  color: #000 !important;
+}
+
+/* Light theme: force dashboard card text to black */
+body.light-theme .dashboard-card-title,
+body.light-theme .dashboard-card h1,
+body.light-theme .dashboard-card h2,
+body.light-theme .dashboard-card h3,
+body.light-theme .dashboard-card p,
+body.light-theme .dashboard-card span,
+body.light-theme .dashboard-card div {
+  color: #000 !important;
+}
+
+/* Light theme: force all card text to black */
+body.light-theme .card h1,
+body.light-theme .card h2,
+body.light-theme .card h3,
+body.light-theme .card p,
+body.light-theme .card span,
+body.light-theme .card div {
+  color: #000 !important;
+}
+
+/* Light theme: force any remaining white text to black */
+body.light-theme * {
+  color: #000 !important;
+}
+
+/* EXCEPTION: Keep Sotcare buttons white in light mode */
+body.light-theme .bg-red-600,
+body.light-theme .bg-yellow-600,
+body.light-theme .bg-sotkis-green\/90 {
+  color: white !important;
+}
+
+body.light-theme .bg-red-600 *,
+body.light-theme .bg-yellow-600 *,
+body.light-theme .bg-sotkis-green\/90 * {
+  color: white !important;
+}
+
+body.light-theme .bg-red-600 .lucide,
+body.light-theme .bg-red-600 svg,
+body.light-theme .bg-red-600 [class*="lucide-"],
+body.light-theme .bg-yellow-600 .lucide,
+body.light-theme .bg-yellow-600 svg,
+body.light-theme .bg-yellow-600 [class*="lucide-"],
+body.light-theme .bg-sotkis-green\/90 .lucide,
+body.light-theme .bg-sotkis-green\/90 svg,
+body.light-theme .bg-sotkis-green\/90 [class*="lucide-"] {
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Override the universal rule for RGPD table icons - MUST BE AFTER THE UNIVERSAL RULE */
+body.light-theme .rgpd-table svg,
+body.light-theme .rgpd-table .lucide {
+  color: #9EC043 !important;
+  stroke: #9EC043 !important;
+}
+
+/* Exception: Keep chart tooltip text white (they have dark backgrounds) */
+body.light-theme .recharts-tooltip-wrapper,
+body.light-theme .recharts-default-tooltip,
+body.light-theme .recharts-tooltip,
+body.light-theme [class*="tooltip"] {
+  color: white !important;
+}
+
+body.light-theme .recharts-tooltip-wrapper *,
+body.light-theme .recharts-default-tooltip *,
+body.light-theme .recharts-tooltip *,
+body.light-theme [class*="tooltip"] * {
+  color: white !important;
+}
+
+/* Light theme: make gauge chart numbers black and gray parts darker */
+body.light-theme .recharts-radial-bar-chart text,
+body.light-theme .recharts-radial-bar-chart tspan {
+  fill: #000 !important;
+  color: #000 !important;
+}
+
+body.light-theme .recharts-radial-bar-chart .fill-white {
+  fill: #000 !important;
+}
+
+body.light-theme .recharts-radial-bar-chart .text-3xl,
+body.light-theme .recharts-radial-bar-chart .text-xl {
+  fill: #000 !important;
+  color: #000 !important;
+}
+
+/* Light theme: make gauge chart gray parts darker */
+body.light-theme .recharts-radial-bar-chart .RadialBar {
+  fill: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Override the specific gray fill in gauge charts for light mode */
+body.light-theme .recharts-radial-bar-chart [fill="rgba(255,255,255,0.2)"] {
+  fill: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Light theme: override gauge chart text colors more specifically */
+body.light-theme .recharts-radial-bar-chart .fill-white.text-3xl,
+body.light-theme .recharts-radial-bar-chart .fill-white.text-xl,
+body.light-theme .recharts-radial-bar-chart .fill-gray-400.text-xl {
+  fill: #000 !important;
+  color: #000 !important;
+}
+
+/* Light theme: make all text in gauge charts black */
+body.light-theme .recharts-radial-bar-chart tspan,
+body.light-theme .recharts-radial-bar-chart text {
+  fill: #000 !important;
+  color: #000 !important;
+}
+
+/* More aggressive overrides for gauge charts in light mode */
+body.light-theme svg text,
+body.light-theme svg tspan {
+  fill: #000 !important;
+  color: #000 !important;
+}
+
+/* Override any white fill in SVG elements for light mode */
+body.light-theme svg [fill="white"],
+body.light-theme svg [fill="#ffffff"],
+body.light-theme svg [fill="rgba(255,255,255,1)"] {
+  fill: #000 !important;
+}
+
+/* Override any light gray fill in SVG elements for light mode */
+body.light-theme svg [fill="rgba(255,255,255,0.2)"],
+body.light-theme svg [fill="rgba(255,255,255,0.3)"],
+body.light-theme svg [fill="rgba(255,255,255,0.4)"] {
+  fill: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Force all SVG text to be black in light mode */
+body.light-theme svg text,
+body.light-theme svg tspan,
+body.light-theme svg .fill-white,
+body.light-theme svg .text-white {
+  fill: #000 !important;
+  color: #000 !important;
+}
+
+/* Light theme: force chart scales and labels to black */
+body.light-theme .recharts-xAxis .recharts-cartesian-axis-tick text,
+body.light-theme .recharts-yAxis .recharts-cartesian-axis-tick text,
+body.light-theme .recharts-cartesian-axis-tick text,
+body.light-theme .recharts-cartesian-axis-label,
+body.light-theme .recharts-legend-item-text,
+body.light-theme .recharts-text,
+body.light-theme .recharts-label,
+body.light-theme .recharts-cartesian-axis-tick-value,
+body.light-theme .recharts-cartesian-axis-tick-label {
+  fill: #000 !important;
+  color: #000 !important;
+}
+
+/* Light theme: force chart grid lines to be visible */
+body.light-theme .recharts-cartesian-grid-horizontal line,
+body.light-theme .recharts-cartesian-grid-vertical line {
+  stroke: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Light theme: force maintenance dashboard dark cards to be light */
+body.light-theme .dashboard-card.bg-white\/5,
+body.light-theme .dashboard-card.bg-white\/10,
+body.light-theme .dashboard-card.bg-black\/5,
+body.light-theme .dashboard-card.bg-black\/10 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light theme: force any table background cards to be light */
+body.light-theme .card-dark-large,
+body.light-theme .card-glass,
+body.light-theme .card-glass-dark {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light theme: style for ÚLTIMAS PÁGINAS NAVEGADAS section */
+body.light-theme .card-dark-large {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light theme: style for recent pages buttons/cards */
+body.light-theme .recent-page-item,
+body.light-theme .recent-page-link,
+body.light-theme .recent-page-button {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #000 !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  margin: 4px 0 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .recent-page-item:hover,
+body.light-theme .recent-page-link:hover,
+body.light-theme .recent-page-button:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Light theme: style for the main recent pages card */
+body.light-theme .recent-pages-card,
+body.light-theme .card:has(.text-sotkis-green) {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light theme: style for recent pages title */
+body.light-theme .text-sotkis-green {
+  color: #9EC043 !important;
+}
+
+/* Light theme: filter input fields hover effects - ONLY the input fields, not the cards */
+body.light-theme .filter-cards-container input.bg-white\/10,
+body.light-theme .filter-cards-container .SelectTrigger.bg-white\/10,
+body.light-theme input.bg-white\/10,
+body.light-theme .SelectTrigger.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #000 !important;
+  transition: all 0.2s ease !important;
+}
+
+body.light-theme .filter-cards-container input.bg-white\/10:hover,
+body.light-theme .filter-cards-container .SelectTrigger.bg-white\/10:hover,
+body.light-theme input.bg-white\/10:hover,
+body.light-theme .SelectTrigger.bg-white\/10:hover {
+  background-color: rgba(128, 128, 128, 0.8) !important;
+  border-color: #000 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Light theme: ensure select arrows stay black on hover */
+body.light-theme .SelectTrigger.bg-white\/10:hover svg,
+body.light-theme .SelectTrigger.bg-white\/10:hover .lucide,
+body.light-theme .SelectTrigger.bg-white\/10:hover [data-lucide] {
+  color: #000 !important;
+  stroke: #000 !important;
+}
+
+/* Light theme: filter labels in light mode */
+body.light-theme .filter-cards-container label.text-white {
+  color: #000 !important;
+}
+
+/* Profile balloon specific styling - ensure icons are always visible */
+.profile-balloon svg,
+.profile-balloon .lucide,
+.profile-balloon [class*="lucide-"] {
+  color: #374151 !important;
+  stroke: #374151 !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Force Profile balloon icons to be visible in both themes */
+.profile-balloon button svg,
+.profile-balloon button .lucide,
+.profile-balloon button [class*="lucide-"] {
+  color: #374151 !important;
+  stroke: #374151 !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Light theme: make concentric circles more visible */
+body.light-theme .fixed.inset-0.pointer-events-none.z-5 img {
+  opacity: 0.6 !important;
+  filter: hue-rotate(120deg) saturate(1.5) brightness(0.8) !important;
+}
+
+/* Light theme: ensure concentric circles are visible */
+body.light-theme .fixed.inset-0.pointer-events-none.z-5 {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Light theme: remove white background from landing page */
+body.light-theme .min-h-screen {
+  background-color: transparent !important;
+}
+
+/* Light theme: ensure landing page content doesn't have white backgrounds */
+body.light-theme .min-h-screen > div {
+  background-color: transparent !important;
+}
+
+/* Light theme: change logos to Logo2 and Logo_thin2 */
+body.light-theme .sidebar-container img[src*="Logo.png"] {
+  content: url('/assets/Logo2.png') !important;
+}
+
+body.light-theme .sidebar-container img[src*="Logo_thin.png"] {
+  content: url('/assets/Logo_thin2.png') !important;
+}
+
+body.light-theme img[src*="Logo_thin.png"] {
+  content: url('/assets/Logo_thin2.png') !important;
+}
+
+/* Mobile filter cards - equal width */
+@media (max-width: 1023px) {
+  .filter-cards-container > div {
+    width: 100% !important;
+    flex: none !important;
+  }
+}
+
+/* Light theme: Playt pages specific styling */
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center {
+  background-color: transparent !important;
+}
+
+/* Light theme: Playt pages - make text black for better visibility */
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center h1,
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center h2,
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center h3,
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center p,
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center span {
+  color: #000 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Light theme: Playt pages - ensure theme toggle button is visible */
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center .fixed.top-\[21px\].right-4.z-\[60\] button {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  color: #000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center .fixed.top-\[21px\].right-4.z-\[60\] button:hover {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Light theme: Playt pages - reduce background image opacity to 30% */
+body.light-theme .min-h-screen.relative.flex.items-center.justify-center .fixed.inset-0.bg-cover.bg-center.bg-no-repeat {
+  opacity: 0.3 !important;
+}
+
+/* Light theme: hide summer.png background completely */
+body.light-theme .fixed.inset-0.bg-cover.bg-center.bg-no-repeat[style*="summer.png"] {
+  display: none !important;
+}
+
+/* Dark theme: hide ellipses images in Playt pages */
+body:not(.light-theme) .min-h-screen.relative.flex.items-center.justify-center ~ .fixed.inset-0.pointer-events-none.z-5,
+body:not(.light-theme) .min-h-screen.relative.flex.items-center.justify-center + .fixed.inset-0.pointer-events-none.z-5 {
+  display: none !important;
+}
+
+/* Assistant bot image - positioned in bottom right corner on desktop, lower right on mobile */
+.assistant-bot {
+  position: fixed;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  width: 128px;
+  height: 128px;
+  z-index: 1000;
+  pointer-events: auto;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Moderate backdrop blur effects (except on login page) */
+body:not(.login-page) .backdrop-blur-lg {
+  backdrop-filter: blur(20px) !important;
+}
+
+body:not(.login-page) .bg-white\/10.backdrop-blur-lg {
+  backdrop-filter: blur(20px) !important;
+}
+
+/* Assistant bot container */
+.assistant-bot-container {
+  position: fixed;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  z-index: 1000;
+}
+
+/* Assistant bot balloon */
+.assistant-bot-balloon {
+  position: absolute;
+  right: 120px;
+  bottom: 0;
+  z-index: 9999;
+}
+
+/* Balloon arrow */
+.balloon-arrow {
+  display: none;
+}
+
+/* Balloon content */
+.balloon-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Balloon input container */
+.balloon-input-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+  min-width: 300px;
+}
+
+/* Light theme: light gray background for balloon input container */
+body.light-theme .balloon-input-container {
+  background: rgba(200, 200, 200, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Light theme: black text for balloon input and icons */
+body.light-theme .balloon-input {
+  color: black;
+}
+
+body.light-theme .balloon-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+body.light-theme .input-icon-btn {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+body.light-theme .input-icon-btn:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+/* Input icons left */
+.input-icons-left {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Input icon button */
+.input-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.input-icon-btn:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Balloon input */
+.balloon-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 0.875rem;
+  outline: none;
+  min-width: 0;
+}
+
+.balloon-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Microphone button */
+.microphone-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(158, 192, 67, 0.8);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.microphone-btn:hover {
+  background: rgba(158, 192, 67, 1);
+  transform: scale(1.05);
+}
+
+.microphone-btn svg {
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1 / 1;
+}
+
+/* Mobile microphone button */
+.microphone-btn-mobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(158, 192, 67, 0.8);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-right: 0.5rem;
+}
+
+.microphone-btn-mobile:hover {
+  background: rgba(158, 192, 67, 1) !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .assistant-bot {
+    width: 96px;
+    height: 96px;
+    bottom: 0.75rem;
+    left: auto;
+    right: 0.125rem;
+    transform: none;
+  }
+  
+  .assistant-bot-container {
+    bottom: 0.75rem;
+    right: 0.125rem;
+  }
+  
+     .assistant-bot-balloon {
+     margin-right: 0.5rem;
+     margin-bottom: 0.25rem;
+     right: 68px;
+   }
+  
+  .balloon-input-container {
+    min-width: 250px;
+    padding: 0.375rem 0.75rem;
+  }
+  
+     .microphone-btn-mobile {
+     display: flex;
+     margin-right: -2px;
+     position: relative;
+     top: -1px;
+   }
+   
+   .microphone-btn {
+     display: none;
+   }
+}
+
+@media (max-width: 480px) {
+  .assistant-bot {
+    width: 80px;
+    height: 80px;
+    bottom: 0.75rem;
+    left: auto;
+    right: 0.125rem;
+    transform: none;
+  }
+  
+  .balloon-input-container {
+    min-width: 200px;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Light theme: adjust assistant bot for better visibility */
+body.light-theme .assistant-bot {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Logo tooltips - always dark with white text in both themes */
+.sidebar-container .group:hover .absolute.bg-black {
+  background-color: black !important;
+  color: white !important;
+}
+
+.sidebar-container .group:hover .absolute.bg-black div {
+  color: white !important;
+}
+
+/* Light theme: ensure tooltips remain dark */
+body.light-theme .sidebar-container .group:hover .absolute.bg-black {
+  background-color: black !important;
+  color: white !important;
+}
+
+body.light-theme .sidebar-container .group:hover .absolute.bg-black div {
+  color: white !important;
+}
+
+/* Dark theme: ensure tooltips remain dark */
+body:not(.light-theme) .sidebar-container .group:hover .absolute.bg-black {
+  background-color: black !important;
+  color: white !important;
+}
+
+body:not(.light-theme) .sidebar-container .group:hover .absolute.bg-black div {
+  color: white !important;
+}
+
+/* Language Flags - Completely New CSS from Scratch */
+.language-flags-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.5rem;
+  max-width: 100%;
+}
+
+.flags-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+  padding: 0 0.5rem;
+}
+
+.flag-button {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.flag-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.flag-button.active {
+  border: 3px solid #9EC043;
+  box-shadow: 0 0 0 2px rgba(158, 192, 67, 0.3);
+}
+
+.flag-button:hover {
+  transform: scale(1.05);
+}
+
+.language-text {
+  text-align: center;
+  color: #9CA3AF;
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+  width: 100%;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .flags-wrapper {
+    gap: 0.5rem;
+    padding: 0 0.25rem;
+  }
+  
+  .flag-button {
+    width: 2.25rem;
+    height: 2.25rem;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    max-width: 2.25rem;
+    max-height: 2.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .language-text {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* ==================== STYLE GUIDE LIGHT THEME FIXES ==================== */
+
+/* Style Guide: Main container in light mode */
+body.light-theme .style-guide-container {
+  background-color: #f8fafc !important;
+}
+
+/* Style Guide: Override dark backgrounds to light backgrounds */
+body.light-theme .style-guide-container .bg-gray-900,
+body.light-theme .style-guide-container .bg-gray-800 {
+  background-color: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Style Guide: Semi-transparent dark backgrounds become light */
+body.light-theme .style-guide-container .bg-white\/5,
+body.light-theme .style-guide-container .bg-white\/10 {
+  background-color: rgba(248, 250, 252, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Style Guide: Text on converted backgrounds should be dark */
+body.light-theme .style-guide-container .bg-gray-900 *:not(code):not(pre):not(.text-sotkis-green):not(.bg-sotkis-green):not(.bg-sotkis-green *),
+body.light-theme .style-guide-container .bg-gray-800 *:not(code):not(pre):not(.text-sotkis-green):not(.bg-sotkis-green):not(.bg-sotkis-green *),
+body.light-theme .style-guide-container .bg-white\/5 *:not(code):not(pre):not(.text-sotkis-green):not(.bg-sotkis-green):not(.bg-sotkis-green *),
+body.light-theme .style-guide-container .bg-white\/10 *:not(code):not(pre):not(.text-sotkis-green):not(.bg-sotkis-green):not(.bg-sotkis-green *) {
+  color: #1f2937 !important;
+}
+
+/* Style Guide: Code blocks should remain dark for readability */
+body.light-theme .style-guide-container pre,
+body.light-theme .style-guide-container pre * {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+  border: 1px solid #374151 !important;
+}
+
+/* Style Guide: Inline code with specific gray background */
+body.light-theme .style-guide-container code.bg-gray-800 {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+/* Style Guide: Keep Sotkis brand colors intact */
+body.light-theme .style-guide-container .bg-sotkis-green,
+body.light-theme .style-guide-container .text-sotkis-green {
+  background-color: #9EC043 !important;
+  color: #9EC043 !important;
+}
+
+body.light-theme .style-guide-container .bg-sotkis-green,
+body.light-theme .style-guide-container .bg-sotkis-green * {
+  background-color: #9EC043 !important;
+  color: white !important;
+}
+
+/* Style Guide: Status colors should remain semantic */
+body.light-theme .style-guide-container .bg-green-500,
+body.light-theme .style-guide-container .bg-green-500 * {
+  background-color: #10b981 !important;
+  color: white !important;
+}
+
+body.light-theme .style-guide-container .bg-red-500,
+body.light-theme .style-guide-container .bg-red-500 * {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+body.light-theme .style-guide-container .bg-yellow-500,
+body.light-theme .style-guide-container .bg-yellow-500 * {
+  background-color: #f59e0b !important;
+  color: white !important;
+}
+
+body.light-theme .style-guide-container .bg-blue-500,
+body.light-theme .style-guide-container .bg-blue-500 * {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+/* Style Guide: Card glass effects in light mode */
+body.light-theme .style-guide-container .card-glass {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Style Guide: Main headings should be prominent dark */
+body.light-theme .style-guide-container > div > div:first-child h1,
+body.light-theme .style-guide-container .CardTitle {
+  color: #1e293b !important;
+}
+
+/* Style Guide: Secondary text should be muted but readable */
+body.light-theme .style-guide-container .text-gray-300:not(.bg-sotkis-green *):not(.bg-green-500 *):not(.bg-red-500 *):not(.bg-yellow-500 *):not(.bg-blue-500 *),
+body.light-theme .style-guide-container .text-gray-400:not(.bg-sotkis-green *):not(.bg-green-500 *):not(.bg-red-500 *):not(.bg-yellow-500 *):not(.bg-blue-500 *) {
+  color: #64748b !important;
+}
+
+/* Style Guide: Color swatch examples should maintain their demo colors */
+body.light-theme .style-guide-container .color-swatch,
+body.light-theme .style-guide-container .color-demo {
+  color: inherit !important;
+}
+
+/* Style Guide: Chart examples and related sections should convert to light backgrounds in light mode */
+body.light-theme .style-guide-container .chart-example,
+body.light-theme .style-guide-container .chart-demo {
+  background-color: rgba(248, 250, 252, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Style Guide: Chart demo text should be dark in light mode (except code blocks) */
+body.light-theme .style-guide-container .chart-example *:not(code):not(pre):not(.bg-gray-800):not(.bg-gray-900),
+body.light-theme .style-guide-container .chart-demo *:not(code):not(pre):not(.text-sotkis-green):not(.bg-sotkis-green):not(.bg-sotkis-green *):not(.bg-gray-800):not(.bg-gray-900),
+body.light-theme .style-guide-container .chart-demo h4:not(code):not(pre),
+body.light-theme .style-guide-container .chart-demo span:not(code):not(pre):not(.bg-gray-800):not(.bg-gray-900),
+body.light-theme .style-guide-container .chart-demo div:not(code):not(pre):not(.bg-gray-800):not(.bg-gray-900) {
+  color: #1f2937 !important;
+}
+
+/* Style Guide: Keep code blocks dark in chart sections with white text */
+body.light-theme .style-guide-container .chart-demo code,
+body.light-theme .style-guide-container .chart-demo pre,
+body.light-theme .style-guide-container .chart-demo .bg-gray-800 {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+  border: 1px solid #374151 !important;
+}
+
+body.light-theme .style-guide-container .chart-demo code *,
+body.light-theme .style-guide-container .chart-demo pre *,
+body.light-theme .style-guide-container .chart-demo .bg-gray-800 * {
+  color: #e5e7eb !important;
+}
+
+/* Style Guide: Force white text in dark code blocks only */
+body.light-theme .style-guide-container .chart-demo code .bg-gray-900,
+body.light-theme .style-guide-container .chart-demo code .bg-gray-800,
+body.light-theme .style-guide-container .chart-demo pre .bg-gray-900,
+body.light-theme .style-guide-container .chart-demo pre .bg-gray-800 {
+  color: #e5e7eb !important;
+}
+
+/* Style Guide: Specific override for code content */
+body.light-theme .style-guide-container .chart-demo code.block,
+body.light-theme .style-guide-container .chart-demo pre code {
+  color: #e5e7eb !important;
+  background-color: #1f2937 !important;
+}
+
+/* Style Guide: Preserve brand colors in chart demos */
+body.light-theme .style-guide-container .chart-demo .text-sotkis-green {
+  color: #9EC043 !important;
+}
+
+body.light-theme .style-guide-container .chart-demo .text-green-400 {
+  color: #4ade80 !important;
+}
+
+body.light-theme .style-guide-container .chart-demo .text-blue-400 {
+  color: #60a5fa !important;
+}
+
+body.light-theme .style-guide-container .chart-demo .text-purple-400 {
+  color: #a78bfa !important;
+}
+
+body.light-theme .style-guide-container .chart-demo .text-yellow-400 {
+  color: #fbbf24 !important;
+}
+
+/* Style Guide: Override specific Tailwind text classes in chart demos (except code blocks) */
+body.light-theme .style-guide-container .chart-demo .text-white:not(code):not(pre):not(.bg-gray-800):not(.bg-gray-900):not(.bg-sotkis-green):not(.bg-sotkis-green *) {
+  color: #1f2937 !important;
+}
+
+body.light-theme .style-guide-container .chart-demo .text-gray-300:not(code):not(pre):not(.bg-gray-800):not(.bg-gray-900):not(.bg-sotkis-green):not(.bg-sotkis-green *) {
+  color: #64748b !important;
+}
+
+body.light-theme .style-guide-container .chart-demo .text-gray-400:not(code):not(pre):not(.bg-gray-800):not(.bg-gray-900):not(.bg-sotkis-green):not(.bg-sotkis-green *) {
+  color: #64748b !important;
+}
+
+/* Style Guide: Ensure code block text stays white */
+body.light-theme .style-guide-container .chart-demo code.text-white,
+body.light-theme .style-guide-container .chart-demo code.text-gray-300,
+body.light-theme .style-guide-container .chart-demo pre.text-white,
+body.light-theme .style-guide-container .chart-demo pre.text-gray-300 {
+  color: #e5e7eb !important;
+}
+
+/* Style Guide: Convert dark example cards to light theme in light mode */
+body.light-theme .style-guide-container .chart-demo .bg-black\/90 {
+  background-color: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Style Guide: Text in converted light cards should be dark */
+body.light-theme .style-guide-container .chart-demo .bg-black\/90 *,
+body.light-theme .style-guide-container .chart-demo .bg-black\/90 .text-white,
+body.light-theme .style-guide-container .chart-demo .bg-black\/90 .text-gray-300 {
+  color: #1f2937 !important;
+}
+
+/* Style Guide: Keep actual code blocks dark */
+body.light-theme .style-guide-container .chart-demo .bg-gray-900,
+body.light-theme .style-guide-container .chart-demo .bg-gray-900 * {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+/* Style Guide: Chart demo icons should be visible */
+body.light-theme .style-guide-container .chart-demo svg:not(.text-sotkis-green):not(.text-green-400):not(.text-blue-400):not(.text-purple-400):not(.text-yellow-400) {
+  color: #1f2937 !important;
+  stroke: #1f2937 !important;
 }

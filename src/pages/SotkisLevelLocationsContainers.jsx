@@ -5,6 +5,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { MapPin, Package, Search, ArrowUpDown, Filter, Plus, Edit, Trash2, Map, Satellite, Maximize2, Layers } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisLevelLocationsContainers = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -180,20 +181,22 @@ const SotkisLevelLocationsContainers = () => {
 
   const stats = getDepartmentStats();
 
+  const submenuLinks = [
+    { label: 'Alertas', to: '/sotkis-level/alerts' },
+    { label: 'Recolhas', to: '/sotkis-level/pickups' },
+    { label: 'Localizações e Contentores', to: '/sotkis-level/locations-containers' },
+  ];
+
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <h1 className="text-xl font-bold text-white">Locais & Contentores</h1>
-          <p className="text-gray-300 mt-1">Gestão de localizações e contentores do sistema</p>
-        </div>
-        
-        <Button className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-full sm:w-auto">
-          <Plus className="h-4 w-4 mr-2" />
-          Adicionar Novo
-        </Button>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Localizações e Contentores</h1>
+        <p className="text-gray-300 mt-1">Gestão de localizações e contentores do Sotkis Level</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
       {/* Department Selection */}
       <Card className="card-glass">
@@ -406,14 +409,14 @@ const SotkisLevelLocationsContainers = () => {
       </div>
 
       {/* Data Table */}
-      <Card className="card-glass">
+      <Card className="card-dark-large">
         <CardHeader>
           <CardTitle className="text-white">
             {selectedDepartment ? `Dados do Departamento: ${departments.find(d => d.code === selectedDepartment)?.name}` : 'Todos os Dados'}
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
+          <Table className="locations-containers-table">
             <TableHeader>
               <TableRow>
                 <TableHead className="text-white">ID</TableHead>
@@ -443,7 +446,7 @@ const SotkisLevelLocationsContainers = () => {
                   </TableCell>
                   <TableCell className="text-white text-sm">{item.lastUpdate}</TableCell>
                   <TableCell>
-                    <div className="flex space-x-2">
+                    <div className="flex space-x-2 justify-center">
                       <Button size="sm" variant="ghost" className="text-blue-400 hover:bg-blue-400/20">
                         <Edit className="h-4 w-4" />
                       </Button>

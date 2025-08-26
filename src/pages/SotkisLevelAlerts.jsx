@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { AlertTriangle, Bell, CheckCircle, XCircle, Search, ArrowUpDown, Filter } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisLevelAlerts = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [recordsPerPage, setRecordsPerPage] = React.useState('10');
-  const [selectedPriority, setSelectedPriority] = React.useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [recordsPerPage, setRecordsPerPage] = useState('10');
+  const [selectedPriority, setSelectedPriority] = useState('');
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   // Mock alerts data
   const mockAlerts = [
@@ -93,14 +95,32 @@ const SotkisLevelAlerts = () => {
     console.log('Searching for:', searchTerm);
   };
 
+  const submenuLinks = [
+    { label: 'Alertas', to: '/sotkis-level/alerts' },
+    { label: 'Recolhas', to: '/sotkis-level/pickups' },
+    { label: 'Locais & Contentores', to: '/sotkis-level/locations-containers' },
+  ];
+
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex justify-end sm:justify-start">
-        <div className="space-y-2 text-right sm:text-left">
-          <h1 className="text-xl font-bold text-white">Alertas</h1>
-          <p className="text-gray-300 mt-1">Gestão de alertas e notificações do sistema</p>
-        </div>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Alertas</h1>
+        <p className="text-gray-300 mt-1">Gestão de alertas do Sotkis Level</p>
+      </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
+
+      {/* Button */}
+      <div className="flex justify-end">
+        <Button 
+          onClick={() => setShowCreateModal(true)}
+          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black"
+        >
+          <Plus className="w-4 h-4 mr-2" />
+          Novo Alerta
+        </Button>
       </div>
 
       {/* Filters and Controls */}
@@ -152,7 +172,7 @@ const SotkisLevelAlerts = () => {
       </div>
 
       {/* Alerts Table */}
-      <Card className="card-glass">
+      <Card className="card-dark-large">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
@@ -213,13 +233,13 @@ const SotkisLevelAlerts = () => {
                   <TableCell className="text-white text-sm">{alert.timestamp}</TableCell>
                   <TableCell className="w-32">
                     <div className="flex items-center space-x-2">
-                      <Button variant="ghost" size="sm" className="text-sotkis-green hover:text-sotkis-green/80">
+                      <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
                         <CheckCircle className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-orange-500 hover:text-orange-400">
+                      <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
                         <AlertTriangle className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-red-500 hover:text-red-400">
+                      <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
                         <XCircle className="h-4 w-4" />
                       </Button>
                     </div>
@@ -232,20 +252,26 @@ const SotkisLevelAlerts = () => {
       </Card>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center">
-        <div className="text-sm text-white">
-          A exibir 1-5 de 5 registos
+      <div className="space-y-4">
+        {/* Pagination info text */}
+        <div className="text-center">
+          <div className="text-sm text-white">
+            A exibir 1-5 de 5 registos
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
-            Anterior
-          </Button>
-          <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
-            1
-          </Button>
-          <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
-            Seguinte
-          </Button>
+        {/* Pagination buttons */}
+        <div className="flex justify-center">
+          <div className="flex items-center space-x-2">
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
+              Anterior
+            </Button>
+            <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
+              1
+            </Button>
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
+              Seguinte
+            </Button>
+          </div>
         </div>
       </div>
     </div>

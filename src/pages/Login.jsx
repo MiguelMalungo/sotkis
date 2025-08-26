@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Eye, EyeOff } from 'lucide-react';
@@ -9,6 +9,7 @@ import backgroundLoginImage from '../../assets/summer.png';
 import logoImage from '../../assets/Logo.png';
 import ptFlag from '../../assets/pt.png';
 import enFlag from '../../assets/en.png';
+import frFlag from '../../assets/france.png';
 import spFlag from '../../assets/sp.png';
 import croatiaFlag from '../../assets/croatia.png';
 import greeceFlag from '../../assets/greece.png';
@@ -17,6 +18,14 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { language, changeLanguage, t } = useLanguage();
   const { login } = useAuth();
+  
+  // Add login-page class to body when component mounts
+  useEffect(() => {
+    document.body.classList.add('login-page');
+    return () => {
+      document.body.classList.remove('login-page');
+    };
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -45,8 +54,8 @@ const Login = () => {
         backgroundImage: `url(${backgroundLoginImage})`,
       }}
     >
-      {/* 70% black overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+      {/* 56% black overlay */}
+      <div className="absolute inset-0 bg-black/[0.56]" />
       
       {/* Logo and Login Card Container */}
       <div className="relative z-10 flex flex-col items-center w-full px-4 space-y-8">
@@ -141,76 +150,52 @@ const Login = () => {
                 </button>
               </div>
             </form>
-
-            {/* Language Flags */}
-            <div className="mt-6 text-center">
-              <div className="flex justify-center space-x-4 mb-3">
+            
+            {/* Language Flags - Clean Implementation */}
+            <div className="language-flags-container">
+              <div className="flags-wrapper">
                 <button
                   onClick={(e) => handleLanguageChange('pt', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
-                    language === 'pt' ? 'ring-2 ring-sotkis-green' : ''
-                  }`}
+                  className={`flag-button ${language === 'pt' ? 'active' : ''}`}
                 >
-                  <img 
-                    src={ptFlag}
-                    alt="Portuguese"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={ptFlag} alt="Portuguese" />
                 </button>
                 <button
                   onClick={(e) => handleLanguageChange('en', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
-                    language === 'en' ? 'ring-2 ring-sotkis-green' : ''
-                  }`}
+                  className={`flag-button ${language === 'en' ? 'active' : ''}`}
                 >
-                  <img 
-                    src={enFlag}
-                    alt="English"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={enFlag} alt="English" />
+                </button>
+                <button
+                  onClick={(e) => handleLanguageChange('fr', e)}
+                  className={`flag-button ${language === 'fr' ? 'active' : ''}`}
+                >
+                  <img src={frFlag} alt="French" />
                 </button>
                 <button
                   onClick={(e) => handleLanguageChange('es', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
-                    language === 'es' ? 'ring-2 ring-sotkis-green' : ''
-                  }`}
+                  className={`flag-button ${language === 'es' ? 'active' : ''}`}
                 >
-                  <img 
-                    src={spFlag}
-                    alt="Spanish"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={spFlag} alt="Spanish" />
                 </button>
                 <button
                   onClick={(e) => handleLanguageChange('hr', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
-                    language === 'hr' ? 'ring-2 ring-sotkis-green' : ''
-                  }`}
+                  className={`flag-button ${language === 'hr' ? 'active' : ''}`}
                 >
-                  <img 
-                    src={croatiaFlag}
-                    alt="Croatian"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={croatiaFlag} alt="Croatian" />
                 </button>
                 <button
                   onClick={(e) => handleLanguageChange('el', e)}
-                  className={`w-12 h-12 rounded-full shadow-lg overflow-hidden transition-transform hover:scale-110 border-2 border-white ${
-                    language === 'el' ? 'ring-2 ring-sotkis-green' : ''
-                  }`}
+                  className={`flag-button ${language === 'el' ? 'active' : ''}`}
                 >
-                  <img 
-                    src={greeceFlag}
-                    alt="Greek"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={greeceFlag} alt="Greek" />
                 </button>
               </div>
-              {/* Select Language text moved under flags */}
-              <p className="text-sm text-gray-300 text-center">{t('selectLanguage')}</p>
+              <p className="language-text">{t('selectLanguage')}</p>
             </div>
           </CardContent>
         </Card>
+        
         {/* Footer */}
         <div className="text-center mt-6 text-white/80">
           <p className="text-sm">

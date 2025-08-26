@@ -2,18 +2,32 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Select, SelectOption } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { TrendingUp, TrendingDown, Filter, BarChart3, ArrowLeft } from 'lucide-react';
+import { 
+  Wrench, Calendar, AlertTriangle, CheckCircle, Clock, Search, Filter, ArrowLeft,
+  TrendingUp, TrendingDown, BarChart3
+} from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
 } from 'recharts';
+import SubmenuBar from '../../components/ui/SubmenuBar';
 import { timePresets, departments, maintenanceData } from '@/data/mockData';
 
 const GestaoManutencoesDashboard = () => {
   const navigate = useNavigate();
   const [selectedTime, setSelectedTime] = useState('month');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
+
+  const submenuLinks = [
+    { label: 'Deposições', to: '/dashboard/deposicoes' },
+    { label: 'Nível de Enchimento', to: '/dashboard/nivel-enchimento' },
+    { label: 'Gestão de Manutenções', to: '/dashboard/gestao-manutencoes' },
+    { label: 'Recompensas', to: '/dashboard/recompensas' },
+    { label: 'Gestão de Rotas', to: '/dashboard/gestao-rotas' },
+    { label: 'Performance', to: '/dashboard/performance' },
+  ];
 
   const getPriorityColor = (priority) => {
     switch (priority) {
@@ -42,26 +56,30 @@ const GestaoManutencoesDashboard = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-        <div className="text-left">
-          <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Gestão de Manutenções</h1>
-          <p className="text-gray-300 mt-1">Visão geral das manutenções do sistema</p>
-        </div>
+    <div className="p-6 space-y-6">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Dashboard de Gestão de Manutenções</h1>
+        <p className="text-gray-300 mt-1">Monitorização de manutenções do sistema</p>
       </div>
 
-      {/* Back Button and Filters */}
+      {/* Voltar Button - Mobile Only */}
+      <div className="flex justify-start md:hidden">
+        <Button 
+          onClick={() => window.history.back()}
+          className="bg-sotkis-green hover:bg-sotkis-green/90 text-white font-semibold"
+        >
+          Voltar
+        </Button>
+      </div>
+
+      {/* SubmenuBar - Desktop Only */}
+      <div className="hidden md:block">
+        <SubmenuBar items={submenuLinks} />
+      </div>
+
+      {/* Filters */}
       <div className="flex flex-col lg:flex-row lg:flex-wrap gap-4 items-start lg:items-center">
-        <div className="flex items-center space-x-4">
-          <Button 
-            onClick={() => navigate('/dashboard/operacao')}
-            className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar
-          </Button>
-        </div>
         <div className="flex flex-wrap gap-2">
           {timePresets.map((preset) => (
             <Button
@@ -169,7 +187,7 @@ const GestaoManutencoesDashboard = () => {
       {/* Maintenance Table and Chart Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Maintenance Table - Narrower */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 lg:col-span-2">
+        <Card className="card-dark-large lg:col-span-2">
           <CardHeader>
             <CardTitle className="text-white">Manutenções Recentes</CardTitle>
           </CardHeader>
@@ -253,7 +271,7 @@ const GestaoManutencoesDashboard = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* CORRETIVAS Table */}
-          <Card className="bg-white/10 backdrop-blur-lg border-0">
+          <Card className="card-dark-large">
             <CardHeader>
               <CardTitle className="text-red-500 font-bold uppercase-title">CORRETIVAS</CardTitle>
             </CardHeader>
@@ -304,7 +322,7 @@ const GestaoManutencoesDashboard = () => {
           </Card>
 
           {/* PREVENTIVAS Table */}
-          <Card className="bg-white/10 backdrop-blur-lg border-0">
+          <Card className="card-dark-large">
             <CardHeader>
               <CardTitle className="text-yellow-400 font-bold uppercase-title">PREVENTIVAS</CardTitle>
             </CardHeader>

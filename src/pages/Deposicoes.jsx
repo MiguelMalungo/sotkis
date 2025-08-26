@@ -202,22 +202,10 @@ const Deposicoes = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-xl font-bold text-white">Deposições</h1>
-          <p className="text-gray-300 mt-1">Gestão e monitorização de depósitos de resíduos</p>
-        </div>
-        <div className="flex space-x-2">
-          <Button variant="outline" className="text-white border-white/20">
-            <Download className="w-4 h-4 mr-2" />
-            Exportar Relatório
-          </Button>
-          <Button className="bg-sotkis-green hover:bg-sotkis-green/90">
-            <Plus className="w-4 h-4 mr-2" />
-            Novo Depósito
-          </Button>
-        </div>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Deposições</h1>
+        <p className="text-gray-300 mt-1">Gestão de deposições do sistema</p>
       </div>
 
       {/* Stats Cards */}
@@ -366,7 +354,7 @@ const Deposicoes = () => {
       </Card>
 
       {/* Deposits Table */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="card-dark-large">
         <CardHeader>
           <CardTitle className="text-white">
             Depósitos ({filteredDeposits.length} resultados)
@@ -456,42 +444,48 @@ const Deposicoes = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between mt-6">
-              <div className="text-sm text-gray-300">
-                Mostrando {startIndex + 1} a {Math.min(startIndex + itemsPerPage, filteredDeposits.length)} de {filteredDeposits.length} depósitos
-              </div>
-              <div className="flex space-x-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                  disabled={currentPage === 1}
-                  className="text-white border-white/20"
-                >
-                  Anterior
-                </Button>
-                <div className="flex space-x-1">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <Button
-                      key={page}
-                      variant={currentPage === page ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setCurrentPage(page)}
-                      className={currentPage === page ? "bg-sotkis-green" : "text-white border-white/20"}
-                    >
-                      {page}
-                    </Button>
-                  ))}
+            <div className="space-y-4 mt-6">
+              {/* Pagination info text */}
+              <div className="text-center">
+                <div className="text-sm text-gray-300">
+                  Mostrando {startIndex + 1} a {Math.min(startIndex + itemsPerPage, filteredDeposits.length)} de {filteredDeposits.length} depósitos
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-                  disabled={currentPage === totalPages}
-                  className="text-white border-white/20"
-                >
-                  Próximo
-                </Button>
+              </div>
+              {/* Pagination buttons */}
+              <div className="flex justify-center">
+                <div className="flex space-x-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                    disabled={currentPage === 1}
+                    className="text-white border-white/20"
+                  >
+                    Anterior
+                  </Button>
+                  <div className="flex space-x-1">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <Button
+                        key={page}
+                        variant={currentPage === page ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setCurrentPage(page)}
+                        className={currentPage === page ? "bg-sotkis-green" : "text-white border-white/20"}
+                      >
+                        {page}
+                      </Button>
+                    ))}
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                    disabled={currentPage === totalPages}
+                    className="text-white border-white/20"
+                  >
+                    Próximo
+                  </Button>
+                </div>
               </div>
             </div>
           )}

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
-import { Plus, Search, Edit, Trash2, Wifi } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown } from 'lucide-react';
+import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const Rfids = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [showCreateModal, setShowCreateModal] = React.useState(false);
-  const [newRfid, setNewRfid] = React.useState({
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [newRfid, setNewRfid] = useState({
     codigo: '',
     tipo: '',
     localizacao: '',
@@ -42,13 +44,38 @@ const Rfids = () => {
     setNewRfid({ codigo: '', tipo: '', localizacao: '', ativo: true });
   };
 
+  const submenuLinks = [
+    { label: 'Importações', to: '/administracao/importacoes' },
+    { label: 'Ilhas', to: '/administracao/ilhas' },
+    { label: 'Utilizadores', to: '/administracao/utilizadores' },
+    { label: 'RFIDs', to: '/administracao/rfids' },
+    { label: 'Estados da Faturação', to: '/administracao/estados-faturacao' },
+    { label: 'Países', to: '/administracao/paises' },
+    { label: 'Transponders', to: '/administracao/transponders' },
+    { label: 'Contentores', to: '/administracao/contentores' },
+    { label: 'Resíduos', to: '/administracao/residuos' },
+    { label: 'Controlos de Acesso', to: '/administracao/controlos-acesso' },
+    { label: 'Acabamentos', to: '/administracao/acabamentos' },
+    { label: 'Kits', to: '/administracao/kits' },
+    { label: 'Volumes do Kit', to: '/administracao/volumes-kit' },
+    { label: 'Marcos', to: '/administracao/marcos' },
+    { label: 'Intervenções', to: '/administracao/intervencoes' },
+    { label: 'Plat. de Segurança', to: '/administracao/plataformas-seguranca' },
+    { label: 'Sensores de Enchimento', to: '/administracao/sensores-enchimento' },
+    { label: 'Utilizadores Finais', to: '/administracao/utilizadores-finais' },
+    { label: 'Estado chaves RFID', to: '/administracao/estado-chaves-rfid' },
+  ];
+
   return (
-    <div className="p-6 space-y-6 administracao-page">
-      {/* Page Header */}
-      <div className="page-header text-left">
+    <div className="p-6 space-y-6">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
         <h1 className="text-xl font-bold text-white">RFIDs</h1>
-        <p className="text-gray-300 mt-1">Gestão de dispositivos RFID</p>
+        <p className="text-gray-300 mt-1">Gestão de RFIDs do sistema</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -83,7 +110,7 @@ const Rfids = () => {
                 <TableHead className="text-white">Tipo</TableHead>
                 <TableHead className="text-white">Localização</TableHead>
                 <TableHead className="text-white">Status</TableHead>
-                <TableHead className="text-white">Ações</TableHead>
+                                  <TableHead className="text-white text-center">Ações</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -91,7 +118,8 @@ const Rfids = () => {
                 <TableRow key={rfid.id}>
                   <TableCell className="text-white">
                     <div className="flex items-center gap-2">
-                      <Wifi className="w-4 h-4 text-sotkis-green" />
+                      {/* Assuming Wifi icon is available, otherwise remove or replace */}
+                      {/* <Wifi className="w-4 h-4 text-sotkis-green" /> */}
                       {rfid.codigo}
                     </div>
                   </TableCell>
@@ -106,8 +134,8 @@ const Rfids = () => {
                       {rfid.ativo ? 'Ativo' : 'Inativo'}
                     </span>
                   </TableCell>
-                  <TableCell>
-                    <div className="flex gap-2">
+                  <TableCell className="text-center">
+                    <div className="flex gap-2 justify-center">
                       <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300">
                         <Edit className="w-4 h-4" />
                       </Button>

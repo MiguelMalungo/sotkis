@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
-import { Plus, Search, Edit, Trash2, Users } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown, X } from 'lucide-react';
+import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const UtilizadoresFinais = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [showCreateModal, setShowCreateModal] = React.useState(false);
-  const [newEndUserType, setNewEndUserType] = React.useState({
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [newEndUserType, setNewEndUserType] = useState({
     descPT: '',
     descEN: '',
     descES: '',
@@ -66,13 +68,38 @@ const UtilizadoresFinais = () => {
     setNewEndUserType({ descPT: '', descEN: '', descES: '', descFR: '' });
   };
 
+  const submenuLinks = [
+    { label: 'Importações', to: '/administracao/importacoes' },
+    { label: 'Ilhas', to: '/administracao/ilhas' },
+    { label: 'Utilizadores', to: '/administracao/utilizadores' },
+    { label: 'RFIDs', to: '/administracao/rfids' },
+    { label: 'Estados da Faturação', to: '/administracao/estados-faturacao' },
+    { label: 'Países', to: '/administracao/paises' },
+    { label: 'Transponders', to: '/administracao/transponders' },
+    { label: 'Contentores', to: '/administracao/contentores' },
+    { label: 'Resíduos', to: '/administracao/residuos' },
+    { label: 'Controlos de Acesso', to: '/administracao/controlos-acesso' },
+    { label: 'Acabamentos', to: '/administracao/acabamentos' },
+    { label: 'Kits', to: '/administracao/kits' },
+    { label: 'Volumes do Kit', to: '/administracao/volumes-kit' },
+    { label: 'Marcos', to: '/administracao/marcos' },
+    { label: 'Intervenções', to: '/administracao/intervencoes' },
+    { label: 'Plat. de Segurança', to: '/administracao/plataformas-seguranca' },
+    { label: 'Sensores de Enchimento', to: '/administracao/sensores-enchimento' },
+    { label: 'Utilizadores Finais', to: '/administracao/utilizadores-finais' },
+    { label: 'Estado chaves RFID', to: '/administracao/estado-chaves-rfid' },
+  ];
+
   return (
-    <div className="p-6 space-y-6 administracao-page">
-      {/* Page Header */}
-      <div className="page-header text-left">
-        <h1 className="text-xl font-bold text-white">Tipos de Utilizador Final</h1>
-        <p className="text-gray-300 mt-1">Gestão de tipos de utilizador final</p>
+    <div className="p-6 space-y-6">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Utilizadores Finais</h1>
+        <p className="text-gray-300 mt-1">Gestão de utilizadores finais do sistema</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -95,7 +122,7 @@ const UtilizadoresFinais = () => {
       </div>
 
       {/* End User Types Table */}
-      <Card className="card-glass">
+      <Card className="card-dark-large">
         <CardHeader>
           <CardTitle className="text-white">Tipos de Utilizador Final</CardTitle>
         </CardHeader>
@@ -107,7 +134,7 @@ const UtilizadoresFinais = () => {
                 <TableHead className="text-white">DescEN</TableHead>
                 <TableHead className="text-white">DescES</TableHead>
                 <TableHead className="text-white">DescFR</TableHead>
-                <TableHead className="text-white">Ações</TableHead>
+                                  <TableHead className="text-white text-center">Ações</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -115,15 +142,15 @@ const UtilizadoresFinais = () => {
                 <TableRow key={endUserType.id}>
                   <TableCell className="text-white">
                     <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-sotkis-green" />
+                      <User className="w-4 h-4 text-sotkis-green" />
                       {endUserType.descPT}
                     </div>
                   </TableCell>
                   <TableCell className="text-white">{endUserType.descEN}</TableCell>
                   <TableCell className="text-white">{endUserType.descES}</TableCell>
                   <TableCell className="text-white">{endUserType.descFR}</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2">
+                  <TableCell className="text-center">
+                    <div className="flex gap-2 justify-center">
                       <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300">
                         <Edit className="w-4 h-4" />
                       </Button>
@@ -141,61 +168,83 @@ const UtilizadoresFinais = () => {
 
       {/* Create End User Type Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 rounded-lg p-6 w-full max-w-md mx-4">
-            <h2 className="text-xl font-bold text-white mb-4">Novo Tipo de Utilizador Final</h2>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Descrição PT</label>
-                <Input
-                  value={newEndUserType.descPT}
-                  onChange={(e) => setNewEndUserType({...newEndUserType, descPT: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white"
-                  placeholder="Descrição em Português"
-                />
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+            <div className="flex justify-end mb-4 sm:mb-6">
+              <Button
+                onClick={() => setShowCreateModal(false)}
+                variant="ghost"
+                size="icon"
+                className="text-white hover:text-gray-300"
+              >
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
+            <div className="text-left mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-sotkis-green">Novo Tipo de Utilizador Final</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              {/* Left Column - Form Fields */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição PT:</label>
+                  <Input
+                    value={newEndUserType.descPT}
+                    onChange={(e) => setNewEndUserType({...newEndUserType, descPT: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Descrição em Português"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição EN:</label>
+                  <Input
+                    value={newEndUserType.descEN}
+                    onChange={(e) => setNewEndUserType({...newEndUserType, descEN: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Description in English"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Descrição EN</label>
-                <Input
-                  value={newEndUserType.descEN}
-                  onChange={(e) => setNewEndUserType({...newEndUserType, descEN: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white"
-                  placeholder="Description in English"
-                />
+
+              {/* Right Column - Additional Fields */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição ES:</label>
+                  <Input
+                    value={newEndUserType.descES}
+                    onChange={(e) => setNewEndUserType({...newEndUserType, descES: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Descripción en Español"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição FR:</label>
+                  <Input
+                    value={newEndUserType.descFR}
+                    onChange={(e) => setNewEndUserType({...newEndUserType, descFR: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Description en Français"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Descrição ES</label>
-                <Input
-                  value={newEndUserType.descES}
-                  onChange={(e) => setNewEndUserType({...newEndUserType, descES: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white"
-                  placeholder="Descripción en Español"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Descrição FR</label>
-                <Input
-                  value={newEndUserType.descFR}
-                  onChange={(e) => setNewEndUserType({...newEndUserType, descFR: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white"
-                  placeholder="Description en Français"
-                />
-              </div>
-              <div className="flex gap-3 pt-4">
-                <Button
-                  onClick={handleCreateEndUserType}
-                  className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold flex-1"
-                >
-                  Criar
-                </Button>
-                <Button
-                  onClick={handleCancel}
-                  variant="outline"
-                  className="flex-1 border-white/20 text-white hover:bg-white/10"
-                >
-                  Cancelar
-                </Button>
-              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8">
+              <Button
+                onClick={handleCancel}
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto"
+              >
+                Cancelar
+              </Button>
+              <Button 
+                onClick={handleCreateEndUserType}
+                className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-full sm:w-auto"
+              >
+                Criar
+              </Button>
             </div>
           </div>
         </div>

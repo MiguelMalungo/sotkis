@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Battery, TrendingDown, TrendingUp } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessBatteries = () => {
-  const [selectedDepartment, setSelectedDepartment] = React.useState('');
+  const [selectedDepartment, setSelectedDepartment] = useState('');
+
+  const submenuLinks = [
+    { label: 'RFIDs', to: '/sotkis-access/rfids' },
+    { label: 'Relatórios', to: '/sotkis-access/reports' },
+    { label: 'Depósitos', to: '/sotkis-access/deposits' },
+    { label: 'Baterias', to: '/sotkis-access/batteries' },
+  ];
 
   const handleDepartmentChange = (value) => {
     setSelectedDepartment(value);
@@ -16,20 +24,23 @@ const SotkisAccessBatteries = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="page-header text-left">
-        <h1 className="text-xl font-bold text-white">Nível das Baterias por departamento/contentor</h1>
-        <p className="text-gray-300 mt-1">Monitorização do estado das baterias</p>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Baterias</h1>
+        <p className="text-gray-300 mt-1">Gestão de baterias do Sotkis Access</p>
       </div>
 
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
+
       {/* Main Content */}
-      <Card className="card-glass">
+      <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardContent className="p-6">
           <div className="max-w-md space-y-4">
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Departamento</label>
               <Select value={selectedDepartment} onValueChange={handleDepartmentChange}>
-                <SelectTrigger className="bg-white border-white text-black">
+                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                   <SelectValue placeholder="Selecione um departamento" />
                 </SelectTrigger>
                 <SelectContent>
@@ -57,7 +68,7 @@ const SotkisAccessBatteries = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {/* Sample Battery Status Cards */}
-                <Card className="border-l-4 border-green-500 bg-white/10 border-white/20">
+                <Card className="bg-white/10 backdrop-blur-lg border-0">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
@@ -72,7 +83,7 @@ const SotkisAccessBatteries = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="border-l-4 border-yellow-500 bg-white/10 border-white/20">
+                <Card className="bg-white/10 backdrop-blur-lg border-0">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
@@ -102,7 +113,7 @@ const SotkisAccessBatteries = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="border-l-4 border-green-500 bg-white/10 border-white/20">
+                <Card className="bg-white/10 backdrop-blur-lg border-0">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
@@ -117,7 +128,7 @@ const SotkisAccessBatteries = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="border-l-4 border-yellow-500 bg-white/10 border-white/20">
+                <Card className="bg-white/10 backdrop-blur-lg border-0">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
@@ -132,7 +143,7 @@ const SotkisAccessBatteries = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="border-l-4 border-green-500 bg-white/10 border-white/20">
+                <Card className="bg-white/10 backdrop-blur-lg border-0">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
@@ -150,7 +161,7 @@ const SotkisAccessBatteries = () => {
 
               {/* Summary Stats */}
               <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card className="bg-white/10 border-white/20">
+                <Card className="bg-white/10 backdrop-blur-lg border-0">
                   <CardContent className="p-4 text-center">
                     <div className="flex items-center justify-center space-x-2 mb-2">
                       <Battery className="h-5 w-5 text-green-500" />
@@ -160,7 +171,7 @@ const SotkisAccessBatteries = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-white/10 border-white/20">
+                <Card className="bg-white/10 backdrop-blur-lg border-0">
                   <CardContent className="p-4 text-center">
                     <div className="flex items-center justify-center space-x-2 mb-2">
                       <Battery className="h-5 w-5 text-yellow-500" />
@@ -170,7 +181,7 @@ const SotkisAccessBatteries = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-white/10 border-white/20">
+                <Card className="bg-white/10 backdrop-blur-lg border-0">
                   <CardContent className="p-4 text-center">
                     <div className="flex items-center justify-center space-x-2 mb-2">
                       <Battery className="h-5 w-5 text-red-500" />

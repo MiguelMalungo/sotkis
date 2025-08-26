@@ -4,7 +4,8 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ArrowUpDown } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ArrowUpDown, Mail, ChevronUp, ChevronDown } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const MySotkonDepartamentos = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -13,6 +14,13 @@ const MySotkonDepartamentos = () => {
     nome: '',
     departamento: 'Todos'
   });
+
+  const submenuLinks = [
+    { label: 'Manuais', to: '/my-sotkon/manuais' },
+    { label: 'Departamentos', to: '/my-sotkon/departamentos' },
+    { label: 'Ilhas', to: '/my-sotkon/ilhas' },
+    { label: 'Contentores', to: '/my-sotkon/contentores' },
+  ];
 
   // Mock data for departments
   const mockDepartamentos = [
@@ -71,11 +79,14 @@ const MySotkonDepartamentos = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Page Header */}
-      <div className="page-header text-left">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
         <h1 className="text-xl font-bold text-white">Departamentos</h1>
         <p className="text-gray-300 mt-1">Gestão de departamentos do My Sotkon</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -85,7 +96,7 @@ const MySotkonDepartamentos = () => {
             placeholder="Pesquisar departamentos..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-white/5 border-white/10 text-white placeholder-gray-400"
+            className="pl-10 bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
           />
         </div>
         <Button
@@ -98,48 +109,63 @@ const MySotkonDepartamentos = () => {
       </div>
 
       {/* Filters */}
-      <Card className="card-glass">
-        <CardHeader>
-          <CardTitle className="text-white">Filtros</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-white">Nome</label>
-              <Input
-                placeholder="Digite o nome"
-                value={filters.nome}
-                onChange={(e) => setFilters({...filters, nome: e.target.value})}
-                className="bg-white/5 border-white/10 text-white placeholder-gray-400"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-white">Departamento</label>
-              <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                <SelectTrigger className="bg-white/5 border-white text-white">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Todos">Todos</SelectItem>
-                  <SelectItem value="Aguiar da Beira">Aguiar da Beira</SelectItem>
-                  <SelectItem value="Albergaria-a-Velha">Albergaria-a-Velha</SelectItem>
-                  <SelectItem value="Albufeira">Albufeira</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Button onClick={handleSearch} className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
-              Pesquisar
+      <div className="space-y-4">
+        <div className="text-left mb-3">
+          <h2 className="text-white text-lg font-semibold">Filtros</h2>
+        </div>
+        
+        <div className="flex flex-col lg:flex-row gap-6 items-start w-full filter-cards-container">
+          {/* Nome */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Nome</label>
+                <Input
+                  placeholder="Digite o nome"
+                  value={filters.nome}
+                  onChange={(e) => setFilters({...filters, nome: e.target.value})}
+                  className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
+                />
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Departamento */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Departamento</label>
+                <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Todos">Todos</SelectItem>
+                    <SelectItem value="Aguiar da Beira">Aguiar da Beira</SelectItem>
+                    <SelectItem value="Albergaria-a-Velha">Albergaria-a-Velha</SelectItem>
+                    <SelectItem value="Albufeira">Albufeira</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Pesquisar Button */}
+          <div className="flex items-start pt-6">
+            <Button onClick={handleSearch} className="bg-sotkis-green text-black hover:bg-sotkis-green/90 h-10 px-4 transition-transform duration-200 hover:scale-105 sm:h-[66px] sm:w-[66px] sm:p-0 sm:hover:scale-110">
+              <Search className="w-4 h-4 sm:w-9 sm:h-9 mr-2 sm:mr-0" />
+              <span className="sm:hidden">Pesquisar</span>
             </Button>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Table Controls */}
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select defaultValue="10">
-            <SelectTrigger className="w-20 bg-white/5 border-white text-white">
+            <SelectTrigger className="w-20 bg-white/10 border-white/20 text-white/90">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -157,44 +183,79 @@ const MySotkonDepartamentos = () => {
             placeholder="Pesquisar..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-64 bg-white/5 border-white/10 text-white placeholder-gray-400"
+            className="w-64 bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
           />
         </div>
       </div>
 
       {/* Table */}
-      <Card className="card-glass">
+      <Card className="card-dark-large">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="cursor-pointer text-white">
-                  Nome
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Nome</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
+                </TableHead>
+                <TableHead className="cursor-pointer text-white w-24">
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>NIF</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  NIF
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Email</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
+                </TableHead>
+                <TableHead className="cursor-pointer text-white w-32">
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Código de região</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Email
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Estado</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Código de região
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Customer Id (Enevo Api)</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Estado
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
-                </TableHead>
-                <TableHead className="cursor-pointer text-white">
-                  Customer Id (Enevo Api)
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
-                </TableHead>
-                <TableHead className="cursor-pointer text-white">
-                  Customer Id (Digi eGate Api)
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Customer Id (Digi eGate Api)</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="w-20 text-white">Ações</TableHead>
               </TableRow>
@@ -203,9 +264,14 @@ const MySotkonDepartamentos = () => {
               {filteredDepartamentos.map((departamento) => (
                 <TableRow key={departamento.id}>
                   <TableCell className="text-white">{departamento.nome}</TableCell>
-                  <TableCell className="text-white">{departamento.nif}</TableCell>
-                  <TableCell className="text-white">{departamento.email}</TableCell>
-                  <TableCell className="text-white">{departamento.codigoRegiao || '-'}</TableCell>
+                  <TableCell className="text-white w-24 whitespace-nowrap">{departamento.nif}</TableCell>
+                  <TableCell className="text-white !text-left">
+                    <div className="flex items-center justify-start space-x-2">
+                      <Mail className="h-4 w-4 text-blue-400" />
+                      <span className="truncate">{departamento.email}</span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-white w-32 whitespace-nowrap">{departamento.codigoRegiao || '-'}</TableCell>
                   <TableCell>
                     <div className="flex items-center space-x-1">
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -230,6 +296,162 @@ const MySotkonDepartamentos = () => {
           </Table>
         </CardContent>
       </Card>
+      
+      {/* Create Department Modal */}
+      {showCreateModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-white">Criar novo departamento</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Left Column - Basic Information */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Nome:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Nome do departamento"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">NIF:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Número de identificação fiscal"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Código de região:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Código da região"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Morada:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Endereço completo"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Código-Postal:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Código postal"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Cidade:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Nome da cidade"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">País:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Nome do país"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Iva:</label>
+                  <Select>
+                    <SelectTrigger className="bg-white text-black">
+                      <SelectValue placeholder="Selecione IVA" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="0%">0%</SelectItem>
+                      <SelectItem value="6%">6%</SelectItem>
+                      <SelectItem value="13%">13%</SelectItem>
+                      <SelectItem value="23%">23%</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Right Column - Contact & API Information */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Email:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Email de contacto"
+                    type="email"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Telefone:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Número de telefone"
+                    type="tel"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Url:</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="URL do departamento"
+                    type="url"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Ativo:</label>
+                  <Select defaultValue="Sim">
+                    <SelectTrigger className="bg-white text-black">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Sim">Sim</SelectItem>
+                      <SelectItem value="Não">Não</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Customer Content Id (Enevo api):</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="ID do cliente na API Enevo"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Customer Content Id (Digi eGate api):</label>
+                  <Input
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="ID do cliente na API Digi eGate"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8">
+              <Button
+                onClick={() => setShowCreateModal(false)}
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto"
+              >
+                Cancelar
+              </Button>
+              <Button 
+                onClick={() => {
+                  // Handle create department logic here
+                  console.log('Creating new department');
+                  setShowCreateModal(false);
+                }}
+                className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-full sm:w-auto"
+              >
+                Submeter
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Select, SelectOption } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { TrendingUp, TrendingDown, Calendar, Filter, Download, RefreshCw, Users, BarChart3, AlertTriangle, MapPin, Leaf, Wrench, Package, ArrowLeft } from 'lucide-react';
 import { 
-  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area,
-  RadialBarChart, RadialBar, PolarRadiusAxis, Label
+  BarChart3, TrendingUp, TrendingDown, Search, Filter, ArrowLeft,
+  Target, Award, Zap, Activity, Users, MapPin, Wrench, Package
+} from 'lucide-react';
+import { 
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, AreaChart, Area, RadialBarChart, RadialBar, PolarRadiusAxis, Label
 } from 'recharts';
+import SubmenuBar from '../../components/ui/SubmenuBar';
 import { 
   performanceData, 
   monthlyPerformanceData, 
@@ -21,8 +25,17 @@ import {
 
 const PerformanceDashboard = () => {
   const navigate = useNavigate();
-  const [selectedTime, setSelectedTime] = useState('year');
+  const [selectedTime, setSelectedTime] = useState('month');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
+
+  const submenuLinks = [
+    { label: 'Deposições', to: '/dashboard/deposicoes' },
+    { label: 'Nível de Enchimento', to: '/dashboard/nivel-enchimento' },
+    { label: 'Gestão de Manutenções', to: '/dashboard/gestao-manutencoes' },
+    { label: 'Recompensas', to: '/dashboard/recompensas' },
+    { label: 'Gestão de Rotas', to: '/dashboard/gestao-rotas' },
+    { label: 'Performance', to: '/dashboard/performance' },
+  ];
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -55,47 +68,30 @@ const PerformanceDashboard = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-        <div className="text-left">
-          <h1 className="text-xl md:text-2xl font-bold text-white">Dashboard - Performance</h1>
-          <p className="text-gray-300 mt-1">Análise de performance e métricas do sistema</p>
-          {/* Back Button - Mobile: under title, Desktop: in filter section */}
-          <div className="md:hidden mt-4">
-            <Button 
-              onClick={() => navigate('/dashboard/operacao')}
-              className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar
-            </Button>
-          </div>
-        </div>
-        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-          <Button variant="outline" className="text-white border-white/20">
-            <Download className="w-4 h-4 mr-2" />
-            Exportar
-          </Button>
-          <Button className="bg-sotkis-green hover:bg-sotkis-green/90">
-            <RefreshCw className="w-4 h-4 mr-2" />
-            Atualizar
-          </Button>
-        </div>
+    <div className="p-6 space-y-6">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Dashboard de Performance</h1>
+        <p className="text-gray-300 mt-1">Análise de performance e métricas do sistema</p>
       </div>
 
-      {/* Back Button and Filters */}
-      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 items-start sm:items-center">
-        {/* Back Button - Desktop only */}
-        <div className="hidden md:block">
-          <Button 
-            onClick={() => navigate('/dashboard/operacao')}
-            className="bg-sotkis-green hover:bg-sotkis-green/90 text-white"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Voltar
-          </Button>
-        </div>
+      {/* Voltar Button - Mobile Only */}
+      <div className="flex justify-start md:hidden">
+        <Button 
+          onClick={() => window.history.back()}
+          className="bg-sotkis-green hover:bg-sotkis-green/90 text-white font-semibold text-sm"
+        >
+          Voltar
+        </Button>
+      </div>
+
+      {/* SubmenuBar - Desktop Only */}
+      <div className="hidden md:block">
+        <SubmenuBar items={submenuLinks} />
+      </div>
+
+      {/* Filters */}
+      <div className="flex flex-col lg:flex-row lg:flex-wrap gap-4 items-start lg:items-center">
         <div className="flex flex-wrap gap-2">
           {timePresets.map((preset) => (
             <Button
@@ -103,19 +99,16 @@ const PerformanceDashboard = () => {
               variant={selectedTime === preset.value ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedTime(preset.value)}
-              className={selectedTime === preset.value ? "bg-sotkis-green" : "text-white border-white/20"}
+              className={selectedTime === preset.value ? "bg-sotkis-green hover:bg-sotkis-green/90 text-black" : "text-white border-white/20 hover:bg-white/10"}
             >
               {preset.label}
             </Button>
           ))}
         </div>
-        <div className="flex items-center space-x-2 w-full sm:w-auto">
-          <Filter className="w-4 h-4 text-gray-400" />
-          <Select
-            value={selectedDepartment}
-            onChange={(e) => setSelectedDepartment(e.target.value)}
-            className="w-full sm:w-48 bg-white/10 border-white/20 text-white/90"
-          >
+        
+        <div className="flex flex-wrap gap-2">
+          <Select value={selectedDepartment} onChange={(e) => setSelectedDepartment(e.target.value)}>
+            <SelectOption value="all">Todos os Departamentos</SelectOption>
             {departments.map((dept) => (
               <SelectOption key={dept.value} value={dept.value}>
                 {dept.label}
@@ -126,7 +119,7 @@ const PerformanceDashboard = () => {
       </div>
 
       {/* Annual Comparison Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="text-center">
@@ -201,115 +194,6 @@ const PerformanceDashboard = () => {
 
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardContent className="p-4">
-            <div className="text-center">
-              <p className="text-sm text-gray-300">Recompensas</p>
-              <p className="text-xl font-bold text-white">{performanceData.currentYear.rewards}</p>
-              <div className="flex items-center justify-center mt-1">
-                {performanceData.currentYear.rewards > performanceData.previousYear.rewards ? (
-                  <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                ) : (
-                  <TrendingDown className="w-4 h-4 text-red-500 mr-1" />
-                )}
-                <span className={`text-sm ${
-                  performanceData.currentYear.rewards > performanceData.previousYear.rewards 
-                    ? 'text-green-500' 
-                    : 'text-red-500'
-                }`}>
-                  {calculateGrowth(performanceData.currentYear.rewards, performanceData.previousYear.rewards).toFixed(1)}%
-                </span>
-              </div>
-              <p className="text-xs text-gray-400 mt-1">vs ano anterior</p>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
-            <div className="text-center">
-              <p className="text-sm text-gray-300">Rotas</p>
-              <p className="text-xl font-bold text-white">{performanceData.currentYear.routes}</p>
-              <div className="flex items-center justify-center mt-1">
-                {performanceData.currentYear.routes > performanceData.previousYear.routes ? (
-                  <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                ) : (
-                  <TrendingDown className="w-4 h-4 text-red-500 mr-1" />
-                )}
-                <span className={`text-sm ${
-                  performanceData.currentYear.routes > performanceData.previousYear.routes 
-                    ? 'text-green-500' 
-                    : 'text-red-500'
-                }`}>
-                  {calculateGrowth(performanceData.currentYear.routes, performanceData.previousYear.routes).toFixed(1)}%
-                </span>
-              </div>
-              <p className="text-xs text-gray-400 mt-1">vs ano anterior</p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* First Row - Regular Metrics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {/* Serviço */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-300">SERVIÇO</p>
-                <p className="text-xl font-bold text-white">+15%</p>
-                <div className="flex items-center mt-1">
-                  <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                  <span className="text-sm text-green-500">vs ano anterior</span>
-                </div>
-              </div>
-              <div className="p-3 bg-white/10 rounded-lg">
-                <BarChart3 className="h-6 w-6 text-sotkis-green" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Engagement Comunitário */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-300">ENGAGEMENT COMUNITÁRIO</p>
-                <p className="text-xl font-bold text-white">+23%</p>
-                <div className="flex items-center mt-1">
-                  <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                  <span className="text-sm text-green-500">vs ano anterior</span>
-                </div>
-              </div>
-              <div className="p-3 bg-white/10 rounded-lg">
-                <Users className="h-6 w-6 text-sotkis-green" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Tx Reciclagem */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-300">TX RECICLAGEM</p>
-                <p className="text-xl font-bold text-white">43.2%</p>
-                <div className="flex items-center mt-1">
-                  <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                  <span className="text-sm text-green-500">+7 pp vs ano</span>
-                </div>
-              </div>
-              <div className="p-3 bg-white/10 rounded-lg">
-                <BarChart3 className="h-6 w-6 text-sotkis-green" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Carbon Footprint */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
-          <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-300">Carbon Footprint</p>
@@ -320,13 +204,12 @@ const PerformanceDashboard = () => {
                 </div>
               </div>
               <div className="p-3 bg-white/10 rounded-lg">
-                <Leaf className="h-6 w-6 text-green-500" />
+                <Zap className="h-6 w-6 text-green-500" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Custos */}
         <Card className="bg-white/10 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
@@ -349,253 +232,250 @@ const PerformanceDashboard = () => {
       {/* Second Row - Gauge Charts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Utilizadores Ativos */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[400px]">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center mb-4">
-                <p className="text-lg text-white font-bold">Utilizadores Ativos</p>
+                <p className="text-sm text-white font-bold">Utilizadores Ativos</p>
                 <p className="text-xs text-gray-400">de 10,600 total</p>
               </div>
               
-              {/* Large Radial Gauge Chart */}
-              <div className="flex justify-center" style={{ width: '100%', minWidth: '600px', maxWidth: '800px' }}>
-                <RadialBarChart
-                  width={600}
-                  height={300}
-                  data={[
-                    { value: 2600, max: 10600, fill: "#9EC043" },
-                    { value: 8000, max: 10600, fill: "rgba(255,255,255,0.2)" }
-                  ]}
-                  startAngle={180}
-                  endAngle={0}
-                  innerRadius={80}
-                  outerRadius={120}
-                >
-                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
-                    <Label
-                      content={({ viewBox }) => {
-                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                          return (
-                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 10}
-                                className="fill-white text-3xl font-bold"
-                              >
-                                2600
-                              </tspan>
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 40}
-                                className="fill-gray-400 text-xl"
-                              >
-                                Utilizadores
-                              </tspan>
-                            </text>
-                          )
-                        }
-                      }}
+              {/* Responsive Radial Gauge Chart */}
+              <div className="w-full flex justify-center">
+                <ResponsiveContainer width="100%" height={200} className="sm:h-[300px]">
+                  <RadialBarChart
+                    data={[
+                      { value: 2600, max: 10600, fill: "#9EC043" },
+                      { value: 8000, max: 10600, fill: "rgba(255,255,255,0.2)" }
+                    ]}
+                    startAngle={180}
+                    endAngle={0}
+                    innerRadius={40}
+                    outerRadius={80}
+                  >
+                    <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                      <Label
+                        content={({ viewBox }) => {
+                          if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                            return (
+                              <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 8}
+                                  className="fill-white text-xl font-bold"
+                                >
+                                  2600
+                                </tspan>
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 25}
+                                  className="fill-gray-400 text-sm"
+                                >
+                                  Utilizadores
+                                </tspan>
+                              </text>
+                            )
+                          }
+                        }}
+                      />
+                    </PolarRadiusAxis>
+                    <RadialBar
+                      dataKey="value"
+                      cornerRadius={20}
+                      fill="#9EC043"
+                      strokeWidth={25}
                     />
-                  </PolarRadiusAxis>
-                  <RadialBar
-                    dataKey="value"
-                    cornerRadius={20}
-                    fill="#9EC043"
-                    strokeWidth={25}
-                  />
-                </RadialBarChart>
+                  </RadialBarChart>
+                </ResponsiveContainer>
               </div>
               
-              <Users className="h-8 w-8 text-sotkis-green" />
+              <Users className="h-8 w-8 text-sotkis-green mt-2" />
             </div>
           </CardContent>
         </Card>
 
         {/* Nº Km */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[400px]">
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center mb-4">
-                <p className="text-lg text-white font-bold">Nº Km</p>
-                <p className="text-xs text-gray-400">de 424,000 total</p>
+                <p className="text-sm text-white font-bold">Nº Km</p>
+                <p className="text-xs text-gray-400">de 15,000 total</p>
               </div>
               
-              {/* Large Radial Gauge Chart */}
-              <div className="flex justify-center" style={{ width: '100%', minWidth: '600px', maxWidth: '800px' }}>
-                <RadialBarChart
-                  width={600}
-                  height={300}
-                  data={[
-                    { value: 349600, max: 424000, fill: "#9EC043" },
-                    { value: 74400, max: 424000, fill: "rgba(255,255,255,0.2)" }
-                  ]}
-                  startAngle={180}
-                  endAngle={0}
-                  innerRadius={80}
-                  outerRadius={120}
-                >
-                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
-                    <Label
-                      content={({ viewBox }) => {
-                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                          return (
-                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 10}
-                                className="fill-white text-3xl font-bold"
-                              >
-                                349600
-                              </tspan>
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 40}
-                                className="fill-gray-400 text-xl"
-                              >
-                                Km
-                              </tspan>
-                            </text>
-                          )
-                        }
-                      }}
+              <div className="w-full flex justify-center">
+                <ResponsiveContainer width="100%" height={200} className="sm:h-[300px]">
+                  <RadialBarChart
+                    data={[
+                      { value: 12000, max: 15000, fill: "#9EC043" },
+                      { value: 3000, max: 15000, fill: "rgba(255,255,255,0.2)" }
+                    ]}
+                    startAngle={180}
+                    endAngle={0}
+                    innerRadius={40}
+                    outerRadius={80}
+                  >
+                    <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                      <Label
+                        content={({ viewBox }) => {
+                          if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                            return (
+                              <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 8}
+                                  className="fill-white text-xl font-bold"
+                                >
+                                  12,000
+                                </tspan>
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 25}
+                                  className="fill-gray-400 text-sm"
+                                >
+                                  Km
+                                </tspan>
+                              </text>
+                            )
+                          }
+                        }}
+                      />
+                    </PolarRadiusAxis>
+                    <RadialBar
+                      dataKey="value"
+                      cornerRadius={20}
+                      fill="#9EC043"
+                      strokeWidth={25}
                     />
-                  </PolarRadiusAxis>
-                  <RadialBar
-                    dataKey="value"
-                    cornerRadius={20}
-                    fill="#9EC043"
-                    strokeWidth={25}
-                  />
-                </RadialBarChart>
+                  </RadialBarChart>
+                </ResponsiveContainer>
               </div>
               
-              <MapPin className="h-8 w-8 text-sotkis-green" />
+              <MapPin className="h-8 w-8 text-sotkis-green mt-2" />
             </div>
           </CardContent>
         </Card>
 
-        {/* Manutenção Não Programada */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[400px]">
+        {/* Manutenção */}
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center mb-4">
-                <p className="text-lg text-white font-bold">Manutenção</p>
-                <p className="text-xs text-gray-400">de 33 total</p>
+                <p className="text-sm text-white font-bold">Manutenção</p>
+                <p className="text-xs text-gray-400">de 100 total</p>
               </div>
               
-              {/* Large Radial Gauge Chart */}
-              <div className="flex justify-center" style={{ width: '100%', minWidth: '600px', maxWidth: '800px' }}>
-                <RadialBarChart
-                  width={600}
-                  height={300}
-                  data={[
-                    { value: 29, max: 33, fill: "#9EC043" },
-                    { value: 4, max: 33, fill: "rgba(255,255,255,0.2)" }
-                  ]}
-                  startAngle={180}
-                  endAngle={0}
-                  innerRadius={80}
-                  outerRadius={120}
-                >
-                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
-                    <Label
-                      content={({ viewBox }) => {
-                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                          return (
-                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 10}
-                                className="fill-white text-3xl font-bold"
-                              >
-                                29
-                              </tspan>
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 40}
-                                className="fill-gray-400 text-xl"
-                              >
-                                Manutenções
-                              </tspan>
-                            </text>
-                          )
-                        }
-                      }}
+              <div className="w-full flex justify-center">
+                <ResponsiveContainer width="100%" height={200} className="sm:h-[300px]">
+                  <RadialBarChart
+                    data={[
+                      { value: 85, max: 100, fill: "#9EC043" },
+                      { value: 15, max: 100, fill: "rgba(255,255,255,0.2)" }
+                    ]}
+                    startAngle={180}
+                    endAngle={0}
+                    innerRadius={40}
+                    outerRadius={80}
+                  >
+                    <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                      <Label
+                        content={({ viewBox }) => {
+                          if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                            return (
+                              <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 8}
+                                  className="fill-white text-xl font-bold"
+                                >
+                                  85
+                                </tspan>
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 25}
+                                  className="fill-gray-400 text-sm"
+                                >
+                                  Manutenções
+                                </tspan>
+                              </text>
+                            )
+                          }
+                        }}
+                      />
+                    </PolarRadiusAxis>
+                    <RadialBar
+                      dataKey="value"
+                      cornerRadius={20}
+                      fill="#9EC043"
+                      strokeWidth={25}
                     />
-                  </PolarRadiusAxis>
-                  <RadialBar
-                    dataKey="value"
-                    cornerRadius={20}
-                    fill="#9EC043"
-                    strokeWidth={25}
-                  />
-                </RadialBarChart>
+                  </RadialBarChart>
+                </ResponsiveContainer>
               </div>
               
-              <Wrench className="h-8 w-8 text-yellow-500" />
+              <Wrench className="h-8 w-8 text-sotkis-green mt-2" />
             </div>
           </CardContent>
         </Card>
 
-        {/* Nº Contentores Capacidade > 99% */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[400px]">
+        {/* Capacidade > 99% */}
+        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center mb-4">
-                <p className="text-lg text-white font-bold">Capacidade &gt; 99%</p>
-                <p className="text-xs text-gray-400">de 42 total</p>
+                <p className="text-sm text-white font-bold">Capacidade &gt; 99%</p>
+                <p className="text-xs text-gray-400">de 500 total</p>
               </div>
               
-              {/* Large Radial Gauge Chart */}
-              <div className="flex justify-center" style={{ width: '100%', minWidth: '600px', maxWidth: '800px' }}>
-                <RadialBarChart
-                  width={600}
-                  height={300}
-                  data={[
-                    { value: 20, max: 42, fill: "#9EC043" },
-                    { value: 22, max: 42, fill: "rgba(255,255,255,0.2)" }
-                  ]}
-                  startAngle={180}
-                  endAngle={0}
-                  innerRadius={80}
-                  outerRadius={120}
-                >
-                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
-                    <Label
-                      content={({ viewBox }) => {
-                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                          return (
-                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 10}
-                                className="fill-white text-3xl font-bold"
-                              >
-                                20
-                              </tspan>
-                              <tspan
-                                x={viewBox.cx}
-                                y={(viewBox.cy || 0) + 40}
-                                className="fill-gray-400 text-xl"
-                              >
-                                
-                              </tspan>
-                            </text>
-                          )
-                        }
-                      }}
+              <div className="w-full flex justify-center">
+                <ResponsiveContainer width="100%" height={200} className="sm:h-[300px]">
+                  <RadialBarChart
+                    data={[
+                      { value: 480, max: 500, fill: "#9EC043" },
+                      { value: 20, max: 500, fill: "rgba(255,255,255,0.2)" }
+                    ]}
+                    startAngle={180}
+                    endAngle={0}
+                    innerRadius={40}
+                    outerRadius={80}
+                  >
+                    <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                      <Label
+                        content={({ viewBox }) => {
+                          if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                            return (
+                              <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 8}
+                                  className="fill-white text-xl font-bold"
+                                >
+                                  480
+                                </tspan>
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={(viewBox.cy || 0) + 25}
+                                  className="fill-gray-400 text-sm"
+                                >
+                                  Contentores
+                                </tspan>
+                              </text>
+                            )
+                          }
+                        }}
+                      />
+                    </PolarRadiusAxis>
+                    <RadialBar
+                      dataKey="value"
+                      cornerRadius={20}
+                      fill="#9EC043"
+                      strokeWidth={25}
                     />
-                  </PolarRadiusAxis>
-                  <RadialBar
-                    dataKey="value"
-                    cornerRadius={20}
-                    fill="#9EC043"
-                    strokeWidth={25}
-                  />
-                </RadialBarChart>
+                  </RadialBarChart>
+                </ResponsiveContainer>
               </div>
               
-              <Package className="h-8 w-8 text-red-500" />
+              <Package className="h-8 w-8 text-sotkis-green mt-2" />
             </div>
           </CardContent>
         </Card>

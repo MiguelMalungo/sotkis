@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Calendar, BarChart3, TrendingUp, AlertTriangle, CheckCircle, Clock, XCircle } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const ComplianceDashboard = () => {
-  const [startDate, setStartDate] = React.useState('2025-01-01');
-  const [endDate, setEndDate] = React.useState('2025-07-30');
+  const [startDate, setStartDate] = useState('2025-01-01');
+  const [endDate, setEndDate] = useState('2025-07-30');
 
   // Mock statistics data
   const clientStats = {
@@ -39,15 +40,22 @@ const ComplianceDashboard = () => {
     // Here you would implement the logic to set the appropriate date range
   };
 
+  const submenuLinks = [
+    { label: 'Clientes', to: '/compliance/clients' },
+    { label: 'Fornecedores', to: '/compliance/suppliers' },
+    { label: 'Dashboard', to: '/compliance/dashboard' },
+  ];
+
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex justify-end sm:justify-between items-start">
-        <div className="space-y-2 text-right sm:text-left">
-          <h1 className="text-xl font-bold text-white">Dashboard Compliance</h1>
-          <p className="text-gray-300 mt-1">Visão geral de não-conformidades</p>
-        </div>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Dashboard de Conformidade</h1>
+        <p className="text-gray-300 mt-1">Visão geral da conformidade do sistema</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
       {/* Filters */}
       <div className="space-y-4">
@@ -55,7 +63,7 @@ const ComplianceDashboard = () => {
         
         {/* Date filters in a grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="card-glass">
+          <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Início do Período</label>
@@ -63,14 +71,14 @@ const ComplianceDashboard = () => {
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
                   placeholder="dd/mm/yyyy"
                 />
               </div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Fim do Período</label>
@@ -78,14 +86,14 @@ const ComplianceDashboard = () => {
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
                   placeholder="dd/mm/yyyy"
                 />
               </div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Atualizar</label>
@@ -99,25 +107,36 @@ const ComplianceDashboard = () => {
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          <Card className="bg-white/10 backdrop-blur-lg border-0">
             <CardContent className="p-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Períodos Rápidos</label>
-                <Select onValueChange={(value) => handleQuickDate(value)}>
-                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
-                    <SelectValue placeholder="Selecione período" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Ontem">Ontem</SelectItem>
-                    <SelectItem value="Hoje">Hoje</SelectItem>
-                    <SelectItem value="1 semana">1 semana</SelectItem>
-                    <SelectItem value="1 mês">1 mês</SelectItem>
-                    <SelectItem value="3 meses">3 meses</SelectItem>
-                    <SelectItem value="6 meses">6 meses</SelectItem>
-                    <SelectItem value="1 ano">1 ano</SelectItem>
-                    <SelectItem value="Inicio do ano até hoje">Inicio do ano até hoje</SelectItem>
-                  </SelectContent>
-                </Select>
+                <div className="flex flex-wrap gap-2">
+                  <Button 
+                    onClick={() => handleQuickDate('today')}
+                    variant="outline" 
+                    size="sm"
+                    className="text-xs bg-white/10 border-white/20 text-white/90 hover:bg-white/20"
+                  >
+                    Hoje
+                  </Button>
+                  <Button 
+                    onClick={() => handleQuickDate('week')}
+                    variant="outline" 
+                    size="sm"
+                    className="text-xs bg-white/10 border-white/20 text-white/90 hover:bg-white/20"
+                  >
+                    Esta Semana
+                  </Button>
+                  <Button 
+                    onClick={() => handleQuickDate('month')}
+                    variant="outline" 
+                    size="sm"
+                    className="text-xs bg-white/10 border-white/20 text-white/90 hover:bg-white/20"
+                  >
+                    Este Mês
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -126,66 +145,106 @@ const ComplianceDashboard = () => {
 
       {/* Statistics Cards */}
       
+      {/* Main Dashboard Content */}
+      <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <CardHeader>
+          <CardTitle className="text-white">Visão Geral da Conformidade</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">Clientes</h4>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-300">Total de casos:</span>
+                  <span className="text-white font-medium">{clientStats.todas}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-300">Em curso:</span>
+                  <span className="text-yellow-400 font-medium">{clientStats.emCurso}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-300">Resolvidos:</span>
+                  <span className="text-green-400 font-medium">{clientStats.resolvidas}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">Fornecedores</h4>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-300">Total de casos:</span>
+                  <span className="text-white font-medium">{supplierStats.todas}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-300">Em curso:</span>
+                  <span className="text-yellow-400 font-medium">{supplierStats.emCurso}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-300">Resolvidos:</span>
+                  <span className="text-green-400 font-medium">{supplierStats.resolvidas}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Client Non-Conformity Management Section */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-white">
           GESTÃO DE NÃO-CONFORMIDADES DE CLIENTES
         </h3>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
+        {/* Client Statistics */}
+        <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-white mb-1">{clientStats.todas}</div>
-              <div className="text-sm text-gray-300">Todas</div>
+              <div className="text-2xl font-bold text-white">{clientStats.todas}</div>
+              <div className="text-sm text-gray-300">Total</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-blue-400 mb-1">{clientStats.novas}</div>
+              <div className="text-2xl font-bold text-white">{clientStats.novas}</div>
               <div className="text-sm text-gray-300">Novas</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-yellow-400 mb-1">{clientStats.emCurso}</div>
-              <div className="text-sm text-gray-300">Em curso</div>
+              <div className="text-2xl font-bold text-white">{clientStats.emCurso}</div>
+              <div className="text-sm text-gray-300">Em Curso</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-green-400 mb-1">{clientStats.resolvidas}</div>
+              <div className="text-2xl font-bold text-white">{clientStats.resolvidas}</div>
               <div className="text-sm text-gray-300">Resolvidas</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-red-400 mb-1">{clientStats.pendentes}</div>
+              <div className="text-2xl font-bold text-white">{clientStats.pendentes}</div>
               <div className="text-sm text-gray-300">Pendentes</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-green-500 mb-1">{clientStats.eficazes}</div>
+              <div className="text-2xl font-bold text-white">{clientStats.eficazes}</div>
               <div className="text-sm text-gray-300">Eficazes</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-red-500 mb-1">{clientStats.semEficacia}</div>
-              <div className="text-sm text-gray-300">Sem eficácia</div>
+              <div className="text-2xl font-bold text-white">{clientStats.semEficacia}</div>
+              <div className="text-sm text-gray-300">Sem Eficácia</div>
             </CardContent>
           </Card>
         </div>
@@ -197,67 +256,61 @@ const ComplianceDashboard = () => {
           GESTÃO DE NÃO-CONFORMIDADES DE FORNECEDORES
         </h3>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
+        {/* Supplier Statistics */}
+        <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-white mb-1">{supplierStats.todas}</div>
-              <div className="text-sm text-gray-300">Todas</div>
+              <div className="text-2xl font-bold text-white">{supplierStats.todas}</div>
+              <div className="text-sm text-gray-300">Total</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-blue-400 mb-1">{supplierStats.novas}</div>
+              <div className="text-2xl font-bold text-white">{supplierStats.novas}</div>
               <div className="text-sm text-gray-300">Novas</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-yellow-400 mb-1">{supplierStats.emCurso}</div>
-              <div className="text-sm text-gray-300">Em curso</div>
+              <div className="text-2xl font-bold text-white">{supplierStats.emCurso}</div>
+              <div className="text-sm text-gray-300">Em Curso</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-green-400 mb-1">{supplierStats.resolvidas}</div>
+              <div className="text-2xl font-bold text-white">{supplierStats.resolvidas}</div>
               <div className="text-sm text-gray-300">Resolvidas</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-red-400 mb-1">{supplierStats.pendentes}</div>
+              <div className="text-2xl font-bold text-white">{supplierStats.pendentes}</div>
               <div className="text-sm text-gray-300">Pendentes</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-green-500 mb-1">{supplierStats.eficazes}</div>
+              <div className="text-2xl font-bold text-white">{supplierStats.eficazes}</div>
               <div className="text-sm text-gray-300">Eficazes</div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+          <Card className="bg-white/10 backdrop-blur-lg border-0 relative overflow-hidden">
             <CardContent className="p-4 text-center">
-              <div className="text-xl font-bold text-red-500 mb-1">{supplierStats.semEficacia}</div>
-              <div className="text-sm text-gray-300">Sem eficácia</div>
+              <div className="text-2xl font-bold text-white">{supplierStats.semEficacia}</div>
+              <div className="text-sm text-gray-300">Sem Eficácia</div>
             </CardContent>
           </Card>
         </div>
       </div>
 
       {/* Filters Section */}
-      <Card className="card-glass">
+      <Card className="bg-white/10 backdrop-blur-lg border-0">
         <CardContent className="p-6">
           <h2 className="text-lg font-semibold text-white mb-4">Filtros</h2>
           
@@ -265,7 +318,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Não-conformidades de</label>
               <Select defaultValue="clientes-fornecedores">
-                <SelectTrigger className="bg-white border-white text-black">
+                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -279,7 +332,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Ano</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white border-white text-black">
+                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -294,7 +347,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Tipo</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white border-white text-black">
+                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -308,7 +361,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Estado</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white border-white text-black">
+                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -323,7 +376,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Responsável</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white border-white text-black">
+                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -338,7 +391,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Avaliação de Eficácia</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white border-white text-black">
+                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

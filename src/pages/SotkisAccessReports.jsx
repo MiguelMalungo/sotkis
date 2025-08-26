@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
-import { Calendar, ChevronDown, Printer } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
+import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessReports = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const submenuLinks = [
+    { label: 'RFIDs', to: '/sotkis-access/rfids' },
+    { label: 'Relatórios', to: '/sotkis-access/reports' },
+    { label: 'Depósitos', to: '/sotkis-access/deposits' },
+    { label: 'Baterias', to: '/sotkis-access/batteries' },
+  ];
+
   const [filters, setFilters] = React.useState({
     inicioPeriodo: '',
     fimPeriodo: '',
@@ -24,54 +36,61 @@ const SotkisAccessReports = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="space-y-2">
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
         <h1 className="text-xl font-bold text-white">Relatórios</h1>
-        <p className="text-gray-300 mt-1">Geração de relatórios do sistema</p>
+        <p className="text-gray-300 mt-1">Gestão de relatórios do Sotkis Access</p>
       </div>
+
+      {/* SubmenuBar */}
+      <SubmenuBar items={submenuLinks} />
 
       {/* Filters */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-white">Filtros</h3>
+        <div className="text-left mb-3">
+          <h2 className="text-white text-lg font-semibold">Filtros</h2>
+        </div>
         
-        {/* All 8 filters in a grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="card-glass">
+        <div className="flex flex-col lg:flex-row gap-6 items-start w-full filter-cards-container">
+          {/* Início do Período */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white">Início do Período</label>
-                                                  <Input
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Início do Período</label>
+                <Input
                   type="date"
                   value={filters.inicioPeriodo}
                   onChange={(e) => setFilters({...filters, inicioPeriodo: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
                   placeholder="dd/mm/yyyy"
                 />
               </div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          {/* Fim do Período */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white">Fim do Período</label>
-                                                  <Input
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Fim do Período</label>
+                <Input
                   type="date"
                   value={filters.fimPeriodo}
                   onChange={(e) => setFilters({...filters, fimPeriodo: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
                   placeholder="dd/mm/yyyy"
                 />
               </div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          {/* Departamento */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white">Departamento</label>
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
                     <SelectValue placeholder="Selecione departamento" />
                   </SelectTrigger>
                   <SelectContent>
@@ -86,12 +105,13 @@ const SotkisAccessReports = () => {
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          {/* Ilha */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white">Ilha</label>
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Ilha</label>
                 <Select value={filters.ilha} onValueChange={(value) => setFilters({...filters, ilha: value})}>
-                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
                     <SelectValue placeholder="Selecione ilha" />
                   </SelectTrigger>
                   <SelectContent>
@@ -105,12 +125,13 @@ const SotkisAccessReports = () => {
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          {/* Contentor */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white">Contentor</label>
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Contentor</label>
                 <Select value={filters.contentor} onValueChange={(value) => setFilters({...filters, contentor: value})}>
-                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
                     <SelectValue placeholder="Selecione contentor" />
                   </SelectTrigger>
                   <SelectContent>
@@ -124,12 +145,13 @@ const SotkisAccessReports = () => {
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          {/* Utilizador */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white">Utilizador</label>
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Utilizador</label>
                 <Select value={filters.utilizador} onValueChange={(value) => setFilters({...filters, utilizador: value})}>
-                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
                     <SelectValue placeholder="Selecione utilizador" />
                   </SelectTrigger>
                   <SelectContent>
@@ -143,26 +165,28 @@ const SotkisAccessReports = () => {
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          {/* Rfids (Refª) */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white">Rfids (Refª)</label>
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Rfids (Refª)</label>
                 <Input
                   placeholder="Digite a referência"
                   value={filters.rfids}
                   onChange={(e) => setFilters({...filters, rfids: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white placeholder-gray-400"
+                  className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
                 />
               </div>
             </CardContent>
           </Card>
           
-          <Card className="card-glass">
+          {/* Tipo de Resíduo */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white">Tipo de Resíduo</label>
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Tipo de Resíduo</label>
                 <Select value={filters.tipoResiduo} onValueChange={(value) => setFilters({...filters, tipoResiduo: value})}>
-                  <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
                     <SelectValue placeholder="Selecione tipo" />
                   </SelectTrigger>
                   <SelectContent>

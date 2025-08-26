@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, AlertTriangle, ArrowUpDown } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown, X, ChevronUp, ChevronDown } from 'lucide-react';
+import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotcareGestaoProblemas = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [filters, setFilters] = React.useState({
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState({
     departamento: 'Todos',
     tipo: 'Todos',
     responsavel: 'Todos',
     estado: 'Todos'
   });
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const submenuLinks = [
+    { label: 'Intervenções Corretivas', to: '/sotcare/corrective-interventions' },
+    { label: 'Intervenções Preventivas', to: '/sotcare/preventive-interventions' },
+    { label: 'Gestão de Problemas', to: '/sotcare/problem-management' },
+  ];
 
   // Mock data for problems
   const mockProblemas = [
@@ -66,127 +73,131 @@ const SotcareGestaoProblemas = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start space-y-4 lg:space-y-0">
-        <div className="space-y-2">
-          <h1 className="text-xl font-bold text-white">Lista de problemas</h1>
-          <p className="text-gray-300 mt-1">Gestão de problemas e incidentes do sistema</p>
-          <div className="flex items-center space-x-3">
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold flex items-center px-4 py-2 rounded-lg"
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Reportar Problema
-            </Button>
-          </div>
-        </div>
-        
-        {/* Export Icons */}
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <X className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <FileText className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <Download className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="bg-white/10 border-white/20 text-white">
-            <Printer className="h-4 w-4" />
-          </Button>
-        </div>
+      {/* Page Header - AT THE VERY TOP */}
+      <div className="page-header text-right">
+        <h1 className="text-xl font-bold text-white">Gestão de Problemas</h1>
+        <p className="text-gray-300 mt-1">Gestão de problemas do sistema</p>
       </div>
 
-      {/* Filters - Divided into separate cards */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        {/* Card 1: Department */}
-        <Card className="card-glass p-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-white">Departamento</label>
-            <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-              <SelectTrigger className="bg-white text-black">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Todos">Todos</SelectItem>
-                <SelectItem value="Faro-PT 999990004">Faro-PT 999990004</SelectItem>
-                <SelectItem value="Lisboa-PT 999990006">Lisboa-PT 999990006</SelectItem>
-                <SelectItem value="Porto-PT 999990008">Porto-PT 999990008</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </Card>
+      {/* Button and SubmenuBar */}
+      <div className="flex flex-col space-y-4">
+        <div className="flex items-center justify-between">
+          <div></div>
+          <Button 
+            onClick={() => setIsModalOpen(true)}
+            className="bg-sotkis-green/90 hover:bg-sotkis-green text-white"
+          >
+            <Plus className="w-4 h-4 mr-2 text-white" />
+            Reportar Problema
+          </Button>
+        </div>
+        <SubmenuBar items={submenuLinks} />
+      </div>
+
+      {/* Filters */}
+      <div className="space-y-4">
+        <div className="text-left mb-3">
+          <h2 className="text-white text-lg font-semibold">Filtros</h2>
+        </div>
         
-        {/* Card 2: Type */}
-        <Card className="card-glass p-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-white">Tipo</label>
-            <Select value={filters.tipo} onValueChange={(value) => setFilters({...filters, tipo: value})}>
-              <SelectTrigger className="bg-white text-black">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Todos">Todos</SelectItem>
-                <SelectItem value="Contentor danificado">Contentor danificado</SelectItem>
-                <SelectItem value="Sensor avariado">Sensor avariado</SelectItem>
-                <SelectItem value="Problema RFID">Problema RFID</SelectItem>
-                <SelectItem value="Tampa partida">Tampa partida</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </Card>
-        
-        {/* Card 3: Responsible */}
-        <Card className="card-glass p-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-white">Responsável</label>
-            <Select value={filters.responsavel} onValueChange={(value) => setFilters({...filters, responsavel: value})}>
-              <SelectTrigger className="bg-white text-black">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Todos">Todos</SelectItem>
-                <SelectItem value="Equipa Técnica Faro">Equipa Técnica Faro</SelectItem>
-                <SelectItem value="Equipa Técnica Lisboa">Equipa Técnica Lisboa</SelectItem>
-                <SelectItem value="Equipa IT">Equipa IT</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </Card>
-        
-        {/* Card 4: Status */}
-        <Card className="card-glass p-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-white">Estado</label>
-            <Select value={filters.estado} onValueChange={(value) => setFilters({...filters, estado: value})}>
-              <SelectTrigger className="bg-white text-black">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Todos">Todos</SelectItem>
-                <SelectItem value="Pendente">Pendente</SelectItem>
-                <SelectItem value="Em análise">Em análise</SelectItem>
-                <SelectItem value="Em progresso">Em progresso</SelectItem>
-                <SelectItem value="Resolvido">Resolvido</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </Card>
-        
-        {/* Card 5: Search */}
-        <Card className="card-glass p-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-white">Procurar</label>
-            <Input
-              placeholder="Pesquisar problemas..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-white text-black placeholder-gray-600"
-            />
-          </div>
-        </Card>
+        <div className="flex flex-col lg:flex-row gap-6 items-start w-full filter-cards-container">
+          {/* Departamento */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Departamento</label>
+                <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Todos">Todos</SelectItem>
+                    <SelectItem value="Faro-PT 999990004">Faro-PT 999990004</SelectItem>
+                    <SelectItem value="Lisboa-PT 999990006">Lisboa-PT 999990006</SelectItem>
+                    <SelectItem value="Porto-PT 999990008">Porto-PT 999990008</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Tipo */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Tipo</label>
+                <Select value={filters.tipo} onValueChange={(value) => setFilters({...filters, tipo: value})}>
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Todos">Todos</SelectItem>
+                    <SelectItem value="Contentor danificado">Contentor danificado</SelectItem>
+                    <SelectItem value="Sensor avariado">Sensor avariado</SelectItem>
+                    <SelectItem value="Problema RFID">Problema RFID</SelectItem>
+                    <SelectItem value="Tampa partida">Tampa partida</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Responsável */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Responsável</label>
+                <Select value={filters.responsavel} onValueChange={(value) => setFilters({...filters, responsavel: value})}>
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Todos">Todos</SelectItem>
+                    <SelectItem value="Equipa Técnica Faro">Equipa Técnica Faro</SelectItem>
+                    <SelectItem value="Equipa Técnica Lisboa">Equipa Técnica Lisboa</SelectItem>
+                    <SelectItem value="Equipa IT">Equipa IT</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Estado */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Estado</label>
+                <Select value={filters.estado} onValueChange={(value) => setFilters({...filters, estado: value})}>
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Todos">Todos</SelectItem>
+                    <SelectItem value="Pendente">Pendente</SelectItem>
+                    <SelectItem value="Em análise">Em análise</SelectItem>
+                    <SelectItem value="Em progresso">Em progresso</SelectItem>
+                    <SelectItem value="Resolvido">Resolvido</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Procurar */}
+          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+            <CardContent className="p-4">
+              <div className="space-y-1">
+                <label className="text-white text-sm font-semibold">Procurar</label>
+                <Input
+                  placeholder="Pesquisar problemas..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
 
       {/* Table Controls */}
@@ -209,42 +220,82 @@ const SotcareGestaoProblemas = () => {
       </div>
 
       {/* Table */}
-      <Card className="card-glass">
+      <Card className="card-dark-large">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="cursor-pointer text-white w-20">
-                  ID
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>ID</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Assunto
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Assunto</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Localização
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Localização</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Departamento
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Departamento</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white w-32">
-                  Criado por
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Criado por</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white w-32">
-                  Atualizado por
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Atualizado por</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Responsável
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Responsável</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="cursor-pointer text-white">
-                  Estado
-                  <ArrowUpDown className="ml-1 inline h-4 w-4" />
+                  <div className="flex items-center justify-center space-x-2">
+                    <span>Estado</span>
+                    <div className="flex flex-col">
+                      <ChevronUp className="h-3 w-3" />
+                      <ChevronDown className="h-3 w-3" />
+                    </div>
+                  </div>
                 </TableHead>
                 <TableHead className="text-white">Ações</TableHead>
               </TableRow>
@@ -254,7 +305,12 @@ const SotcareGestaoProblemas = () => {
                 <TableRow key={problema.id}>
                   <TableCell className="text-white w-20">{problema.id}</TableCell>
                   <TableCell className="text-white">{problema.assunto}</TableCell>
-                  <TableCell className="text-white">{problema.localizacao}</TableCell>
+                  <TableCell className="text-white">
+                    <div className="flex items-center justify-center space-x-2">
+                      <MapPin className="h-4 w-4 text-blue-400" />
+                      <span>{problema.localizacao}</span>
+                    </div>
+                  </TableCell>
                   <TableCell className="text-white">{problema.departamento}</TableCell>
                   <TableCell className="text-white w-32">{problema.criadoPor}</TableCell>
                   <TableCell className="text-white w-32">{problema.atualizadoPor}</TableCell>
@@ -271,13 +327,13 @@ const SotcareGestaoProblemas = () => {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center space-x-2">
-                      <Button variant="ghost" size="sm" className="text-sotkis-green hover:text-sotkis-green/80">
+                      <Button variant="ghost" size="sm" className="text-yellow-400 hover:text-yellow-300">
                         <AlertTriangle className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-sotkis-green hover:text-sotkis-green/80">
+                      <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300">
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-sotkis-green hover:text-sotkis-green/80">
+                      <Button variant="ghost" size="sm" className="text-yellow-400 hover:text-yellow-300">
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
@@ -290,45 +346,42 @@ const SotcareGestaoProblemas = () => {
       </Card>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center">
-        <div className="text-sm text-white">
-          A exibir 1-10 de 20 registos
+      <div className="space-y-4">
+        {/* Pagination info text */}
+        <div className="text-center">
+          <div className="text-sm text-white">
+            A exibir 1-10 de 20 registos
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
-            Anterior
-          </Button>
-          <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
-            1
-          </Button>
-          <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
-            2
-          </Button>
-          <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
-            Seguinte
-          </Button>
+        {/* Pagination buttons */}
+        <div className="flex justify-center">
+          <div className="flex items-center space-x-2">
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
+              Anterior
+            </Button>
+            <Button size="sm" className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
+              1
+            </Button>
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
+              2
+            </Button>
+            <Button variant="outline" size="sm" className="bg-white/10 border-white/20 text-white">
+              Seguinte
+            </Button>
+          </div>
         </div>
       </div>
 
       {/* Modal for Reportar Problema */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-black rounded-lg p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-end mb-6">
-              <Button
-                onClick={() => setIsModalOpen(false)}
-                variant="ghost"
-                size="icon"
-                className="text-white hover:text-gray-300"
-              >
-                <X className="h-6 w-6" />
-              </Button>
-            </div>
-            <div className="text-right mb-6">
-              <h2 className="text-2xl font-bold text-sotkis-green">Reportar Problema</h2>
+        <div className="fixed inset-0 bg-black/50 flex items-start justify-center z-50 p-4 pt-[30px] sm:pt-4 sm:items-center">
+          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-white">Reportar Problema</h2>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               {/* Departamento */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Departamento:</label>
@@ -389,15 +442,15 @@ const SotcareGestaoProblemas = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex justify-end space-x-4 mt-8">
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8">
               <Button
                 onClick={() => setIsModalOpen(false)}
                 variant="outline"
-                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto"
               >
                 Cancelar
               </Button>
-              <Button className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
+              <Button className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-full sm:w-auto">
                 Submeter
               </Button>
             </div>
