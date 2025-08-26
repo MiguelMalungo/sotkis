@@ -1380,15 +1380,15 @@ body.light-theme .min-h-screen > div {
 
 /* Light theme: change logos to Logo2 and Logo_thin2 */
 body.light-theme .sidebar-container img[src*="Logo.png"] {
-  content: url('/sotkis/assets/Logo2.png') !important;
+  content: var(--logo2-url) !important;
 }
 
 body.light-theme .sidebar-container img[src*="Logo_thin.png"] {
-  content: url('/sotkis/assets/Logo_thin2.png') !important;
+  content: var(--logo-thin2-url) !important;
 }
 
 body.light-theme img[src*="Logo_thin.png"] {
-  content: url('/sotkis/assets/Logo_thin2.png') !important;
+  content: var(--logo-thin2-url) !important;
 }
 
 /* Mobile filter cards - equal width */

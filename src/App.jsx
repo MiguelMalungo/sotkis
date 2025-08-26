@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Sun } from 'lucide-react';
 import sottImage from '../assets/sott(1).png';
+import logo2Image from '../assets/Logo2.png';
+import logoThin2Image from '../assets/Logo_thin2.png';
 import { useAuth } from './contexts/AuthContext';
 import Layout from './components/layout/Layout';
 import Login from './pages/Login';
@@ -228,6 +230,12 @@ const PlaceholderPage = ({ title, description }) => (
 const App = () => {
   const { isAuthenticated } = useAuth();
   const [showBotBalloon, setShowBotBalloon] = React.useState(false);
+
+  // Set CSS custom properties for light theme assets
+  React.useEffect(() => {
+    document.documentElement.style.setProperty('--logo2-url', `url(${logo2Image})`);
+    document.documentElement.style.setProperty('--logo-thin2-url', `url(${logoThin2Image})`);
+  }, []);
   
   const toggleBotBalloon = () => {
     console.log('toggleBotBalloon called, current state:', showBotBalloon);
