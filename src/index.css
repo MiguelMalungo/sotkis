@@ -2026,3 +2026,76 @@ body.light-theme .style-guide-container .chart-demo svg:not(.text-sotkis-green):
   color: #1f2937 !important;
   stroke: #1f2937 !important;
 }
+
+/* Global Modal Positioning - Desktop Only */
+@media (min-width: 768px) {
+  /* When sidebar is expanded (290px) */
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/50,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/30,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/40,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/60,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/70,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/80,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/90 {
+    left: 290px !important;
+    width: calc(100vw - 290px) !important;
+  }
+
+  /* When sidebar is collapsed (90px) */
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/50,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/30,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/40,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/60,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/70,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/80,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/90 {
+    left: 90px !important;
+    width: calc(100vw - 90px) !important;
+  }
+
+  /* Adjust modal content positioning within the overlay */
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/50 > div,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/30 > div,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/40 > div,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/60 > div,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/70 > div,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/80 > div,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/90 > div {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/50 > div,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/30 > div,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/40 > div,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/60 > div,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/70 > div,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/80 > div,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/90 > div {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Ensure modal content is properly centered within the adjusted overlay */
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/50 .flex.items-center.justify-center,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/30 .flex.items-center.justify-center,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/40 .flex.items-center.justify-center,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/60 .flex.items-center.justify-center,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/70 .flex.items-center.justify-center,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/80 .flex.items-center.justify-center,
+  body:not(.sidebar-collapsed) .fixed.inset-0.bg-black\/90 .flex.items-center.justify-center {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/50 .flex.items-center.justify-center,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/30 .flex.items-center.justify-center,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/40 .flex.items-center.justify-center,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/60 .flex.items-center.justify-center,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/70 .flex.items-center.justify-center,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/80 .flex.items-center.justify-center,
+  body.sidebar-collapsed .fixed.inset-0.bg-black\/90 .flex.items-center.justify-center {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

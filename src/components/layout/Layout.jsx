@@ -148,6 +148,20 @@ const Layout = ({ children }) => {
     return () => observer.disconnect();
   }, []);
 
+  // Add/remove sidebar-collapsed class to body for modal positioning
+  useEffect(() => {
+    if (isCollapsed) {
+      document.body.classList.add('sidebar-collapsed');
+    } else {
+      document.body.classList.remove('sidebar-collapsed');
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('sidebar-collapsed');
+    };
+  }, [isCollapsed]);
+
   const toggleMobileMenu = () => {
     console.log('Mobile menu button clicked!');
     console.log('Current isMobileMenuOpen:', isMobileMenuOpen);
