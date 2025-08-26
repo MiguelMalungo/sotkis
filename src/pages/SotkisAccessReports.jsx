@@ -51,7 +51,7 @@ const SotkisAccessReports = () => {
           <h2 className="text-white text-lg font-semibold">Filtros</h2>
         </div>
         
-        <div className="flex flex-col lg:flex-row gap-6 items-start w-full filter-cards-container">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start w-full filter-cards-container">
           {/* Início do Período */}
           <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
