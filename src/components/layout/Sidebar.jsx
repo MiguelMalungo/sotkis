@@ -569,7 +569,12 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
                       </div>
                       <div className="space-y-[-1px]">
                         <button 
-                          onClick={() => navigate('/definicoes')}
+                          onClick={() => {
+                            if (isMobile) {
+                              onMobileMenuClose();
+                            }
+                            navigate('/definicoes');
+                          }}
                           className="w-full flex items-center justify-between hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors text-sm text-gray-700"
                         >
                           <span>Definições</span>
