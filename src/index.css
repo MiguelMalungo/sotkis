@@ -1639,7 +1639,7 @@ body.light-theme .input-icon-btn:hover {
   
      .microphone-btn-mobile {
      display: flex;
-     margin-right: -2px;
+     margin-right: -7px;
      position: relative;
      top: -1px;
    }
