@@ -109,7 +109,7 @@ const LandingPage = () => {
     };
   }, []);
 
-  const itemsToShow = isMobile ? 5 : 8;
+  const itemsToShow = isMobile ? 4 : 8;
   const visibleItems = recentPages.slice(0, itemsToShow);
 
   const handleNavigate = (path) => {
