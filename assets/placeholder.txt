@@ -1,0 +1,38 @@
+ASSETS FOLDER - REQUIRED IMAGES
+
+This folder should contain the following image files for the Sotkis application to work properly:
+
+1. background.png
+   - Default background image for the dashboard
+   - Should be a high-quality image that works well with the dark theme
+   - Recommended size: 1920x1080 or larger
+
+2. backgroundBL.png  
+   - Blurred background image for content pages
+   - Same image as background.png but with blur effect applied
+   - Used when navigating to pages other than dashboard
+
+3. backgroundlogin.png
+   - Background image for the login modal
+   - Should be a professional image related to waste management or technology
+   - Recommended size: 1920x1080 or larger
+
+4. logo.png
+   - Sotkis company logo
+   - Should be transparent background (PNG format)
+   - Recommended size: 200x200 or appropriate aspect ratio
+
+IMPORTANT NOTES:
+- All images should be optimized for web use
+- Use PNG format for logos and images that need transparency
+- Use JPG format for background images if transparency is not needed
+- Ensure images are properly licensed for commercial use
+
+PLACEHOLDER CONTENT:
+Until the actual images are provided, the application will show broken image placeholders.
+The functionality will still work, but the visual experience will be incomplete.
+
+To add images:
+1. Place the image files in this assets/ folder
+2. Ensure the filenames match exactly (case-sensitive)
+3. Refresh the application in the browser 
