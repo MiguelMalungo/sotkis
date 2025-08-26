@@ -7,9 +7,12 @@ import ConcentricCircles from '@/components/ui/ConcentricCircles';
 import summerImage from '/assets/summer.png';
 import backgroundImage from '/assets/background.png';
 import logoThinImage from '/assets/Logo_thin.png';
+import logoThin2Image from '/assets/Logo_thin2.png';
+
+const BASE = import.meta.env.BASE_URL || '/';
 
 const contentRoutes = [
-  '/dashboard', '/utilizadores', '/administracao', '/my-sotkon', '/sotkis-access', '/sotcare', '/sotkis-paylt', '/sotkis-routes', '/sotkis-level', '/compliance', '/planning'
+  '/dashboard', '/utilizadores', '/administracao', '/my-sotkon', '/sotkis-access', '/sotkis-routes', '/sotkis-level', '/compliance', '/sotcare', '/sotkis-playt'
 ];
 
 const Layout = ({ children }) => {
@@ -20,6 +23,7 @@ const Layout = ({ children }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [isLightTheme, setIsLightTheme] = useState(false);
 
   useEffect(() => {
     // Check if current route has content
@@ -117,6 +121,33 @@ const Layout = ({ children }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Watch for theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      const hasLightTheme = document.body.classList.contains('light-theme');
+      setIsLightTheme(hasLightTheme);
+    };
+
+    // Check initially
+    checkTheme();
+
+    // Watch for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          checkTheme();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const toggleMobileMenu = () => {
     console.log('Mobile menu button clicked!');
     console.log('Current isMobileMenuOpen:', isMobileMenuOpen);
@@ -160,7 +191,7 @@ const Layout = ({ children }) => {
         <div className="fixed top-4 left-4 z-[9999] flex flex-col items-center space-y-3">
           {/* Logo above burger */}
           <img 
-            src={logoThinImage} 
+            src={isLightTheme ? logoThin2Image : logoThinImage} 
             alt="Sotkis Logo" 
             className="h-12 w-auto object-contain pointer-events-none"
           />

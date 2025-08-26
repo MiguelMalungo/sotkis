@@ -24,7 +24,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import logoImage from '../../../assets/Logo.png';
+import logo2Image from '../../../assets/Logo2.png';
 import logoThinImage from '../../../assets/Logo_thin.png';
+import logoThin2Image from '../../../assets/Logo_thin2.png';
 
 const menuItems = [
   {
@@ -151,6 +153,34 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
   const [hoveredItem, setHoveredItem] = useState(null);
   const [hoveredBalloon, setHoveredBalloon] = useState(false);
   const [balloonPosition, setBalloonPosition] = useState({ top: 0 });
+  const [isLightTheme, setIsLightTheme] = useState(false);
+
+  // Watch for theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      const hasLightTheme = document.body.classList.contains('light-theme');
+      setIsLightTheme(hasLightTheme);
+    };
+
+    // Check initially
+    checkTheme();
+
+    // Watch for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          checkTheme();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Add useEffect to handle balloon positioning
   useEffect(() => {
@@ -252,7 +282,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
               onClick={handleItemClick}
             >
               <img 
-                src={logoImage} 
+                src={isCollapsed ? (isLightTheme ? logoThin2Image : logoThinImage) : (isLightTheme ? logo2Image : logoImage)} 
                 alt="Sotkis Logo" 
                 className={cn(
                   "w-auto object-contain",
@@ -272,7 +302,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
             <div className="flex flex-col items-center justify-center h-full space-y-[17px] w-full">
               <div className="relative group">
                 <img 
-                  src={logoThinImage} 
+                  src={isLightTheme ? logoThin2Image : logoThinImage} 
                   alt="Sotkis Logo" 
                   className="h-12 w-auto object-contain"
                 />

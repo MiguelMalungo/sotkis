@@ -233,70 +233,38 @@ const App = () => {
   const { isAuthenticated } = useAuth();
   const [showBotBalloon, setShowBotBalloon] = React.useState(false);
 
-  // Handle theme-based logo switching
+  // Handle theme-based logo switching - SIMPLE AND BULLETPROOF
   React.useEffect(() => {
-    // Store original logo sources
-    const originalLogos = new Map();
-    
-    const handleThemeChange = () => {
+    const switchLogos = () => {
       const isLightTheme = document.body.classList.contains('light-theme');
       
-      // Update all Logo images (both Logo.png and Logo-*.png)
-      const logoImages = document.querySelectorAll('img[src*="Logo"], img[src*="logo"]');
-      logoImages.forEach(img => {
-        // Skip Logo_thin images (handle them separately)
-        if (img.src.includes('Logo_thin') || img.src.includes('logo_thin')) return;
-        
-        // Store original src if not stored yet
-        if (!originalLogos.has(img)) {
-          originalLogos.set(img, img.src);
-        }
-        
-        if (isLightTheme) {
-          // Only change to Logo2 if it's a main logo (not already Logo2)
-          if (!img.src.includes('Logo2')) {
-            img.src = logo2Image;
-          }
-        } else {
-          // Restore original dark logo
-          const originalSrc = originalLogos.get(img);
-          if (originalSrc) {
-            img.src = originalSrc;
-          }
-        }
-      });
-      
-      // Update all Logo_thin images
-      const logoThinImages = document.querySelectorAll('img[src*="Logo_thin"], img[src*="logo_thin"]');
-      logoThinImages.forEach(img => {
-        // Store original src if not stored yet
-        if (!originalLogos.has(img)) {
-          originalLogos.set(img, img.src);
-        }
-        
-        if (isLightTheme) {
-          // Only change to Logo_thin2 if it's not already Logo_thin2
-          if (!img.src.includes('Logo_thin2')) {
-            img.src = logoThin2Image;
-          }
-        } else {
-          // Restore original dark logo
-          const originalSrc = originalLogos.get(img);
-          if (originalSrc) {
-            img.src = originalSrc;
-          }
-        }
-      });
+      if (isLightTheme) {
+        // LIGHT THEME: Use Logo2 and Logo_thin2
+        document.querySelectorAll('img[src*="Logo.png"]').forEach(img => {
+          img.src = logo2Image;
+        });
+        document.querySelectorAll('img[src*="Logo_thin.png"]').forEach(img => {
+          img.src = logoThin2Image;
+        });
+      } else {
+        // DARK THEME: Use Logo and Logo_thin
+        document.querySelectorAll('img[src*="Logo2.png"]').forEach(img => {
+          img.src = logoImage;
+        });
+        document.querySelectorAll('img[src*="Logo_thin2.png"]').forEach(img => {
+          img.src = logoThinImage;
+        });
+      }
     };
-
-    // Run initially
-    handleThemeChange();
+    
+    // Run immediately
+    switchLogos();
     
     // Watch for theme changes
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          handleThemeChange();
+          switchLogos();
         }
       });
     });
@@ -307,7 +275,7 @@ const App = () => {
     });
     
     return () => observer.disconnect();
-  }, [logo2Image, logoThin2Image]);
+  }, [logoImage, logo2Image, logoThinImage, logoThin2Image]);
   
   const toggleBotBalloon = () => {
     console.log('toggleBotBalloon called, current state:', showBotBalloon);
