@@ -1611,9 +1611,19 @@ body.light-theme .input-icon-btn:hover {
   transform: scale(1.05) !important;
 }
 
-/* Dark mode: change mic icon color to black on hover */
-body:not(.light-theme) .microphone-btn-mobile:hover {
+/* Dark mode: change mic icon color to black on hover - higher specificity */
+body:not(.light-theme) .microphone-btn-mobile:hover,
+body:not(.light-theme) .microphone-btn-mobile:hover svg {
   color: black !important;
+  stroke: black !important;
+}
+
+/* Fallback: All dark theme variations */
+body.dark .microphone-btn-mobile:hover,
+body.dark .microphone-btn-mobile:hover svg,
+.microphone-btn-mobile:hover svg {
+  color: black !important;
+  stroke: black !important;
 }
 
 /* Mobile responsive adjustments */
