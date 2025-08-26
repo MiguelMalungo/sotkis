@@ -1482,7 +1482,6 @@ body:not(.login-page) .bg-white\/10.backdrop-blur-lg {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  position: relative;
 }
 
 /* Balloon input container */
@@ -1611,19 +1610,14 @@ body.light-theme .input-icon-btn:hover {
   transform: scale(1.05) !important;
 }
 
-/* Dark mode: change mic icon color to black on hover - higher specificity */
-body:not(.light-theme) .microphone-btn-mobile:hover,
-body:not(.light-theme) .microphone-btn-mobile:hover svg {
-  color: black !important;
-  stroke: black !important;
+/* Light theme only: keep white color on hover */
+body.light-theme .microphone-btn-mobile:hover {
+  color: white !important;
 }
 
-/* Fallback: All dark theme variations */
-body.dark .microphone-btn-mobile:hover,
-body.dark .microphone-btn-mobile:hover svg,
-.microphone-btn-mobile:hover svg {
+/* Dark mode: change mic icon color to black on hover - MUST be after white rule */
+body:not(.light-theme) .microphone-btn-mobile:hover {
   color: black !important;
-  stroke: black !important;
 }
 
 /* Mobile responsive adjustments */
@@ -1655,11 +1649,7 @@ body.dark .microphone-btn-mobile:hover svg,
   
      .microphone-btn-mobile {
      display: flex;
-     position: absolute;
-     right: 1px;
-     top: 50%;
-     transform: translateY(-50%);
-     margin-right: 0;
+     margin-right: -0.125rem;
    }
    
    .microphone-btn {
