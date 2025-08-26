@@ -65,8 +65,8 @@ const SotkisAccessRfids = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
-      <div className="flex justify-end items-start">
-        <div className="space-y-2 text-right">
+      <div className="flex justify-end md:justify-start items-start">
+        <div className="space-y-2 text-right md:text-left">
           <h1 className="text-xl font-bold text-white">Lista de RFIDs</h1>
           <p className="text-gray-300 mt-1">Gestão de RFIDs do sistema</p>
         </div>
