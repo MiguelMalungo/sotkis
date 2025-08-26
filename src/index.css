@@ -1378,18 +1378,12 @@ body.light-theme .min-h-screen > div {
   background-color: transparent !important;
 }
 
-/* Light theme: change logos to Logo2 and Logo_thin2 */
-body.light-theme .sidebar-container img[src*="Logo.png"] {
-  content: var(--logo2-url) !important;
-}
+/* Light theme: logos are now handled via JavaScript in App.jsx */
+/* Removed - handled by JavaScript */
 
-body.light-theme .sidebar-container img[src*="Logo_thin.png"] {
-  content: var(--logo-thin2-url) !important;
-}
+/* Removed - handled by JavaScript */
 
-body.light-theme img[src*="Logo_thin.png"] {
-  content: var(--logo-thin2-url) !important;
-}
+/* Removed - handled by JavaScript */
 
 /* Mobile filter cards - equal width */
 @media (max-width: 1023px) {

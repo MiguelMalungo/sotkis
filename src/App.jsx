@@ -231,11 +231,57 @@ const App = () => {
   const { isAuthenticated } = useAuth();
   const [showBotBalloon, setShowBotBalloon] = React.useState(false);
 
-  // Set CSS custom properties for light theme assets
+  // Handle theme-based logo switching
   React.useEffect(() => {
-    document.documentElement.style.setProperty('--logo2-url', `url(${logo2Image})`);
-    document.documentElement.style.setProperty('--logo-thin2-url', `url(${logoThin2Image})`);
-  }, []);
+    const handleThemeChange = () => {
+      const isLightTheme = document.body.classList.contains('light-theme');
+      
+      // Update all Logo.png images to Logo2.png in light theme
+      const logoImages = document.querySelectorAll('img[src*="Logo.png"], img[src*="Logo-"]');
+      logoImages.forEach(img => {
+        if (isLightTheme) {
+          img.src = logo2Image;
+        } else {
+          // Reset to original dark logo - check if it's the bundled version
+          if (img.src.includes('Logo2') || img.src.includes('Logo-')) {
+            img.src = img.src.replace(/Logo2[^.]*\.png/, 'Logo.png').replace(/Logo-[^.]*\.png/, 'Logo.png');
+          }
+        }
+      });
+      
+      // Update all Logo_thin.png images to Logo_thin2.png in light theme  
+      const logoThinImages = document.querySelectorAll('img[src*="Logo_thin.png"], img[src*="Logo_thin-"]');
+      logoThinImages.forEach(img => {
+        if (isLightTheme) {
+          img.src = logoThin2Image;
+        } else {
+          // Reset to original dark logo
+          if (img.src.includes('Logo_thin2') || img.src.includes('Logo_thin-')) {
+            img.src = img.src.replace(/Logo_thin2[^.]*\.png/, 'Logo_thin.png').replace(/Logo_thin-[^.]*\.png/, 'Logo_thin.png');
+          }
+        }
+      });
+    };
+
+    // Run initially
+    handleThemeChange();
+    
+    // Watch for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          handleThemeChange();
+        }
+      });
+    });
+    
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
+    return () => observer.disconnect();
+  }, [logo2Image, logoThin2Image]);
   
   const toggleBotBalloon = () => {
     console.log('toggleBotBalloon called, current state:', showBotBalloon);
