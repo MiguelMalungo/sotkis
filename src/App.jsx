@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Sun } from 'lucide-react';
-import sottImage from '../assets/sott(1).png';
+// import sottImage from '../assets/sott(1).png';
 import logo2Image from '../assets/Logo2.png';
 import logoThin2Image from '../assets/Logo_thin2.png';
 import { useAuth } from './contexts/AuthContext';
@@ -399,7 +399,7 @@ const App = () => {
         
         {/* Bot Icon - clickable */}
         <img 
-          src={sottImage} 
+          src="/sotkis/assets/sott(1).png" 
           alt="Assistant Bot" 
           className="assistant-bot cursor-pointer hover:scale-110 transition-transform duration-200"
           onClick={toggleBotBalloon}
