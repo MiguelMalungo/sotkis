@@ -233,31 +233,55 @@ const App = () => {
 
   // Handle theme-based logo switching
   React.useEffect(() => {
+    // Store original logo sources
+    const originalLogos = new Map();
+    
     const handleThemeChange = () => {
       const isLightTheme = document.body.classList.contains('light-theme');
       
-      // Update all Logo.png images to Logo2.png in light theme
-      const logoImages = document.querySelectorAll('img[src*="Logo.png"], img[src*="Logo-"]');
+      // Update all Logo images (both Logo.png and Logo-*.png)
+      const logoImages = document.querySelectorAll('img[src*="Logo"], img[src*="logo"]');
       logoImages.forEach(img => {
+        // Skip Logo_thin images (handle them separately)
+        if (img.src.includes('Logo_thin') || img.src.includes('logo_thin')) return;
+        
+        // Store original src if not stored yet
+        if (!originalLogos.has(img)) {
+          originalLogos.set(img, img.src);
+        }
+        
         if (isLightTheme) {
-          img.src = logo2Image;
+          // Only change to Logo2 if it's a main logo (not already Logo2)
+          if (!img.src.includes('Logo2')) {
+            img.src = logo2Image;
+          }
         } else {
-          // Reset to original dark logo - check if it's the bundled version
-          if (img.src.includes('Logo2') || img.src.includes('Logo-')) {
-            img.src = img.src.replace(/Logo2[^.]*\.png/, 'Logo.png').replace(/Logo-[^.]*\.png/, 'Logo.png');
+          // Restore original dark logo
+          const originalSrc = originalLogos.get(img);
+          if (originalSrc) {
+            img.src = originalSrc;
           }
         }
       });
       
-      // Update all Logo_thin.png images to Logo_thin2.png in light theme  
-      const logoThinImages = document.querySelectorAll('img[src*="Logo_thin.png"], img[src*="Logo_thin-"]');
+      // Update all Logo_thin images
+      const logoThinImages = document.querySelectorAll('img[src*="Logo_thin"], img[src*="logo_thin"]');
       logoThinImages.forEach(img => {
+        // Store original src if not stored yet
+        if (!originalLogos.has(img)) {
+          originalLogos.set(img, img.src);
+        }
+        
         if (isLightTheme) {
-          img.src = logoThin2Image;
+          // Only change to Logo_thin2 if it's not already Logo_thin2
+          if (!img.src.includes('Logo_thin2')) {
+            img.src = logoThin2Image;
+          }
         } else {
-          // Reset to original dark logo
-          if (img.src.includes('Logo_thin2') || img.src.includes('Logo_thin-')) {
-            img.src = img.src.replace(/Logo_thin2[^.]*\.png/, 'Logo_thin.png').replace(/Logo_thin-[^.]*\.png/, 'Logo_thin.png');
+          // Restore original dark logo
+          const originalSrc = originalLogos.get(img);
+          if (originalSrc) {
+            img.src = originalSrc;
           }
         }
       });
