@@ -282,7 +282,13 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
               onClick={handleItemClick}
             >
               <img 
-                src={isCollapsed ? (isLightTheme ? logoThin2Image : logoThinImage) : (isLightTheme ? logo2Image : logoImage)} 
+                src={
+                  isMobile
+                    ? (isLightTheme ? logo2Image : logoImage) // Mobile: always full logo when sidebar is shown
+                    : (isCollapsed
+                        ? (isLightTheme ? logoThin2Image : logoThinImage) // Desktop collapsed: thin logo
+                        : (isLightTheme ? logo2Image : logoImage)) // Desktop expanded: full logo
+                } 
                 alt="Sotkis Logo" 
                 className={cn(
                   "w-auto object-contain",
