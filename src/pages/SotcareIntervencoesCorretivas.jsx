@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown, KeyRound, X, ChevronUp, ChevronDown } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown, KeyRound, X, ChevronUp, ChevronDown } from 'lucide-react';
 import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotcareIntervencoesCorretivas = () => {
-  const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     numeroIntervencoes: 'últimas 20',
     departamento: 'Todos',
@@ -209,16 +208,6 @@ const SotcareIntervencoesCorretivas = () => {
             </SelectContent>
           </Select>
           <span className="text-sm text-white">registos</span>
-        </div>
-        
-        <div className="flex items-center space-x-2">
-          <span className="text-sm text-white">Procurar:</span>
-          <Input
-            placeholder="Pesquisar intervenções..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full sm:w-64 bg-white text-black placeholder-gray-600"
-          />
         </div>
       </div>
 
