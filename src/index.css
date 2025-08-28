@@ -2118,3 +2118,10 @@ body.light-theme .style-guide-container .chart-demo svg:not(.text-sotkis-green):
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
+
+/* Desktop: widen assistant bot balloon */
+@media (min-width: 1024px) {
+  .assistant-bot-balloon .balloon-input-container {
+    min-width: 600px; /* approx double previous width */
+  }
+}
