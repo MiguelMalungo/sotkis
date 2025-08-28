@@ -455,13 +455,13 @@ const DeposicoesDashboard = () => {
               className="flex-1 bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
             />
             <Button 
-              className="bg-black text-white px-4"
+              className="bg-black !text-white hover:!text-white px-4"
               onClick={() => {
                 // Handle search functionality
                 console.log('Searching for:', searchIsland);
               }}
             >
-              <Search className="w-4 h-4 mr-2" />
+              <Search className="w-4 h-4 mr-2 text-white" />
               PESQUISAR
             </Button>
           </div>
