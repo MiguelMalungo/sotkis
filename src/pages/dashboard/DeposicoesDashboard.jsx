@@ -462,7 +462,7 @@ const DeposicoesDashboard = () => {
               }}
             >
               <Search className="w-4 h-4 mr-2" />
-              PESQUISAR
+              <span className="deposicoes-search-label">PESQUISAR</span>
             </Button>
           </div>
 
