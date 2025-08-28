@@ -2104,9 +2104,13 @@ body.light-theme .style-guide-container .chart-demo svg:not(.text-sotkis-green):
 .deposicoes-search-btn {
   color: #fff !important;
 }
+.deposicoes-search-btn * {
+  color: #fff !important;
+}
 .deposicoes-search-btn svg {
   stroke: #fff !important;
 }
-.deposicoes-search-btn:hover {
+.deposicoes-search-btn:hover,
+.deposicoes-search-btn:hover * {
   color: #fff !important;
 }
