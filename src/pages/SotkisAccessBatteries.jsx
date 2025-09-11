@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -8,7 +8,19 @@ import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessBatteries = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('');
+  const [isLightMode, setIsLightMode] = useState(false);
 
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   const submenuLinks = [
     { label: 'RFIDs', to: '/sotkis-access/rfids' },
     { label: 'Relatórios', to: '/sotkis-access/reports' },
@@ -40,7 +52,11 @@ const SotkisAccessBatteries = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Departamento</label>
               <Select value={selectedDepartment} onValueChange={handleDepartmentChange}>
-                <SelectTrigger className="bg-white text-black">
+                <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                   <SelectValue placeholder="Selecione um departamento" />
                 </SelectTrigger>
                 <SelectContent>

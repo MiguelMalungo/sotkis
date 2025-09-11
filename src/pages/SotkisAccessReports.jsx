@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -9,8 +9,32 @@ import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessReports = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
 
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   const submenuLinks = [
     { label: 'RFIDs', to: '/sotkis-access/rfids' },
     { label: 'Relatórios', to: '/sotkis-access/reports' },
@@ -19,7 +43,19 @@ const SotkisAccessReports = () => {
   ];
 
   const [filters, setFilters] = React.useState({
-    inicioPeriodo: '',
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);    inicioPeriodo: '',
     fimPeriodo: '',
     departamento: 'Todos',
     ilha: 'Todos',
@@ -90,7 +126,11 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className="bg-white text-black">
+                  <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                     <SelectValue placeholder="Selecione departamento" />
                   </SelectTrigger>
                   <SelectContent>
@@ -111,7 +151,11 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Ilha</label>
                 <Select value={filters.ilha} onValueChange={(value) => setFilters({...filters, ilha: value})}>
-                  <SelectTrigger className="bg-white text-black">
+                  <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                     <SelectValue placeholder="Selecione ilha" />
                   </SelectTrigger>
                   <SelectContent>
@@ -131,7 +175,11 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Contentor</label>
                 <Select value={filters.contentor} onValueChange={(value) => setFilters({...filters, contentor: value})}>
-                  <SelectTrigger className="bg-white text-black">
+                  <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                     <SelectValue placeholder="Selecione contentor" />
                   </SelectTrigger>
                   <SelectContent>
@@ -151,7 +199,11 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Utilizador</label>
                 <Select value={filters.utilizador} onValueChange={(value) => setFilters({...filters, utilizador: value})}>
-                  <SelectTrigger className="bg-white text-black">
+                  <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                     <SelectValue placeholder="Selecione utilizador" />
                   </SelectTrigger>
                   <SelectContent>
@@ -186,7 +238,11 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Tipo de Resíduo</label>
                 <Select value={filters.tipoResiduo} onValueChange={(value) => setFilters({...filters, tipoResiduo: value})}>
-                  <SelectTrigger className="bg-white text-black">
+                  <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                     <SelectValue placeholder="Selecione tipo" />
                   </SelectTrigger>
                   <SelectContent>

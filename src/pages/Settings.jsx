@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const Settings = () => {
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [language, setLanguage] = useState('pt');
@@ -44,7 +57,11 @@ const Settings = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           <Select value={language} onValueChange={setLanguage}>
-            <SelectTrigger className="bg-white text-black">
+            <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

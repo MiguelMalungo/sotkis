@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,6 +7,19 @@ import { Lock, Globe, Sun } from 'lucide-react';
 
 const Definicoes = () => {
   const [currentPassword, setCurrentPassword] = useState('');
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState('portuguese');
@@ -156,7 +169,11 @@ const Definicoes = () => {
                   value={selectedLanguage}
                   onChange={(value) => setSelectedLanguage(value)}
                 >
-                  <SelectTrigger className="bg-white text-black focus:border-sotkis-green focus:ring-sotkis-green">
+                  <SelectTrigger className={`${
+                    isLightMode 
+                      ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900 focus:border-sotkis-green focus:ring-sotkis-green' 
+                      : 'bg-white text-black focus:border-sotkis-green focus:ring-sotkis-green'
+                  }`}>
                     <SelectValue placeholder="Selecione uma língua" />
                   </SelectTrigger>
                   <SelectContent>

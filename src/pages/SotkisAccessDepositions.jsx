@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -9,8 +9,32 @@ import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessDepositions = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
 
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   const submenuLinks = [
     { label: 'RFIDs', to: '/sotkis-access/rfids' },
     { label: 'Relatórios', to: '/sotkis-access/reports' },
@@ -19,7 +43,19 @@ const SotkisAccessDepositions = () => {
   ];
 
   const [formData, setFormData] = React.useState({
-    inicioPeriodo: '2025-07-15',
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);    inicioPeriodo: '2025-07-15',
     fimPeriodo: '2025-07-30',
     departamento: '',
     ilha: '',
@@ -83,7 +119,11 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Departamento:</label>
                   <Select value={formData.departamento} onValueChange={(value) => handleInputChange('departamento', value)}>
-                    <SelectTrigger className="bg-white text-black">
+                    <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                       <SelectValue placeholder="Escolha um departamento" />
                     </SelectTrigger>
                     <SelectContent>
@@ -98,7 +138,11 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Ilha:</label>
                   <Select value={formData.ilha} onValueChange={(value) => handleInputChange('ilha', value)}>
-                    <SelectTrigger className="bg-white text-black">
+                    <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                       <SelectValue placeholder="Selecione uma ilha" />
                     </SelectTrigger>
                     <SelectContent>
@@ -115,7 +159,11 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Contentor:</label>
                   <Select value={formData.contentor} onValueChange={(value) => handleInputChange('contentor', value)}>
-                    <SelectTrigger className="bg-white text-black">
+                    <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                       <SelectValue placeholder="Selecione um contentor" />
                     </SelectTrigger>
                     <SelectContent>
@@ -129,7 +177,11 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Utilizador:</label>
                   <Select value={formData.utilizador} onValueChange={(value) => handleInputChange('utilizador', value)}>
-                    <SelectTrigger className="bg-white text-black">
+                    <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                       <SelectValue placeholder="Selecione um utilizador" />
                     </SelectTrigger>
                     <SelectContent>
@@ -143,7 +195,11 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Rfids:</label>
                   <Select value={formData.rfids} onValueChange={(value) => handleInputChange('rfids', value)}>
-                    <SelectTrigger className="bg-white text-black">
+                    <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                       <SelectValue placeholder="Selecione um RFID" />
                     </SelectTrigger>
                     <SelectContent>
@@ -157,7 +213,11 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de resíduo:</label>
                   <Select value={formData.tipoResiduo} onValueChange={(value) => handleInputChange('tipoResiduo', value)}>
-                    <SelectTrigger className="bg-white text-black">
+                    <SelectTrigger className={`${
+                      isLightMode 
+                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                        : 'bg-white text-black'
+                    }`}>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

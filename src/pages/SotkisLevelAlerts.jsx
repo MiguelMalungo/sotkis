@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -9,10 +9,58 @@ import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisLevelAlerts = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [recordsPerPage, setRecordsPerPage] = useState('10');
-  const [selectedPriority, setSelectedPriority] = useState('');
-  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
 
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [recordsPerPage, setRecordsPerPage] = useState('10');
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [selectedPriority, setSelectedPriority] = useState('');
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   // Mock alerts data
   const mockAlerts = [
     {
@@ -129,7 +177,11 @@ const SotkisLevelAlerts = () => {
           <div className="flex items-center space-x-2">
             <span className="text-sm text-white">Prioridade:</span>
             <Select value={selectedPriority} onValueChange={setSelectedPriority}>
-              <SelectTrigger className="w-32 bg-white text-black">
+              <SelectTrigger className={`w-32 ${
+                isLightMode 
+                  ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                  : 'bg-white text-black'
+              }`}>
                 <SelectValue placeholder="Todas" />
               </SelectTrigger>
               <SelectContent>
@@ -144,7 +196,11 @@ const SotkisLevelAlerts = () => {
           <div className="flex items-center space-x-2">
             <span className="text-sm text-white">Mostrar:</span>
             <Select value={recordsPerPage} onValueChange={setRecordsPerPage}>
-              <SelectTrigger className="w-20 bg-white text-black">
+              <SelectTrigger className={`w-20 ${
+                isLightMode 
+                  ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                  : 'bg-white text-black'
+              }`}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

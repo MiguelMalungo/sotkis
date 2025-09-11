@@ -9,12 +9,84 @@ import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisLevelLocationsContainers = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [recordsPerPage, setRecordsPerPage] = useState('10');
-  const [selectedType, setSelectedType] = useState('');
-  const [selectedDepartment, setSelectedDepartment] = useState('');
-  const [mapView, setMapView] = useState('map'); // 'map' or 'satellite'
-  const [showMap, setShowMap] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
 
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [recordsPerPage, setRecordsPerPage] = useState('10');
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [selectedType, setSelectedType] = useState('');
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [selectedDepartment, setSelectedDepartment] = useState('');
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [mapView, setMapView] = useState('map'); // 'map' or 'satellite'
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);  const [showMap, setShowMap] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   // Mock departments data
   const departments = [
     { id: 'dept1', name: 'Tagus Park Oeiras-Portugal', code: 'Tagus Park Oeiras-PT 999990001' },
@@ -208,7 +280,11 @@ const SotkisLevelLocationsContainers = () => {
             </div>
             
             <Select value={selectedDepartment} onValueChange={handleDepartmentChange}>
-              <SelectTrigger className="w-full sm:w-96 bg-white text-black">
+              <SelectTrigger className={`w-full sm:w-96 ${
+                isLightMode 
+                  ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                  : 'bg-white text-black'
+              }`}>
                 <SelectValue placeholder="Selecione um departamento para ver o mapa" />
               </SelectTrigger>
               <SelectContent>
@@ -367,7 +443,11 @@ const SotkisLevelLocationsContainers = () => {
           <div className="flex items-center space-x-2">
             <span className="text-sm text-white">Tipo:</span>
             <Select value={selectedType} onValueChange={setSelectedType}>
-              <SelectTrigger className="w-40 bg-white text-black">
+              <SelectTrigger className={`w-40 ${
+                isLightMode 
+                  ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                  : 'bg-white text-black'
+              }`}>
                 <SelectValue placeholder="Todos" />
               </SelectTrigger>
               <SelectContent>
@@ -381,7 +461,11 @@ const SotkisLevelLocationsContainers = () => {
           <div className="flex items-center space-x-2">
             <span className="text-sm text-white">Mostrar:</span>
             <Select value={recordsPerPage} onValueChange={setRecordsPerPage}>
-              <SelectTrigger className="w-20 bg-white text-black">
+              <SelectTrigger className={`w-20 ${
+                isLightMode 
+                  ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
+                  : 'bg-white text-black'
+              }`}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
