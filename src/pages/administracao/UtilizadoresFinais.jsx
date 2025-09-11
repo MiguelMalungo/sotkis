@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
@@ -9,6 +9,19 @@ import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const UtilizadoresFinais = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newEndUserType, setNewEndUserType] = useState({
     descPT: '',
@@ -109,7 +122,11 @@ const UtilizadoresFinais = () => {
             placeholder="Pesquisar tipos de utilizador..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-white/5 border-white/10 text-white placeholder-gray-400"
+            className={`pl-10 ${
+              isLightMode 
+                ? 'bg-sotkis-green/10 border-sotkis-green/30 text-gray-900 placeholder-gray-600' 
+                : 'bg-white/5 border-white/10 text-white placeholder-gray-400'
+            }`}
           />
         </div>
         <Button

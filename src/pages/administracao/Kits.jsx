@@ -8,6 +8,19 @@ import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const Kits = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
+  const [isLightMode, setIsLightMode] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkTheme = () => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    };
+    
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   const [showCreateModal, setShowCreateModal] = React.useState(false);
   const [newKitType, setNewKitType] = React.useState({
     descPT: '',
@@ -133,7 +146,11 @@ const Kits = () => {
             placeholder="Pesquisar tipos de kit..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-white/5 border-white/10 text-white placeholder-gray-400"
+            className={`pl-10 ${
+              isLightMode 
+                ? 'bg-sotkis-green/10 border-sotkis-green/30 text-gray-900 placeholder-gray-600' 
+                : 'bg-white/5 border-white/10 text-white placeholder-gray-400'
+            }`}
           />
         </div>
         <Button
