@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/ca
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
-import { Plus, Search, Edit, Trash2, User, Shield } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, User, Shield, Mail } from 'lucide-react';
 import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const Administracao = () => {
@@ -92,14 +92,14 @@ const Administracao = () => {
       <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
             placeholder="Pesquisar utilizadores..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-white/5 border-white/10 text-white placeholder-gray-400"
+            className="pl-10 bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
           />
         </div>
         <Button
@@ -112,7 +112,7 @@ const Administracao = () => {
       </div>
 
       {/* Users Table */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Lista de Utilizadores Administrativos</CardTitle>
         </CardHeader>
@@ -130,14 +130,19 @@ const Administracao = () => {
             </TableHeader>
             <TableBody>
               {filteredUsers.map((user) => (
-                <TableRow key={user.id}>
+                <TableRow key={user.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white">
                     <div className="flex items-center gap-2">
                       <User className="w-4 h-4 text-sotkis-green" />
                       {user.nome}
                     </div>
                   </TableCell>
-                  <TableCell className="text-white">{user.email}</TableCell>
+                  <TableCell className="text-white">
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-sotkis-green" />
+                      {user.email}
+                    </div>
+                  </TableCell>
                   <TableCell className="text-white">{user.username}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
@@ -242,4 +247,4 @@ const Administracao = () => {
   );
 };
 
-export default Administracao; 
+export default Administracao;

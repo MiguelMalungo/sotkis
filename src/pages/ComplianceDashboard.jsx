@@ -310,7 +310,7 @@ const ComplianceDashboard = () => {
       </div>
 
       {/* Filters Section */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-6">
           <h2 className="text-lg font-semibold text-white mb-4">Filtros</h2>
           
@@ -318,7 +318,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Não-conformidades de</label>
               <Select defaultValue="clientes-fornecedores">
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -332,7 +332,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Ano</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -347,7 +347,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Tipo</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -361,7 +361,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Estado</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -376,7 +376,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Responsável</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -391,7 +391,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Avaliação de Eficácia</label>
               <Select defaultValue="todos">
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -409,4 +409,4 @@ const ComplianceDashboard = () => {
   );
 };
 
-export default ComplianceDashboard; 
+export default ComplianceDashboard;

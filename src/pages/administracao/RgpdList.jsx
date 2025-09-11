@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { FileSpreadsheet, FileText, FileDown, Printer, ChevronUp, ChevronDown } from 'lucide-react';
+import { FileSpreadsheet, FileText, FileDown, Printer, ChevronUp, ChevronDown, Mail } from 'lucide-react';
 import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const RgpdList = () => {
@@ -147,7 +147,7 @@ const RgpdList = () => {
         <div className="flex items-center space-x-2">
           <span className="text-white">Mostrar</span>
           <Select value={recordsPerPage.toString()} onValueChange={(value) => setRecordsPerPage(parseInt(value))}>
-            <SelectTrigger className="w-20 bg-white/10 border-white/20 text-white">
+            <SelectTrigger className="w-20 bg-white text-black">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -172,7 +172,7 @@ const RgpdList = () => {
       </div>
 
       {/* Main Table */}
-      <Card className={isLightMode ? "card-dark-large" : "bg-white/10 backdrop-blur-lg border-0 shadow-2xl rgpd-card"}>
+      <Card className={isLightMode ? "card-dark-large" : "bg-white/20 backdrop-blur-lg border-0 shadow-2xl rgpd-card"}>
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-white text-xl font-semibold">
             Utilizadores que já aceitaram o documento RGPD
@@ -240,9 +240,14 @@ const RgpdList = () => {
               </TableHeader>
               <TableBody>
                 {filteredUsers.map((user) => (
-                  <TableRow key={user.id} className="border-white/20 hover:bg-white/5">
+                  <TableRow key={user.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white text-left">{user.nome}</TableCell>
-                    <TableCell className="text-white text-center">{user.email}</TableCell>
+                    <TableCell className="text-white text-center">
+                      <div className="flex items-center justify-center gap-2">
+                        <Mail className="w-4 h-4 text-sotkis-green" />
+                        {user.email}
+                      </div>
+                    </TableCell>
                     <TableCell className="text-white text-center">{user.dataAceitacao}</TableCell>
                   </TableRow>
                 ))}

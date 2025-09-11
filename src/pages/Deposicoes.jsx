@@ -354,7 +354,7 @@ const Deposicoes = () => {
       </Card>
 
       {/* Deposits Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">
             Depósitos ({filteredDeposits.length} resultados)
@@ -382,7 +382,7 @@ const Deposicoes = () => {
                 const StatusIcon = statusInfo.icon;
                 
                 return (
-                  <TableRow key={deposit.id} className="border-white/10 hover:bg-white/5">
+                  <TableRow key={deposit.id} className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell>
                       <span className="font-mono text-white font-medium">{deposit.id}</span>
                     </TableCell>
@@ -495,4 +495,4 @@ const Deposicoes = () => {
   );
 };
 
-export default Deposicoes; 
+export default Deposicoes;

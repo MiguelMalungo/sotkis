@@ -102,7 +102,7 @@ const EstadosFaturacao = () => {
       <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
@@ -122,7 +122,7 @@ const EstadosFaturacao = () => {
       </div>
 
       {/* Billing States Table */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Tipos de Estado de Faturação</CardTitle>
         </CardHeader>
@@ -139,7 +139,7 @@ const EstadosFaturacao = () => {
             </TableHeader>
             <TableBody>
               {filteredBillingStates.map((state) => (
-                <TableRow key={state.id}>
+                <TableRow key={state.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white">
                     <div className="flex items-center gap-2">
                       <FileText className="w-4 h-4 text-sotkis-green" />
@@ -168,61 +168,80 @@ const EstadosFaturacao = () => {
 
       {/* Create Billing State Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 rounded-lg p-6 w-full max-w-md mx-4">
-            <h2 className="text-xl font-bold text-white mb-4">Novo Estado de Faturação</h2>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Descrição PT</label>
-                <Input
-                  value={newBillingState.descPT}
-                  onChange={(e) => setNewBillingState({...newBillingState, descPT: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white"
-                  placeholder="Descrição em Português"
-                />
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+          onClick={() => setShowCreateModal(false)}
+        >
+          <div 
+            className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl shadow-2xl p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-white">Novo Estado de Faturação</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+              {/* Left Column */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição PT:</label>
+                  <Input
+                    value={newBillingState.descPT}
+                    onChange={(e) => setNewBillingState({...newBillingState, descPT: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Descrição em Português"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição EN:</label>
+                  <Input
+                    value={newBillingState.descEN}
+                    onChange={(e) => setNewBillingState({...newBillingState, descEN: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Description in English"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Descrição EN</label>
-                <Input
-                  value={newBillingState.descEN}
-                  onChange={(e) => setNewBillingState({...newBillingState, descEN: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white"
-                  placeholder="Description in English"
-                />
+
+              {/* Right Column */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição ES:</label>
+                  <Input
+                    value={newBillingState.descES}
+                    onChange={(e) => setNewBillingState({...newBillingState, descES: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Descripción en Español"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Descrição FR:</label>
+                  <Input
+                    value={newBillingState.descFR}
+                    onChange={(e) => setNewBillingState({...newBillingState, descFR: e.target.value})}
+                    className="bg-white text-black placeholder-gray-600"
+                    placeholder="Description en Français"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Descrição ES</label>
-                <Input
-                  value={newBillingState.descES}
-                  onChange={(e) => setNewBillingState({...newBillingState, descES: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white"
-                  placeholder="Descripción en Español"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">Descrição FR</label>
-                <Input
-                  value={newBillingState.descFR}
-                  onChange={(e) => setNewBillingState({...newBillingState, descFR: e.target.value})}
-                  className="bg-white/5 border-white/10 text-white"
-                  placeholder="Description en Français"
-                />
-              </div>
-              <div className="flex gap-3 pt-4">
-                <Button
-                  onClick={handleCreateBillingState}
-                  className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold flex-1"
-                >
-                  Criar
-                </Button>
-                <Button
-                  onClick={handleCancel}
-                  variant="outline"
-                  className="flex-1 border-white/20 text-white hover:bg-white/10"
-                >
-                  Cancelar
-                </Button>
-              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8">
+              <Button
+                onClick={handleCancel}
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto"
+              >
+                Cancelar
+              </Button>
+              <Button 
+                onClick={handleCreateBillingState}
+                className="bg-sotkis-green text-black hover:bg-sotkis-green/90 w-full sm:w-auto"
+              >
+                Criar
+              </Button>
             </div>
           </div>
         </div>
@@ -231,4 +250,4 @@ const EstadosFaturacao = () => {
   );
 };
 
-export default EstadosFaturacao; 
+export default EstadosFaturacao;

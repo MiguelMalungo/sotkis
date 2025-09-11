@@ -90,7 +90,7 @@ const SotkisLevelPickups = () => {
       <SubmenuBar items={submenuLinks} />
 
       {/* Department Filter */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Departamento:</label>
@@ -110,7 +110,7 @@ const SotkisLevelPickups = () => {
 
       {/* Pickups Overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="card-glass">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-6">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
@@ -124,7 +124,7 @@ const SotkisLevelPickups = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-glass">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-6">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center">
@@ -138,7 +138,7 @@ const SotkisLevelPickups = () => {
           </CardContent>
         </Card>
 
-        <Card className="card-glass">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-6">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
@@ -154,7 +154,7 @@ const SotkisLevelPickups = () => {
       </div>
 
       {/* Pickups List */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Recolhas Recentes</CardTitle>
         </CardHeader>
@@ -203,7 +203,7 @@ const SotkisLevelPickups = () => {
       </Card>
 
       {/* Quick Actions */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Ações Rápidas</CardTitle>
         </CardHeader>
@@ -239,4 +239,4 @@ const SotkisLevelPickups = () => {
   );
 };
 
-export default SotkisLevelPickups; 
+export default SotkisLevelPickups;

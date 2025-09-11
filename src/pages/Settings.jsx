@@ -15,7 +15,7 @@ const Settings = () => {
         <h1 className="text-xl font-bold text-white">Definições de Conta</h1>
       </div>
 
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Alterar Palavra-passe:</CardTitle>
         </CardHeader>
@@ -38,7 +38,7 @@ const Settings = () => {
         </CardContent>
       </Card>
 
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Língua:</CardTitle>
         </CardHeader>

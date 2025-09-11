@@ -113,7 +113,7 @@ const SotkisLevelAlerts = () => {
       <SubmenuBar items={submenuLinks} />
 
       {/* Button */}
-      <div className="flex justify-end">
+      <div className="flex justify-center">
         <Button 
           onClick={() => setShowCreateModal(true)}
           className="bg-sotkis-green hover:bg-sotkis-green/90 text-black"
@@ -124,7 +124,7 @@ const SotkisLevelAlerts = () => {
       </div>
 
       {/* Filters and Controls */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <span className="text-sm text-white">Prioridade:</span>
@@ -172,7 +172,7 @@ const SotkisLevelAlerts = () => {
       </div>
 
       {/* Alerts Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
@@ -214,7 +214,7 @@ const SotkisLevelAlerts = () => {
             </TableHeader>
             <TableBody>
               {mockAlerts.map((alert) => (
-                <TableRow key={alert.id}>
+                <TableRow key={alert.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white font-medium w-20">{alert.id}</TableCell>
                   <TableCell className="text-white font-medium">{alert.title}</TableCell>
                   <TableCell className="text-white max-w-xs truncate">{alert.description}</TableCell>
@@ -278,4 +278,4 @@ const SotkisLevelAlerts = () => {
   );
 };
 
-export default SotkisLevelAlerts; 
+export default SotkisLevelAlerts;

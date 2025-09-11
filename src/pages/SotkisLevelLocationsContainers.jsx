@@ -199,7 +199,7 @@ const SotkisLevelLocationsContainers = () => {
       <SubmenuBar items={submenuLinks} />
 
       {/* Department Selection */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-6">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -225,7 +225,7 @@ const SotkisLevelLocationsContainers = () => {
 
       {/* Map Section - Only show when department is selected */}
       {showMap && selectedDepartment && (
-        <Card className="card-glass">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-0">
             <div className="relative">
               {/* Map Header */}
@@ -303,7 +303,7 @@ const SotkisLevelLocationsContainers = () => {
       {/* Department Statistics - Only show when department is selected */}
       {selectedDepartment && (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="card-glass">
+          <Card className="bg-white/20 backdrop-blur-lg border-0">
             <CardContent className="p-6">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
@@ -317,7 +317,7 @@ const SotkisLevelLocationsContainers = () => {
             </CardContent>
           </Card>
 
-          <Card className="card-glass">
+          <Card className="bg-white/20 backdrop-blur-lg border-0">
             <CardContent className="p-6">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
@@ -331,7 +331,7 @@ const SotkisLevelLocationsContainers = () => {
             </CardContent>
           </Card>
 
-          <Card className="card-glass">
+          <Card className="bg-white/20 backdrop-blur-lg border-0">
             <CardContent className="p-6">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
@@ -345,7 +345,7 @@ const SotkisLevelLocationsContainers = () => {
             </CardContent>
           </Card>
 
-          <Card className="card-glass">
+          <Card className="bg-white/20 backdrop-blur-lg border-0">
             <CardContent className="p-6">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center">
@@ -362,7 +362,7 @@ const SotkisLevelLocationsContainers = () => {
       )}
 
       {/* Filters and Controls */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <span className="text-sm text-white">Tipo:</span>
@@ -409,7 +409,7 @@ const SotkisLevelLocationsContainers = () => {
       </div>
 
       {/* Data Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">
             {selectedDepartment ? `Dados do Departamento: ${departments.find(d => d.code === selectedDepartment)?.name}` : 'Todos os Dados'}
@@ -430,7 +430,7 @@ const SotkisLevelLocationsContainers = () => {
             </TableHeader>
             <TableBody>
               {filteredData.map((item) => (
-                <TableRow key={item.id}>
+                <TableRow key={item.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white font-mono">{item.id}</TableCell>
                   <TableCell className="text-white">{item.name}</TableCell>
                   <TableCell>
@@ -438,7 +438,12 @@ const SotkisLevelLocationsContainers = () => {
                       {item.type}
                     </span>
                   </TableCell>
-                  <TableCell className="text-white">{item.address}</TableCell>
+                  <TableCell className="text-white">
+                    <div className="flex items-center space-x-2">
+                      <MapPin className="h-4 w-4 text-sotkis-green" />
+                      <span>{item.address}</span>
+                    </div>
+                  </TableCell>
                   <TableCell>
                     <span className={`px-2 py-1 rounded-full text-xs border ${getStatusColor(item.status)}`}>
                       {item.status}
@@ -465,4 +470,4 @@ const SotkisLevelLocationsContainers = () => {
   );
 };
 
-export default SotkisLevelLocationsContainers; 
+export default SotkisLevelLocationsContainers;

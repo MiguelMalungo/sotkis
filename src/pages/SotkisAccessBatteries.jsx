@@ -40,7 +40,7 @@ const SotkisAccessBatteries = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Departamento</label>
               <Select value={selectedDepartment} onValueChange={handleDepartmentChange}>
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue placeholder="Selecione um departamento" />
                 </SelectTrigger>
                 <SelectContent>

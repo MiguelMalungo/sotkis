@@ -83,7 +83,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Departamento:</label>
                   <Select value={formData.departamento} onValueChange={(value) => handleInputChange('departamento', value)}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Escolha um departamento" />
                     </SelectTrigger>
                     <SelectContent>
@@ -98,7 +98,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Ilha:</label>
                   <Select value={formData.ilha} onValueChange={(value) => handleInputChange('ilha', value)}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione uma ilha" />
                     </SelectTrigger>
                     <SelectContent>
@@ -115,7 +115,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Contentor:</label>
                   <Select value={formData.contentor} onValueChange={(value) => handleInputChange('contentor', value)}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione um contentor" />
                     </SelectTrigger>
                     <SelectContent>
@@ -129,7 +129,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Utilizador:</label>
                   <Select value={formData.utilizador} onValueChange={(value) => handleInputChange('utilizador', value)}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione um utilizador" />
                     </SelectTrigger>
                     <SelectContent>
@@ -143,7 +143,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Rfids:</label>
                   <Select value={formData.rfids} onValueChange={(value) => handleInputChange('rfids', value)}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione um RFID" />
                     </SelectTrigger>
                     <SelectContent>
@@ -157,7 +157,7 @@ const SotkisAccessDepositions = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de resíduo:</label>
                   <Select value={formData.tipoResiduo} onValueChange={(value) => handleInputChange('tipoResiduo', value)}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

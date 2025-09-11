@@ -90,6 +90,7 @@ const LandingPage = () => {
     } catch {
       setRecentPages([]);
     }
+
   }, []);
 
   React.useEffect(() => {
@@ -175,7 +176,7 @@ const LandingPage = () => {
 
       {/* Recent pages card */}
       <div className="p-4 sm:p-6 md:mt-[30px]">
-        <Card className="card-dark-large">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader className="pb-2">
             <CardTitle className="text-sotkis-green text-[18px] md:text-2xl text-left">ÚLTIMAS PÁGINAS NAVEGADAS</CardTitle>
           </CardHeader>
@@ -449,4 +450,4 @@ const App = () => {
   );
 };
 
-export default App; 
+export default App;

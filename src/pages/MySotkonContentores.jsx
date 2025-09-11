@@ -74,7 +74,7 @@ const MySotkonContentores = () => {
       <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
@@ -121,7 +121,7 @@ const MySotkonContentores = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione departamento" />
                   </SelectTrigger>
                   <SelectContent>
@@ -140,7 +140,7 @@ const MySotkonContentores = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Ilha</label>
                 <Select value={filters.ilha} onValueChange={(value) => setFilters({...filters, ilha: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione ilha" />
                   </SelectTrigger>
                   <SelectContent>
@@ -167,7 +167,7 @@ const MySotkonContentores = () => {
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select defaultValue="10">
-            <SelectTrigger className="w-20 bg-white/10 border-white/20 text-white/90">
+            <SelectTrigger className="w-20 bg-white text-black">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -191,7 +191,7 @@ const MySotkonContentores = () => {
       </div>
 
       {/* Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
@@ -281,7 +281,7 @@ const MySotkonContentores = () => {
             </TableHeader>
             <TableBody>
               {filteredContentores.map((contentor) => (
-                <TableRow key={contentor.id}>
+                <TableRow key={contentor.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white">{contentor.departamento}</TableCell>
                   <TableCell className="text-white !text-left w-96">
                     <div className="flex items-center justify-start space-x-2">
@@ -305,8 +305,15 @@ const MySotkonContentores = () => {
       
       {/* Create Container Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-7xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+          onClick={() => setShowCreateModal(false)}
+        >
+          <div 
+            className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl shadow-2xl p-4 sm:p-6 w-full max-w-7xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0"
+            onClick={(e) => e.stopPropagation()}
+          >
 
             <div className="text-center mb-4 sm:mb-6">
               <h2 className="text-xl sm:text-2xl font-bold text-white">Criar novo contentor</h2>
@@ -567,4 +574,4 @@ const MySotkonContentores = () => {
   );
 };
 
-export default MySotkonContentores; 
+export default MySotkonContentores;

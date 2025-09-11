@@ -125,11 +125,11 @@
 
 /* Background overlay styles */
 .bg-overlay {
-  background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
+  background: linear-gradient(rgba(0, 0, 0, 0.51), rgba(0, 0, 0, 0.51)); /* 5% more opaque */
 }
 
 .bg-overlay-light {
-  background: linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.24));
+  background: linear-gradient(rgba(0, 0, 0, 0.19), rgba(0, 0, 0, 0.19)); /* 5% more opaque */
 }
 
 /* Card styles */
@@ -161,10 +161,9 @@
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Auto-apply dark large background to any card that contains a table */
+/* Auto-apply dark large background to specific card classes that contain a table */
 .card-glass:has(table),
-.card-glass-dark:has(table),
-.bg-white\/10.backdrop-blur-lg.border-0:has(table) {
+.card-glass-dark:has(table) {
   background-color: rgba(8, 8, 8, 0.75) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
@@ -172,13 +171,12 @@
 }
 
 .card-glass:has(table):hover,
-.card-glass-dark:has(table):hover,
-.bg-white\/10.backdrop-blur-lg.border-0:has(table):hover {
+.card-glass-dark:has(table):hover {
   background-color: rgba(8, 8, 8, 0.75) !important;
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Sidebar styles */
+/* Sidebar styles - Dark mode (default) */
 .sidebar-item {
   @apply flex items-center px-1 py-2 text-sm font-medium rounded-md transition-colors;
 }
@@ -200,7 +198,7 @@
   @apply ml-4 border-l border-white/10;
 }
 
-/* Mobile responsive styles */
+/* Mobile responsive styles - Dark mode (default) */
 @media (max-width: 768px) {
   .sidebar-item {
     @apply px-4 py-3 text-base;
@@ -714,7 +712,7 @@ button.bg-sotkis-green\/90 [class*="lucide-"] {
 }
 
 .bg-white\/10:hover {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
   border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
@@ -963,7 +961,19 @@ body.light-theme {
 }
 
 body.light-theme .min-h-screen {
-  background-color: #f8f9fa !important;
+  background-color: transparent !important;
+}
+
+/* Light theme: show background images but change overlay to white */
+body.light-theme div[style*="backgroundImage"],
+body.light-theme div[style*="background-image"] {
+  display: block !important;
+  opacity: 0.11 !important;
+}
+
+body.light-theme div[style*="rgba(0, 0, 0, 0.8)"],
+body.light-theme div[style*="rgba(0,0,0,0.8)"] {
+  background-color: rgba(255, 255, 255, 0.11) !important;
 }
 
 /* Light theme card adjustments */
@@ -985,29 +995,324 @@ body.light-theme .card-glass-dark {
   color: #212529 !important;
 }
 
-/* Light theme sidebar adjustments */
-body.light-theme .sidebar-container {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+/* Light theme sidebar adjustments - override Tailwind bg-white/10 for sidebar only */
+body.light-theme .sidebar-container.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Light theme sidebar adjustments - target all possible selectors */
+body.light-theme .sidebar-container,
+body.light-theme .sidebar-container.bg-white\/10,
+body.light-theme .sidebar-container.bg-white\/20,
+body.light-theme div.sidebar-container,
+body.light-theme .backdrop-blur-lg.bg-white\/10.sidebar-container,
+body.light-theme div.backdrop-blur-lg.bg-white\/10.sidebar-container,
+body.light-theme .h-full.backdrop-blur-lg.bg-white\/10.sidebar-container {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
   border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Prevent sidebar background from changing on hover in light mode */
 body.light-theme .sidebar-container.bg-white\/10:hover,
 body.light-theme .sidebar-container.bg-white\/10 {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 body.light-theme .sidebar-item {
-  color: #212529 !important;
+  /* Light theme: same colors as dark theme - light green with white text */
+  background-color: #9EC043 !important;
+  color: white !important;
+}
+
+body.light-theme .sidebar-item svg,
+body.light-theme .sidebar-item .lucide,
+body.light-theme .sidebar-item [class*="lucide-"] {
+  /* Light theme default: white icons */
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
 }
 
 body.light-theme .sidebar-item:hover {
-  background-color: rgba(0, 0, 0, 0.05) !important;
+  /* Light theme hover: lighter green with black text/icons */
+  background-color: #b8d156 !important;
+  color: black !important;
+}
+
+body.light-theme .sidebar-item:hover svg,
+body.light-theme .sidebar-item:hover .lucide,
+body.light-theme .sidebar-item:hover [class*="lucide-"] {
+  /* Light theme hover: black icons */
+  color: black !important;
+  stroke: black !important;
+  fill: none !important;
 }
 
 body.light-theme .sidebar-item.active {
+  /* Light theme active: black background with white text/icons */
+  background-color: black !important;
+  color: white !important;
+}
+
+body.light-theme .sidebar-item.active svg,
+body.light-theme .sidebar-item.active .lucide,
+body.light-theme .sidebar-item.active [class*="lucide-"] {
+  /* Light theme active: white icons */
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Ensure active buttons keep white icons even when hovered */
+body.light-theme .sidebar-item.active:hover svg,
+body.light-theme .sidebar-item.active:hover .lucide,
+body.light-theme .sidebar-item.active:hover [class*="lucide-"] {
+  /* Light theme active + hover: keep white icons */
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Override universal light theme text color for sidebar items */
+body.light-theme .sidebar-item,
+body.light-theme .sidebar-item span,
+body.light-theme .sidebar-item * {
+  color: white !important;
+}
+
+body.light-theme .sidebar-item:hover,
+body.light-theme .sidebar-item:hover span,
+body.light-theme .sidebar-item:hover * {
+  color: black !important;
+}
+
+body.light-theme .sidebar-item.active,
+body.light-theme .sidebar-item.active span,
+body.light-theme .sidebar-item.active * {
+  color: white !important;
+}
+
+/* Ensure active buttons keep white text even when hovered */
+body.light-theme .sidebar-item.active:hover,
+body.light-theme .sidebar-item.active:hover span,
+body.light-theme .sidebar-item.active:hover * {
+  color: white !important;
+}
+
+/* Override for sidebar icons specifically */
+body.light-theme .sidebar-item:hover svg,
+body.light-theme .sidebar-item:hover .lucide,
+body.light-theme .sidebar-item:hover [class*="lucide-"] {
+  color: black !important;
+  stroke: black !important;
+  fill: none !important;
+}
+
+/* Profile button specific styling in light mode */
+body.light-theme .profile-button {
+  /* Profile default: light gray background with black text/icons */
+  background-color: #d1d5db !important;
+  color: black !important;
+}
+
+body.light-theme .profile-button svg,
+body.light-theme .profile-button .lucide,
+body.light-theme .profile-button [class*="lucide-"],
+body.light-theme .profile-button span,
+body.light-theme .profile-button * {
+  /* Profile default: black icons and text */
+  color: black !important;
+  stroke: black !important;
+  fill: none !important;
+}
+
+body.light-theme .profile-button:hover {
+  /* Profile hover: darker gray */
+  background-color: #9ca3af !important;
+  color: black !important;
+}
+
+body.light-theme .profile-button:hover svg,
+body.light-theme .profile-button:hover .lucide,
+body.light-theme .profile-button:hover [class*="lucide-"],
+body.light-theme .profile-button:hover span,
+body.light-theme .profile-button:hover * {
+  /* Profile hover: keep black icons and text */
+  color: black !important;
+  stroke: black !important;
+  fill: none !important;
+}
+
+/* Profile button when active (balloon is open) */
+body.light-theme .profile-button.active,
+body.light-theme .profile-button[aria-expanded="true"] {
+  /* Profile active: black background with white text/icons */
+  background-color: black !important;
+  color: white !important;
+}
+
+body.light-theme .profile-button.active svg,
+body.light-theme .profile-button.active .lucide,
+body.light-theme .profile-button.active [class*="lucide-"],
+body.light-theme .profile-button.active span,
+body.light-theme .profile-button.active *,
+body.light-theme .profile-button[aria-expanded="true"] svg,
+body.light-theme .profile-button[aria-expanded="true"] .lucide,
+body.light-theme .profile-button[aria-expanded="true"] [class*="lucide-"],
+body.light-theme .profile-button[aria-expanded="true"] span,
+body.light-theme .profile-button[aria-expanded="true"] * {
+  /* Profile active: white icons and text */
+  color: white !important;
+  stroke: white !important;
+  fill: none !important;
+}
+
+/* Light theme mobile sidebar styles */
+@media (max-width: 768px) {
+  body.light-theme .sidebar-item {
+    /* Light theme mobile: light green background with white text */
   background-color: #9EC043 !important;
   color: white !important;
+  }
+  
+  body.light-theme .sidebar-item svg,
+  body.light-theme .sidebar-item .lucide,
+  body.light-theme .sidebar-item [class*="lucide-"] {
+    /* Light theme mobile default: white icons */
+    color: white !important;
+    stroke: white !important;
+    fill: none !important;
+  }
+  
+  body.light-theme .sidebar-item:hover {
+    /* Light theme mobile hover: lighter green with black text/icons */
+    background-color: #b8d156 !important;
+    color: black !important;
+  }
+  
+  body.light-theme .sidebar-item:hover svg,
+  body.light-theme .sidebar-item:hover .lucide,
+  body.light-theme .sidebar-item:hover [class*="lucide-"] {
+    /* Light theme mobile hover: black icons */
+    color: black !important;
+    stroke: black !important;
+    fill: none !important;
+  }
+  
+  body.light-theme .sidebar-item.active {
+    /* Light theme mobile active: black background with white text/icons */
+    background-color: black !important;
+    color: white !important;
+  }
+  
+  body.light-theme .sidebar-item.active svg,
+  body.light-theme .sidebar-item.active .lucide,
+  body.light-theme .sidebar-item.active [class*="lucide-"] {
+    /* Light theme mobile active: white icons */
+    color: white !important;
+    stroke: white !important;
+    fill: none !important;
+  }
+  
+  /* Ensure mobile active buttons keep white icons even when hovered */
+  body.light-theme .sidebar-item.active:hover svg,
+  body.light-theme .sidebar-item.active:hover .lucide,
+  body.light-theme .sidebar-item.active:hover [class*="lucide-"] {
+    /* Light theme mobile active + hover: keep white icons */
+    color: white !important;
+    stroke: white !important;
+    fill: none !important;
+  }
+  
+  /* Override universal light theme text color for mobile sidebar items */
+  body.light-theme .sidebar-item,
+  body.light-theme .sidebar-item span,
+  body.light-theme .sidebar-item * {
+    color: white !important;
+  }
+
+  body.light-theme .sidebar-item:hover,
+  body.light-theme .sidebar-item:hover span,
+  body.light-theme .sidebar-item:hover * {
+    color: black !important;
+  }
+
+  body.light-theme .sidebar-item.active,
+  body.light-theme .sidebar-item.active span,
+  body.light-theme .sidebar-item.active * {
+    color: white !important;
+  }
+  
+  /* Ensure mobile active buttons keep white text even when hovered */
+  body.light-theme .sidebar-item.active:hover,
+  body.light-theme .sidebar-item.active:hover span,
+  body.light-theme .sidebar-item.active:hover * {
+    color: white !important;
+  }
+
+  /* Override for mobile sidebar icons specifically */
+  body.light-theme .sidebar-item:hover svg,
+  body.light-theme .sidebar-item:hover .lucide,
+  body.light-theme .sidebar-item:hover [class*="lucide-"] {
+    color: black !important;
+    stroke: black !important;
+    fill: none !important;
+  }
+  
+  /* Mobile profile button specific styling in light mode */
+  body.light-theme .profile-button {
+    /* Mobile profile default: light gray background with black text/icons */
+    background-color: #d1d5db !important;
+    color: black !important;
+  }
+
+  body.light-theme .profile-button svg,
+  body.light-theme .profile-button .lucide,
+  body.light-theme .profile-button [class*="lucide-"],
+  body.light-theme .profile-button span,
+  body.light-theme .profile-button * {
+    /* Mobile profile default: black icons and text */
+    color: black !important;
+    stroke: black !important;
+    fill: none !important;
+  }
+
+  body.light-theme .profile-button:hover {
+    /* Mobile profile hover: darker gray */
+    background-color: #9ca3af !important;
+    color: black !important;
+  }
+
+  body.light-theme .profile-button:hover svg,
+  body.light-theme .profile-button:hover .lucide,
+  body.light-theme .profile-button:hover [class*="lucide-"],
+  body.light-theme .profile-button:hover span,
+  body.light-theme .profile-button:hover * {
+    /* Mobile profile hover: keep black icons and text */
+    color: black !important;
+    stroke: black !important;
+    fill: none !important;
+  }
+
+  /* Mobile profile button when active (balloon is open) */
+  body.light-theme .profile-button.active {
+    /* Mobile profile active: black background with white text/icons */
+    background-color: black !important;
+    color: white !important;
+  }
+
+  body.light-theme .profile-button.active svg,
+  body.light-theme .profile-button.active .lucide,
+  body.light-theme .profile-button.active [class*="lucide-"],
+  body.light-theme .profile-button.active span,
+  body.light-theme .profile-button.active * {
+    /* Mobile profile active: white icons and text */
+    color: white !important;
+    stroke: white !important;
+    fill: none !important;
+  }
 }
 
 /* Light theme text adjustments */
@@ -1039,26 +1344,13 @@ body.light-theme th {
 
 body.light-theme td {
   color: #212529 !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  border-color: #6b7280 !important; /* Dark gray for vertical bars */
 }
 
-/* Light theme: ensure sidebar icons remain black (no hover color changes) */
-body.light-theme .sidebar-container svg,
-body.light-theme .sidebar-container .lucide,
-body.light-theme .sidebar-container [class*="lucide-"] {
-  color: #000 !important;
-  stroke: #000 !important;
-  fill: none !important;
-}
+/* Light theme: sidebar icons now follow the sidebar-item color scheme above */
+/* Removed conflicting icon color rules - now handled by .sidebar-item styles */
 
-body.light-theme .sidebar-container button:hover svg,
-body.light-theme .sidebar-container button:hover .lucide,
-body.light-theme .sidebar-container button:hover [class*="lucide-"] {
-  color: #000 !important;
-  stroke: #000 !important;
-}
-
-/* Light theme: keep the Sun icon black */
+/* Light theme: keep the Sun icon black for theme toggle button */
 body.light-theme .sidebar-container [title="Toggle Theme"] svg {
   color: #000 !important;
   stroke: #000 !important;
@@ -1253,14 +1545,16 @@ body.light-theme .dashboard-card.bg-black\/10 {
 /* Light theme: force any table background cards to be light */
 body.light-theme .card-dark-large,
 body.light-theme .card-glass,
-body.light-theme .card-glass-dark {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+body.light-theme .card-glass-dark,
+body.light-theme .bg-white\/10.backdrop-blur-lg.border-0:has(table),
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0:has(table) {
+  background-color: rgba(255, 255, 255, 0.7) !important;
   border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Light theme: style for ÚLTIMAS PÁGINAS NAVEGADAS section */
 body.light-theme .card-dark-large {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
@@ -1424,9 +1718,16 @@ body.light-theme .min-h-screen.relative.flex.items-center.justify-center .fixed.
   opacity: 0.3 !important;
 }
 
-/* Light theme: hide summer.png background completely */
+/* Light theme: summer.png background now used consistently across all pages */
 body.light-theme .fixed.inset-0.bg-cover.bg-center.bg-no-repeat[style*="summer.png"] {
-  display: none !important;
+  display: block !important;
+  opacity: 0.11 !important;
+}
+
+/* Light theme: ensure summer.png overlay gets white background like other pages */
+body.light-theme .fixed.inset-0.bg-cover.bg-center.bg-no-repeat[style*="summer.png"] + div[style*="rgba(0, 0, 0, 0.8)"],
+body.light-theme .fixed.inset-0.bg-cover.bg-center.bg-no-repeat[style*="summer.png"] div[style*="rgba(0, 0, 0, 0.8)"] {
+  background-color: rgba(255, 255, 255, 0.11) !important;
 }
 
 /* Dark theme: hide ellipses images in Playt pages */
@@ -1440,8 +1741,8 @@ body:not(.light-theme) .min-h-screen.relative.flex.items-center.justify-center +
   position: fixed;
   bottom: 0.75rem;
   right: 0.75rem;
-  width: 128px;
-  height: 128px;
+  width: 104px;
+  height: 104px;
   z-index: 1000;
   pointer-events: auto;
   animation: float 3s ease-in-out infinite;
@@ -1467,7 +1768,7 @@ body:not(.login-page) .bg-white\/10.backdrop-blur-lg {
 /* Assistant bot balloon */
 .assistant-bot-balloon {
   position: absolute;
-  right: 120px;
+  right: 102px;
   bottom: 0;
   z-index: 9999;
 }
@@ -1620,26 +1921,33 @@ body:not(.light-theme) .microphone-btn-mobile:hover {
   color: black !important;
 }
 
+/* SotCare modals - Mobile specific styles */
+@media (max-width: 768px) {
+  .sotcare-modal {
+    transform: translateY(10px);
+  }
+}
+
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .assistant-bot {
-    width: 96px;
-    height: 96px;
-    bottom: 0.75rem;
+    width: 78px;
+    height: 78px;
+    bottom: 0.125rem;
     left: auto;
     right: 0.125rem;
     transform: none;
   }
   
   .assistant-bot-container {
-    bottom: 0.75rem;
+    bottom: 0.125rem;
     right: 0.125rem;
   }
   
      .assistant-bot-balloon {
      margin-right: 0.5rem;
      margin-bottom: 0.25rem;
-     right: 68px;
+     right: 58px;
    }
   
   .balloon-input-container {
@@ -1659,12 +1967,17 @@ body:not(.light-theme) .microphone-btn-mobile:hover {
 
 @media (max-width: 480px) {
   .assistant-bot {
-    width: 80px;
-    height: 80px;
-    bottom: 0.75rem;
+    width: 65px;
+    height: 65px;
+    bottom: 0.125rem;
     left: auto;
     right: 0.125rem;
     transform: none;
+  }
+  
+  .assistant-bot-container {
+    bottom: 0.125rem;
+    right: 0.125rem;
   }
   
   .balloon-input-container {
@@ -1682,9 +1995,9 @@ body:not(.light-theme) .microphone-btn-mobile:hover {
   }
 }
 
-/* Light theme: adjust assistant bot for better visibility */
+/* Light theme: adjust assistant bot for better visibility and make it black */
 body.light-theme .assistant-bot {
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(0) saturate(100%);
 }
 
 /* Logo tooltips - always dark with white text in both themes */
@@ -2125,3 +2438,351 @@ body.light-theme .style-guide-container .chart-demo svg:not(.text-sotkis-green):
     min-width: 600px; /* approx double previous width */
   }
 }
+
+/* Light mode table styling - based on administracao/contentores pattern */
+body.light-theme table,
+body.light-theme .Table {
+  background: rgba(255, 255, 255, 0.2) !important; /* 20% opacity (80% transparent) */
+  border: none !important; /* Remove outer border */
+  border-radius: 0.75rem !important; /* Rounded corners */
+  overflow: hidden !important; /* Ensure rounded corners work */
+}
+
+body.light-theme th,
+body.light-theme .TableHead {
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: #1f2937 !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid #6b7280 !important; /* Dark gray for vertical bars */
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Light mode table header hover effects */
+body.light-theme th:hover,
+body.light-theme .TableHead:hover {
+  background: rgba(158, 192, 67, 0.2) !important;
+  cursor: pointer !important;
+  transform: translateY(-1px) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+body.light-theme td,
+body.light-theme .TableCell {
+  color: #1f2937 !important;
+  border-bottom: 1px solid #6b7280 !important; /* Dark gray for vertical bars */
+  border-right: 1px solid #6b7280 !important; /* Dark gray for vertical separators */
+}
+
+body.light-theme .TableRow {
+  border-bottom: 1px solid #6b7280 !important; /* Dark gray for horizontal separators */
+}
+
+body.light-theme .TableRow:hover {
+  background: rgba(158, 192, 67, 0.2) !important;
+  border-color: rgba(158, 192, 67, 0.3) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Light mode table row transitions */
+body.light-theme .TableRow {
+  transition: all 0.2s ease-in-out !important;
+}
+
+
+
+/* Light mode table card containers */
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0:has(table),
+body.light-theme .bg-white\/10.backdrop-blur-lg.border-0:has(table) {
+  background: rgba(255, 255, 255, 0.2) !important; /* 20% opacity (80% transparent) */
+  border: none !important; /* Remove outer border */
+  border-radius: 0.75rem !important; /* Rounded corners */
+  backdrop-filter: blur(20px) !important;
+  overflow: hidden !important; /* Ensure rounded corners work */
+}
+
+/* Light mode table card titles */
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0:has(table) .CardTitle,
+body.light-theme .bg-white\/10.backdrop-blur-lg.border-0:has(table) .CardTitle,
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0:has(table) h1,
+body.light-theme .bg-white\/10.backdrop-blur-lg.border-0:has(table) h1,
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0:has(table) h2,
+body.light-theme .bg-white\/10.backdrop-blur-lg.border-0:has(table) h2,
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0:has(table) h3,
+body.light-theme .bg-white\/10.backdrop-blur-lg.border-0:has(table) h3 {
+  color: #1f2937 !important;
+}
+
+/* Light mode table action buttons */
+body.light-theme table .Button,
+body.light-theme .Table .Button {
+  color: #9EC043 !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+body.light-theme table .Button:hover,
+body.light-theme .Table .Button:hover {
+  background: rgba(158, 192, 67, 0.2) !important;
+  color: #9EC043 !important;
+  transform: scale(1.05) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Light mode table button variants */
+body.light-theme table button,
+body.light-theme .Table button {
+  transition: all 0.2s ease-in-out !important;
+}
+
+body.light-theme table button:hover,
+body.light-theme .Table button:hover {
+  background: rgba(158, 192, 67, 0.2) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Light mode table icons */
+body.light-theme table svg,
+body.light-theme table .lucide,
+body.light-theme table [class*="lucide-"],
+body.light-theme .Table svg,
+body.light-theme .Table .lucide,
+body.light-theme .Table [class*="lucide-"] {
+  color: #9EC043 !important;
+}
+
+/* Light mode table text overrides */
+body.light-theme table .text-white,
+body.light-theme .Table .text-white {
+  color: #1f2937 !important;
+}
+
+body.light-theme table .text-sotkis-green,
+body.light-theme .Table .text-sotkis-green {
+  color: #9EC043 !important;
+}
+
+/* Light mode card glass tables */
+body.light-theme .card-glass:has(table),
+body.light-theme .card-glass-dark:has(table) {
+  background: rgba(255, 255, 255, 0.2) !important; /* 20% opacity (80% transparent) */
+  border: none !important; /* Remove outer border */
+  border-radius: 0.75rem !important; /* Rounded corners */
+  backdrop-filter: blur(20px) !important;
+  overflow: hidden !important; /* Ensure rounded corners work */
+}
+
+body.light-theme .card-glass:has(table):hover,
+body.light-theme .card-glass-dark:has(table):hover {
+  background: rgba(255, 255, 255, 0.2) !important; /* 20% opacity (80% transparent) */
+  border: none !important; /* Remove outer border */
+}
+
+/* Ensure modals cover everything with high z-index */
+.modal-overlay-full {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+}
+
+/* Light mode modal styling */
+body.light-theme .bg-white\/20.backdrop-blur-lg {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light mode modal text should be black */
+body.light-theme .bg-white\/20.backdrop-blur-lg h2,
+body.light-theme .bg-white\/20.backdrop-blur-lg label,
+body.light-theme .bg-white\/20.backdrop-blur-lg p,
+body.light-theme .bg-white\/20.backdrop-blur-lg span {
+  color: #000 !important;
+}
+
+/* Light mode modal close button */
+body.light-theme .bg-white\/20.backdrop-blur-lg .text-white {
+  color: #000 !important;
+}
+
+/* Light mode modal close button hover */
+body.light-theme .bg-white\/20.backdrop-blur-lg .hover\:bg-white\/10:hover {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Universal modal overlay improvements - ensure full viewport coverage */
+.fixed.inset-0.bg-black\/50,
+.fixed.inset-0.bg-black\/60 {
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 9998 !important;
+}
+
+/* Ensure modal overlays cover everything including headers, navbars, etc */
+.fixed.inset-0.bg-black\/50::before,
+.fixed.inset-0.bg-black\/60::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Override any potential body margins/padding that might affect modal positioning */
+body:has(.fixed.inset-0.bg-black\/50),
+body:has(.fixed.inset-0.bg-black\/60) {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure modal containers are above the overlay */
+.fixed.inset-0.bg-black\/50 > div,
+.fixed.inset-0.bg-black\/60 > div {
+  z-index: 9999 !important;
+  position: relative !important;
+}
+
+/* Fix dark mode hover effects - darker and maintain glass effect */
+.bg-white\/10:hover,
+.bg-white\/20:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* Card hover effects in dark mode */
+.card-glass:hover,
+.card-glass-dark:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Button hover effects in dark mode */
+.hover\:bg-white\/10:hover,
+.hover\:bg-white\/20:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* Sidebar item hover in dark mode */
+.sidebar-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Improve all modal containers */
+.bg-white\/20.backdrop-blur-lg.border-0,
+.bg-white\/20.backdrop-blur-lg {
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Light mode improvements for all modal containers */
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0,
+body.light-theme .bg-white\/20.backdrop-blur-lg {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light mode recent pages card - override modal settings with 60% opacity */
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0:not(:has(table)):not([role="dialog"]):not([class*="modal"]) {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Improve gray modal backgrounds for light mode */
+body.light-theme .bg-gray-800 {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Light mode text for gray modals */
+body.light-theme .bg-gray-800 h2,
+body.light-theme .bg-gray-800 label,
+body.light-theme .bg-gray-800 p,
+body.light-theme .bg-gray-800 span {
+  color: #000 !important;
+}
+
+/* Recent pages cards styling in light mode - gray by default, green on hover */
+body.light-theme .bg-white\/5.hover\:bg-white\/10 {
+  background: rgba(156, 163, 175, 0.3) !important; /* Gray background by default */
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+body.light-theme .bg-white\/5.hover\:bg-white\/10:hover {
+  background: rgba(158, 192, 67, 0.2) !important; /* Green on hover (same as before) */
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* Dashboard cards consistency in light mode - ensure all cards have proper glass effect */
+body.light-theme .bg-white\/10.backdrop-blur-lg.border-0:not(:has(table)):not([role="dialog"]):not([class*="modal"]) {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-theme .bg-white\/20.backdrop-blur-lg.border-0:not(:has(table)):not([role="dialog"]):not([class*="modal"]) {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Chart tooltip styling for light mode - ensure white text on dark background */
+body.light-theme .bg-black\/90.backdrop-blur-lg.border.border-white\/20 {
+  background: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+body.light-theme .bg-black\/90.backdrop-blur-lg.border.border-white\/20 p {
+  color: white !important;
+}
+
+/* Importações card titles - black in light mode, white in dark mode */
+body.light-theme .text-black {
+  color: black !important;
+}
+
+/* Ensure titles are white in dark mode (default behavior) */
+.text-black {
+  color: white;
+}
+
+body.light-theme .text-black {
+  color: black !important;
+}
+
+

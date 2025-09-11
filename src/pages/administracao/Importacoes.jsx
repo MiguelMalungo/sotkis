@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,6 +6,24 @@ import { Upload, Download } from 'lucide-react';
 import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const Importacoes = () => {
+  // Track light mode state
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    setIsLightMode(document.body.classList.contains('light-theme'));
+    
+    const observer = new MutationObserver(() => {
+      setIsLightMode(document.body.classList.contains('light-theme'));
+    });
+    
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
+    return () => observer.disconnect();
+  }, []);
+
   const [selectedFiles, setSelectedFiles] = useState({
     importarFicheiro: null,
     contentores: null,
@@ -135,9 +153,9 @@ const Importacoes = () => {
 
           return (
             <div key={importType.id} className="space-y-6">
-              <Card className="bg-black/50 backdrop-blur-lg border-0 shadow-2xl rounded-xl">
+              <Card className="bg-white/20 backdrop-blur-lg border-0 shadow-2xl rounded-xl">
                 <CardHeader className="pb-4">
-                  <CardTitle className="text-sotkis-green text-lg font-semibold">
+                  <CardTitle className="text-black text-lg font-semibold">
                     {importType.title}
                   </CardTitle>
                 </CardHeader>
@@ -180,10 +198,18 @@ const Importacoes = () => {
                   <div className="flex justify-center">
                     <Button
                       variant="link"
-                      className="!text-white hover:!text-white p-0 h-auto importacoes-download-btn"
+                      className={`group p-0 h-auto importacoes-download-btn ${
+                        isLightMode 
+                          ? '!text-black hover:!text-sotkis-green' 
+                          : '!text-white hover:!text-white'
+                      }`}
                       onClick={() => handleDownloadTemplate(importType.id)}
                     >
-                      <Download className="h-4 w-4 mr-2" />
+                      <Download className={`h-4 w-4 mr-2 ${
+                        isLightMode 
+                          ? '!text-black group-hover:!text-sotkis-green' 
+                          : '!text-white group-hover:!text-white'
+                      }`} />
                       Download do Template
                     </Button>
                   </div>
@@ -203,7 +229,7 @@ const Importacoes = () => {
               {/* Per-type info cards */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Recent Uploads */}
-                <Card className="card-dark-large">
+                <Card className="bg-white/20 backdrop-blur-lg border-0">
                   <CardHeader>
                     <CardTitle className="text-white text-2xl">Uploads Recentes</CardTitle>
                   </CardHeader>
@@ -226,7 +252,7 @@ const Importacoes = () => {
                 </Card>
 
                 {/* Stats */}
-                <Card className="card-dark-large">
+                <Card className="bg-white/20 backdrop-blur-lg border-0">
                   <CardHeader>
                     <CardTitle className="text-white text-2xl">Estatísticas</CardTitle>
                   </CardHeader>
@@ -258,4 +284,4 @@ const Importacoes = () => {
   );
 };
 
-export default Importacoes; 
+export default Importacoes;

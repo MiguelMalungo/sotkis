@@ -88,7 +88,7 @@ const SotkisAccessRfids = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Utilizadores</label>
                 <Select value={filters.utilizadores} onValueChange={(value) => setFilters({...filters, utilizadores: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione utilizador" />
                   </SelectTrigger>
                   <SelectContent>
@@ -108,7 +108,7 @@ const SotkisAccessRfids = () => {
               <div className="space-y-1">
                 <label className="text-sm font-semibold text-white">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione departamento" />
                   </SelectTrigger>
                   <SelectContent>
@@ -143,26 +143,7 @@ const SotkisAccessRfids = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Estado</label>
                 <Select value={filters.estado} onValueChange={(value) => setFilters({...filters, estado: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
-                    <SelectValue placeholder="Selecione estado" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Todos">Todos</SelectItem>
-                    <SelectItem value="Ativo">Ativo</SelectItem>
-                    <SelectItem value="Inativo">Inativo</SelectItem>
-                    <SelectItem value="Bloqueado">Bloqueado</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </CardContent>
-          </Card>
-          {/* Estado */}
-          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
-            <CardContent className="p-4">
-              <div className="space-y-1">
-                <label className="text-white text-sm font-semibold">Estado</label>
-                <Select value={filters.estado} onValueChange={(value) => setFilters({...filters, estado: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione estado" />
                   </SelectTrigger>
                   <SelectContent>
@@ -186,7 +167,7 @@ const SotkisAccessRfids = () => {
         </div>
         
         {/* New RFID Button */}
-        <div className="flex justify-end">
+        <div className="flex justify-center">
           <Button 
             onClick={() => setShowCreateForm(true)}
             className="bg-sotkis-green text-black hover:bg-sotkis-green/90"
@@ -198,7 +179,7 @@ const SotkisAccessRfids = () => {
       </div>
 
       {/* Results Area */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-6">
           <div className="text-center text-gray-300 py-12">
             <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -217,4 +198,4 @@ const SotkisAccessRfids = () => {
   );
 };
 
-export default SotkisAccessRfids; 
+export default SotkisAccessRfids;

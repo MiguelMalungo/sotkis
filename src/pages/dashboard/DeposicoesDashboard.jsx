@@ -179,7 +179,7 @@ const DeposicoesDashboard = () => {
       {/* Top Section - Statistics and Charts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Recycling Pie Chart */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white text-sm">DEPOSIÇÕES - RECICLAGEM</CardTitle>
           </CardHeader>
@@ -204,7 +204,7 @@ const DeposicoesDashboard = () => {
         </Card>
 
         {/* Packing Types Donut Chart */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white text-sm">Packing Types</CardTitle>
           </CardHeader>
@@ -237,7 +237,7 @@ const DeposicoesDashboard = () => {
         </Card>
 
         {/* Connection Type Pie Chart */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white text-sm">Connection Type</CardTitle>
           </CardHeader>
@@ -262,7 +262,7 @@ const DeposicoesDashboard = () => {
         </Card>
 
         {/* Deposit Method Pie Chart */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white text-sm">DEPOSIÇÕES - MÉTODO</CardTitle>
           </CardHeader>
@@ -288,7 +288,7 @@ const DeposicoesDashboard = () => {
       </div>
 
       {/* Top Containers - Full Width */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white text-sm">TOP CONTENTORES COM MAIS DEPÓSITOS</CardTitle>
         </CardHeader>
@@ -308,7 +308,7 @@ const DeposicoesDashboard = () => {
       {/* Bottom Section - User Stats and Top Containers */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Deposits Card */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -323,7 +323,7 @@ const DeposicoesDashboard = () => {
         </Card>
 
         {/* Active Users Card */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -338,7 +338,7 @@ const DeposicoesDashboard = () => {
         </Card>
 
         {/* Total Users Card */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -353,7 +353,7 @@ const DeposicoesDashboard = () => {
         </Card>
 
         {/* Alerts Card */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -369,7 +369,7 @@ const DeposicoesDashboard = () => {
       </div>
 
       {/* DEPOSIÇÕES Chart - Second Row */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">DEPOSIÇÕES</CardTitle>
         </CardHeader>
@@ -393,7 +393,7 @@ const DeposicoesDashboard = () => {
       </Card>
 
       {/* NÍVEL DE ENCHIMENTO Chart - Second Row */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">NÍVEL DE ENCHIMENTO</CardTitle>
         </CardHeader>
@@ -467,7 +467,7 @@ const DeposicoesDashboard = () => {
           </div>
 
           {/* Island List */}
-          <Card className="bg-white/10 backdrop-blur-lg border-0">
+          <Card className="bg-white/20 backdrop-blur-lg border-0">
             <CardHeader>
               <CardTitle className="text-white text-sm">Ilhas</CardTitle>
             </CardHeader>
@@ -489,7 +489,7 @@ const DeposicoesDashboard = () => {
 
         {/* Map */}
         <div className="lg:col-span-2">
-          <Card className="bg-white/10 backdrop-blur-lg border-0 h-96">
+          <Card className="bg-white/20 backdrop-blur-lg border-0 h-96">
             <CardContent className="p-0 h-full">
               <div className="relative h-full bg-gradient-to-br from-green-900 to-green-700 rounded-lg">
                 {/* Map Controls */}
@@ -522,4 +522,4 @@ const DeposicoesDashboard = () => {
   );
 };
 
-export default DeposicoesDashboard; 
+export default DeposicoesDashboard;

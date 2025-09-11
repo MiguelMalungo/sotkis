@@ -128,8 +128,8 @@ const ComplianceClients = () => {
 
       {/* Create New Non-conformity Form (Expandable) */}
       {isCreateFormExpanded && (
-        <Card className="card-glass">
-          <CardContent className="p-6">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
+        <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-white mb-4">Criar Nova Não-conformidade</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -217,7 +217,7 @@ const ComplianceClients = () => {
       </div>
 
       {/* Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
@@ -290,7 +290,7 @@ const ComplianceClients = () => {
             </TableHeader>
             <TableBody>
               {mockNonConformities.map((item) => (
-                <TableRow key={item.id}>
+                <TableRow key={item.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white font-medium w-20">{item.id}</TableCell>
                   <TableCell className="text-white">{item.client}</TableCell>
                   <TableCell className="text-white">{item.sigla}</TableCell>
@@ -357,4 +357,4 @@ const ComplianceClients = () => {
   );
 };
 
-export default ComplianceClients; 
+export default ComplianceClients;

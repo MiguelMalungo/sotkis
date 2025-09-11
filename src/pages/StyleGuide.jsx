@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectRoot } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { 
   // Navigation & Layout
@@ -276,15 +276,17 @@ const StyleGuide = () => {
       </div>
 
         {/* Quick Navigation */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-3">
           {[
             { icon: Type, label: 'Typography', id: 'typography' },
             { icon: Palette, label: 'Colors', id: 'colors' },
+            { icon: Layers, label: 'Glass', id: 'glass-morphism' },
+            { icon: Sun, label: 'Themes', id: 'theme-system' },
             { icon: BoxIcon, label: 'Components', id: 'components' },
             { icon: Search, label: 'Search', id: 'search' },
+            { icon: List, label: 'Tables', id: 'tables' },
             { icon: LayoutDashboard, label: 'Layout', id: 'layout' },
-            { icon: BarChart3, label: 'Charts', id: 'charts' },
-            { icon: Code2, label: 'Code', id: 'code' }
+            { icon: BarChart3, label: 'Charts', id: 'charts' }
           ].map((item) => (
             <button
               key={item.id}
@@ -299,9 +301,9 @@ const StyleGuide = () => {
       </div>
 
       {/* Brand Overview */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Layers className="h-5 w-5" />
             <span>Design System Overview</span>
           </CardTitle>
@@ -362,9 +364,9 @@ const StyleGuide = () => {
       </Card>
 
       {/* Typography System */}
-      <Card className="card-glass" id="typography">
+      <Card className="bg-white/20 backdrop-blur-lg border-0" id="typography">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Type className="h-5 w-5" />
             <span>Typography System</span>
           </CardTitle>
@@ -372,7 +374,7 @@ const StyleGuide = () => {
         <CardContent className="space-y-8">
           {/* Font Family */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Font Family</h3>
+            <h3 className={`text-lg font-semibold mb-4 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Font Family</h3>
             <div className="p-6 bg-white/5 rounded-lg border border-white/10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -470,9 +472,9 @@ const StyleGuide = () => {
       </Card>
 
       {/* Icon System */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <BoxIcon className="h-5 w-5" />
             <span>Icon System</span>
           </CardTitle>
@@ -575,9 +577,9 @@ const StyleGuide = () => {
       </Card>
 
       {/* Color System */}
-      <Card className="card-glass" id="colors">
+      <Card className="bg-white/20 backdrop-blur-lg border-0" id="colors">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Palette className="h-5 w-5" />
             <span>Color System</span>
           </CardTitle>
@@ -585,7 +587,7 @@ const StyleGuide = () => {
         <CardContent className="space-y-8">
           {/* Brand Colors */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Brand Colors</h3>
+            <h3 className={`text-lg font-semibold mb-4 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Brand Colors</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {Object.entries(colorPalette.brand).map(([key, { color, name, usage }]) => (
                 <div key={key} className="p-6 bg-white/5 rounded-lg border border-white/10">
@@ -616,7 +618,7 @@ const StyleGuide = () => {
 
           {/* Semantic Colors */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Semantic Colors</h3>
+            <h3 className={`text-lg font-semibold mb-4 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Semantic Colors</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {Object.entries(colorPalette.semantic).map(([key, { color, name, usage }]) => {
                 const bgClass = key === 'success' ? 'bg-green-500/20' :
@@ -765,9 +767,9 @@ const StyleGuide = () => {
       </Card>
 
       {/* Theme System */}
-      <Card className="card-glass" id="theme">
+      <Card className="bg-white/20 backdrop-blur-lg border-0" id="theme">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Sun className="h-5 w-5" />
             <span>Theme System</span>
           </CardTitle>
@@ -775,7 +777,7 @@ const StyleGuide = () => {
         <CardContent className="space-y-8">
           {/* Theme Overview */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Theme Toggle</h3>
+            <h3 className={`text-lg font-semibold mb-4 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Theme Toggle</h3>
             <p className="text-gray-300 mb-6">
               The application supports both dark and light theme modes. Users can toggle between themes using the sun/moon button in the top-right corner.
             </p>
@@ -931,9 +933,9 @@ body.light-theme .card-glass {
       </Card>
 
       {/* Spacing System */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Layout className="h-5 w-5" />
             <span>Spacing System</span>
           </CardTitle>
@@ -1058,9 +1060,9 @@ body.light-theme .card-glass {
       </Card>
 
       {/* Animation System */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Activity className="h-5 w-5" />
             <span>Animation System</span>
           </CardTitle>
@@ -1222,10 +1224,318 @@ body.light-theme .card-glass {
         </CardContent>
       </Card>
 
-      {/* Component Library */}
-      <Card className="card-glass" id="components">
+      {/* Glass Morphism System */}
+      <Card className="bg-white/20 backdrop-blur-lg border-0" id="glass-morphism">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
+            <Layers className="h-5 w-5" />
+            <span>Glass Morphism System</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-8">
+          {/* Glass Effects Overview */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">Glass Effects Overview</h3>
+            <p className="text-gray-300 mb-6">
+              The Sotkis design system is built around glass morphism effects that provide depth, elegance, and modern aesthetics.
+              Each glass effect combines background opacity, backdrop blur, and borders to create translucent surfaces.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Light Glass */}
+              <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6">
+                <h4 className="text-white font-semibold mb-3">Light Glass</h4>
+                <p className="text-gray-300 text-sm mb-4">Subtle transparency for secondary elements</p>
+                <div className="space-y-2 text-xs text-gray-400">
+                  <p><code className="bg-gray-800 px-1 rounded">bg-white/5</code></p>
+                  <p><code className="bg-gray-800 px-1 rounded">backdrop-blur-lg</code></p>
+                  <p><code className="bg-gray-800 px-1 rounded">border-white/10</code></p>
+                </div>
+              </div>
+
+              {/* Standard Glass */}
+              <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6">
+                <h4 className="text-white font-semibold mb-3">Standard Glass</h4>
+                <p className="text-gray-300 text-sm mb-4">Default glass effect for main components</p>
+                <div className="space-y-2 text-xs text-gray-400">
+                  <p><code className="bg-gray-800 px-1 rounded">bg-white/10</code></p>
+                  <p><code className="bg-gray-800 px-1 rounded">backdrop-blur-lg</code></p>
+                  <p><code className="bg-gray-800 px-1 rounded">border-white/20</code></p>
+                </div>
+              </div>
+
+              {/* Heavy Glass */}
+              <div className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl p-6">
+                <h4 className="text-white font-semibold mb-3">Heavy Glass</h4>
+                <p className="text-gray-300 text-sm mb-4">Strong effect for prominent elements</p>
+                <div className="space-y-2 text-xs text-gray-400">
+                  <p><code className="bg-gray-800 px-1 rounded">bg-white/20</code></p>
+                  <p><code className="bg-gray-800 px-1 rounded">backdrop-blur-lg</code></p>
+                  <p><code className="bg-gray-800 px-1 rounded">border-white/30</code></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Glass Classes */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">Glass Classes</h3>
+            <div className="space-y-4">
+              <div className="card-glass rounded-xl p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-white font-medium">.card-glass</h4>
+                  <code className="text-xs bg-gray-800 px-2 py-1 rounded text-sotkis-green">Primary glass card</code>
+                </div>
+                <p className="text-gray-300 text-sm mb-2">Standard glass morphism card with 10% white opacity and blur</p>
+                <div className="text-xs space-y-1 text-gray-400">
+                  <p>Background: rgba(255, 255, 255, 0.1)</p>
+                  <p>Backdrop filter: blur(10px)</p>
+                  <p>Border: 1px solid rgba(255, 255, 255, 0.1)</p>
+                </div>
+              </div>
+
+              <div className="card-glass-dark rounded-xl p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-white font-medium">.card-glass-dark</h4>
+                  <code className="text-xs bg-gray-800 px-2 py-1 rounded text-sotkis-green">Dark variant</code>
+                </div>
+                <p className="text-gray-300 text-sm mb-2">Dark glass variant with black opacity</p>
+                <div className="text-xs space-y-1 text-gray-400">
+                  <p>Background: rgba(0, 0, 0, 0.2)</p>
+                  <p>Backdrop filter: blur(10px)</p>
+                  <p>Border: 1px solid rgba(255, 255, 255, 0.1)</p>
+                </div>
+              </div>
+
+              <div className="card-dark-large rounded-xl p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-white font-medium">.card-dark-large</h4>
+                  <code className="text-xs bg-gray-800 px-2 py-1 rounded text-sotkis-green">Table container</code>
+                </div>
+                <p className="text-gray-300 text-sm mb-2">Heavy dark background for data tables and large content</p>
+                <div className="text-xs space-y-1 text-gray-400">
+                  <p>Background: rgba(8, 8, 8, 0.75)</p>
+                  <p>Border: 1px solid rgba(255, 255, 255, 0.08)</p>
+                  <p>Box shadow: 0 12px 30px rgba(0, 0, 0, 0.4)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Implementation Examples */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">Implementation Examples</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h4 className="text-white font-medium">Basic Glass Card</h4>
+                <pre className="bg-gray-900 p-4 rounded-lg text-sm text-gray-300 overflow-x-auto"><code>{`<div className="bg-white/10 backdrop-blur-lg 
+     border border-white/20 rounded-xl p-6">
+  <h3 className="text-white font-semibold mb-2">
+    Card Title
+  </h3>
+  <p className="text-gray-300">
+    Card content goes here...
+  </p>
+</div>`}</code></pre>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-white font-medium">Using CSS Classes</h4>
+                <pre className="bg-gray-900 p-4 rounded-lg text-sm text-gray-300 overflow-x-auto"><code>{`<div className="card-glass rounded-xl p-6">
+  <h3 className="text-white font-semibold mb-2">
+    Card Title
+  </h3>
+  <p className="text-gray-300">
+    Card content goes here...
+  </p>
+</div>`}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          {/* Light Theme Adaptations */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">Light Theme Adaptations</h3>
+            <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+              <p className="text-gray-300 mb-4">
+                Glass effects automatically adapt to light theme with modified opacity and colors:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h5 className="text-white font-medium mb-2">Dark Theme (Default)</h5>
+                  <div className="text-sm space-y-1 text-gray-400">
+                    <p>• Background: White with transparency</p>
+                    <p>• Text: White/gray scales</p>
+                    <p>• Borders: White with low opacity</p>
+                  </div>
+                </div>
+                <div>
+                  <h5 className="text-white font-medium mb-2">Light Theme</h5>
+                  <div className="text-sm space-y-1 text-gray-400">
+                    <p>• Background: Adjusted white opacity</p>
+                    <p>• Text: Dark colors</p>
+                    <p>• Borders: Dark with transparency</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Theme System */}
+      <Card className="bg-white/20 backdrop-blur-lg border-0" id="theme-system">
+        <CardHeader>
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
+            <Sun className="h-5 w-5" />
+            <span>Theme System</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-8">
+          {/* Theme Overview */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">Theme Implementation</h3>
+            <p className="text-gray-300 mb-6">
+              The app supports dynamic light and dark themes controlled by adding/removing the <code className="bg-gray-800 px-1 rounded">.light-theme</code> class to the document body.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h4 className="text-white font-semibold mb-4 flex items-center space-x-2">
+                  <Moon className="h-4 w-4" />
+                  <span>Dark Theme (Default)</span>
+                </h4>
+                <div className="space-y-3 text-sm text-gray-300">
+                  <div>
+                    <strong>Background:</strong> Dark with background images
+                  </div>
+                  <div>
+                    <strong>Cards:</strong> White transparency with blur
+                  </div>
+                  <div>
+                    <strong>Text:</strong> White and gray variations
+                  </div>
+                  <div>
+                    <strong>Sidebar:</strong> Glass with sotkis-green accent
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h4 className="text-white font-semibold mb-4 flex items-center space-x-2">
+                  <Sun className="h-4 w-4" />
+                  <span>Light Theme</span>
+                </h4>
+                <div className="space-y-3 text-sm text-gray-300">
+                  <div>
+                    <strong>Background:</strong> Light with reduced image opacity
+                  </div>
+                  <div>
+                    <strong>Cards:</strong> White with subtle transparency
+                  </div>
+                  <div>
+                    <strong>Text:</strong> Dark colors for readability
+                  </div>
+                  <div>
+                    <strong>Sidebar:</strong> Light with dark accents
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Theme Toggle Implementation */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">Theme Toggle Implementation</h3>
+            <div className="space-y-4">
+              <div className="p-4 bg-gray-900 rounded-lg">
+                <h4 className="text-white font-medium mb-2">JavaScript Implementation</h4>
+                <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`// Toggle theme function
+const toggleTheme = () => {
+  const isEnablingLight = 
+    !document.body.classList.contains('light-theme');
+  const layoutElement = 
+    document.querySelector('.min-h-screen');
+
+  if (layoutElement) {
+    // Hide/show background images
+    const backgroundDivs = layoutElement
+      .querySelectorAll('div[style*="backgroundImage"]');
+    backgroundDivs.forEach((div) => {
+      div.style.display = isEnablingLight ? 'none' : '';
+    });
+  }
+
+  // Toggle body class
+  if (isEnablingLight) {
+    document.body.classList.add('light-theme');
+  } else {
+    document.body.classList.remove('light-theme');
+  }
+};`}</code></pre>
+              </div>
+
+              <div className="p-4 bg-gray-900 rounded-lg">
+                <h4 className="text-white font-medium mb-2">CSS Theme Selectors</h4>
+                <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`/* Dark theme styles (default) */
+.bg-white/10 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Light theme overrides */
+body.light-theme .bg-white/10 {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme p {
+  color: #212529 !important;
+}`}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          {/* Theme-aware Components */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">Theme-aware Components</h3>
+            <div className="space-y-4">
+              <div className="p-4 bg-white/5 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Sidebar Theming</h4>
+                <div className="text-sm text-gray-300 space-y-2">
+                  <p>• <strong>Dark:</strong> sotkis-green background for active items</p>
+                  <p>• <strong>Light:</strong> Black background for active items</p>
+                  <p>• <strong>Icons:</strong> Automatic color adaptation</p>
+                </div>
+              </div>
+              
+              <div className="p-4 bg-white/5 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Logo Switching</h4>
+                <div className="text-sm text-gray-300 space-y-2">
+                  <p>• <strong>Dark theme:</strong> Logo.png / Logo_thin.png</p>
+                  <p>• <strong>Light theme:</strong> Logo2.png / Logo_thin2.png</p>
+                  <p>• <strong>Automatic:</strong> JavaScript handles switching</p>
+                </div>
+              </div>
+              
+              <div className="p-4 bg-white/5 rounded-lg">
+                <h4 className="text-white font-medium mb-2">Background Images</h4>
+                <div className="text-sm text-gray-300 space-y-2">
+                  <p>• <strong>Dark theme:</strong> Full opacity background images</p>
+                  <p>• <strong>Light theme:</strong> 11% opacity for subtlety</p>
+                  <p>• <strong>Overlays:</strong> Dynamic color switching</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Component Library */}
+      <Card className="bg-white/20 backdrop-blur-lg border-0" id="components">
+        <CardHeader>
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <BoxIcon className="h-5 w-5" />
             <span>Component Library</span>
           </CardTitle>
@@ -1489,7 +1799,14 @@ body.light-theme .card-glass {
                 <h4 className="text-white font-medium">Input Fields</h4>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-white text-sm font-medium mb-2">Default Input</label>
+                    <label className="block text-white text-sm font-medium mb-2">Glass Input (Standard)</label>
+                  <Input 
+                      placeholder="Enter your text here" 
+                      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                  />
+                  </div>
+                  <div>
+                    <label className="block text-white text-sm font-medium mb-2">Default Input (Light Theme)</label>
                   <Input 
                       placeholder="Enter your text here" 
                       className="bg-white text-black placeholder-gray-500"
@@ -1523,7 +1840,7 @@ body.light-theme .card-glass {
                 </div>
                 <div className="p-3 bg-white/5 rounded-lg">
                   <code className="text-xs text-gray-300">
-                    {`<Input className="bg-white text-black" />`}
+                    {`<Input className="bg-white/10 border-white/20 text-white placeholder:text-gray-400" />`}
                   </code>
                 </div>
               </div>
@@ -1533,17 +1850,20 @@ body.light-theme .card-glass {
                 <h4 className="text-white font-medium">Select Components</h4>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-white text-sm font-medium mb-2">Basic Select</label>
-                  <Select>
+                    <label className="block text-white text-sm font-medium mb-2">Glass Select (Standard)</label>
+                  <SelectRoot>
+                      <SelectTrigger className="bg-white text-black">
+                        <SelectValue placeholder="Choose an option" />
+                    </SelectTrigger>
+                  </SelectRoot>
+                </div>
+                  <div>
+                    <label className="block text-white text-sm font-medium mb-2">Basic Select (Light Theme)</label>
+                  <SelectRoot>
                       <SelectTrigger className="bg-white border-gray-300 text-black">
                         <SelectValue placeholder="Choose an option" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="option1">Option 1</SelectItem>
-                      <SelectItem value="option2">Option 2</SelectItem>
-                      <SelectItem value="option3">Option 3</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  </SelectRoot>
                 </div>
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">With Icon</label>
@@ -1578,7 +1898,7 @@ body.light-theme .card-glass {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="card-glass">
                 <CardHeader>
-                    <CardTitle className="text-white flex items-center">
+                    <CardTitle className={`flex items-center ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
                       <LayoutDashboard className="h-5 w-5 mr-2 text-sotkis-green" />
                       Glass Card
                     </CardTitle>
@@ -1595,7 +1915,7 @@ body.light-theme .card-glass {
 
                 <Card className="bg-white/10 backdrop-blur-lg border border-white/20">
                 <CardHeader>
-                    <CardTitle className="text-white flex items-center">
+                    <CardTitle className={`flex items-center ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
                       <Layers className="h-5 w-5 mr-2 text-blue-400" />
                       Light Glass
                     </CardTitle>
@@ -1612,7 +1932,7 @@ body.light-theme .card-glass {
 
               <Card className="card-glass-dark">
                 <CardHeader>
-                    <CardTitle className="text-white flex items-center">
+                    <CardTitle className={`flex items-center ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
                       <Target className="h-5 w-5 mr-2 text-purple-400" />
                       Dark Card
                     </CardTitle>
@@ -1672,6 +1992,223 @@ body.light-theme .card-glass {
                 <code className="block bg-gray-800 p-2 rounded text-white text-xs">
                   {`</Card>`}
                 </code>
+              </div>
+            </div>
+          </div>
+
+          {/* Table System */}
+          <div id="tables">
+            <h3 className="text-lg font-semibold text-white mb-6">Table System</h3>
+            
+            <div className="space-y-8">
+              {/* Table Examples */}
+              <div>
+                <h4 className="text-white font-medium mb-4">Glass Table with Dark Background</h4>
+                <div className="card-dark-large rounded-xl overflow-hidden">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="text-white">ID</TableHead>
+                        <TableHead className="text-white">Name</TableHead>
+                        <TableHead className="text-white">Status</TableHead>
+                        <TableHead className="text-white">Date</TableHead>
+                        <TableHead className="text-white">Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow className="hover:bg-white/5">
+                        <TableCell className="text-white">001</TableCell>
+                        <TableCell className="text-white">Container Alpha</TableCell>
+                        <TableCell>
+                          <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs">Active</span>
+                        </TableCell>
+                        <TableCell className="text-gray-300">2024-01-15</TableCell>
+                        <TableCell>
+                          <div className="flex gap-2">
+                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                              <Edit className="h-4 w-4 text-sotkis-green" />
+                            </Button>
+                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                              <Trash2 className="h-4 w-4 text-red-400" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                      <TableRow className="hover:bg-white/5">
+                        <TableCell className="text-white">002</TableCell>
+                        <TableCell className="text-white">Container Beta</TableCell>
+                        <TableCell>
+                          <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs">Pending</span>
+                        </TableCell>
+                        <TableCell className="text-gray-300">2024-01-14</TableCell>
+                        <TableCell>
+                          <div className="flex gap-2">
+                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                              <Edit className="h-4 w-4 text-sotkis-green" />
+                            </Button>
+                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                              <Trash2 className="h-4 w-4 text-red-400" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                      <TableRow className="hover:bg-white/5">
+                        <TableCell className="text-white">003</TableCell>
+                        <TableCell className="text-white">Container Gamma</TableCell>
+                        <TableCell>
+                          <span className="px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs">Inactive</span>
+                        </TableCell>
+                        <TableCell className="text-gray-300">2024-01-13</TableCell>
+                        <TableCell>
+                          <div className="flex gap-2">
+                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                              <Edit className="h-4 w-4 text-sotkis-green" />
+                            </Button>
+                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                              <Trash2 className="h-4 w-4 text-red-400" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+
+              {/* Table Styling Variants */}
+              <div>
+                <h4 className="text-white font-medium mb-4">Table Container Variants</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="space-y-4">
+                    <h5 className="text-sotkis-green font-medium">Standard Glass</h5>
+                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-4">
+                      <p className="text-gray-300 text-sm mb-3">Light transparency for secondary tables</p>
+                      <code className="text-xs bg-gray-800 px-1 rounded">bg-white/10 backdrop-blur-lg</code>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h5 className="text-sotkis-green font-medium">Heavy Glass</h5>
+                    <div className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl p-4">
+                      <p className="text-gray-300 text-sm mb-3">Strong glass effect for prominent tables</p>
+                      <code className="text-xs bg-gray-800 px-1 rounded">bg-white/20 backdrop-blur-lg</code>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h5 className="text-sotkis-green font-medium">Dark Large (Preferred)</h5>
+                    <div className="card-dark-large rounded-xl p-4">
+                      <p className="text-gray-300 text-sm mb-3">Dark background for data tables</p>
+                      <code className="text-xs bg-gray-800 px-1 rounded">.card-dark-large</code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Table Styling Guidelines */}
+              <div>
+                <h4 className="text-white font-medium mb-4">Styling Guidelines</h4>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                    <h5 className="text-white font-medium mb-3">Headers</h5>
+                    <div className="space-y-2 text-sm text-gray-300">
+                      <p>• <strong>Background:</strong> bg-white/5 with hover effects</p>
+                      <p>• <strong>Text:</strong> White, semibold weight</p>
+                      <p>• <strong>Borders:</strong> White with 50% opacity</p>
+                      <p>• <strong>Icons:</strong> Sorting arrows, 4x4px</p>
+                      <p>• <strong>Padding:</strong> px-4, h-12 standard</p>
+                    </div>
+                  </div>
+
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                    <h5 className="text-white font-medium mb-3">Cells</h5>
+                    <div className="space-y-2 text-sm text-gray-300">
+                      <p>• <strong>Text:</strong> White primary, gray-300 secondary</p>
+                      <p>• <strong>Hover:</strong> bg-white/5 row highlight</p>
+                      <p>• <strong>Borders:</strong> White with 50% opacity</p>
+                      <p>• <strong>Actions:</strong> Icon buttons, sotkis-green</p>
+                      <p>• <strong>Status badges:</strong> Color-coded with transparency</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Implementation Code */}
+              <div>
+                <h4 className="text-white font-medium mb-4">Implementation Examples</h4>
+                <div className="space-y-4">
+                  <div className="p-4 bg-gray-900 rounded-lg">
+                    <h5 className="text-white font-medium mb-2">Basic Table Structure</h5>
+                    <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`<div className="card-dark-large rounded-xl overflow-hidden">
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead className="text-white">Column</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow className="hover:bg-white/5">
+        <TableCell className="text-white">Data</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</div>`}</code></pre>
+                  </div>
+
+                  <div className="p-4 bg-gray-900 rounded-lg">
+                    <h5 className="text-white font-medium mb-2">Status Badge Implementation</h5>
+                    <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`<span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs">
+  Active
+</span>
+<span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs">
+  Pending
+</span>
+<span className="px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs">
+  Inactive
+</span>`}</code></pre>
+                  </div>
+
+                  <div className="p-4 bg-gray-900 rounded-lg">
+                    <h5 className="text-white font-medium mb-2">Action Buttons</h5>
+                    <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`<div className="flex gap-2">
+  <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+    <Edit className="h-4 w-4 text-sotkis-green" />
+  </Button>
+  <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+    <Trash2 className="h-4 w-4 text-red-400" />
+  </Button>
+</div>`}</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              {/* Responsive Tables */}
+              <div>
+                <h4 className="text-white font-medium mb-4">Responsive Design</h4>
+                <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                  <div className="space-y-4">
+                    <div>
+                      <h5 className="text-white font-medium mb-2">Mobile Adaptations</h5>
+                      <div className="space-y-2 text-sm text-gray-300">
+                        <p>• <strong>Horizontal scroll:</strong> Tables scroll horizontally on mobile</p>
+                        <p>• <strong>Minimum widths:</strong> Essential columns maintain readable widths</p>
+                        <p>• <strong>Touch targets:</strong> Action buttons are minimum 44px</p>
+                        <p>• <strong>Text size:</strong> Remains readable at 14px minimum</p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 className="text-white font-medium mb-2">Responsive Container</h5>
+                      <code className="block bg-gray-800 p-2 rounded text-white text-xs">
+                        {`<div className="overflow-x-auto">
+  <Table className="min-w-full">
+    {/* Table content */}
+  </Table>
+</div>`}
+                      </code>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1756,7 +2293,7 @@ body.light-theme .card-glass {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                    <TableRow className="border-white/10 hover:bg-white/5">
+                    <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                       <TableCell className="text-white">Container Alpha</TableCell>
                   <TableCell>
                         <span className="inline-flex items-center px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">
@@ -1783,7 +2320,7 @@ body.light-theme .card-glass {
                         </div>
                       </TableCell>
                     </TableRow>
-                    <TableRow className="border-white/10 hover:bg-white/5">
+                    <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                       <TableCell className="text-white">Container Beta</TableCell>
                       <TableCell>
                         <span className="inline-flex items-center px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-xs">
@@ -1828,7 +2365,7 @@ body.light-theme .card-glass {
       {/* Layout Patterns */}
       <Card className="card-glass" id="layout">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Layout className="h-5 w-5" />
             <span>Layout & Responsive Design</span>
           </CardTitle>
@@ -2045,7 +2582,7 @@ body.light-theme .card-glass {
       {/* Chart Styling */}
       <Card className="card-glass" id="charts">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <BarChart3 className="h-5 w-5" />
             <span>Chart & Data Visualization</span>
           </CardTitle>
@@ -2297,7 +2834,7 @@ body.light-theme .card-glass {
       {/* Assistant Bot */}
       <Card className="card-glass" id="assistant">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Users className="h-5 w-5" />
             <span>Assistant Bot</span>
           </CardTitle>
@@ -2305,37 +2842,42 @@ body.light-theme .card-glass {
         <CardContent className="space-y-8">
           {/* Assistant Bot Overview */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">AI Assistant Integration</h3>
-            <p className="text-gray-300 mb-6">
+            <h3 className={`text-lg font-semibold mb-4 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>AI Assistant Integration</h3>
+            <p className={`mb-6 ${isLightMode ? 'text-gray-700' : 'text-gray-300'}`}>
               The Sotkis platform includes an AI assistant bot that provides user guidance and support. The assistant appears as a floating element in the bottom-right corner of the screen.
             </p>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Assistant Bot Display */}
-              <div className="p-4 bg-white/5 rounded-lg">
-                <h4 className="text-white font-medium mb-3">Assistant Bot Avatar</h4>
+              <div className={`p-4 rounded-lg ${isLightMode ? 'bg-gray-100 border border-gray-200' : 'bg-white/5'}`}>
+                <h4 className={`font-medium mb-3 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Assistant Bot Avatar</h4>
                 <div className="flex justify-center mb-4">
                   <div className="relative">
-                    <img 
-                      src={assistantBotImage} 
-                      alt="Sotkis Assistant Bot" 
-                      className="w-32 h-32 object-contain rounded-full shadow-lg"
-                      style={{ animation: 'float 3s ease-in-out infinite' }}
-                    />
+                    <div className={`p-4 rounded-full ${isLightMode ? 'bg-white shadow-md' : 'bg-white/10 backdrop-blur-sm'}`}>
+                      <img 
+                        src={assistantBotImage} 
+                        alt="Sotkis Assistant Bot" 
+                        className="w-24 h-24 object-contain"
+                        style={{ 
+                          animation: 'float 3s ease-in-out infinite',
+                          filter: isLightMode ? 'none' : 'brightness(1.2) contrast(1.1)' 
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
-                  <div className="space-y-2 text-sm text-gray-300">
-                  <p>• <strong>Image file:</strong> <code className="bg-gray-800 px-1 rounded">../../assets/sott(1).png</code></p>
-                  <p>• <strong>Size:</strong> <code className="bg-gray-800 px-1 rounded">w-32 h-32</code></p>
-                  <p>• <strong>Style:</strong> <code className="bg-gray-800 px-1 rounded">rounded-full shadow-lg</code></p>
-                  <p>• <strong>Animation:</strong> Floating effect</p>
+                  <div className={`space-y-2 text-sm ${isLightMode ? 'text-gray-700' : 'text-gray-300'}`}>
+                  <p>• <strong>Image file:</strong> <code className={`px-1 rounded ${isLightMode ? 'bg-gray-200 text-gray-800' : 'bg-gray-800 text-gray-300'}`}>../../assets/sott(1).png</code></p>
+                  <p>• <strong>Size:</strong> <code className={`px-1 rounded ${isLightMode ? 'bg-gray-200 text-gray-800' : 'bg-gray-800 text-gray-300'}`}>w-24 h-24</code></p>
+                  <p>• <strong>Style:</strong> <code className={`px-1 rounded ${isLightMode ? 'bg-gray-200 text-gray-800' : 'bg-gray-800 text-gray-300'}`}>rounded-full with backdrop</code></p>
+                  <p>• <strong>Animation:</strong> Floating effect with theme-aware filtering</p>
                   </div>
                 </div>
 
               {/* Assistant Bot Positioning */}
-              <div className="p-4 bg-white/5 rounded-lg">
-                <h4 className="text-white font-medium mb-3">Positioning & Behavior</h4>
-                <div className="space-y-3 text-sm text-gray-300">
+              <div className={`p-4 rounded-lg ${isLightMode ? 'bg-gray-100 border border-gray-200' : 'bg-white/5'}`}>
+                <h4 className={`font-medium mb-3 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Positioning & Behavior</h4>
+                <div className={`space-y-3 text-sm ${isLightMode ? 'text-gray-700' : 'text-gray-300'}`}>
                   <div className="flex justify-between">
                     <span>Position:</span>
                     <span>Fixed bottom-right</span>
@@ -2401,9 +2943,9 @@ body.light-theme .card-glass {
                 </div>
 
               {/* Integration Example */}
-              <div className="p-4 bg-white/5 rounded-lg">
-                <h4 className="text-white font-medium mb-3">HTML Structure</h4>
-                <pre className="bg-gray-900 p-4 rounded-lg text-sm text-gray-300 overflow-x-auto">
+              <div className={`p-4 rounded-lg ${isLightMode ? 'bg-gray-100 border border-gray-200' : 'bg-white/5'}`}>
+                <h4 className={`font-medium mb-3 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>HTML Structure</h4>
+                <pre className={`p-4 rounded-lg text-sm overflow-x-auto ${isLightMode ? 'bg-white border text-gray-800' : 'bg-gray-900 text-gray-300'}`}>
                   <code>{`<div className="assistant-bot-container">
   <img 
     src={assistantBotImage}
@@ -2419,13 +2961,13 @@ body.light-theme .card-glass {
 
           {/* Design Specifications */}
                 <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Design Specifications</h3>
+            <h3 className={`text-lg font-semibold mb-4 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Design Specifications</h3>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Visual Properties */}
-              <div className="p-4 bg-white/5 rounded-lg">
-                <h4 className="text-white font-medium mb-3">Visual Properties</h4>
-                  <div className="space-y-2 text-sm text-gray-300">
+              <div className={`p-4 rounded-lg ${isLightMode ? 'bg-gray-100 border border-gray-200' : 'bg-white/5'}`}>
+                <h4 className={`font-medium mb-3 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Visual Properties</h4>
+                  <div className={`space-y-2 text-sm ${isLightMode ? 'text-gray-700' : 'text-gray-300'}`}>
                   <p>• <strong>Character:</strong> Friendly, approachable AI avatar</p>
                   <p>• <strong>Color scheme:</strong> Consistent with Sotkis brand</p>
                   <p>• <strong>Shadow:</strong> Subtle drop shadow for depth</p>
@@ -2435,9 +2977,9 @@ body.light-theme .card-glass {
               </div>
 
               {/* Interaction States */}
-              <div className="p-4 bg-white/5 rounded-lg">
-                <h4 className="text-white font-medium mb-3">Interaction States</h4>
-                <div className="space-y-2 text-sm text-gray-300">
+              <div className={`p-4 rounded-lg ${isLightMode ? 'bg-gray-100 border border-gray-200' : 'bg-white/5'}`}>
+                <h4 className={`font-medium mb-3 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>Interaction States</h4>
+                <div className={`space-y-2 text-sm ${isLightMode ? 'text-gray-700' : 'text-gray-300'}`}>
                   <p>• <strong>Default:</strong> Gentle floating animation</p>
                   <p>• <strong>Hover:</strong> Slight scale increase (1.05x)</p>
                   <p>• <strong>Active:</strong> Brief pulse effect</p>
@@ -2453,7 +2995,7 @@ body.light-theme .card-glass {
       {/* Development Guidelines */}
       <Card className="card-glass" id="code">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Code2 className="h-5 w-5" />
             <span>Development Guidelines</span>
           </CardTitle>
@@ -2787,7 +3329,7 @@ postcss.config.js       # PostCSS configuration`}
       {/* Login Page Components */}
       <Card className="card-glass">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Lock className="h-5 w-5" />
             <span>Login Page Components</span>
           </CardTitle>
@@ -2932,7 +3474,7 @@ postcss.config.js       # PostCSS configuration`}
       {/* Sidebar Components */}
       <Card className="card-glass">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Menu className="h-5 w-5" />
             <span>Sidebar Components</span>
           </CardTitle>
@@ -3107,7 +3649,7 @@ postcss.config.js       # PostCSS configuration`}
       {/* Responsive Design */}
       <Card className="card-glass">
         <CardHeader>
-          <CardTitle className="text-white flex items-center space-x-2">
+          <CardTitle className={`flex items-center space-x-2 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
             <Smartphone className="h-5 w-5" />
             <span>Responsive Design</span>
           </CardTitle>
@@ -3164,7 +3706,7 @@ postcss.config.js       # PostCSS configuration`}
       {/* CSS Classes Reference */}
       <Card className="card-glass">
         <CardHeader>
-          <CardTitle className="text-white">CSS Classes Reference</CardTitle>
+          <CardTitle className={`${isLightMode ? 'text-gray-900' : 'text-white'}`}>CSS Classes Reference</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -3198,4 +3740,4 @@ postcss.config.js       # PostCSS configuration`}
   );
 };
 
-export default StyleGuide; 
+export default StyleGuide;

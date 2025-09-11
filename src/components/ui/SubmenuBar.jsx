@@ -31,8 +31,8 @@ const SubmenuBar = ({ items = [] }) => {
   return (
     <div className={
       (isAdministracao && !isDashboard)
-        ? "hidden md:grid grid-flow-col grid-rows-2 auto-cols-max gap-2 w-full"
-        : "hidden md:flex flex-wrap gap-2 w-full max-w-4xl"
+        ? "hidden md:grid grid-flow-col grid-rows-2 auto-cols-max gap-2 w-full justify-center"
+        : "hidden md:flex flex-wrap gap-2 w-full justify-center"
     }>
       {processedItems.map((item) => {
         const active = location.pathname === item.to;

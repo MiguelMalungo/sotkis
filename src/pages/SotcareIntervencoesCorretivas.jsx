@@ -69,10 +69,10 @@ const SotcareIntervencoesCorretivas = () => {
         <p className="text-gray-300 mt-1">Gestão de intervenções corretivas do sistema</p>
       </div>
 
-      {/* Button and SubmenuBar */}
-      <div className="flex flex-col space-y-4">
-        <div className="flex items-center justify-between">
-          <div></div>
+      {/* SubmenuBar and Button */}
+      <div className="flex flex-col space-y-8">
+        <SubmenuBar items={submenuLinks} />
+        <div className="flex items-center justify-center">
           <Button 
             onClick={() => setIsModalOpen(true)}
             className="bg-red-600 text-white hover:bg-red-500"
@@ -81,7 +81,6 @@ const SotcareIntervencoesCorretivas = () => {
             Nova intervenção corretiva
           </Button>
         </div>
-        <SubmenuBar items={submenuLinks} />
       </div>
 
       {/* Filters */}
@@ -97,7 +96,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">N° de intervenções</label>
                 <Select value={filters.numeroIntervencoes} onValueChange={(value) => setFilters({...filters, numeroIntervencoes: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -117,7 +116,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -137,7 +136,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Tipo</label>
                 <Select value={filters.tipo} onValueChange={(value) => setFilters({...filters, tipo: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -157,7 +156,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Ilha</label>
                 <Select value={filters.ilha} onValueChange={(value) => setFilters({...filters, ilha: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -177,7 +176,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Contentor</label>
                 <Select value={filters.contentor} onValueChange={(value) => setFilters({...filters, contentor: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -212,7 +211,7 @@ const SotcareIntervencoesCorretivas = () => {
       </div>
 
       {/* Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
@@ -294,13 +293,13 @@ const SotcareIntervencoesCorretivas = () => {
             </TableHeader>
             <TableBody>
               {mockIntervencoes.map((intervencao) => (
-                <TableRow key={intervencao.id}>
+                <TableRow key={intervencao.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white">{intervencao.id}</TableCell>
                   <TableCell className="text-white">{intervencao.departamento}</TableCell>
                   <TableCell className="text-white">{intervencao.tipo}</TableCell>
                   <TableCell className="text-white">
                     <div className="flex items-center justify-center space-x-2">
-                      <MapPin className="h-4 w-4 text-blue-400" />
+                      <MapPin className="h-4 w-4 text-sotkis-green" />
                       <span>{intervencao.ilha}</span>
                     </div>
                   </TableCell>
@@ -375,7 +374,7 @@ const SotcareIntervencoesCorretivas = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Departamento:</label>
               <Select defaultValue="Todos" onValueChange={(value) => console.log('Department changed to:', value)}>
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -389,7 +388,7 @@ const SotcareIntervencoesCorretivas = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">N° de intervenção mínima:</label>
               <Select defaultValue="Todos" onValueChange={(value) => console.log('Min intervention changed to:', value)}>
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -403,7 +402,7 @@ const SotcareIntervencoesCorretivas = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">N° de intervenção máxima:</label>
               <Select defaultValue="Todos" onValueChange={(value) => console.log('Max intervention changed to:', value)}>
-                <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -425,10 +424,17 @@ const SotcareIntervencoesCorretivas = () => {
 
       {/* Modal for Nova Intervenção Corretiva */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-start justify-center z-50 p-4 pt-[30px] sm:pt-4 sm:items-center">
-          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div 
+            className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl shadow-2xl p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0 sotcare-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
 
-            <div className="text-center mb-4 sm:mb-6">
+            <div className="text-center mb-4 sm:mb-6 sotcare-modal-header">
               <h2 className="text-xl sm:text-2xl font-bold text-red-500">Nova intervenção corretiva</h2>
             </div>
             
@@ -438,7 +444,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo:</label>
                   <Select>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione o tipo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -452,7 +458,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Departamento:</label>
                   <Select>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Escolha um departamento" />
                     </SelectTrigger>
                     <SelectContent>
@@ -466,7 +472,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Ilha:</label>
                   <Select>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione a ilha" />
                     </SelectTrigger>
                     <SelectContent>
@@ -480,7 +486,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Contentor:</label>
                   <Select>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione o contentor" />
                     </SelectTrigger>
                     <SelectContent>
@@ -522,7 +528,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Prioridade:</label>
                   <Select>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione a prioridade" />
                     </SelectTrigger>
                     <SelectContent>
@@ -537,7 +543,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Responsável:</label>
                   <Select>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione o responsável" />
                     </SelectTrigger>
                     <SelectContent>
@@ -551,7 +557,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Estado:</label>
                   <Select>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione o estado" />
                     </SelectTrigger>
                     <SelectContent>
@@ -593,4 +599,4 @@ const SotcareIntervencoesCorretivas = () => {
   );
 };
 
-export default SotcareIntervencoesCorretivas; 
+export default SotcareIntervencoesCorretivas;

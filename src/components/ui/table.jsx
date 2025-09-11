@@ -15,7 +15,7 @@ Table.displayName = "Table"
 const TableHeader = React.forwardRef(({ className, ...props }, ref) => (
   <thead
     ref={ref}
-    className={cn("[&_tr]:border-b [&_tr]:border-white/10 [&_tr]:bg-black/30", className)}
+    className={cn("[&_tr]:border-b [&_tr]:border-white/10 [&_tr]:bg-white/5", className)}
     {...props}
   />
 ))
@@ -93,4 +93,4 @@ export {
   TableRow,
   TableCell,
   TableCaption,
-} 
+}

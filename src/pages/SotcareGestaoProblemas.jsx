@@ -79,10 +79,10 @@ const SotcareGestaoProblemas = () => {
         <p className="text-gray-300 mt-1">Gestão de problemas do sistema</p>
       </div>
 
-      {/* Button and SubmenuBar */}
-      <div className="flex flex-col space-y-4">
-        <div className="flex items-center justify-between">
-          <div></div>
+      {/* SubmenuBar and Button */}
+      <div className="flex flex-col space-y-8">
+        <SubmenuBar items={submenuLinks} />
+        <div className="flex items-center justify-center">
           <Button 
             onClick={() => setIsModalOpen(true)}
             className="bg-sotkis-green/90 hover:bg-sotkis-green text-white"
@@ -91,7 +91,6 @@ const SotcareGestaoProblemas = () => {
             Reportar Problema
           </Button>
         </div>
-        <SubmenuBar items={submenuLinks} />
       </div>
 
       {/* Filters */}
@@ -107,7 +106,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -127,7 +126,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Tipo</label>
                 <Select value={filters.tipo} onValueChange={(value) => setFilters({...filters, tipo: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -148,7 +147,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Responsável</label>
                 <Select value={filters.responsavel} onValueChange={(value) => setFilters({...filters, responsavel: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -168,7 +167,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Estado</label>
                 <Select value={filters.estado} onValueChange={(value) => setFilters({...filters, estado: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -220,7 +219,7 @@ const SotcareGestaoProblemas = () => {
       </div>
 
       {/* Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
@@ -302,7 +301,7 @@ const SotcareGestaoProblemas = () => {
             </TableHeader>
             <TableBody>
               {mockProblemas.map((problema) => (
-                <TableRow key={problema.id}>
+                <TableRow key={problema.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white w-20">{problema.id}</TableCell>
                   <TableCell className="text-white">{problema.assunto}</TableCell>
                   <TableCell className="text-white">
@@ -374,10 +373,17 @@ const SotcareGestaoProblemas = () => {
 
       {/* Modal for Reportar Problema */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-start justify-center z-50 p-4 pt-[30px] sm:pt-4 sm:items-center">
-          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div 
+            className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl shadow-2xl p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0 sotcare-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
 
-            <div className="text-center mb-4 sm:mb-6">
+            <div className="text-center mb-4 sm:mb-6 sotcare-modal-header">
               <h2 className="text-xl sm:text-2xl font-bold text-white">Reportar Problema</h2>
             </div>
             
@@ -461,4 +467,4 @@ const SotcareGestaoProblemas = () => {
   );
 };
 
-export default SotcareGestaoProblemas; 
+export default SotcareGestaoProblemas;

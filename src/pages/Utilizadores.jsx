@@ -186,7 +186,7 @@ const Utilizadores = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 justify-end">
+      <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 justify-center">
         <Button variant="outline" className="text-white border-white/20">
           <Download className="w-4 h-4 mr-2" />
           Exportar
@@ -202,10 +202,17 @@ const Utilizadores = () => {
 
       {/* Create User Modal */}
       {showCreateUserModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+          onClick={() => setShowCreateUserModal(false)}
+        >
+          <div 
+            className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl shadow-2xl p-4 sm:p-6 w-full max-w-6xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0"
+            onClick={(e) => e.stopPropagation()}
+          >
 
-            <div className="text-left mb-4 sm:mb-6">
+            <div className="text-center mb-4 sm:mb-6">
               <h2 className="text-xl sm:text-2xl font-bold text-white">Criar novo utilizador</h2>
             </div>
             
@@ -446,7 +453,7 @@ const Utilizadores = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -460,7 +467,7 @@ const Utilizadores = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -476,7 +483,7 @@ const Utilizadores = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -492,7 +499,7 @@ const Utilizadores = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -522,7 +529,7 @@ const Utilizadores = () => {
         
         <div className="flex flex-col lg:flex-row gap-6 items-start w-full filter-cards-container">
           {/* Nome */}
-          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+          <Card className="bg-white/20 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Nome</label>
@@ -537,7 +544,7 @@ const Utilizadores = () => {
           </Card>
 
           {/* Departamento */}
-          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+          <Card className="bg-white/20 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
@@ -555,7 +562,7 @@ const Utilizadores = () => {
           </Card>
 
           {/* Grupo (Role) */}
-          <Card className="bg-white/10 backdrop-blur-lg border-0 flex-1">
+          <Card className="bg-white/20 backdrop-blur-lg border-0 flex-1">
             <CardContent className="p-4">
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Grupo</label>
@@ -583,7 +590,7 @@ const Utilizadores = () => {
       </div>
 
       {/* Users Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">
             Lista de Utilizadores ({filteredUsers.length} resultados)
@@ -610,10 +617,15 @@ const Utilizadores = () => {
             </TableHeader>
             <TableBody>
               {paginatedUsers.map((user) => (
-                <TableRow key={user.id} className="border-white/10 hover:bg-white/5">
+                <TableRow key={user.id} className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white">{user.name}</TableCell>
                   <TableCell className="text-white">{user.username}</TableCell>
-                  <TableCell className="text-white">{user.email}</TableCell>
+                  <TableCell className="text-white">
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-sotkis-green" />
+                      {user.email}
+                    </div>
+                  </TableCell>
                   <TableCell className="text-white">{user.department}</TableCell>
                   <TableCell className="text-white">{user.group}</TableCell>
                   <TableCell className="text-white">{user.language}</TableCell>
@@ -664,4 +676,4 @@ const Utilizadores = () => {
   );
 };
 
-export default Utilizadores; 
+export default Utilizadores;

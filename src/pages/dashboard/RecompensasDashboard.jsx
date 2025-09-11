@@ -121,21 +121,21 @@ const RecompensasDashboard = () => {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4 text-center">
             <p className="text-sm text-gray-300 mb-2">Total</p>
             <p className="text-xl font-bold text-white">326</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4 text-center">
             <p className="text-sm text-gray-300 mb-2">Converted</p>
             <p className="text-xl font-bold text-white">215</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4 text-center">
             <p className="text-sm text-gray-300 mb-2">Wrong</p>
             <p className="text-xl font-bold text-white">110</p>
@@ -146,7 +146,7 @@ const RecompensasDashboard = () => {
       {/* Line Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* RECOMPENSAS ATRIBUIDAS Chart */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white">Recompensas Atribuídas</CardTitle>
           </CardHeader>
@@ -173,7 +173,7 @@ const RecompensasDashboard = () => {
         </Card>
 
         {/* RECOMPENSAS CONVERTIDAS Chart */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white">Recompensas Convertidas</CardTitle>
           </CardHeader>
@@ -201,7 +201,7 @@ const RecompensasDashboard = () => {
       </div>
 
       {/* Bar Chart - RECOMPENSAS ATRIBUIDAS POR TIPO DE RESÍDUO */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Recompensas Atribuídas por Tipo de Resíduo</CardTitle>
         </CardHeader>
@@ -228,7 +228,7 @@ const RecompensasDashboard = () => {
       </Card>
 
       {/* Area Chart - RECOMPENSAS ATRIBUIDAS POR TIPO DE EMBALAGEM DRS */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Recompensas Atribuídas por Tipo de Embalagem DRS</CardTitle>
           <p className="text-gray-300 text-sm">Evolution by package type (weekly)</p>
@@ -258,7 +258,7 @@ const RecompensasDashboard = () => {
       </Card>
 
       {/* Stacked Bar Chart - DEPOSIÇÕES CORRETAS VS INCORRETAS */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Deposições Corretas vs Incorretas</CardTitle>
           <p className="text-gray-300 text-sm">Correct vs wrong packaging evolution (weekly)</p>
@@ -287,7 +287,7 @@ const RecompensasDashboard = () => {
       </Card>
 
       {/* TOP DE RECOMPENSAS CONVERTIDAS */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Top de Recompensas Convertidas</CardTitle>
         </CardHeader>
@@ -331,4 +331,4 @@ const RecompensasDashboard = () => {
   );
 };
 
-export default RecompensasDashboard; 
+export default RecompensasDashboard;

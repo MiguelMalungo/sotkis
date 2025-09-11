@@ -433,7 +433,7 @@ const GestaoRotas = () => {
                 const progressPercentage = (route.completedStops / route.totalStops) * 100;
                 
                 return (
-                  <TableRow key={route.id} className="border-white/10 hover:bg-white/5">
+                  <TableRow key={route.id} className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell>
                       <span className="font-mono text-white font-medium">{route.id}</span>
                     </TableCell>
@@ -577,4 +577,4 @@ const GestaoRotas = () => {
   );
 };
 
-export default GestaoRotas; 
+export default GestaoRotas;

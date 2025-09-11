@@ -523,9 +523,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
                         onClick={() => handleItemClick(item)}
                         className={cn(
                           "w-full flex items-center px-3 py-2 rounded-lg transition-colors group sidebar-item",
-                          active
-                            ? "bg-sotkis-green text-white"
-                            : "text-white hover:bg-white/10"
+                          active && "active"
                         )}
                         onMouseEnter={() => handleItemHover(item)}
                         onMouseLeave={handleItemLeave}
@@ -560,73 +558,77 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
                 </li>
               );
             })}
-            {/* Profile as last navigation item */}
-            <li className="relative">
-              <div className="relative group">
-                <button
-                  onClick={() => {
-                    // Toggle profile menu visibility
-                    setHoveredItem(hoveredItem?.id === 'profile' ? null : { id: 'profile', label: 'Profile' });
-                  }}
-                  className={cn(
-                    "sidebar-item w-full justify-between",
-                    isCollapsed && !isMobile && "justify-center"
-                  )}
-                  onMouseEnter={() => !isMobile && setHoveredItem({ id: 'profile', label: 'Profile' })}
-                  onMouseLeave={() => {
-                    // Don't hide immediately - let the balloon handle its own visibility
-                  }}
-                  data-item-id="profile"
-                >
-                  <div className={cn(
-                    "flex items-center",
-                    isCollapsed && !isMobile && "justify-center w-full"
-                  )}>
-                    <User size={24} className={cn("mr-3", isCollapsed && !isMobile && "mr-0")} />
-                    {(!isCollapsed || isMobile) && <span className="text-base">Profile</span>}
-                  </div>
-                </button>
-                
-                {/* Profile Options Balloon */}
-                {hoveredItem?.id === 'profile' && (
-                  <div 
-                    className={cn(
-                      "absolute w-64 bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl z-[9999] transition-all duration-300 profile-balloon",
-                      isMobile 
-                        ? "top-full left-2 mt-0" // Mobile: below button, 10px to the right
-                        : "left-full top-[-2px] ml-2" // Desktop: right side, 2px higher (from top-0)
-                    )}
-                    onMouseEnter={() => !isMobile && setHoveredItem({ id: 'profile', label: 'Profile' })}
-                    onMouseLeave={() => setHoveredItem(null)}
-                  >
-                    <div className="p-3">
-                      <div className="text-sm text-gray-800 mb-1 text-center">
-                        <span className="font-semibold">Miguel Guedes</span> • <span className="font-normal">Sotkon design</span>
-                      </div>
-                      <div className="space-y-[-1px]">
-                        <button 
-                          onClick={() => {
-                            if (isMobile) {
-                              onMobileMenuClose();
-                            }
-                            navigate('/definicoes');
-                          }}
-                          className="w-full flex items-center justify-between hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors text-sm text-gray-700"
-                        >
-                          <span>Definições</span>
-                          <Settings size={16} className="text-gray-700" />
-                        </button>
-                        <button className="w-full flex items-center justify-between hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors text-sm text-gray-700">
-                          <span>Logout</span>
-                          <LogOut size={16} className="text-gray-700" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
+
+        </ul>
+        
+        {/* Profile - Separated from main navigation */}
+          <div className="mt-0 px-3">
+          <div className="relative">
+            <button
+              onClick={() => {
+                // Toggle profile menu visibility
+                setHoveredItem(hoveredItem?.id === 'profile' ? null : { id: 'profile', label: 'Profile' });
+              }}
+              className={cn(
+                "w-full flex items-center px-3 py-2 rounded-lg transition-colors group sidebar-item profile-button",
+                "text-white hover:bg-white/10",
+                isCollapsed && !isMobile && "justify-center",
+                hoveredItem?.id === 'profile' && "active"
+              )}
+              onMouseEnter={() => !isMobile && setHoveredItem({ id: 'profile', label: 'Profile' })}
+              onMouseLeave={() => {
+                // Don't hide immediately - let the balloon handle its own visibility
+              }}
+              data-item-id="profile"
+            >
+              <div className={cn(
+                "flex items-center",
+                isCollapsed && !isMobile && "justify-center w-full"
+              )}>
+                <User size={24} className={cn("mr-3", isCollapsed && !isMobile && "mr-0")} />
+                {(!isCollapsed || isMobile) && <span className="text-base">Profile</span>}
               </div>
-            </li>
-          </ul>
+            </button>
+            
+            {/* Profile Options Balloon */}
+            {hoveredItem?.id === 'profile' && (
+              <div 
+                className={cn(
+                  "absolute w-64 bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl z-[9999] transition-all duration-300 profile-balloon",
+                  isMobile 
+                    ? "top-full left-2 mt-0" // Mobile: below button, 10px to the right
+                    : "left-full top-[-2px] ml-2" // Desktop: right side, 2px higher (from top-0)
+                )}
+                onMouseEnter={() => !isMobile && setHoveredItem({ id: 'profile', label: 'Profile' })}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
+                <div className="p-3">
+                  <div className="text-sm text-gray-800 mb-1 text-center">
+                    <span className="font-semibold">Miguel Guedes</span> • <span className="font-normal">Sotkon design</span>
+                  </div>
+                  <div className="space-y-[-1px]">
+                    <button 
+                      onClick={() => {
+                        if (isMobile) {
+                          onMobileMenuClose();
+                        }
+                        navigate('/definicoes');
+                      }}
+                      className="w-full flex items-center justify-between hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors text-sm text-gray-700"
+                    >
+                      <span>Definições</span>
+                      <Settings size={16} className="text-gray-700" />
+                    </button>
+                    <button className="w-full flex items-center justify-between hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors text-sm text-gray-700">
+                      <span>Logout</span>
+                      <LogOut size={16} className="text-gray-700" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
         </nav>
 
         {/* Footer */}
@@ -651,4 +653,4 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
   );
 };
 
-export default Sidebar; 
+export default Sidebar;

@@ -280,7 +280,7 @@ const Performance = () => {
 
       {/* Overall Performance Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -291,14 +291,14 @@ const Performance = () => {
                   +1.8% vs ontem
                 </p>
               </div>
-              <div className="p-3 bg-white/10 rounded-lg">
+              <div className="p-3 bg-white/20 rounded-lg">
                 <Gauge className="h-6 w-6 text-sotkis-green" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -309,14 +309,14 @@ const Performance = () => {
                   {((excellentMetrics / mockPerformanceData.length) * 100).toFixed(1)}% do total
                 </p>
               </div>
-              <div className="p-3 bg-white/10 rounded-lg">
+              <div className="p-3 bg-white/20 rounded-lg">
                 <CheckCircle className="h-6 w-6 text-green-500" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -327,14 +327,14 @@ const Performance = () => {
                   Requer atenção imediata
                 </p>
               </div>
-              <div className="p-3 bg-white/10 rounded-lg">
+              <div className="p-3 bg-white/20 rounded-lg">
                 <AlertTriangle className="h-6 w-6 text-red-500" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -345,7 +345,7 @@ const Performance = () => {
                   Últimos 30 dias
                 </p>
               </div>
-              <div className="p-3 bg-white/10 rounded-lg">
+              <div className="p-3 bg-white/20 rounded-lg">
                 <Server className="h-6 w-6 text-sotkis-green" />
               </div>
             </div>
@@ -356,7 +356,7 @@ const Performance = () => {
       {/* System Metrics */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* System Health */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white">Estado do Sistema</CardTitle>
           </CardHeader>
@@ -389,7 +389,7 @@ const Performance = () => {
         </Card>
 
         {/* Recent Alerts */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white">Alertas Recentes</CardTitle>
           </CardHeader>
@@ -431,7 +431,7 @@ const Performance = () => {
       </div>
 
       {/* Filters */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {/* Search */}
@@ -441,7 +441,7 @@ const Performance = () => {
                 placeholder="Procurar métricas..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
+                className="pl-10 bg-white/20 border-white/20 text-white/90 placeholder-gray-400"
               />
             </div>
 
@@ -449,7 +449,7 @@ const Performance = () => {
             <Select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="bg-white/10 border-white/20 text-white/90"
+              className="bg-white/20 border-white/20 text-white/90"
             >
               {statuses.map((status) => (
                 <SelectOption key={status.value} value={status.value}>
@@ -493,7 +493,7 @@ const Performance = () => {
                 setSelectedZone('all');
                 setTimeRange('today');
               }}
-              className="text-white border-white/20 hover:bg-white/10"
+              className="text-white border-white/20 hover:bg-white/20"
             >
               <Filter className="w-4 h-4 mr-2" />
               Limpar Filtros
@@ -503,7 +503,7 @@ const Performance = () => {
       </Card>
 
       {/* Performance Metrics Table */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">
             Métricas de Performance ({filteredPerformanceData.length} resultados)
@@ -531,7 +531,7 @@ const Performance = () => {
                 const trendColor = item.trend === 'up' ? 'text-green-500' : 'text-red-500';
                 
                 return (
-                  <TableRow key={item.id} className="border-white/10 hover:bg-white/5">
+                  <TableRow key={item.id} className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell>
                       <div>
                         <span className="text-white font-medium">{item.metric}</span>
@@ -558,7 +558,7 @@ const Performance = () => {
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center space-x-2">
-                        <MapPin className="w-4 h-4 text-gray-400" />
+                        <MapPin className="w-4 h-4 text-sotkis-green" />
                         <span className="text-white">{item.zone}</span>
                       </div>
                     </TableCell>
@@ -649,4 +649,4 @@ const Performance = () => {
   );
 };
 
-export default Performance; 
+export default Performance;

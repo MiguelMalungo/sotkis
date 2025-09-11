@@ -80,7 +80,7 @@ const Definicoes = () => {
         </h1>
 
         {/* Password Change Section */}
-        <Card className="card-dark-large mb-8">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 mb-8">
           <CardHeader>
             <CardTitle className="text-white text-xl flex items-center gap-2">
               <Lock className="w-5 h-5 text-sotkis-green" />
@@ -139,7 +139,7 @@ const Definicoes = () => {
         </Card>
 
         {/* Language Selection Section */}
-        <Card className="card-dark-large">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white text-xl flex items-center gap-2">
               <Globe className="w-5 h-5 text-sotkis-green" />
@@ -156,7 +156,7 @@ const Definicoes = () => {
                   value={selectedLanguage}
                   onChange={(value) => setSelectedLanguage(value)}
                 >
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white focus:border-sotkis-green focus:ring-sotkis-green">
+                  <SelectTrigger className="bg-white text-black focus:border-sotkis-green focus:ring-sotkis-green">
                     <SelectValue placeholder="Selecione uma língua" />
                   </SelectTrigger>
                   <SelectContent>

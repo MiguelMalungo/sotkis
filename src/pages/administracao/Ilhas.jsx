@@ -81,7 +81,7 @@ const Ilhas = () => {
       <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
@@ -101,7 +101,7 @@ const Ilhas = () => {
       </div>
 
       {/* Islands Table */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Lista de Ilhas</CardTitle>
         </CardHeader>
@@ -118,7 +118,7 @@ const Ilhas = () => {
             </TableHeader>
             <TableBody>
               {filteredIslands.map((island) => (
-                <TableRow key={island.id}>
+                <TableRow key={island.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white">{island.nome}</TableCell>
                   <TableCell className="text-white">{island.codigo}</TableCell>
                   <TableCell className="text-white">{island.pais}</TableCell>
@@ -204,4 +204,4 @@ const Ilhas = () => {
   );
 };
 
-export default Ilhas; 
+export default Ilhas;

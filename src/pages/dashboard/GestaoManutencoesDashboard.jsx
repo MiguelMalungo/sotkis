@@ -111,7 +111,7 @@ const GestaoManutencoesDashboard = () => {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -129,7 +129,7 @@ const GestaoManutencoesDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -147,7 +147,7 @@ const GestaoManutencoesDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -165,7 +165,7 @@ const GestaoManutencoesDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -187,7 +187,7 @@ const GestaoManutencoesDashboard = () => {
       {/* Maintenance Table and Chart Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Maintenance Table - Narrower */}
-        <Card className="card-dark-large lg:col-span-2">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 lg:col-span-2">
           <CardHeader>
             <CardTitle className="text-white">Manutenções Recentes</CardTitle>
           </CardHeader>
@@ -203,7 +203,7 @@ const GestaoManutencoesDashboard = () => {
               </TableHeader>
               <TableBody>
                 {maintenanceData.map((alert) => (
-                  <TableRow key={alert.id} className="border-white/10">
+                  <TableRow key={alert.id} className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">{alert.container}</TableCell>
                     <TableCell className="text-white">{alert.type}</TableCell>
                     <TableCell className={getPriorityColor(alert.priority)}>
@@ -218,7 +218,7 @@ const GestaoManutencoesDashboard = () => {
         </Card>
 
         {/* SOTCARE Chart */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardHeader>
             <CardTitle className="text-white uppercase-title">SOTCARE - GESTÃO DE INTERVENÇÕES</CardTitle>
           </CardHeader>
@@ -271,7 +271,7 @@ const GestaoManutencoesDashboard = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* CORRETIVAS Table */}
-          <Card className="card-dark-large">
+          <Card className="bg-white/20 backdrop-blur-lg border-0">
             <CardHeader>
               <CardTitle className="text-red-500 font-bold uppercase-title">CORRETIVAS</CardTitle>
             </CardHeader>
@@ -286,31 +286,31 @@ const GestaoManutencoesDashboard = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Troca de amortecedor de tampa do kit enterrado</TableCell>
                     <TableCell className="text-white">Rua Cidade Bolama</TableCell>
                     <TableCell className="text-white">Bolama</TableCell>
                     <TableCell className="text-white">3/14/2025 12:00:00 AM</TableCell>
                   </TableRow>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Problema com amortecedor</TableCell>
                     <TableCell className="text-white">Rua Nova do Desterro</TableCell>
                     <TableCell className="text-white">NovaDesterro</TableCell>
                     <TableCell className="text-white">3/13/2025 12:00:00 AM</TableCell>
                   </TableRow>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Troca de fecho de tampa</TableCell>
                     <TableCell className="text-white">Rua Nova do Desterro</TableCell>
                     <TableCell className="text-white">NovaDesterro</TableCell>
                     <TableCell className="text-white">3/12/2025 12:00:00 AM</TableCell>
                   </TableRow>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Troca de amortecedor de tampa</TableCell>
                     <TableCell className="text-white">Rua Nova do Desterro</TableCell>
                     <TableCell className="text-white">NovaDesterro</TableCell>
                     <TableCell className="text-white">3/10/2025 12:00:00 AM</TableCell>
                   </TableRow>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Troca de amortecedor de tampa do kit enterrado</TableCell>
                     <TableCell className="text-white">Largo do Barao Quintela</TableCell>
                     <TableCell className="text-white">Barao Quintela</TableCell>
@@ -322,7 +322,7 @@ const GestaoManutencoesDashboard = () => {
           </Card>
 
           {/* PREVENTIVAS Table */}
-          <Card className="card-dark-large">
+          <Card className="bg-white/20 backdrop-blur-lg border-0">
             <CardHeader>
               <CardTitle className="text-yellow-400 font-bold uppercase-title">PREVENTIVAS</CardTitle>
             </CardHeader>
@@ -336,27 +336,27 @@ const GestaoManutencoesDashboard = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Rua Cidade Bolama</TableCell>
                     <TableCell className="text-white">4</TableCell>
                     <TableCell className="text-white">3/14/2025 12:00:00 AM</TableCell>
                   </TableRow>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Rua Nova do Desterro</TableCell>
                     <TableCell className="text-white">5</TableCell>
                     <TableCell className="text-white">3/14/2025 12:00:00 AM</TableCell>
                   </TableRow>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Rua Cidade Bolama</TableCell>
                     <TableCell className="text-white">3</TableCell>
                     <TableCell className="text-white">3/13/2025 12:00:00 AM</TableCell>
                   </TableRow>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Rua Nova do Desterro</TableCell>
                     <TableCell className="text-white">4</TableCell>
                     <TableCell className="text-white">3/13/2025 12:00:00 AM</TableCell>
                   </TableRow>
-                  <TableRow className="border-white/10">
+                  <TableRow className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                     <TableCell className="text-white">Rua Cidade Bolama</TableCell>
                     <TableCell className="text-white">4</TableCell>
                     <TableCell className="text-white">3/12/2025 12:00:00 AM</TableCell>
@@ -371,4 +371,4 @@ const GestaoManutencoesDashboard = () => {
   );
 };
 
-export default GestaoManutencoesDashboard; 
+export default GestaoManutencoesDashboard;

@@ -73,25 +73,25 @@ const SotkisRoutes = () => {
 
       {/* Filters */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Rota</label>
             <Input
               placeholder="Nome da rota"
               value={filters.rota}
               onChange={(e) => setFilters({ ...filters, rota: e.target.value })}
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              className="bg-white/20 border-white/20 text-white placeholder:text-gray-400"
             />
           </div>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-white">Estado</label>
-            <Select 
-              value={filters.estado} 
-              onChange={(e) => setFilters({ ...filters, estado: e.target.value })}
-              className="bg-white/10 border-white/20 text-white"
+        <Card className="bg-white/20 backdrop-blur-lg border-0 p-4">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-white">Motorista</label>
+              <Select
+                value={filters.motorista}
+                onChange={(e) => setFilters({ ...filters, motorista: e.target.value })}
+                className="bg-white/20 border-white/20 text-white"
             >
               <SelectOption value="">Selecionar estado</SelectOption>
               <SelectOption value="ativa">Ativa</SelectOption>
@@ -101,26 +101,26 @@ const SotkisRoutes = () => {
           </div>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Data Início</label>
             <Input
               type="date"
               value={filters.dataInicio}
               onChange={(e) => setFilters({ ...filters, dataInicio: e.target.value })}
-              className="bg-white/10 border-white/20 text-white"
+              className="bg-white/20 border-white/20 text-white"
             />
           </div>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 p-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-white">Data Fim</label>
             <Input
               type="date"
               value={filters.dataFim}
               onChange={(e) => setFilters({ ...filters, dataFim: e.target.value })}
-              className="bg-white/10 border-white/20 text-white"
+              className="bg-white/20 border-white/20 text-white"
             />
           </div>
         </Card>
@@ -135,7 +135,7 @@ const SotkisRoutes = () => {
       </div>
 
       {/* Table */}
-      <Card className="card-dark-large">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
@@ -152,7 +152,7 @@ const SotkisRoutes = () => {
             </TableHeader>
             <TableBody>
               {mockRoutes.map((route) => (
-                <TableRow key={route.id} className="border-white/10">
+                <TableRow key={route.id} className="border-white/10 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white">{route.id}</TableCell>
                   <TableCell className="text-white">{route.nome}</TableCell>
                   <TableCell className="text-white">
@@ -184,7 +184,7 @@ const SotkisRoutes = () => {
       </Card>
 
       {/* Map Section */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0 p-4">
+      <Card className="bg-white/20 backdrop-blur-lg border-0 p-4">
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <h3 className="text-xl font-semibold text-white">Visualização de Mapa</h3>
@@ -207,7 +207,7 @@ const SotkisRoutes = () => {
               </Button>
             </div>
           </div>
-          <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] rounded-lg border border-white/10 bg-white/10 flex items-center justify-center">
+          <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] rounded-lg border border-white/10 bg-white/20 flex items-center justify-center">
             <div className="text-center text-gray-400">
               <MapIcon className="w-16 h-16 mx-auto mb-4 text-sotkis-green" />
               <h3 className="text-xl font-semibold text-white mb-2">Mapa de Rotas</h3>
@@ -237,7 +237,7 @@ const SotkisRoutes = () => {
       </Card>
 
       {/* Add New Route Button */}
-      <div className="flex justify-end">
+      <div className="flex justify-center">
         <Button className="bg-sotkis-green text-black hover:bg-sotkis-green/90">
           <Plus className="h-4 w-4 mr-2" />
           Nova Rota
@@ -247,4 +247,4 @@ const SotkisRoutes = () => {
   );
 };
 
-export default SotkisRoutes; 
+export default SotkisRoutes;

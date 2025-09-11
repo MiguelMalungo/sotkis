@@ -12,7 +12,7 @@ import logoThin2Image from '/assets/Logo_thin2.png';
 const BASE = import.meta.env.BASE_URL || '/';
 
 const contentRoutes = [
-  '/dashboard', '/utilizadores', '/administracao', '/my-sotkon', '/sotkis-access', '/sotkis-routes', '/sotkis-level', '/compliance', '/sotcare', '/sotkis-playt'
+  '/', '/dashboard', '/utilizadores', '/administracao', '/my-sotkon', '/sotkis-access', '/sotkis-routes', '/sotkis-level', '/compliance', '/sotcare', '/sotkis-playt'
 ];
 
 const Layout = ({ children }) => {
@@ -180,7 +180,7 @@ const Layout = ({ children }) => {
             hasContent ? 'blur-md' : ''
           }`}
           style={{
-            backgroundImage: `url(${isLandingPage ? backgroundImage : summerImage})`,
+            backgroundImage: `url(${summerImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
             width: '110%',
@@ -304,4 +304,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout; 
+export default Layout;

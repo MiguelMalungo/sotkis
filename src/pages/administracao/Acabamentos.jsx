@@ -116,7 +116,7 @@ const Acabamentos = () => {
       <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
@@ -136,7 +136,7 @@ const Acabamentos = () => {
       </div>
 
       {/* Finishes Table */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Tipos de Acabamento</CardTitle>
         </CardHeader>
@@ -153,7 +153,7 @@ const Acabamentos = () => {
             </TableHeader>
             <TableBody>
               {filteredFinishes.map((finish) => (
-                <TableRow key={finish.id}>
+                <TableRow key={finish.id} className="border-white/20 hover:bg-sotkis-green/20 hover:border-sotkis-green/30 transition-colors duration-200">
                   <TableCell className="text-white">
                     <div className="flex items-center gap-2">
                       <Eye className="w-4 h-4 text-sotkis-green" />
@@ -182,11 +182,17 @@ const Acabamentos = () => {
 
       {/* Create Finish Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="card-glass rounded-lg p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0">
-
-            <div className="text-left mb-4 sm:mb-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-sotkis-green">Novo Acabamento</h2>
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+          onClick={() => setShowCreateModal(false)}
+        >
+          <div 
+            className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl shadow-2xl p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-white">Novo Acabamento</h2>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
@@ -236,7 +242,7 @@ const Acabamentos = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8">
+            <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mt-6 sm:mt-8">
               <Button
                 onClick={handleCancel}
                 variant="outline"
@@ -258,4 +264,4 @@ const Acabamentos = () => {
   );
 };
 
-export default Acabamentos; 
+export default Acabamentos;

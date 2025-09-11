@@ -26,7 +26,7 @@ const OperacaoDashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* DEPOSIÇÕES */}
         <Card 
-          className="bg-white/10 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/20 transition-all duration-200"
+          className="bg-white/20 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/30 transition-all duration-200"
           onClick={() => navigate('/dashboard/deposicoes')}
         >
           <CardContent className="p-6">
@@ -42,7 +42,7 @@ const OperacaoDashboard = () => {
 
         {/* NÍVEL DE ENCHIMENTO */}
         <Card 
-          className="bg-white/10 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/20 transition-all duration-200"
+          className="bg-white/20 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/30 transition-all duration-200"
           onClick={() => navigate('/dashboard/nivel-enchimento')}
         >
           <CardContent className="p-6">
@@ -58,7 +58,7 @@ const OperacaoDashboard = () => {
 
         {/* GESTÃO DE MANUTENÇÕES */}
         <Card 
-          className="bg-white/10 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/20 transition-all duration-200"
+          className="bg-white/20 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/30 transition-all duration-200"
           onClick={() => navigate('/dashboard/gestao-manutencoes')}
         >
           <CardContent className="p-6">
@@ -74,7 +74,7 @@ const OperacaoDashboard = () => {
 
         {/* RECOMPENSAS */}
         <Card 
-          className="bg-white/10 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/20 transition-all duration-200"
+          className="bg-white/20 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/30 transition-all duration-200"
           onClick={() => navigate('/dashboard/recompensas')}
         >
           <CardContent className="p-6">
@@ -90,7 +90,7 @@ const OperacaoDashboard = () => {
 
         {/* GESTÃO DE ROTAS */}
         <Card 
-          className="bg-white/10 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/20 transition-all duration-200"
+          className="bg-white/20 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/30 transition-all duration-200"
           onClick={() => navigate('/dashboard/gestao-rotas')}
         >
           <CardContent className="p-6">
@@ -106,7 +106,7 @@ const OperacaoDashboard = () => {
 
         {/* PERFORMANCE */}
         <Card 
-          className="bg-white/10 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/20 transition-all duration-200"
+          className="bg-white/20 backdrop-blur-lg border-0 cursor-pointer hover:bg-white/30 transition-all duration-200"
           onClick={() => navigate('/dashboard/performance')}
         >
             <CardContent className="p-6">

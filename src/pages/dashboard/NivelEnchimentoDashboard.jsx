@@ -120,7 +120,7 @@ const NivelEnchimentoDashboard = () => {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -138,7 +138,7 @@ const NivelEnchimentoDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -156,7 +156,7 @@ const NivelEnchimentoDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -174,7 +174,7 @@ const NivelEnchimentoDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -194,7 +194,7 @@ const NivelEnchimentoDashboard = () => {
       </div>
 
       {/* Charts - Second Row - One per row */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Nível de Enchimento por Zona</CardTitle>
         </CardHeader>
@@ -217,7 +217,7 @@ const NivelEnchimentoDashboard = () => {
         </CardContent>
       </Card>
 
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white">Evolução do Enchimento</CardTitle>
         </CardHeader>

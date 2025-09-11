@@ -90,7 +90,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione departamento" />
                   </SelectTrigger>
                   <SelectContent>
@@ -111,7 +111,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Ilha</label>
                 <Select value={filters.ilha} onValueChange={(value) => setFilters({...filters, ilha: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione ilha" />
                   </SelectTrigger>
                   <SelectContent>
@@ -131,7 +131,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Contentor</label>
                 <Select value={filters.contentor} onValueChange={(value) => setFilters({...filters, contentor: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione contentor" />
                   </SelectTrigger>
                   <SelectContent>
@@ -151,7 +151,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Utilizador</label>
                 <Select value={filters.utilizador} onValueChange={(value) => setFilters({...filters, utilizador: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione utilizador" />
                   </SelectTrigger>
                   <SelectContent>
@@ -186,7 +186,7 @@ const SotkisAccessReports = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Tipo de Resíduo</label>
                 <Select value={filters.tipoResiduo} onValueChange={(value) => setFilters({...filters, tipoResiduo: value})}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white/90 placeholder-gray-400">
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione tipo" />
                   </SelectTrigger>
                   <SelectContent>
@@ -212,7 +212,7 @@ const SotkisAccessReports = () => {
       </div>
 
       {/* Results Area */}
-      <Card className="card-glass">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardContent className="p-6">
           <div className="text-center text-gray-300 py-12">
             <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -231,4 +231,4 @@ const SotkisAccessReports = () => {
   );
 };
 
-export default SotkisAccessReports; 
+export default SotkisAccessReports;

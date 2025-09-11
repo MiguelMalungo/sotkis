@@ -117,7 +117,7 @@ const GestaoRotasDashboard = () => {
 
       {/* First Row - KPI Cards with Alerts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -135,7 +135,7 @@ const GestaoRotasDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -153,7 +153,7 @@ const GestaoRotasDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -171,7 +171,7 @@ const GestaoRotasDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -191,7 +191,7 @@ const GestaoRotasDashboard = () => {
       </div>
 
       {/* QUILÓMETROS PERCORRIDOS Chart */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white text-sm sm:text-base">QUILÓMETROS PERCORRIDOS</CardTitle>
         </CardHeader>
@@ -209,7 +209,7 @@ const GestaoRotasDashboard = () => {
       </Card>
 
       {/* CONTENTORES RECOLHIDOS Chart */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white text-sm sm:text-base">CONTENTORES RECOLHIDOS</CardTitle>
         </CardHeader>
@@ -227,7 +227,7 @@ const GestaoRotasDashboard = () => {
       </Card>
 
       {/* PLANO EXECUTADO Chart */}
-      <Card className="bg-white/10 backdrop-blur-lg border-0">
+      <Card className="bg-white/20 backdrop-blur-lg border-0">
         <CardHeader>
           <CardTitle className="text-white text-sm sm:text-base">PLANO EXECUTADO</CardTitle>
         </CardHeader>
@@ -247,4 +247,4 @@ const GestaoRotasDashboard = () => {
   );
 };
 
-export default GestaoRotasDashboard; 
+export default GestaoRotasDashboard;

@@ -120,7 +120,7 @@ const PerformanceDashboard = () => {
 
       {/* Annual Comparison Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-sm text-gray-300">Depósitos</p>
@@ -144,7 +144,7 @@ const PerformanceDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-sm text-gray-300">Nível de Enchimento</p>
@@ -168,7 +168,7 @@ const PerformanceDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-sm text-gray-300">Manutenção</p>
@@ -192,7 +192,7 @@ const PerformanceDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -210,7 +210,7 @@ const PerformanceDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-lg border-0">
+        <Card className="bg-white/20 backdrop-blur-lg border-0">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -232,7 +232,7 @@ const PerformanceDashboard = () => {
       {/* Second Row - Gauge Charts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Utilizadores Ativos */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center mb-4">
@@ -295,7 +295,7 @@ const PerformanceDashboard = () => {
         </Card>
 
         {/* Nº Km */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center mb-4">
@@ -357,7 +357,7 @@ const PerformanceDashboard = () => {
         </Card>
 
         {/* Manutenção */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center mb-4">
@@ -419,7 +419,7 @@ const PerformanceDashboard = () => {
         </Card>
 
         {/* Capacidade > 99% */}
-        <Card className="bg-white/10 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
+        <Card className="bg-white/20 backdrop-blur-lg border-0 min-h-[300px] sm:min-h-[400px]">
           <CardContent className="p-6">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-center mb-4">
