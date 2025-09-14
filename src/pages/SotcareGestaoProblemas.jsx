@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -9,19 +9,6 @@ import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotcareGestaoProblemas = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
   const [filters, setFilters] = useState({
     departamento: 'Todos',
     tipo: 'Todos',
@@ -119,11 +106,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -143,11 +126,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Tipo</label>
                 <Select value={filters.tipo} onValueChange={(value) => setFilters({...filters, tipo: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -168,11 +147,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Responsável</label>
                 <Select value={filters.responsavel} onValueChange={(value) => setFilters({...filters, responsavel: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -192,11 +167,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Estado</label>
                 <Select value={filters.estado} onValueChange={(value) => setFilters({...filters, estado: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -233,11 +204,7 @@ const SotcareGestaoProblemas = () => {
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select defaultValue="10">
-            <SelectTrigger className={`w-20 ${
-              isLightMode 
-                ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                : 'bg-white text-black'
-            }`}>
+            <SelectTrigger className="w-20 bg-white text-black">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -425,11 +392,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Departamento:</label>
                 <Select defaultValue="Faro-PT 999990004">
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -462,11 +425,7 @@ const SotcareGestaoProblemas = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white">Tipo de intervenção prevista:</label>
                 <Select>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione o tipo" />
                   </SelectTrigger>
                   <SelectContent>

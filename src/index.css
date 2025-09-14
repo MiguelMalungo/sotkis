@@ -479,18 +479,38 @@ button:hover [class*="lucide-"] {
   color: white !important;
 }
 
-/* Force white text for Download Template button in Importacoes page */
-.importacoes-download-btn,
-.importacoes-download-btn:hover,
-.importacoes-download-btn svg,
-.importacoes-download-btn:hover svg,
-.importacoes-download-btn .lucide,
-.importacoes-download-btn:hover .lucide,
-.importacoes-download-btn [class*="lucide-"],
-.importacoes-download-btn:hover [class*="lucide-"] {
+/* Force white text for Download Template button in Importacoes page - dark mode only */
+body:not(.light-theme) .importacoes-download-btn,
+body:not(.light-theme) .importacoes-download-btn:hover,
+body:not(.light-theme) .importacoes-download-btn svg,
+body:not(.light-theme) .importacoes-download-btn:hover svg,
+body:not(.light-theme) .importacoes-download-btn .lucide,
+body:not(.light-theme) .importacoes-download-btn:hover .lucide,
+body:not(.light-theme) .importacoes-download-btn [class*="lucide-"],
+body:not(.light-theme) .importacoes-download-btn:hover [class*="lucide-"] {
   color: white !important;
   stroke: white !important;
   fill: white !important;
+}
+
+/* Force black text and icon for Download Template button in light mode */
+body.light-theme .importacoes-download-btn,
+body.light-theme .importacoes-download-btn svg,
+body.light-theme .importacoes-download-btn .lucide,
+body.light-theme .importacoes-download-btn [class*="lucide-"] {
+  color: black !important;
+  stroke: black !important;
+  fill: none !important;
+}
+
+/* Light mode hover state - change to green */
+body.light-theme .importacoes-download-btn:hover,
+body.light-theme .importacoes-download-btn:hover svg,
+body.light-theme .importacoes-download-btn:hover .lucide,
+body.light-theme .importacoes-download-btn:hover [class*="lucide-"] {
+  color: #9EC043 !important;
+  stroke: #9EC043 !important;
+  fill: none !important;
 }
 
 /* Force Browse button in Importacoes to have white text in ALL themes */
@@ -968,7 +988,7 @@ body.light-theme .min-h-screen {
 body.light-theme div[style*="backgroundImage"],
 body.light-theme div[style*="background-image"] {
   display: block !important;
-  opacity: 0.11 !important;
+  opacity: 0.16 !important;
 }
 
 body.light-theme div[style*="rgba(0, 0, 0, 0.8)"],
@@ -1610,9 +1630,9 @@ body.light-theme .filter-cards-container input.bg-white\/10:hover,
 body.light-theme .filter-cards-container .SelectTrigger.bg-white\/10:hover,
 body.light-theme input.bg-white\/10:hover,
 body.light-theme .SelectTrigger.bg-white\/10:hover {
-  background-color: rgba(128, 128, 128, 0.8) !important;
-  border-color: #000 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  background-color: rgba(158, 192, 67, 0.2) !important;
+  border-color: #9EC043 !important;
+  box-shadow: 0 2px 8px rgba(158, 192, 67, 0.3) !important;
 }
 
 /* Light theme: ensure select arrows stay black on hover */
@@ -1721,7 +1741,7 @@ body.light-theme .min-h-screen.relative.flex.items-center.justify-center .fixed.
 /* Light theme: summer.png background now used consistently across all pages */
 body.light-theme .fixed.inset-0.bg-cover.bg-center.bg-no-repeat[style*="summer.png"] {
   display: block !important;
-  opacity: 0.11 !important;
+  opacity: 0.16 !important;
 }
 
 /* Light theme: ensure summer.png overlay gets white background like other pages */

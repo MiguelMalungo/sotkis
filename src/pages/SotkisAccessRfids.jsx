@@ -9,45 +9,9 @@ import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessRfids = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);  const [showCreateForm, setShowCreateForm] = React.useState(false);
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);  const [filters, setFilters] = React.useState({
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);    utilizadores: 'Todos',
+  const [showCreateForm, setShowCreateForm] = React.useState(false);
+  const [filters, setFilters] = React.useState({
+    utilizadores: 'Todos',
     departamento: 'Todos',
     rfids: '',
     estado: 'Todos'
@@ -124,11 +88,7 @@ const SotkisAccessRfids = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Utilizadores</label>
                 <Select value={filters.utilizadores} onValueChange={(value) => setFilters({...filters, utilizadores: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione utilizador" />
                   </SelectTrigger>
                   <SelectContent>
@@ -148,11 +108,7 @@ const SotkisAccessRfids = () => {
               <div className="space-y-1">
                 <label className="text-sm font-semibold text-white">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione departamento" />
                   </SelectTrigger>
                   <SelectContent>
@@ -187,11 +143,7 @@ const SotkisAccessRfids = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Estado</label>
                 <Select value={filters.estado} onValueChange={(value) => setFilters({...filters, estado: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione estado" />
                   </SelectTrigger>
                   <SelectContent>

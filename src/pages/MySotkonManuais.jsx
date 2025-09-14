@@ -88,11 +88,7 @@ const MySotkonManuais = () => {
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select defaultValue="10">
-            <SelectTrigger className={`w-20 ${
-              isLightMode 
-                ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                : 'bg-white text-black'
-            }`}>
+            <SelectTrigger className="w-20 bg-white text-black">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -261,11 +257,7 @@ const MySotkonManuais = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Módulo:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione módulo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -281,11 +273,7 @@ const MySotkonManuais = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Nível:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione nível" />
                     </SelectTrigger>
                     <SelectContent>
@@ -312,11 +300,7 @@ const MySotkonManuais = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Ativo:</label>
                   <Select defaultValue="Sim">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

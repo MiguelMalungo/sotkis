@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -34,19 +34,6 @@ const mockUsers = [
 
 const Utilizadores = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
   const [selectedRole, setSelectedRole] = useState('all');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
@@ -293,11 +280,7 @@ const Utilizadores = () => {
                     value={newUser.estado}
                     onValueChange={(value) => setNewUser({...newUser, estado: value})}
                   >
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900 placeholder-gray-600' 
-                        : 'bg-white text-black placeholder-gray-600'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black placeholder-gray-600">
                       <SelectValue placeholder="Selecionar estado" />
                     </SelectTrigger>
                     <SelectContent>
@@ -317,11 +300,7 @@ const Utilizadores = () => {
                     value={newUser.grupo}
                     onValueChange={(value) => setNewUser({...newUser, grupo: value})}
                   >
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900 placeholder-gray-600' 
-                        : 'bg-white text-black placeholder-gray-600'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black placeholder-gray-600">
                       <SelectValue placeholder="Selecionar grupo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -339,11 +318,7 @@ const Utilizadores = () => {
                     value={newUser.lingua}
                     onValueChange={(value) => setNewUser({...newUser, lingua: value})}
                   >
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900 placeholder-gray-600' 
-                        : 'bg-white text-black placeholder-gray-600'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black placeholder-gray-600">
                       <SelectValue placeholder="Selecionar língua" />
                     </SelectTrigger>
                     <SelectContent>

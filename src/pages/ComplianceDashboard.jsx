@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -8,19 +8,6 @@ import SubmenuBar from '../components/ui/SubmenuBar';
 
 const ComplianceDashboard = () => {
   const [startDate, setStartDate] = useState('2025-01-01');
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
   const [endDate, setEndDate] = useState('2025-07-30');
 
   // Mock statistics data
@@ -331,11 +318,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Não-conformidades de</label>
               <Select defaultValue="clientes-fornecedores">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -349,11 +332,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Ano</label>
               <Select defaultValue="todos">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -368,11 +347,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Tipo</label>
               <Select defaultValue="todos">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -386,11 +361,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Estado</label>
               <Select defaultValue="todos">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -405,11 +376,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Responsável</label>
               <Select defaultValue="todos">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -424,11 +391,7 @@ const ComplianceDashboard = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Avaliação de Eficácia</label>
               <Select defaultValue="todos">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

@@ -96,11 +96,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">N° de intervenções</label>
                 <Select value={filters.numeroIntervencoes} onValueChange={(value) => setFilters({...filters, numeroIntervencoes: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -120,11 +116,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -144,11 +136,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Tipo</label>
                 <Select value={filters.tipo} onValueChange={(value) => setFilters({...filters, tipo: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -168,11 +156,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Ilha</label>
                 <Select value={filters.ilha} onValueChange={(value) => setFilters({...filters, ilha: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -192,11 +176,7 @@ const SotcareIntervencoesCorretivas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Contentor</label>
                 <Select value={filters.contentor} onValueChange={(value) => setFilters({...filters, contentor: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -217,11 +197,7 @@ const SotcareIntervencoesCorretivas = () => {
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select defaultValue="10">
-            <SelectTrigger className={`w-20 ${
-              isLightMode 
-                ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                : 'bg-white text-black'
-            }`}>
+            <SelectTrigger className="w-20 bg-white text-black">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -398,11 +374,7 @@ const SotcareIntervencoesCorretivas = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">Departamento:</label>
               <Select defaultValue="Todos" onValueChange={(value) => console.log('Department changed to:', value)}>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -416,11 +388,7 @@ const SotcareIntervencoesCorretivas = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">N° de intervenção mínima:</label>
               <Select defaultValue="Todos" onValueChange={(value) => console.log('Min intervention changed to:', value)}>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -434,11 +402,7 @@ const SotcareIntervencoesCorretivas = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-white">N° de intervenção máxima:</label>
               <Select defaultValue="Todos" onValueChange={(value) => console.log('Max intervention changed to:', value)}>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -480,11 +444,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione o tipo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -498,11 +458,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Departamento:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Escolha um departamento" />
                     </SelectTrigger>
                     <SelectContent>
@@ -516,11 +472,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Ilha:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione a ilha" />
                     </SelectTrigger>
                     <SelectContent>
@@ -534,11 +486,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Contentor:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione o contentor" />
                     </SelectTrigger>
                     <SelectContent>
@@ -580,11 +528,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Prioridade:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione a prioridade" />
                     </SelectTrigger>
                     <SelectContent>
@@ -599,11 +543,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Responsável:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione o responsável" />
                     </SelectTrigger>
                     <SelectContent>
@@ -617,11 +557,7 @@ const SotcareIntervencoesCorretivas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Estado:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione o estado" />
                     </SelectTrigger>
                     <SelectContent>

@@ -1852,11 +1852,7 @@ body.light-theme p {
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">Glass Select (Standard)</label>
                   <SelectRoot>
-                      <SelectTrigger className={`${
-                        isLightMode 
-                          ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                          : 'bg-white text-black'
-                      }`}>
+                      <SelectTrigger className="bg-white text-black">
                         <SelectValue placeholder="Choose an option" />
                     </SelectTrigger>
                   </SelectRoot>

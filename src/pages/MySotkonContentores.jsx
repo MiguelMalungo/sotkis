@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -8,20 +8,7 @@ import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ChevronUp, 
 import SubmenuBar from '../components/ui/SubmenuBar';
 
 const MySotkonContentores = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
+  const [searchTerm, setSearchTerm] = React.useState('');
   const [showCreateModal, setShowCreateModal] = React.useState(false);
   const [filters, setFilters] = React.useState({
     numero: '',
@@ -134,11 +121,7 @@ const MySotkonContentores = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione departamento" />
                   </SelectTrigger>
                   <SelectContent>
@@ -157,11 +140,7 @@ const MySotkonContentores = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Ilha</label>
                 <Select value={filters.ilha} onValueChange={(value) => setFilters({...filters, ilha: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue placeholder="Selecione ilha" />
                   </SelectTrigger>
                   <SelectContent>
@@ -188,11 +167,7 @@ const MySotkonContentores = () => {
         <div className="flex items-center space-x-2">
           <span className="text-sm text-white">Mostrar</span>
           <Select defaultValue="10">
-            <SelectTrigger className={`w-20 ${
-              isLightMode 
-                ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                : 'bg-white text-black'
-            }`}>
+            <SelectTrigger className="w-20 bg-white text-black">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -350,11 +325,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Departamento:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione departamento" />
                     </SelectTrigger>
                     <SelectContent>
@@ -367,11 +338,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Ilha:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione ilha" />
                     </SelectTrigger>
                     <SelectContent>
@@ -404,11 +371,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de contentor:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione tipo de contentor" />
                     </SelectTrigger>
                     <SelectContent>
@@ -424,11 +387,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de Sensor de Enchimento:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione tipo de sensor" />
                     </SelectTrigger>
                     <SelectContent>
@@ -440,11 +399,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de resíduo:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione tipo de resíduo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -457,11 +412,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de Controlo de Acesso:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione tipo de controlo" />
                     </SelectTrigger>
                     <SelectContent>
@@ -473,11 +424,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de Plataforma de Segurança:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione tipo de plataforma" />
                     </SelectTrigger>
                     <SelectContent>
@@ -493,11 +440,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de marco:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione tipo de marco" />
                     </SelectTrigger>
                     <SelectContent>
@@ -509,11 +452,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de kit:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione tipo de kit" />
                     </SelectTrigger>
                     <SelectContent>
@@ -525,11 +464,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de volume de kit:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione volume de kit" />
                     </SelectTrigger>
                     <SelectContent>
@@ -541,11 +476,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Tipo de acabamento:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione tipo de acabamento" />
                     </SelectTrigger>
                     <SelectContent>
@@ -584,11 +515,7 @@ const MySotkonContentores = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Controlo final:</label>
                   <Select defaultValue="Sim">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

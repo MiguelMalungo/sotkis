@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -8,20 +8,7 @@ import { Plus, Search, Edit, Trash2, Info, FileText, Download, Printer, X } from
 import SubmenuBar from '../components/ui/SubmenuBar';
 
 const MySotkonIlhas = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
+  const [searchTerm, setSearchTerm] = React.useState('');
   const [showCreateModal, setShowCreateModal] = React.useState(false);
   const [filters, setFilters] = React.useState({
     descricaoGeografica: '',
@@ -136,11 +123,7 @@ const MySotkonIlhas = () => {
               <div className="space-y-1">
                 <label className="text-white text-sm font-semibold">Departamento</label>
                 <Select value={filters.departamento} onValueChange={(value) => setFilters({...filters, departamento: value})}>
-                  <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                  <SelectTrigger className="bg-white text-black">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -234,11 +217,7 @@ const MySotkonIlhas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Departamento:</label>
                   <Select>
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue placeholder="Selecione departamento" />
                     </SelectTrigger>
                     <SelectContent>
@@ -316,11 +295,7 @@ const MySotkonIlhas = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-white">Controlo final:</label>
                   <Select defaultValue="Sim">
-                    <SelectTrigger className={`${
-                      isLightMode 
-                        ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                        : 'bg-white text-black'
-                    }`}>
+                    <SelectTrigger className="bg-white text-black">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

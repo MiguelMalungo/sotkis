@@ -9,45 +9,9 @@ import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const RgpdList = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [recordsPerPage, setRecordsPerPage] = useState(10);
   const [isLightMode, setIsLightMode] = useState(false);
 
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);  const [recordsPerPage, setRecordsPerPage] = useState(10);
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);  const [isLightMode, setIsLightMode] = useState(false);
-  const [isLightMode, setIsLightMode] = useState(false);
-
-  useEffect(() => {
-    const checkTheme = () => {
-      setIsLightMode(document.body.classList.contains('light-theme'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
-  }, []);
   useEffect(() => {
     // Check if light theme is active
     const checkTheme = () => {
@@ -183,11 +147,7 @@ const RgpdList = () => {
         <div className="flex items-center space-x-2">
           <span className="text-white">Mostrar</span>
           <Select value={recordsPerPage.toString()} onValueChange={(value) => setRecordsPerPage(parseInt(value))}>
-            <SelectTrigger className={`w-20 ${
-              isLightMode 
-                ? 'bg-sotkis-green/20 border-sotkis-green/40 text-gray-900' 
-                : 'bg-white text-black'
-            }`}>
+            <SelectTrigger className="w-20 bg-white text-black">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
