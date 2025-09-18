@@ -988,7 +988,7 @@ body.light-theme .min-h-screen {
 body.light-theme div[style*="backgroundImage"],
 body.light-theme div[style*="background-image"] {
   display: block !important;
-  opacity: 0.16 !important;
+  opacity: 0.26 !important;
 }
 
 body.light-theme div[style*="rgba(0, 0, 0, 0.8)"],
@@ -1015,9 +1015,47 @@ body.light-theme .card-glass-dark {
   color: #212529 !important;
 }
 
+/* Light theme: make Deposicoes dashboard cards whiter */
+body.light-theme .deposicoes-dashboard .card,
+body.light-theme .deposicoes-dashboard .bg-white\/20.backdrop-blur-lg.border-0,
+body.light-theme .deposicoes-dashboard .bg-white\/10.backdrop-blur-lg.border-0 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #212529 !important;
+}
+
+/* Inner tiles inside the top containers grid */
+body.light-theme .deposicoes-dashboard .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Light theme: Deposicoes quick preset buttons styled light green */
+body.light-theme .deposicoes-dashboard .deposicoes-preset-btn {
+  background-color: rgba(158, 192, 67, 0.18) !important; /* light green wash */
+  border-color: rgba(158, 192, 67, 0.35) !important;
+  color: #1a1a1a !important;
+}
+/* Light theme: thin black stroke for time preset buttons across dashboards */
+body.light-theme .time-preset-btn {
+  border-color: rgba(0, 0, 0, 0.5) !important; /* thin black stroke */
+  color: #000 !important;
+}
+
+/* On hover in light mode, keep thin stroke and flip text to white */
+body.light-theme .time-preset-btn:hover {
+  color: #fff !important;
+}
+
+
+body.light-theme .deposicoes-dashboard .deposicoes-preset-btn:hover {
+  background-color: rgba(158, 192, 67, 0.3) !important;
+  border-color: rgba(158, 192, 67, 0.45) !important;
+  color: #000 !important;
+}
+
 /* Light theme sidebar adjustments - override Tailwind bg-white/10 for sidebar only */
 body.light-theme .sidebar-container.bg-white\/10 {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(8px) !important;
 }
 
@@ -1029,7 +1067,7 @@ body.light-theme div.sidebar-container,
 body.light-theme .backdrop-blur-lg.bg-white\/10.sidebar-container,
 body.light-theme div.backdrop-blur-lg.bg-white\/10.sidebar-container,
 body.light-theme .h-full.backdrop-blur-lg.bg-white\/10.sidebar-container {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(8px) !important;
   border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
@@ -1037,27 +1075,27 @@ body.light-theme .h-full.backdrop-blur-lg.bg-white\/10.sidebar-container {
 /* Prevent sidebar background from changing on hover in light mode */
 body.light-theme .sidebar-container.bg-white\/10:hover,
 body.light-theme .sidebar-container.bg-white\/10 {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
 body.light-theme .sidebar-item {
-  /* Light theme: same colors as dark theme - light green with white text */
-  background-color: #9EC043 !important;
-  color: white !important;
+  /* Light theme: white background with black text */
+  background-color: white !important;
+  color: black !important;
 }
 
 body.light-theme .sidebar-item svg,
 body.light-theme .sidebar-item .lucide,
 body.light-theme .sidebar-item [class*="lucide-"] {
-  /* Light theme default: white icons */
-  color: white !important;
-  stroke: white !important;
+  /* Light theme default: black icons */
+  color: black !important;
+  stroke: black !important;
   fill: none !important;
 }
 
 body.light-theme .sidebar-item:hover {
-  /* Light theme hover: lighter green with black text/icons */
-  background-color: #b8d156 !important;
+  /* Light theme hover: lighter green with reduced opacity and black text/icons */
+  background-color: rgba(184, 209, 86, 0.3) !important;
   color: black !important;
 }
 
@@ -1071,8 +1109,8 @@ body.light-theme .sidebar-item:hover [class*="lucide-"] {
 }
 
 body.light-theme .sidebar-item.active {
-  /* Light theme active: black background with white text/icons */
-  background-color: black !important;
+  /* Light theme active: sotkis green background with white text/icons */
+  background-color: #9EC043 !important;
   color: white !important;
 }
 
@@ -1099,7 +1137,7 @@ body.light-theme .sidebar-item.active:hover [class*="lucide-"] {
 body.light-theme .sidebar-item,
 body.light-theme .sidebar-item span,
 body.light-theme .sidebar-item * {
-  color: white !important;
+  color: black !important;
 }
 
 body.light-theme .sidebar-item:hover,

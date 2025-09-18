@@ -243,48 +243,6 @@ const Layout = ({ children }) => {
         />
       )}
 
-      {/* Top-right theme toggle */}
-      {hasContent && (
-        <div className="fixed top-[21px] right-4 z-[60]">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="bg-white/10 backdrop-blur-lg text-white border-0 hover:bg-white/20 rounded-xl shadow-2xl w-12 h-12 flex items-center justify-center"
-            onClick={() => {
-              const isEnablingLight = !document.body.classList.contains('light-theme');
-              const layoutElement = document.querySelector('.min-h-screen');
-
-              if (layoutElement) {
-                // Background image containers (including inline backgroundImage/background-image styles)
-                const backgroundDivs = layoutElement.querySelectorAll(
-                  'div[style*="backgroundImage"], div[style*="background-image"]'
-                );
-                backgroundDivs.forEach((div) => {
-                  div.style.display = isEnablingLight ? 'none' : '';
-                });
-
-                // Overlays: match common overlay classes and inline rgba gradients
-                const overlayDivs = layoutElement.querySelectorAll(
-                  '.bg-overlay, .bg-overlay-light, div[style*="rgba(0, 0, 0, 0.8)"], div[style*="rgba(0,0,0,0.8)"], div[style*="rgba(0, 0, 0, 0.56)"], div[style*="rgba(0,0,0,0.56)"]'
-                );
-                overlayDivs.forEach((div) => {
-                  div.style.display = isEnablingLight ? 'none' : '';
-                });
-              }
-
-              // Toggle body class for light theme last, based on target state
-              if (isEnablingLight) {
-                document.body.classList.add('light-theme');
-              } else {
-                document.body.classList.remove('light-theme');
-              }
-            }}
-            title="Toggle Theme"
-          >
-            <Sun size={20} />
-          </Button>
-        </div>
-      )}
 
       {/* Main Content */}
       <main className={`

@@ -4,7 +4,7 @@ import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
 import { Plus, Search, Edit, Trash2, User, Shield, Mail } from 'lucide-react';
-import SubmenuBar from '../../components/ui/SubmenuBar';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 const Administracao = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,27 +17,6 @@ const Administracao = () => {
     ativo: true
   });
 
-  const submenuLinks = [
-    { label: 'Importações', to: '/administracao/importacoes' },
-    { label: 'Ilhas', to: '/administracao/ilhas' },
-    { label: 'Utilizadores', to: '/administracao/utilizadores' },
-    { label: 'RFIDs', to: '/administracao/rfids' },
-    { label: 'Estados da Faturação', to: '/administracao/estados-faturacao' },
-    { label: 'Países', to: '/administracao/paises' },
-    { label: 'Transponders', to: '/administracao/transponders' },
-    { label: 'Contentores', to: '/administracao/contentores' },
-    { label: 'Resíduos', to: '/administracao/residuos' },
-    { label: 'Controlos de Acesso', to: '/administracao/controlos-acesso' },
-    { label: 'Acabamentos', to: '/administracao/acabamentos' },
-    { label: 'Kits', to: '/administracao/kits' },
-    { label: 'Volumes do Kit', to: '/administracao/volumes-kit' },
-    { label: 'Marcos', to: '/administracao/marcos' },
-    { label: 'Intervenções', to: '/administracao/intervencoes' },
-    { label: 'Plat. de Segurança', to: '/administracao/plataformas-seguranca' },
-    { label: 'Sensores de Enchimento', to: '/administracao/sensores-enchimento' },
-    { label: 'Utilizadores Finais', to: '/administracao/utilizadores-finais' },
-    { label: 'Estado chaves RFID', to: '/administracao/estado-chaves-rfid' },
-  ];
 
   // Mock data for admin users
   const mockAdminUsers = [
@@ -88,8 +67,6 @@ const Administracao = () => {
         <p className="text-gray-300 mt-1">Gestão administrativa do sistema</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -102,13 +79,6 @@ const Administracao = () => {
             className="pl-10 bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
           />
         </div>
-        <Button
-          onClick={() => setShowCreateModal(true)}
-          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Novo Utilizador
-        </Button>
       </div>
 
       {/* Users Table */}
@@ -243,6 +213,9 @@ const Administracao = () => {
           </div>
         </div>
       )}
+
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setShowCreateModal(true)} />
     </div>
   );
 };

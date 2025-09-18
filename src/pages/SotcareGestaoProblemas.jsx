@@ -5,7 +5,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown, X, ChevronUp, ChevronDown } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 const SotcareGestaoProblemas = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,11 +17,6 @@ const SotcareGestaoProblemas = () => {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const submenuLinks = [
-    { label: 'Intervenções Corretivas', to: '/sotcare/corrective-interventions' },
-    { label: 'Intervenções Preventivas', to: '/sotcare/preventive-interventions' },
-    { label: 'Gestão de Problemas', to: '/sotcare/problem-management' },
-  ];
 
   // Mock data for problems
   const mockProblemas = [
@@ -79,17 +74,8 @@ const SotcareGestaoProblemas = () => {
         <p className="text-gray-300 mt-1">Gestão de problemas do sistema</p>
       </div>
 
-      {/* SubmenuBar and Button */}
       <div className="flex flex-col space-y-8">
-        <SubmenuBar items={submenuLinks} />
         <div className="flex items-center justify-center">
-          <Button 
-            onClick={() => setIsModalOpen(true)}
-            className="bg-sotkis-green/90 hover:bg-sotkis-green text-white"
-          >
-            <Plus className="w-4 h-4 mr-2 text-white" />
-            Reportar Problema
-          </Button>
         </div>
       </div>
 
@@ -463,6 +449,9 @@ const SotcareGestaoProblemas = () => {
           </div>
         </div>
       )}
+    
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setIsModalOpen(true)} />
     </div>
   );
 };

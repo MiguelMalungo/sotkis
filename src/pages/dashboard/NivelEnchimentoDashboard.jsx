@@ -2,27 +2,19 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import DashboardNav from '@/components/ui/DashboardNav';
 import { Select, SelectOption } from '@/components/ui/select';
 import { TrendingUp, TrendingDown, Filter, BarChart3, ArrowLeft } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line
 } from 'recharts';
 import { timePresets, departments } from '@/data/mockData';
-import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const NivelEnchimentoDashboard = () => {
   const navigate = useNavigate();
   const [selectedTime, setSelectedTime] = useState('month');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
 
-  const submenuLinks = [
-    { label: 'Deposições', to: '/dashboard/deposicoes' },
-    { label: 'Nível de Enchimento', to: '/dashboard/nivel-enchimento' },
-    { label: 'Gestão de Manutenções', to: '/dashboard/gestao-manutencoes' },
-    { label: 'Recompensas', to: '/dashboard/recompensas' },
-    { label: 'Gestão de Rotas', to: '/dashboard/gestao-rotas' },
-    { label: 'Performance', to: '/dashboard/performance' },
-  ];
 
   // Mock data for charts
   const depositosPorMesData = [
@@ -72,6 +64,8 @@ const NivelEnchimentoDashboard = () => {
         <p className="text-gray-300 mt-1">Monitorização dos níveis de enchimento dos contentores</p>
       </div>
 
+      <DashboardNav />
+
       {/* Voltar Button - Mobile Only */}
       <div className="flex justify-start md:hidden">
         <Button 
@@ -82,9 +76,7 @@ const NivelEnchimentoDashboard = () => {
         </Button>
       </div>
 
-      {/* SubmenuBar - Desktop Only */}
       <div className="hidden md:block">
-        <SubmenuBar items={submenuLinks} />
       </div>
 
       {/* Filters */}
@@ -96,7 +88,7 @@ const NivelEnchimentoDashboard = () => {
               variant={selectedTime === preset.value ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedTime(preset.value)}
-              className={selectedTime === preset.value ? "bg-sotkis-green" : "text-white border-white/20"}
+              className={(selectedTime === preset.value ? "bg-sotkis-green" : "text-white border-white/20") + " time-preset-btn"}
             >
               {preset.label}
             </Button>

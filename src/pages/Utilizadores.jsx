@@ -21,6 +21,7 @@ import {
   Calendar,
   X
 } from 'lucide-react';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 // Mock user data adjusted to screenshot fields
 const mockUsers = [
@@ -190,13 +191,6 @@ const Utilizadores = () => {
         <Button variant="outline" className="text-white border-white/20">
           <Download className="w-4 h-4 mr-2" />
           Exportar
-        </Button>
-        <Button 
-          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold"
-          onClick={() => setShowCreateUserModal(true)}
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Novo Utilizador
         </Button>
       </div>
 
@@ -672,6 +666,9 @@ const Utilizadores = () => {
           INICIAR PROCESSO
         </Button>
       </div>
+
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setShowCreateUserModal(true)} />
     </div>
   );
 };

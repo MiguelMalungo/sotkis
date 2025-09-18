@@ -4,7 +4,6 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Calendar, BarChart3, TrendingUp, AlertTriangle, CheckCircle, Clock, XCircle } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
 
 const ComplianceDashboard = () => {
   const [startDate, setStartDate] = useState('2025-01-01');
@@ -40,11 +39,6 @@ const ComplianceDashboard = () => {
     // Here you would implement the logic to set the appropriate date range
   };
 
-  const submenuLinks = [
-    { label: 'Clientes', to: '/compliance/clients' },
-    { label: 'Fornecedores', to: '/compliance/suppliers' },
-    { label: 'Dashboard', to: '/compliance/dashboard' },
-  ];
 
   return (
     <div className="p-6 space-y-6">
@@ -54,8 +48,6 @@ const ComplianceDashboard = () => {
         <p className="text-gray-300 mt-1">Visão geral da conformidade do sistema</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Filters */}
       <div className="space-y-4">

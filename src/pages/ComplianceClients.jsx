@@ -5,7 +5,6 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ChevronUp, ChevronDown } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
 
 const ComplianceClients = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,11 +18,6 @@ const ComplianceClients = () => {
     region: 'Todas'
   });
 
-  const submenuLinks = [
-    { label: 'Clientes', to: '/compliance/clients' },
-    { label: 'Fornecedores', to: '/compliance/suppliers' },
-    { label: 'Dashboard', to: '/compliance/dashboard' },
-  ];
 
   // Mock non-conformities data for clients
   const mockNonConformities = [
@@ -110,8 +104,6 @@ const ComplianceClients = () => {
         <p className="text-gray-300 mt-1">Gestão de conformidade de clientes</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Create New Non-conformity Filter */}
       <div className="bg-sotkis-green text-black px-4 py-2 rounded-lg flex items-center justify-between">

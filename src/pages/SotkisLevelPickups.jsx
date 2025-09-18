@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Calendar, FileText, Download, Printer, Truck, Clock, MapPin } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisLevelPickups = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('');
@@ -72,11 +71,6 @@ const SotkisLevelPickups = () => {
     }
   };
 
-  const submenuLinks = [
-    { label: 'Alertas', to: '/sotkis-level/alerts' },
-    { label: 'Recolhas', to: '/sotkis-level/pickups' },
-    { label: 'Localizações e Contentores', to: '/sotkis-level/locations-containers' },
-  ];
 
   return (
     <div className="p-6 space-y-6">
@@ -86,8 +80,6 @@ const SotkisLevelPickups = () => {
         <p className="text-gray-300 mt-1">Gestão de recolhas do Sotkis Level</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Department Filter */}
       <Card className="bg-white/20 backdrop-blur-lg border-0">

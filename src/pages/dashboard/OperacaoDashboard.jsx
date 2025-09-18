@@ -10,6 +10,7 @@ import {
   Map,
   BarChart3
 } from 'lucide-react';
+ 
 
 const OperacaoDashboard = () => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ const OperacaoDashboard = () => {
         <h1 className="text-xl font-bold text-white">Dashboard de Operação</h1>
         <p className="text-gray-300 mt-1">Visão geral das operações do sistema</p>
       </div>
+
+      
 
       {/* Navigation Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import DashboardNav from '@/components/ui/DashboardNav';
 import { Input } from '@/components/ui/input';
 import { Select, SelectOption } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -12,7 +13,6 @@ import {
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
 } from 'recharts';
-import SubmenuBar from '../../components/ui/SubmenuBar';
 import { timePresets, departments, maintenanceData } from '@/data/mockData';
 
 const GestaoManutencoesDashboard = () => {
@@ -20,14 +20,6 @@ const GestaoManutencoesDashboard = () => {
   const [selectedTime, setSelectedTime] = useState('month');
   const [selectedDepartment, setSelectedDepartment] = useState('all');
 
-  const submenuLinks = [
-    { label: 'Deposições', to: '/dashboard/deposicoes' },
-    { label: 'Nível de Enchimento', to: '/dashboard/nivel-enchimento' },
-    { label: 'Gestão de Manutenções', to: '/dashboard/gestao-manutencoes' },
-    { label: 'Recompensas', to: '/dashboard/recompensas' },
-    { label: 'Gestão de Rotas', to: '/dashboard/gestao-rotas' },
-    { label: 'Performance', to: '/dashboard/performance' },
-  ];
 
   const getPriorityColor = (priority) => {
     switch (priority) {
@@ -63,6 +55,8 @@ const GestaoManutencoesDashboard = () => {
         <p className="text-gray-300 mt-1">Monitorização de manutenções do sistema</p>
       </div>
 
+      <DashboardNav />
+
       {/* Voltar Button - Mobile Only */}
       <div className="flex justify-start md:hidden">
         <Button 
@@ -73,9 +67,7 @@ const GestaoManutencoesDashboard = () => {
         </Button>
       </div>
 
-      {/* SubmenuBar - Desktop Only */}
       <div className="hidden md:block">
-        <SubmenuBar items={submenuLinks} />
       </div>
 
       {/* Filters */}

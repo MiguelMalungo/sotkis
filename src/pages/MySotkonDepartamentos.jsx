@@ -5,7 +5,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ArrowUpDown, Mail, ChevronUp, ChevronDown } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 const MySotkonDepartamentos = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -15,12 +15,6 @@ const MySotkonDepartamentos = () => {
     departamento: 'Todos'
   });
 
-  const submenuLinks = [
-    { label: 'Manuais', to: '/my-sotkon/manuais' },
-    { label: 'Departamentos', to: '/my-sotkon/departamentos' },
-    { label: 'Ilhas', to: '/my-sotkon/ilhas' },
-    { label: 'Contentores', to: '/my-sotkon/contentores' },
-  ];
 
   // Mock data for departments
   const mockDepartamentos = [
@@ -85,8 +79,6 @@ const MySotkonDepartamentos = () => {
         <p className="text-gray-300 mt-1">Gestão de departamentos do My Sotkon</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -99,13 +91,6 @@ const MySotkonDepartamentos = () => {
             className="pl-10 bg-white/10 border-white/20 text-white/90 placeholder-gray-400"
           />
         </div>
-        <Button
-          onClick={() => setShowCreateModal(true)}
-          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Novo Departamento
-        </Button>
       </div>
 
       {/* Filters */}
@@ -459,6 +444,9 @@ const MySotkonDepartamentos = () => {
           </div>
         </div>
       )}
+
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setShowCreateModal(true)} />
     </div>
   );
 };

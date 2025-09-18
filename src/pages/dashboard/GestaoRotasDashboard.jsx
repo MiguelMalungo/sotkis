@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import DashboardNav from '@/components/ui/DashboardNav';
 import { Input } from '@/components/ui/input';
 import { Select, SelectOption } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -12,7 +13,6 @@ import {
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line
 } from 'recharts';
-import SubmenuBar from '../../components/ui/SubmenuBar';
 import { kilometersData, containersCollectedData, planExecutedData, routeTimePresets } from '@/data/mockData';
 
 const GestaoRotasDashboard = () => {
@@ -22,14 +22,6 @@ const GestaoRotasDashboard = () => {
   const [startDate, setStartDate] = useState('2025-07-28');
   const [endDate, setEndDate] = useState('2025-08-04');
 
-  const submenuLinks = [
-    { label: 'Deposições', to: '/dashboard/deposicoes' },
-    { label: 'Nível de Enchimento', to: '/dashboard/nivel-enchimento' },
-    { label: 'Gestão de Manutenções', to: '/dashboard/gestao-manutencoes' },
-    { label: 'Recompensas', to: '/dashboard/recompensas' },
-    { label: 'Gestão de Rotas', to: '/dashboard/gestao-rotas' },
-    { label: 'Performance', to: '/dashboard/performance' },
-  ];
 
   // Custom tooltip for charts
   const CustomTooltip = ({ active, payload, label }) => {
@@ -59,6 +51,8 @@ const GestaoRotasDashboard = () => {
         <p className="text-gray-300 mt-1">Monitorização e gestão de rotas do sistema</p>
       </div>
 
+      <DashboardNav />
+
       {/* Voltar Button - Mobile Only */}
       <div className="flex justify-start md:hidden">
         <Button 
@@ -69,9 +63,7 @@ const GestaoRotasDashboard = () => {
         </Button>
       </div>
 
-      {/* SubmenuBar - Desktop Only */}
       <div className="hidden md:block">
-        <SubmenuBar items={submenuLinks} />
       </div>
 
       {/* Filters */}
@@ -107,7 +99,7 @@ const GestaoRotasDashboard = () => {
               key={preset}
               variant="outline"
               size="sm"
-              className="text-white border-white/20 hover:bg-white/10"
+              className="text-white border-white/20 hover:bg-white/10 time-preset-btn"
             >
               {preset}
             </Button>

@@ -619,6 +619,41 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobile, isMobileMenuOpen, onMo
                       <span>Definições</span>
                       <Settings size={16} className="text-gray-700" />
                     </button>
+                    <button 
+                      onClick={() => {
+                        const isEnablingLight = !document.body.classList.contains('light-theme');
+                        const layoutElement = document.querySelector('.min-h-screen');
+
+                        if (layoutElement) {
+                          // Background image containers (including inline backgroundImage/background-image styles)
+                          const backgroundDivs = layoutElement.querySelectorAll(
+                            'div[style*="backgroundImage"], div[style*="background-image"]'
+                          );
+                          backgroundDivs.forEach((div) => {
+                            div.style.display = isEnablingLight ? 'none' : '';
+                          });
+
+                          // Overlays: match common overlay classes and inline rgba gradients
+                          const overlayDivs = layoutElement.querySelectorAll(
+                            '.bg-overlay, .bg-overlay-light, div[style*="rgba(0, 0, 0, 0.8)"], div[style*="rgba(0,0,0,0.8)"], div[style*="rgba(0, 0, 0, 0.56)"], div[style*="rgba(0,0,0,0.56)"]'
+                          );
+                          overlayDivs.forEach((div) => {
+                            div.style.display = isEnablingLight ? 'none' : '';
+                          });
+                        }
+
+                        // Toggle body class for light theme last, based on target state
+                        if (isEnablingLight) {
+                          document.body.classList.add('light-theme');
+                        } else {
+                          document.body.classList.remove('light-theme');
+                        }
+                      }}
+                      className="w-full flex items-center justify-between hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors text-sm text-gray-700"
+                    >
+                      <span>Toggle Theme</span>
+                      <Sun size={16} className="text-gray-700" />
+                    </button>
                     <button className="w-full flex items-center justify-between hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors text-sm text-gray-700">
                       <span>Logout</span>
                       <LogOut size={16} className="text-gray-700" />

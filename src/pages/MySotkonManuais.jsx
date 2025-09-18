@@ -5,7 +5,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Search, Edit, Trash2, FileText, Download, Printer, X, ChevronUp, ChevronDown } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 const MySotkonManuais = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,12 +41,6 @@ const MySotkonManuais = () => {
     manual.versao.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const submenuLinks = [
-    { label: 'Manuais', to: '/my-sotkon/manuais' },
-    { label: 'Departamentos', to: '/my-sotkon/departamentos' },
-    { label: 'Ilhas', to: '/my-sotkon/ilhas' },
-    { label: 'Contentores', to: '/my-sotkon/contentores' },
-  ];
 
   return (
     <div className="p-6 space-y-6">
@@ -56,8 +50,6 @@ const MySotkonManuais = () => {
         <p className="text-gray-300 mt-1">Gestão de manuais do My Sotkon</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -74,13 +66,6 @@ const MySotkonManuais = () => {
             }`}
           />
         </div>
-        <Button
-          onClick={() => setShowCreateModal(true)}
-          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Novo Manual
-        </Button>
       </div>
 
       {/* Table Controls */}
@@ -386,6 +371,9 @@ const MySotkonManuais = () => {
           </div>
         </div>
       )}
+
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setShowCreateModal(true)} />
     </div>
   );
 };

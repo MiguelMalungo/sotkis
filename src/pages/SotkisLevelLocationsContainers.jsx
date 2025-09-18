@@ -5,7 +5,6 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { MapPin, Package, Search, ArrowUpDown, Filter, Plus, Edit, Trash2, Map, Satellite, Maximize2, Layers } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisLevelLocationsContainers = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -193,11 +192,6 @@ const SotkisLevelLocationsContainers = () => {
 
   const stats = getDepartmentStats();
 
-  const submenuLinks = [
-    { label: 'Alertas', to: '/sotkis-level/alerts' },
-    { label: 'Recolhas', to: '/sotkis-level/pickups' },
-    { label: 'Localizações e Contentores', to: '/sotkis-level/locations-containers' },
-  ];
 
   return (
     <div className="p-6 space-y-6">
@@ -207,8 +201,6 @@ const SotkisLevelLocationsContainers = () => {
         <p className="text-gray-300 mt-1">Gestão de localizações e contentores do Sotkis Level</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Department Selection */}
       <Card className="bg-white/20 backdrop-blur-lg border-0">

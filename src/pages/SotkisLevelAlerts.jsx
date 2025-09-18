@@ -5,7 +5,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 const SotkisLevelAlerts = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -107,11 +107,6 @@ const SotkisLevelAlerts = () => {
     console.log('Searching for:', searchTerm);
   };
 
-  const submenuLinks = [
-    { label: 'Alertas', to: '/sotkis-level/alerts' },
-    { label: 'Recolhas', to: '/sotkis-level/pickups' },
-    { label: 'Locais & Contentores', to: '/sotkis-level/locations-containers' },
-  ];
 
   return (
     <div className="p-6 space-y-6">
@@ -121,18 +116,9 @@ const SotkisLevelAlerts = () => {
         <p className="text-gray-300 mt-1">Gestão de alertas do Sotkis Level</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Button */}
       <div className="flex justify-center">
-        <Button 
-          onClick={() => setShowCreateModal(true)}
-          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Novo Alerta
-        </Button>
       </div>
 
       {/* Filters and Controls */}
@@ -286,6 +272,9 @@ const SotkisLevelAlerts = () => {
           </div>
         </div>
       </div>
+    
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setShowCreateModal(true)} />
     </div>
   );
 };

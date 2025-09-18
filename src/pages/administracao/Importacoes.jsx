@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Upload, Download } from 'lucide-react';
-import SubmenuBar from '../../components/ui/SubmenuBar';
 
 const Importacoes = () => {
   // Track light mode state
@@ -112,27 +111,6 @@ const Importacoes = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [showCreateModal, setShowCreateModal] = React.useState(false);
 
-  const submenuLinks = [
-    { label: 'Importações', to: '/administracao/importacoes' },
-    { label: 'Ilhas', to: '/administracao/ilhas' },
-    { label: 'Utilizadores', to: '/administracao/utilizadores' },
-    { label: 'RFIDs', to: '/administracao/rfids' },
-    { label: 'Estados da Faturação', to: '/administracao/estados-faturacao' },
-    { label: 'Países', to: '/administracao/paises' },
-    { label: 'Transponders', to: '/administracao/transponders' },
-    { label: 'Contentores', to: '/administracao/contentores' },
-    { label: 'Resíduos', to: '/administracao/residuos' },
-    { label: 'Controlos de Acesso', to: '/administracao/controlos-acesso' },
-    { label: 'Acabamentos', to: '/administracao/acabamentos' },
-    { label: 'Kits', to: '/administracao/kits' },
-    { label: 'Volumes do Kit', to: '/administracao/volumes-kit' },
-    { label: 'Marcos', to: '/administracao/marcos' },
-    { label: 'Intervenções', to: '/administracao/intervencoes' },
-    { label: 'Plat. de Segurança', to: '/administracao/plataformas-seguranca' },
-    { label: 'Sensores de Enchimento', to: '/administracao/sensores-enchimento' },
-    { label: 'Utilizadores Finais', to: '/administracao/utilizadores-finais' },
-    { label: 'Estado chaves RFID', to: '/administracao/estado-chaves-rfid' },
-  ];
 
   return (
     <div className="p-6 space-y-6">
@@ -142,8 +120,6 @@ const Importacoes = () => {
         <p className="text-gray-300 mt-1">Gestão de importações do sistema</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Import Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

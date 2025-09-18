@@ -5,18 +5,11 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Search, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessDepositions = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showCreateModal, setShowCreateModal] = useState(false);
 
-  const submenuLinks = [
-    { label: 'RFIDs', to: '/sotkis-access/rfids' },
-    { label: 'Relatórios', to: '/sotkis-access/reports' },
-    { label: 'Depósitos', to: '/sotkis-access/deposits' },
-    { label: 'Baterias', to: '/sotkis-access/batteries' },
-  ];
 
   const [formData, setFormData] = React.useState({
     inicioPeriodo: '2025-07-15',
@@ -50,8 +43,6 @@ const SotkisAccessDepositions = () => {
         <p className="text-gray-300 mt-1">Gestão de deposições do Sotkis Access</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Form */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">

@@ -5,7 +5,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Edit, Trash2, Eye, MoreHorizontal, User, Mail, Phone, MapPin, Calendar, Shield, CheckCircle, XCircle, Clock, AlertTriangle, Image, ArrowUpDown, KeyRound, X, ChevronUp, ChevronDown } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 const SotcareIntervencoesCorretivas = () => {
   const [filters, setFilters] = useState({
@@ -17,11 +17,6 @@ const SotcareIntervencoesCorretivas = () => {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const submenuLinks = [
-    { label: 'Intervenções Corretivas', to: '/sotcare/corrective-interventions' },
-    { label: 'Intervenções Preventivas', to: '/sotcare/preventive-interventions' },
-    { label: 'Gestão de Problemas', to: '/sotcare/problem-management' },
-  ];
 
   // Mock data for corrective interventions
   const mockIntervencoes = [
@@ -69,17 +64,8 @@ const SotcareIntervencoesCorretivas = () => {
         <p className="text-gray-300 mt-1">Gestão de intervenções corretivas do sistema</p>
       </div>
 
-      {/* SubmenuBar and Button */}
       <div className="flex flex-col space-y-8">
-        <SubmenuBar items={submenuLinks} />
         <div className="flex items-center justify-center">
-          <Button 
-            onClick={() => setIsModalOpen(true)}
-            className="bg-red-600 text-white hover:bg-red-500"
-          >
-            <Plus className="w-4 h-4 mr-2 text-white" />
-            Nova intervenção corretiva
-          </Button>
         </div>
       </div>
 
@@ -595,6 +581,9 @@ const SotcareIntervencoesCorretivas = () => {
           </div>
         </div>
       )}
+    
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setIsModalOpen(true)} />
     </div>
   );
 };

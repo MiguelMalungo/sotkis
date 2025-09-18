@@ -5,7 +5,7 @@ import { Input } from '../../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
 import { Plus, Search, Edit, Trash2, Info, FileText, Download, Printer, X, ArrowUpDown } from 'lucide-react';
-import SubmenuBar from '../../components/ui/SubmenuBar';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 const Ilhas = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -48,27 +48,6 @@ const Ilhas = () => {
     island.pais.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const submenuLinks = [
-    { label: 'Importações', to: '/administracao/importacoes' },
-    { label: 'Ilhas', to: '/administracao/ilhas' },
-    { label: 'Utilizadores', to: '/administracao/utilizadores' },
-    { label: 'RFIDs', to: '/administracao/rfids' },
-    { label: 'Estados da Faturação', to: '/administracao/estados-faturacao' },
-    { label: 'Países', to: '/administracao/paises' },
-    { label: 'Transponders', to: '/administracao/transponders' },
-    { label: 'Contentores', to: '/administracao/contentores' },
-    { label: 'Resíduos', to: '/administracao/residuos' },
-    { label: 'Controlos de Acesso', to: '/administracao/controlos-acesso' },
-    { label: 'Acabamentos', to: '/administracao/acabamentos' },
-    { label: 'Kits', to: '/administracao/kits' },
-    { label: 'Volumes do Kit', to: '/administracao/volumes-kit' },
-    { label: 'Marcos', to: '/administracao/marcos' },
-    { label: 'Intervenções', to: '/administracao/intervencoes' },
-    { label: 'Plat. de Segurança', to: '/administracao/plataformas-seguranca' },
-    { label: 'Sensores de Enchimento', to: '/administracao/sensores-enchimento' },
-    { label: 'Utilizadores Finais', to: '/administracao/utilizadores-finais' },
-    { label: 'Estado chaves RFID', to: '/administracao/estado-chaves-rfid' },
-  ];
 
   const handleCreateIsland = () => {
     // Handle island creation logic here
@@ -90,8 +69,6 @@ const Ilhas = () => {
         <p className="text-gray-300 mt-1">Gestão de ilhas do sistema</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Search and Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -108,13 +85,6 @@ const Ilhas = () => {
             }`}
           />
         </div>
-        <Button
-          onClick={() => setShowCreateModal(true)}
-          className="bg-sotkis-green hover:bg-sotkis-green/90 text-black font-semibold"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Nova Ilha
-        </Button>
       </div>
 
       {/* Islands Table */}
@@ -217,6 +187,9 @@ const Ilhas = () => {
           </div>
         </div>
       )}
+
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setShowCreateModal(true)} />
     </div>
   );
 };

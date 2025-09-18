@@ -4,17 +4,10 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Battery, TrendingDown, TrendingUp } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
 
 const SotkisAccessBatteries = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('');
 
-  const submenuLinks = [
-    { label: 'RFIDs', to: '/sotkis-access/rfids' },
-    { label: 'Relatórios', to: '/sotkis-access/reports' },
-    { label: 'Depósitos', to: '/sotkis-access/deposits' },
-    { label: 'Baterias', to: '/sotkis-access/batteries' },
-  ];
 
   const handleDepartmentChange = (value) => {
     setSelectedDepartment(value);
@@ -30,8 +23,6 @@ const SotkisAccessBatteries = () => {
         <p className="text-gray-300 mt-1">Gestão de baterias do Sotkis Access</p>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Main Content */}
       <Card className="bg-white/10 backdrop-blur-lg border-0">

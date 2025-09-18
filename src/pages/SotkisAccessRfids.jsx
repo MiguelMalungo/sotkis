@@ -5,7 +5,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Plus, Search, Edit, Trash2, FileText, Download } from 'lucide-react';
-import SubmenuBar from '../components/ui/SubmenuBar';
+import FloatingAddButton from '@/components/ui/FloatingAddButton';
 
 const SotkisAccessRfids = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -55,12 +55,6 @@ const SotkisAccessRfids = () => {
     console.log('Searching with filters:', filters);
   };
 
-  const submenuLinks = [
-    { label: 'RFIDs', to: '/sotkis-access/rfids' },
-    { label: 'Relatórios', to: '/sotkis-access/reports' },
-    { label: 'Depósitos', to: '/sotkis-access/deposits' },
-    { label: 'Baterias', to: '/sotkis-access/batteries' },
-  ];
 
   return (
     <div className="p-6 space-y-6">
@@ -72,8 +66,6 @@ const SotkisAccessRfids = () => {
         </div>
       </div>
 
-      {/* SubmenuBar */}
-      <SubmenuBar items={submenuLinks} />
 
       {/* Filters */}
       <div className="space-y-4">
@@ -168,13 +160,6 @@ const SotkisAccessRfids = () => {
         
         {/* New RFID Button */}
         <div className="flex justify-center">
-          <Button 
-            onClick={() => setShowCreateForm(true)}
-            className="bg-sotkis-green text-black hover:bg-sotkis-green/90"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Nova RFID
-          </Button>
         </div>
       </div>
 
@@ -194,6 +179,9 @@ const SotkisAccessRfids = () => {
       <div className="text-center text-sm text-gray-300">
         Copyright © Sotkis 2025
       </div>
+    
+      {/* Floating Add Button */}
+      <FloatingAddButton onClick={() => setShowCreateForm(true)} />
     </div>
   );
 };
